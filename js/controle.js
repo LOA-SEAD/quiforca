@@ -80,7 +80,7 @@ function criarCamadaJogo()
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaJogo");
 	$("#palco").append(el);
-	
+    
 	iniciar();
 }
 

@@ -1,6 +1,16 @@
+var pai = document.getElementById("ancora").parentNode;
+
 var jogo = {};
 
-var pai = document.getElementById("ancora").parentNode;
+$.ajax({
+    url: "json/palavras.json",
+    dataType: "text",
+    mimeType: "application/json",
+    async: false,
+    success: function (data) {
+        jogo.bd = $.parseJSON(data);
+    }
+});
 
 /*var css = document.createElement("link");
 css.setAttribute("rel", "stylesheet");

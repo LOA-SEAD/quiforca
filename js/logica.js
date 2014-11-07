@@ -1,12 +1,10 @@
 function iniciar()
 {	
-	
 	//Essa variavel vai conter todas as letras que o jogador ja tentou
 	jogo.letrasTentadas = new Array();
 	jogo.letrasTentadas = [" "];
 	
 	jogo.sorteio = parseInt((Math.random()*10000)%jogo.bdTamanho);
-	console.log(jogo.sorteio);
 	
 	jogo.botaoVoltar = document.createElement("div");
 	jogo.botaoVoltar.setAttribute("id" , "btnVoltar");
@@ -39,16 +37,16 @@ function iniciar()
 	
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
-	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]][1];
-	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]][1]);
+	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;
+	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica);
 	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
-	
-	if(jogo.bd[jogo.bdAux[jogo.sorteio]][2] != 0) {
+
+	if(jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao != "0") {
 		jogo.contribuicaoNaTela = document.createElement("p");
 		jogo.contribuicaoNaTela.setAttribute("id", "contribuicaoNaTela");
 		jogo.contribuicaoNaTela.setAttribute("class", "customfont");
-		jogo.contribuicaoNaTela.innerHTML = "Contribuição de: "+jogo.bd[jogo.bdAux[jogo.sorteio]][2];
+		jogo.contribuicaoNaTela.innerHTML = "ContribuiÃ§Ã£o de: "+jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao;
 		$("#camadaJogo").append(jogo.contribuicaoNaTela);
 
 	}
@@ -61,7 +59,7 @@ function iniciar()
 	//Pegamos uma palavra aleatoria
 	
 
-	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]][0];
+	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
 	
 	jogo.aux = "";
 	for(var i = 0; i < jogo.palavraSorteada.length; i++)
@@ -69,7 +67,7 @@ function iniciar()
 		jogo.aux += jogo.palavraSorteada[i] + " ";
 	}
 
-	//Essa é a variavel que deve ser exibida na tela
+	//Essa Ã© a variavel que deve ser exibida na tela
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
@@ -79,13 +77,11 @@ function iniciar()
 	jogo.erros = 0;
 	jogo.emTransicao = false;
 	
-	//Aqui nós tiramos a palavra que ja foi sorteada, para ela nao ser sorteada novamente
+	//Aqui nÃ³s tiramos a palavra que ja foi sorteada, para ela nao ser sorteada novamente
 	jogo.bdTamanho--;
 	var ajuda = jogo.bdAux[jogo.bdTamanho];
 	jogo.bdAux[jogo.bdTamanho] = jogo.bdAux[jogo.sorteio];
 	jogo.bdAux[jogo.sorteio] = ajuda;
-	console.log(jogo.bdAux);
-	console.log(jogo.bdTamanho);
 	
 	colocarTecladoNaTela();
 	colocarPersonagem();
@@ -171,7 +167,7 @@ function verificarErro(_letra)
 		{
 			if(_letra == "I")
 			{
-				if("Í" == jogo.palavraSorteada[i])
+				if("Ã" == jogo.palavraSorteada[i])
 				{
 					deuErro = false;
 				}
@@ -179,7 +175,7 @@ function verificarErro(_letra)
 				
 			if(_letra == "E")
 			{
-				if(("É" == jogo.palavraSorteada[i]) || ("Ê" == jogo.palavraSorteada[i]))
+				if(("Ã‰" == jogo.palavraSorteada[i]) || ("ÃŠ" == jogo.palavraSorteada[i]))
 				{
 					deuErro = false;
 				}
@@ -187,7 +183,7 @@ function verificarErro(_letra)
 
 			if(_letra == "A")
 			{
-				if(("Ã" == jogo.palavraSorteada[i]) || ("Â" == jogo.palavraSorteada[i]) || ("Á" == jogo.palavraSorteada[i]))
+				if(("Ãƒ" == jogo.palavraSorteada[i]) || ("Ã‚" == jogo.palavraSorteada[i]) || ("Ã" == jogo.palavraSorteada[i]))
 				{
 					deuErro = false;
 				}
@@ -195,7 +191,7 @@ function verificarErro(_letra)
 				
 			if(_letra == "O")
 			{
-				if(("Ó" == jogo.palavraSorteada[i]) || ("Õ" == jogo.palavraSorteada[i]) || ("Ô" == jogo.palavraSorteada[i]))
+				if(("Ã“" == jogo.palavraSorteada[i]) || ("Ã•" == jogo.palavraSorteada[i]) || ("Ã”" == jogo.palavraSorteada[i]))
 				{
 					deuErro = false;
 				}
@@ -203,7 +199,7 @@ function verificarErro(_letra)
 			
 			if(_letra == "C")
 			{
-				if("Ç" == jogo.palavraSorteada[i])
+				if("Ã‡" == jogo.palavraSorteada[i])
 				{
 					deuErro = false;
 				}
@@ -211,7 +207,7 @@ function verificarErro(_letra)
 			
 			if(_letra == "U")
 			{
-				if("Ú" == jogo.palavraSorteada[i])
+				if("Ãš" == jogo.palavraSorteada[i])
 				{
 					deuErro = false;
 				}
@@ -220,12 +216,10 @@ function verificarErro(_letra)
 	}
 	if(!deuErro)
 	{
-		console.log("certo");
 		$("#falador").text("Letra Certa");
 	}
 	if(deuErro)
 	{
-		console.log("errado");
 		$("#falador").text("Letra Errada");
 		jogo.erros++;
 		mudarPersonagem();
@@ -288,41 +282,41 @@ function colocarLetraEmLetrasTentadas(_letra)
 		//I acentuado
 		if(_letra == "I")
 		{
-			jogo.letrasTentadas[i+1] = "Í";
+			jogo.letrasTentadas[i+1] = "Ã";
 		}
 		
 		//E acentuado
 		if(_letra == "E")
 		{
-			jogo.letrasTentadas[i+1] = "É";
-			jogo.letrasTentadas[i+2] = "Ê";
+			jogo.letrasTentadas[i+1] = "Ã‰";
+			jogo.letrasTentadas[i+2] = "ÃŠ";
 		}
 		
 		//A acentuado
 		if(_letra == "A")
 		{
-			jogo.letrasTentadas[i+1] = "Ã";
-			jogo.letrasTentadas[i+2] = "Â";
-			jogo.letrasTentadas[i+3] = "Á";
+			jogo.letrasTentadas[i+1] = "Ãƒ";
+			jogo.letrasTentadas[i+2] = "Ã‚";
+			jogo.letrasTentadas[i+3] = "Ã";
 		}
 		
-		//Ç
+		//Ã‡
 		if(_letra == "C")
 		{
-			jogo.letrasTentadas[i+1] = "Ç";
+			jogo.letrasTentadas[i+1] = "Ã‡";
 		}
 		
 		//O acentuado
 		if(_letra == "O")
 		{
-			jogo.letrasTentadas[i+1] = "Ó";
-			jogo.letrasTentadas[i+2] = "Õ";
-			jogo.letrasTentadas[i+3] = "Ô";
+			jogo.letrasTentadas[i+1] = "Ã“";
+			jogo.letrasTentadas[i+2] = "Ã•";
+			jogo.letrasTentadas[i+3] = "Ã”";
 		}
 		
 		if(_letra == "U")
 		{
-			jogo.letrasTentadas[i+1] = "Ú";
+			jogo.letrasTentadas[i+1] = "Ãš";
 		}
 		
 		jogo.letrasTentadas[i] = _letra;
@@ -394,12 +388,12 @@ function mudarPersonagem()
 }
 
 function iniciarNovoJogo()
-{
+{   
 	jogo.pontos = 0;
 
 	jogo.bdAux = new Array;
 	jogo.bdTamanho = jogo.bd.length;
-
+	
 	for(var i = 0; i < jogo.bd.length; i++)
 	{
 		jogo.bdAux[i] = i;
@@ -434,7 +428,6 @@ function removerComandosEnterSpace()
 function keyDown(event)
 {
 	event.preventDefault();
-	console.log(event.which);	
 	
 	switch(event.which) 
 	{		
@@ -453,11 +446,7 @@ function keyDown(event)
 			{
 				$('[tabIndex='+(jobj.attr("tabIndex")-1)+']').focus();			
 			}
-			console.log(jobj.attr("tabIndex"));
 			objetoBotao.blur();
 		break;
 	}
 }
-
-
-
