@@ -178,6 +178,13 @@ p
 	background-image: url("../imgs/btnCreditos.png")
 }
 
+#btnRanking
+{
+	width: 117px;
+	height: 65px;
+	background-image: url("../imgs/btnRanking.png")
+}
+
 #btnVoltar
 {
 	position: absolute;

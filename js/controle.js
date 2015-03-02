@@ -1,10 +1,10 @@
 /*
-	O html do jogo È simplesmente um body com uma div chamada "palco"
-	Quando a pagina carrega, ela carrega as tags <script> que contÈm os arquivos de javascript que geram o jogo
-	Quando os scripts s„o carregados È criado uma div "menu" e seu conteudo
-	AtravÈs das interaÁıes com os botıes o html È gerado e destruido dinamicamente pelo javscript
+	O html do jogo √© simplesmente um body com uma div chamada "palco"
+	Quando a pagina carrega, ela carrega as tags <script> que cont√©m os arquivos de javascript que geram o jogo
+	Quando os scripts s√£o carregados √© criado uma div "menu" e seu conteudo
+	Atrav√©s das intera√ß√µes com os bot√µes o html √© gerado e destruido dinamicamente pelo javscript
 	
-	O css est· sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
+	O css est√° sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
 */
 
 
@@ -38,23 +38,23 @@ function criarCamadaMenu()
 		ativarBotaoJogar();
 	}
 	
-	var botaoCred = document.createElement("div");
-	botaoCred.setAttribute("id" , "btnCreditos");
-	botaoCred.setAttribute("tabIndex" , "0");
-	botaoCred.setAttribute("role" , "button");
-	botaoCred.setAttribute("aria-label" , "CrÈditos");
-	botaoCred.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoCred);	
+	var botaoRank = document.createElement("div");
+	botaoRank.setAttribute("id" , "btnRanking");
+	botaoRank.setAttribute("tabIndex" , "0");
+	botaoRank.setAttribute("role" , "button");
+	botaoRank.setAttribute("aria-label" , "Ranking");
+	botaoRank.setAttribute("class" , "botao");
+	caixaBotoes.appendChild(botaoRank);	
 	
-	botaoCred.onfocus = function() {		
-		adicionarComandosEnterSpace(ativarBotaoCreditos, botaoCred);
+	botaoRank.onfocus = function() {		
+		adicionarComandosEnterSpace(ativarBotaoRanking, botaoRank);
 	}
-	botaoCred.onblur = function() {		
+	botaoRank.onblur = function() {		
 		removerComandosEnterSpace();
 	}	
-	botaoCred.onclick = function()
+	botaoRank.onclick = function()
 	{
-		ativarBotaoCreditos();
+		ativarBotaoRanking();
 	}
 }
 
@@ -63,10 +63,10 @@ function ativarBotaoJogar()
 	destruirCamadaMenu();
 	criarCamadaJogo();
 }
-function ativarBotaoCreditos()
+function ativarBotaoRanking()
 {
 	destruirCamadaMenu();
-	criarCamadaCreditos();
+	obtemRanking(jogo.nome);
 }
 
 function destruirCamadaMenu()
@@ -124,7 +124,7 @@ function criarCamadaCreditos()
 	colLeft.appendChild(para);
 	
 	var para = document.createElement("p");
-	para.innerHTML = "ValÈrio";
+	para.innerHTML = "Val√©rio";
 	colLeft.appendChild(para);
 	
 	var para = document.createElement("p");
@@ -198,6 +198,7 @@ function destruirCamadaVitoria()
 
 function criarCamadaDerrota()
 {
+	var pontos = jogo.pontos;
 	iniciarNovoJogo();
 	
 	$('<div>').attr('id', 'camadaDerrota')
@@ -209,6 +210,7 @@ function criarCamadaDerrota()
 				.click(function(){
 					destruirCamadaDerrota();
 					destruirCamadaJogo();
+					salvaPontuacao(jogo.nome, pontos);
 					criarCamadaMenu();
 				})
 				.appendTo($('#palco'));
@@ -219,6 +221,103 @@ function destruirCamadaDerrota()
 	$("#camadaDerrota").remove();
 }
 
+function criarCamadaRanking()
+{
+    $('<div>').attr('id', 'camadaRanking')
+    .css({
+        'width': '800px',
+        'height': '600px',
+        'position': 'absolute',
+        'top': '0px'
+    })
+    .click(function(){
+        destruirCamadaRanking();
+        criarCamadaMenu();
+    })
+    .appendTo($('#palco'));
+
+    var colRank = $('<div>').css({
+        'width': '250px',
+        'position': 'absolute',
+        'text-align': 'center',
+        'top': '36%',
+        'left': '1%'
+    })
+    .appendTo($('#camadaRanking'));
+
+    $('<p>').html('Ranking').appendTo(colRank);
+
+    for (i = 0; i < ranking.length; i++) {
+        $('<p>').html((i+1) + '.').appendTo(colRank);
+    }
+    
+    var colNome = $('<div>').css({
+        'width': '340px',
+        'position': 'absolute',
+        'text-align': 'center',
+        'top': '36%',
+        'left': '15%'
+    })
+    .appendTo($('#camadaRanking'));
+
+    $('<p>').html('Nome').appendTo(colNome);
+
+    for (i = 0; i < ranking.length; i++) {
+        $('<p>').html(ranking[i]["jogador"]).appendTo(colNome);
+    }
+    
+    var colPontuacao = $('<div>').css({
+        'width': '100px',
+        'position': 'absolute',
+        'text-align': 'center',
+        'top': '36%',
+        'left': '400px'
+    })
+    .appendTo($('#camadaRanking'));
+
+    $('<p>').html('Pontua√ß√£o').appendTo(colPontuacao);
+
+    for (i = 0; i < ranking.length; i++) {
+        $('<p>').html(ranking[i]["pontos"]).appendTo(colPontuacao);
+    }
+
+    var colData = $('<div>').css({
+        'width': '210px',
+        'position': 'absolute',
+        'text-align': 'center',
+        'top': '36%',
+        'left': '530px'
+    })
+    .appendTo($('#camadaRanking'));
+
+    $('<p>').html('Data').appendTo(colData);
+
+    for (i = 0; i < ranking.length; i++) {
+        $('<p>').html(formataData(ranking[i]["data"])).appendTo(colData);
+    }
+}
+
+function formataData(strData)
+{
+    var data = new Date(strData);
+    var v = data.getDate();
+    var s = (v < 10 ? '0' + v : v) + "/";
+    v = data.getMonth() + 1;
+    s += (v < 10 ? '0' + v: v) + "/";
+    s += data.getFullYear() + " ";
+    v = data.getHours();
+    s += (v < 10 ? '0' + v: v) + ":";
+    v = data.getMinutes();
+    s += (v < 10 ? '0' + v: v) + ":";
+    v = data.getSeconds();
+    s += (v < 10 ? '0' + v: v);
+    return s;
+}
+
+function destruirCamadaRanking()
+{
+    $("#camadaRanking").remove();
+}
 
 jogo.palco = new Palco();
 jogo.palco.criar();
