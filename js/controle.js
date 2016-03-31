@@ -38,23 +38,23 @@ function criarCamadaMenu()
 		ativarBotaoJogar();
 	}
 	
-	var botaoRank = document.createElement("div");
-	botaoRank.setAttribute("id" , "btnRanking");
-	botaoRank.setAttribute("tabIndex" , "0");
-	botaoRank.setAttribute("role" , "button");
-	botaoRank.setAttribute("aria-label" , "Ranking");
-	botaoRank.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoRank);	
+	var botaoCreditos = document.createElement("div");
+	botaoCreditos.setAttribute("id" , "btnCreditos");
+	botaoCreditos.setAttribute("tabIndex" , "0");
+	botaoCreditos.setAttribute("role" , "button");
+	botaoCreditos.setAttribute("aria-label" , "Créditos");
+	botaoCreditos.setAttribute("class" , "botao");
+	caixaBotoes.appendChild(botaoCreditos);	
 	
-	botaoRank.onfocus = function() {		
-		adicionarComandosEnterSpace(ativarBotaoRanking, botaoRank);
+	botaoCreditos.onfocus = function() {		
+		adicionarComandosEnterSpace(ativarBotaoCreditos, botaoCreditos);
 	}
-	botaoRank.onblur = function() {		
+	botaoCreditos.onblur = function() {		
 		removerComandosEnterSpace();
 	}	
-	botaoRank.onclick = function()
+	botaoCreditos.onclick = function()
 	{
-		ativarBotaoRanking();
+		ativarBotaoCreditos();
 	}
 }
 
@@ -63,10 +63,10 @@ function ativarBotaoJogar()
 	destruirCamadaMenu();
 	criarCamadaJogo();
 }
-function ativarBotaoRanking()
+function ativarBotaoCreditos()
 {
 	destruirCamadaMenu();
-	obtemRanking(jogo.nome);
+	criarCamadaCreditos();
 }
 
 function destruirCamadaMenu()
@@ -96,39 +96,52 @@ function criarCamadaCreditos()
 	$("#palco").append(el);	
 
 
-	var para = $('<br>').appendTo(el);		
 	var para = $('<br>').appendTo(el);	
 	var para = $('<br>').appendTo(el);	
-	var para = $('<br>').appendTo(el);	
-	var para = $('<br>').appendTo(el);	
+	var para = $('<br>').appendTo(el);
 	
+var para = document.createElement("p");
+	para.innerHTML = "Coordenação";
+	el.appendChild(para);	
+	
+	var colLeft = document.createElement("div");
+	colLeft.setAttribute("style", "width: 230px; float: left;  text-align: right;");
+	el.appendChild(colLeft);
+
+	var para = document.createElement("p");
+	para.innerHTML = "Delano Medeiros Beder";
+	colLeft.appendChild(para);
+
+var colRight = document.createElement("div");
+	colRight.setAttribute("style", "width: 230px; float: right; text-align: left;");
+	el.appendChild(colRight);
+
+	var para = document.createElement("p");
+	para.innerHTML = "Joice Lee Otsuka";
+	colRight.appendChild(para);
+
 	var para = document.createElement("p");
 	para.innerHTML = "Equipe";
 	el.appendChild(para);	
-	
-	var para = document.createElement("br");
-	el.appendChild(para);
-	var para = document.createElement("br");
-	el.appendChild(para);
 	
 	var colLeft = document.createElement("div");
 	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: center;");
 	el.appendChild(colLeft);
 	
 	var para = document.createElement("p");
-	para.innerHTML = "Marcelo";
+	para.innerHTML = "Marcelo Lopes Lotufo";
 	colLeft.appendChild(para);
 	
 	var para = document.createElement("p");
-	para.innerHTML = "Murilo";
+	para.innerHTML = "Murilo Dell Agnolo Garcia";
 	colLeft.appendChild(para);
 	
 	var para = document.createElement("p");
-	para.innerHTML = "Valério";
+	para.innerHTML = "Luiz Valério Neto";
 	colLeft.appendChild(para);
 	
 	var para = document.createElement("p");
-	para.innerHTML = "Henrique";
+	para.innerHTML = "Henrique Souza Barros";
 	colLeft.appendChild(para);
 	
 	var colRight = document.createElement("div");
@@ -136,18 +149,19 @@ function criarCamadaCreditos()
 	el.appendChild(colRight);
 	
 	var para = document.createElement("p");
-	para.innerHTML = "Katia";
+	para.innerHTML = "Kátia Carnier";
 	colRight.appendChild(para);
 	var para = document.createElement("p");
-	para.innerHTML = "Rafaela";
+	para.innerHTML = "Rafaela Ferraz Majaron";
 	colRight.appendChild(para);
 	var para = document.createElement("p");
-	para.innerHTML = "Diana";
+	para.innerHTML = "Diana Gomes Ragnole Silva";
 	colRight.appendChild(para);
 	var para = document.createElement("p");
-	para.innerHTML = "Catarine";
+	para.innerHTML = "Catarine Santana Ohnuma";
 	colRight.appendChild(para);
-	
+
+
 	el.onmousedown = function()
 	{
 		destruirCamadaCreditos();
