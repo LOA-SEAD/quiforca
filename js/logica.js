@@ -27,6 +27,7 @@ function iniciar()
 	jogo.falador.setAttribute("id", "falador");
 	jogo.falador.setAttribute("aria-live", "polite");
 	jogo.falador.setAttribute("role", "log");
+	jogo.falador.setAttribute("style", "display: none;");
 	$("#camadaJogo").append(jogo.falador);
 	
 	

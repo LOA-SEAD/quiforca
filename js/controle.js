@@ -224,7 +224,7 @@ function criarCamadaDerrota()
 				.click(function(){
 					destruirCamadaDerrota();
 					destruirCamadaJogo();
-					salvaPontuacao(jogo.nome, pontos);
+					//salvaPontuacao(jogo.nome, pontos);
 					criarCamadaMenu();
 				})
 				.appendTo($('#palco'));
