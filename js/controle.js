@@ -214,13 +214,14 @@ function criarCamadaDerrota()
 {
 	var pontos = jogo.pontos;
 	iniciarNovoJogo();
-	
+
 	$('<div>').attr('id', 'camadaDerrota')
 				.css({
 					'width': '800px',
 					'height': '600px',
 					'position': 'absolute',
-					'top': '0px',})
+					'top': '0px', 
+                                        'style': 'display: none'})
 				.click(function(){
 					destruirCamadaDerrota();
 					destruirCamadaJogo();
@@ -228,6 +229,23 @@ function criarCamadaDerrota()
 					criarCamadaMenu();
 				})
 				.appendTo($('#palco'));
+
+        jogo.palavraNaTela = document.createElement("p");
+	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
+	jogo.palavraNaTela.setAttribute("tabIndex", "2");
+	jogo.palavraNaTela.setAttribute("role", "textbox");
+        jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
+
+	$("#camadaDerrota").append(jogo.palavraNaTela);
+
+$('<div>').css({
+					'position': 'absolute',
+					'width': '800px',
+					'height': '600px',
+					'background-image': 'url("imgs/game_over.png")'})
+                                 .appendTo($('#camadaDerrota'));
+                               
+
 }
 
 function destruirCamadaDerrota()

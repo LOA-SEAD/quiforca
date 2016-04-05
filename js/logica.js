@@ -102,7 +102,8 @@ function update()
 		case 0:
 		//Fim de jogo: jogador perdeu
 		jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
-		criarCamadaDerrota();
+		destruirCamadaJogo();
+                criarCamadaDerrota();
 		break;
 		case 1:
 		//Fim de jogo: jogador ganhou
