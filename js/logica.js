@@ -13,6 +13,7 @@ function iniciar()
 	jogo.botaoVoltar.setAttribute("aria-label" , "Voltar");
 	
 	jogo.botaoVoltar.onclick = function() {
+		jogo.playAudio('audio-seleciona-menu');
 		ativarBotaoVoltar();		
 	}
 	jogo.botaoVoltar.onfocus = function() {		
@@ -219,10 +220,12 @@ function verificarErro(_letra)
 	if(!deuErro)
 	{
 		$("#falador").text("Letra Certa");
+		jogo.playAudio('audio-letra-certa');
 	}
 	if(deuErro)
 	{
 		$("#falador").text("Letra Errada");
+		jogo.playAudio('audio-letra-errada');
 		jogo.erros++;
 		mudarPersonagem();
 	}

@@ -21,7 +21,6 @@ function criarCamadaMenu()
 		//$(backgroundAudio).attr('autoplay', '');
 		//$(backgroundAudio).attr('loop', '');
 		//$(backgroundAudio).prop('volume', '0.5');
-        //
         //$(palco).append(backgroundAudio);
 
 		var audios = {
@@ -108,11 +107,13 @@ function criarCamadaMenu()
 
 function ativarBotaoJogar()
 {
+	jogo.playAudio('audio-seleciona-menu');
 	destruirCamadaMenu();
 	criarCamadaJogo();
 }
 function ativarBotaoCreditos()
 {
+	jogo.playAudio('audio-seleciona-menu');
 	destruirCamadaMenu();
 	criarCamadaCreditos();
 }
@@ -224,6 +225,7 @@ function destruirCamadaCreditos()
 
 function criarCamadaVitoria()
 {
+	jogo.playAudio('audio-vitoria');
 	var el = $('<div>').attr("id", "camadaVitoria").appendTo($("#palco"));	
 	if((jogo.bdTamanho) == 0) {
           $('<p>').attr('id', 'pontosNaTela')
@@ -262,6 +264,7 @@ function criarCamadaDerrota()
 {
 	var pontos = jogo.pontos;
 	iniciarNovoJogo();
+	jogo.playAudio('audio-derrota');
 
 	$('<div>').attr('id', 'camadaDerrota')
 				.css({
