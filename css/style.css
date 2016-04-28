@@ -5,28 +5,15 @@ body
 	background-repeat:repeat;
 }
 
-#soundunmute
+#btn-mute
 {
 	position:absolute;
-	left:5%
-	top:5%;
+	left: 49px;
+	top: 32px;
 	width:24px;
 	height:24px;
-	background-image: url(../imgs/unmute.png);
 	cursor: pointer;
 }
-
-#soundmute
-{
-	position:absolute;
-	left:5%
-	top:5%;
-	width:24px;
-	height:24px;
-	background-image: url(../imgs/mute.png);
-	cursor: pointer;
-}
-
 #palco
 {
 	position:absolute;
