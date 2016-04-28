@@ -15,6 +15,14 @@ $.ajax({
 
 console.log(jogo.nome);
 
+jogo.playAudio = function (id) {
+    var audio = $('#' + id);
+    $(audio)[0].pause();
+    $(audio)[0].currentTime = 0;
+    $(audio)[0].play();
+
+};
+
 /*var css = document.createElement("link");
 css.setAttribute("rel", "stylesheet");
 css.setAttribute("href", "css/style.css");
