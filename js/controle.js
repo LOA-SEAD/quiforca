@@ -11,8 +11,56 @@
 function criarCamadaMenu()
 {	
 	var el = document.createElement("div");
+	var palco = $("#palco");
 	el.setAttribute("id", "camadaMenu");
-	$("#palco").append(el);
+	$(palco).append(el);
+
+	if (!$('audio').length) {
+		//var backgroundAudio = $('<audio></audio>');
+		//$(backgroundAudio).attr('src', 'audio/background.mp3');
+		//$(backgroundAudio).attr('autoplay', '');
+		//$(backgroundAudio).attr('loop', '');
+		//$(backgroundAudio).prop('volume', '0.5');
+        //
+        //$(palco).append(backgroundAudio);
+
+		var audios = {
+			'audio-derrota': 'audio/derrota.mp3', 'audio-letra-certa': 'audio/letraCerta.mp3',
+			'audio-letra-errada': 'audio/letraErrada.mp3', 'audio-palavra-certa': 'audio/palavraCerta.mp3',
+			'audio-seleciona-menu': 'audio/selecionaMenu.mp3', 'audio-vitoria': 'audio/vitoria.mp3'
+		};
+
+		for (var audio in audios) {
+			if (audios.hasOwnProperty(audio)) {
+				var tmp = $('<audio></audio>');
+				$(tmp).attr('id', audio);
+				$(tmp).attr('src', audios[audio]);
+				$(palco).append(tmp);
+			}
+		}
+
+		var letraCertaAudio = $('<audio></audio>');
+		$(letraCertaAudio).attr('src', 'audio/letraCerta.mp3');
+		$(palco).append(letraCertaAudio);
+	}
+
+	audios = $('audio');
+	var btnMute = $('<div></div>');
+	$(btnMute).attr('id', 'btn-mute');
+	$(btnMute).attr('tabIndex', '0');
+	$(btnMute).attr('role', 'button');
+	$(btnMute).attr('aria-label', 'Desativar som');
+	$(btnMute).css('background-image', 'url(imgs/unmute.png)');
+	$(btnMute).on('click', function () {
+		if (!$(audios).prop('muted')) {
+			$('audio').prop('muted', true);
+			$(this).css('background-image', 'url(imgs/mute.png)');
+		} else {
+			$('audio').prop('muted', false);
+			$(this).css('background-image', 'url(imgs/unmute.png)');
+		}
+	});
+	$(palco).append(btnMute);
 	
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoes");
