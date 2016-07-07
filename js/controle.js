@@ -225,6 +225,8 @@ function destruirCamadaCreditos()
 
 function criarCamadaVitoria()
 {
+	var fase;
+	var faseId;
 	jogo.playAudio('audio-vitoria');
 	var el = $('<div>').attr("id", "camadaVitoria").appendTo($("#palco"));	
 	if((jogo.bdTamanho) == 0) {
@@ -239,11 +241,17 @@ function criarCamadaVitoria()
 					'background-image': 'url("imgs/vitoria.png")'})
 			.click(function(){
         if(jogo.bdTamanho != 0) {
+			fase = jogo.bd[jogo.bdTamanho];
+			faseId = jogo.bdTamanho;
+			sendData(jogo.pontos, jogo.erros, fase, faseId);
             destruirCamadaVitoria();
             criarCamadaJogo();
         }
         else
         {
+			fase = jogo.bd[jogo.bdTamanho];
+			faseId = jogo.bdTamanho;
+			sendData(jogo.pontos, jogo.erros, fase, faseId);
             destruirCamadaVitoria();            
             criarCamadaMenu();
             iniciarNovoJogo();
@@ -262,6 +270,8 @@ function destruirCamadaVitoria()
 
 function criarCamadaDerrota()
 {
+	var fase;
+	var faseId;
 	var pontos = jogo.pontos;
 	iniciarNovoJogo();
 	jogo.playAudio('audio-derrota');
@@ -274,6 +284,9 @@ function criarCamadaDerrota()
 					'top': '0px', 
                                         'style': 'display: none'})
 				.click(function(){
+					fase = jogo.bd[jogo.bdTamanho];
+					faseId = jogo.bdTamanho;
+					sendData(jogo.pontos, jogo.erros, fase, faseId);
 					destruirCamadaDerrota();
 					destruirCamadaJogo();
 					//salvaPontuacao(jogo.nome, pontos);
