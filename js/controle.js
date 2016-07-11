@@ -1,71 +1,24 @@
 /*
-	O html do jogo é simplesmente um body com uma div chamada "palco"
-	Quando a pagina carrega, ela carrega as tags <script> que contém os arquivos de javascript que geram o jogo
-	Quando os scripts são carregados é criado uma div "menu" e seu conteudo
-	Através das interações com os botões o html é gerado e destruido dinamicamente pelo javscript
-	
-	O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
-*/
+ O html do jogo é simplesmente um body com uma div chamada "palco"
+ Quando a pagina carrega, ela carrega as tags <script> que contém os arquivos de javascript que geram o jogo
+ Quando os scripts são carregados é criado uma div "menu" e seu conteudo
+ Através das interações com os botões o html é gerado e destruido dinamicamente pelo javscript
+
+ O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
+ */
 
 
 function criarCamadaMenu()
-{	
+{
 	var el = document.createElement("div");
-	var palco = $("#palco");
 	el.setAttribute("id", "camadaMenu");
-	$(palco).append(el);
+	$("#palco").append(el);
 
-	if (!$('audio').length) {
-		//var backgroundAudio = $('<audio></audio>');
-		//$(backgroundAudio).attr('src', 'audio/background.mp3');
-		//$(backgroundAudio).attr('autoplay', '');
-		//$(backgroundAudio).attr('loop', '');
-		//$(backgroundAudio).prop('volume', '0.5');
-        //$(palco).append(backgroundAudio);
-
-		var audios = {
-			'audio-derrota': 'audio/derrota.mp3', 'audio-letra-certa': 'audio/letraCerta.mp3',
-			'audio-letra-errada': 'audio/letraErrada.mp3', 'audio-palavra-certa': 'audio/palavraCerta.mp3',
-			'audio-seleciona-menu': 'audio/selecionaMenu.mp3', 'audio-vitoria': 'audio/vitoria.mp3'
-		};
-
-		for (var audio in audios) {
-			if (audios.hasOwnProperty(audio)) {
-				var tmp = $('<audio></audio>');
-				$(tmp).attr('id', audio);
-				$(tmp).attr('src', audios[audio]);
-				$(palco).append(tmp);
-			}
-		}
-
-		var letraCertaAudio = $('<audio></audio>');
-		$(letraCertaAudio).attr('src', 'audio/letraCerta.mp3');
-		$(palco).append(letraCertaAudio);
-	}
-
-	audios = $('audio');
-	var btnMute = $('<div></div>');
-	$(btnMute).attr('id', 'btn-mute');
-	$(btnMute).attr('tabIndex', '0');
-	$(btnMute).attr('role', 'button');
-	$(btnMute).attr('aria-label', 'Desativar som');
-	$(btnMute).css('background-image', 'url(imgs/unmute.png)');
-	$(btnMute).on('click', function () {
-		if (!$(audios).prop('muted')) {
-			$('audio').prop('muted', true);
-			$(this).css('background-image', 'url(imgs/mute.png)');
-		} else {
-			$('audio').prop('muted', false);
-			$(this).css('background-image', 'url(imgs/unmute.png)');
-		}
-	});
-	$(palco).append(btnMute);
-	
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoes");
 	el.appendChild(caixaBotoes);
-	
-	
+
+
 	var botaoJogar = document.createElement("div");
 	botaoJogar.setAttribute("id" , "btnJogar");
 	botaoJogar.setAttribute("tabIndex" , "1");
@@ -73,32 +26,32 @@ function criarCamadaMenu()
 	botaoJogar.setAttribute("aria-label" , "Jogar");
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
-	
-	botaoJogar.onfocus = function() {		
+
+	botaoJogar.onfocus = function() {
 		adicionarComandosEnterSpace(ativarBotaoJogar, botaoJogar);
 	}
-	botaoJogar.onblur = function() {		
+	botaoJogar.onblur = function() {
 		removerComandosEnterSpace();
-	}	
+	}
 	botaoJogar.onclick = function()
 	{
 		ativarBotaoJogar();
 	}
-	
+
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
 	botaoCreditos.setAttribute("tabIndex" , "0");
 	botaoCreditos.setAttribute("role" , "button");
 	botaoCreditos.setAttribute("aria-label" , "Créditos");
 	botaoCreditos.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoCreditos);	
-	
-	botaoCreditos.onfocus = function() {		
+	caixaBotoes.appendChild(botaoCreditos);
+
+	botaoCreditos.onfocus = function() {
 		adicionarComandosEnterSpace(ativarBotaoCreditos, botaoCreditos);
 	}
-	botaoCreditos.onblur = function() {		
+	botaoCreditos.onblur = function() {
 		removerComandosEnterSpace();
-	}	
+	}
 	botaoCreditos.onclick = function()
 	{
 		ativarBotaoCreditos();
@@ -107,20 +60,18 @@ function criarCamadaMenu()
 
 function ativarBotaoJogar()
 {
-	jogo.playAudio('audio-seleciona-menu');
 	destruirCamadaMenu();
 	criarCamadaJogo();
 }
 function ativarBotaoCreditos()
 {
-	jogo.playAudio('audio-seleciona-menu');
 	destruirCamadaMenu();
 	criarCamadaCreditos();
 }
 
 function destruirCamadaMenu()
 {
-	
+
 	$("#camadaMenu").remove();
 }
 
@@ -129,7 +80,7 @@ function criarCamadaJogo()
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaJogo");
 	$("#palco").append(el);
-    
+
 	iniciar();
 }
 
@@ -142,17 +93,17 @@ function criarCamadaCreditos()
 {
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaCreditos");
-	$("#palco").append(el);	
+	$("#palco").append(el);
 
 
-	var para = $('<br>').appendTo(el);	
-	var para = $('<br>').appendTo(el);	
 	var para = $('<br>').appendTo(el);
-	
-var para = document.createElement("p");
+	var para = $('<br>').appendTo(el);
+	var para = $('<br>').appendTo(el);
+
+	var para = document.createElement("p");
 	para.innerHTML = "Coordenação";
-	el.appendChild(para);	
-	
+	el.appendChild(para);
+
 	var colLeft = document.createElement("div");
 	colLeft.setAttribute("style", "width: 230px; float: left;  text-align: right;");
 	el.appendChild(colLeft);
@@ -161,7 +112,7 @@ var para = document.createElement("p");
 	para.innerHTML = "Delano Medeiros Beder";
 	colLeft.appendChild(para);
 
-var colRight = document.createElement("div");
+	var colRight = document.createElement("div");
 	colRight.setAttribute("style", "width: 230px; float: right; text-align: left;");
 	el.appendChild(colRight);
 
@@ -171,32 +122,32 @@ var colRight = document.createElement("div");
 
 	var para = document.createElement("p");
 	para.innerHTML = "Equipe";
-	el.appendChild(para);	
-	
+	el.appendChild(para);
+
 	var colLeft = document.createElement("div");
 	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: center;");
 	el.appendChild(colLeft);
-	
+
 	var para = document.createElement("p");
 	para.innerHTML = "Marcelo Lopes Lotufo";
 	colLeft.appendChild(para);
-	
+
 	var para = document.createElement("p");
 	para.innerHTML = "Murilo Dell Agnolo Garcia";
 	colLeft.appendChild(para);
-	
+
 	var para = document.createElement("p");
 	para.innerHTML = "Luiz Valério Neto";
 	colLeft.appendChild(para);
-	
+
 	var para = document.createElement("p");
 	para.innerHTML = "Henrique Souza Barros";
 	colLeft.appendChild(para);
-	
+
 	var colRight = document.createElement("div");
 	colRight.setAttribute("style", "width: 250px; float: right; text-align: center;");
 	el.appendChild(colRight);
-	
+
 	var para = document.createElement("p");
 	para.innerHTML = "Kátia Carnier";
 	colRight.appendChild(para);
@@ -227,40 +178,39 @@ function criarCamadaVitoria()
 {
 	var fase;
 	var faseId;
-	jogo.playAudio('audio-vitoria');
-	var el = $('<div>').attr("id", "camadaVitoria").appendTo($("#palco"));	
+	var el = $('<div>').attr("id", "camadaVitoria").appendTo($("#palco"));
 	if((jogo.bdTamanho) == 0) {
-          $('<p>').attr('id', 'pontosNaTela')
-              .html('Pontos: ' + parseInt(jogo.pontos))
-              .appendTo($('#camadaVitoria'));
+		$('<p>').attr('id', 'pontosNaTela')
+			.html('Pontos: ' + parseInt(jogo.pontos))
+			.appendTo($('#camadaVitoria'));
 	}
 	$('<div>').css({
-					'position': 'absolute',
-					'width': '800px',
-					'height': '600px',
-					'background-image': 'url("imgs/vitoria.png")'})
-			.click(function(){
-        if(jogo.bdTamanho != 0) {
-			fase = jogo.bd[jogo.bdTamanho];
-			faseId = jogo.bdTamanho;
-			sendData(jogo.pontos, jogo.erros, fase, faseId);
-            destruirCamadaVitoria();
-            criarCamadaJogo();
-        }
-        else
-        {
-			fase = jogo.bd[jogo.bdTamanho];
-			faseId = jogo.bdTamanho;
-			sendData(jogo.pontos, jogo.erros, fase, faseId);
-            destruirCamadaVitoria();            
-            criarCamadaMenu();
-            iniciarNovoJogo();
-        }
-            
-             
-			})
-			.appendTo(el);
-	
+			'position': 'absolute',
+			'width': '800px',
+			'height': '600px',
+			'background-image': 'url("imgs/vitoria.png")'})
+		.click(function(){
+			if(jogo.bdTamanho != 0) {
+				fase = jogo.bd[jogo.bdTamanho];
+				faseId = jogo.bdTamanho;
+				sendData(jogo.pontos, jogo.pontosParciais ,jogo.erros, fase, faseId, false);
+				destruirCamadaVitoria();
+				criarCamadaJogo();
+			}
+			else
+			{
+				fase = jogo.bd[jogo.bdTamanho];
+				faseId = jogo.bdTamanho;
+				sendData(jogo.pontos, jogo.pontosParciais ,jogo.erros, fase, faseId, true);
+				destruirCamadaVitoria();
+				criarCamadaMenu();
+				iniciarNovoJogo();
+			}
+
+
+		})
+		.appendTo(el);
+
 }
 
 function destruirCamadaVitoria()
@@ -274,41 +224,40 @@ function criarCamadaDerrota()
 	var faseId;
 	var pontos = jogo.pontos;
 	iniciarNovoJogo();
-	jogo.playAudio('audio-derrota');
 
 	$('<div>').attr('id', 'camadaDerrota')
-				.css({
-					'width': '800px',
-					'height': '600px',
-					'position': 'absolute',
-					'top': '0px', 
-                                        'style': 'display: none'})
-				.click(function(){
-					fase = jogo.bd[jogo.bdTamanho];
-					faseId = jogo.bdTamanho;
-					sendData(jogo.pontos, jogo.erros, fase, faseId);
-					destruirCamadaDerrota();
-					destruirCamadaJogo();
-					//salvaPontuacao(jogo.nome, pontos);
-					criarCamadaMenu();
-				})
-				.appendTo($('#palco'));
+		.css({
+			'width': '800px',
+			'height': '600px',
+			'position': 'absolute',
+			'top': '0px',
+			'style': 'display: none'})
+		.click(function(){
+			fase = jogo.bd[jogo.bdTamanho];
+			faseId = jogo.bdTamanho;
+			destruirCamadaDerrota();
+			destruirCamadaJogo();
+			sendData(jogo.pontos, jogo.pontosParciais ,jogo.erros, fase, faseId, true);
+			//salvaPontuacao(jogo.nome, pontos);
+			criarCamadaMenu();
+		})
+		.appendTo($('#palco'));
 
-        jogo.palavraNaTela = document.createElement("p");
+	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-        jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
 
 	$("#camadaDerrota").append(jogo.palavraNaTela);
 
-$('<div>').css({
-					'position': 'absolute',
-					'width': '800px',
-					'height': '600px',
-					'background-image': 'url("imgs/game_over.png")'})
-                                 .appendTo($('#camadaDerrota'));
-                               
+	$('<div>').css({
+			'position': 'absolute',
+			'width': '800px',
+			'height': '600px',
+			'background-image': 'url("imgs/game_over.png")'})
+		.appendTo($('#camadaDerrota'));
+
 
 }
 
@@ -319,100 +268,100 @@ function destruirCamadaDerrota()
 
 function criarCamadaRanking()
 {
-    $('<div>').attr('id', 'camadaRanking')
-    .css({
-        'width': '800px',
-        'height': '600px',
-        'position': 'absolute',
-        'top': '0px'
-    })
-    .click(function(){
-        destruirCamadaRanking();
-        criarCamadaMenu();
-    })
-    .appendTo($('#palco'));
+	$('<div>').attr('id', 'camadaRanking')
+		.css({
+			'width': '800px',
+			'height': '600px',
+			'position': 'absolute',
+			'top': '0px'
+		})
+		.click(function(){
+			destruirCamadaRanking();
+			criarCamadaMenu();
+		})
+		.appendTo($('#palco'));
 
-    var colRank = $('<div>').css({
-        'width': '250px',
-        'position': 'absolute',
-        'text-align': 'center',
-        'top': '36%',
-        'left': '1%'
-    })
-    .appendTo($('#camadaRanking'));
+	var colRank = $('<div>').css({
+			'width': '250px',
+			'position': 'absolute',
+			'text-align': 'center',
+			'top': '36%',
+			'left': '1%'
+		})
+		.appendTo($('#camadaRanking'));
 
-    $('<p>').html('Ranking').appendTo(colRank);
+	$('<p>').html('Ranking').appendTo(colRank);
 
-    for (i = 0; i < ranking.length; i++) {
-        $('<p>').html((i+1) + '.').appendTo(colRank);
-    }
-    
-    var colNome = $('<div>').css({
-        'width': '340px',
-        'position': 'absolute',
-        'text-align': 'center',
-        'top': '36%',
-        'left': '15%'
-    })
-    .appendTo($('#camadaRanking'));
+	for (i = 0; i < ranking.length; i++) {
+		$('<p>').html((i+1) + '.').appendTo(colRank);
+	}
 
-    $('<p>').html('Nome').appendTo(colNome);
+	var colNome = $('<div>').css({
+			'width': '340px',
+			'position': 'absolute',
+			'text-align': 'center',
+			'top': '36%',
+			'left': '15%'
+		})
+		.appendTo($('#camadaRanking'));
 
-    for (i = 0; i < ranking.length; i++) {
-        $('<p>').html(ranking[i]["jogador"]).appendTo(colNome);
-    }
-    
-    var colPontuacao = $('<div>').css({
-        'width': '100px',
-        'position': 'absolute',
-        'text-align': 'center',
-        'top': '36%',
-        'left': '400px'
-    })
-    .appendTo($('#camadaRanking'));
+	$('<p>').html('Nome').appendTo(colNome);
 
-    $('<p>').html('Pontuação').appendTo(colPontuacao);
+	for (i = 0; i < ranking.length; i++) {
+		$('<p>').html(ranking[i]["jogador"]).appendTo(colNome);
+	}
 
-    for (i = 0; i < ranking.length; i++) {
-        $('<p>').html(ranking[i]["pontos"]).appendTo(colPontuacao);
-    }
+	var colPontuacao = $('<div>').css({
+			'width': '100px',
+			'position': 'absolute',
+			'text-align': 'center',
+			'top': '36%',
+			'left': '400px'
+		})
+		.appendTo($('#camadaRanking'));
 
-    var colData = $('<div>').css({
-        'width': '210px',
-        'position': 'absolute',
-        'text-align': 'center',
-        'top': '36%',
-        'left': '530px'
-    })
-    .appendTo($('#camadaRanking'));
+	$('<p>').html('Pontuação').appendTo(colPontuacao);
 
-    $('<p>').html('Data').appendTo(colData);
+	for (i = 0; i < ranking.length; i++) {
+		$('<p>').html(ranking[i]["pontos"]).appendTo(colPontuacao);
+	}
 
-    for (i = 0; i < ranking.length; i++) {
-        $('<p>').html(formataData(ranking[i]["data"])).appendTo(colData);
-    }
+	var colData = $('<div>').css({
+			'width': '210px',
+			'position': 'absolute',
+			'text-align': 'center',
+			'top': '36%',
+			'left': '530px'
+		})
+		.appendTo($('#camadaRanking'));
+
+	$('<p>').html('Data').appendTo(colData);
+
+	for (i = 0; i < ranking.length; i++) {
+		$('<p>').html(formataData(ranking[i]["data"])).appendTo(colData);
+	}
 }
 
 function formataData(strData)
 {
-    var data = new Date(strData);
-    var v = data.getDate();
-    var s = (v < 10 ? '0' + v : v) + "/";
-    v = data.getMonth() + 1;
-    s += (v < 10 ? '0' + v: v) + "/";
-    s += data.getFullYear() + " ";
-    v = data.getHours();
-    s += (v < 10 ? '0' + v: v) + ":";
-    v = data.getMinutes();
-    s += (v < 10 ? '0' + v: v) + ":";
-    v = data.getSeconds();
-    s += (v < 10 ? '0' + v: v);
-    return s;
+	var data = new Date(strData);
+	var v = data.getDate();
+	var s = (v < 10 ? '0' + v : v) + "/";
+	v = data.getMonth() + 1;
+	s += (v < 10 ? '0' + v: v) + "/";
+	s += data.getFullYear() + " ";
+	v = data.getHours();
+	s += (v < 10 ? '0' + v: v) + ":";
+	v = data.getMinutes();
+	s += (v < 10 ? '0' + v: v) + ":";
+	v = data.getSeconds();
+	s += (v < 10 ? '0' + v: v);
+	return s;
 }
 
 function destruirCamadaRanking()
 {
-    $("#camadaRanking").remove();
+	$("#camadaRanking").remove();
 }
 
 jogo.palco = new Palco();
