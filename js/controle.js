@@ -193,7 +193,7 @@ function criarCamadaVitoria()
 			if(jogo.bdTamanho != 0) {
 				fase = jogo.bd[jogo.bdTamanho];
 				faseId = jogo.bdTamanho;
-				sendData(jogo.pontos, jogo.pontosParciais ,jogo.erros, fase, faseId, false);
+				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 				destruirCamadaVitoria();
 				criarCamadaJogo();
 			}
@@ -201,7 +201,7 @@ function criarCamadaVitoria()
 			{
 				fase = jogo.bd[jogo.bdTamanho];
 				faseId = jogo.bdTamanho;
-				sendData(jogo.pontos, jogo.pontosParciais ,jogo.erros, fase, faseId, true);
+				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 				destruirCamadaVitoria();
 				criarCamadaMenu();
 				iniciarNovoJogo();
@@ -237,7 +237,7 @@ function criarCamadaDerrota()
 			faseId = jogo.bdTamanho;
 			destruirCamadaDerrota();
 			destruirCamadaJogo();
-			sendData(jogo.pontos, jogo.pontosParciais ,jogo.erros, fase, faseId, true);
+			sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 			//salvaPontuacao(jogo.nome, pontos);
 			criarCamadaMenu();
 		})
