@@ -1,13 +1,6 @@
 function sendData(points, partialPoints, win, errors, level, levelId, size, end){
     var info = {};
-    var path;
-    if(window.location.hostname == "remar.dc.ufscar.br"){
-        path = "/exported-resource/saveStats"
-    }else {
-        path = "http://remar.dc.ufscar.br/exported-resource/saveStats"
-    }
     $.getJSON("remar.json", function(json) {
-
         info.exportedResourceId = json.exportedResourceId;
         info.points = points.toFixed(0);
         info.partialPoints = partialPoints.toFixed(0);
@@ -21,7 +14,7 @@ function sendData(points, partialPoints, win, errors, level, levelId, size, end)
         info.gameType = 'questionAndAnswer';
         $.ajax({
             type: "POST",
-            url: path,
+            url: "http://remar.dc.ufscar.br/exported-resource/saveStats",
             data: info,
             success: function(data) {
             }

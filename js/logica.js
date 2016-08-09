@@ -38,6 +38,8 @@ function iniciar()
 
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
+	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
+	jogo.faseId = jogo.bdAux[jogo.sorteio];
 	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;
 	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica);
 	//jogo.dicaNaTela.setAttribute("role", "textbox");

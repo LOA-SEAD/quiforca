@@ -191,16 +191,12 @@ function criarCamadaVitoria()
 			'background-image': 'url("imgs/vitoria.png")'})
 		.click(function(){
 			if(jogo.bdTamanho != 0) {
-				fase = jogo.bd[jogo.bdTamanho];
-				faseId = jogo.bdTamanho;
 				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 				destruirCamadaVitoria();
 				criarCamadaJogo();
 			}
 			else
 			{
-				fase = jogo.bd[jogo.bdTamanho];
-				faseId = jogo.bdTamanho;
 				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 				destruirCamadaVitoria();
 				criarCamadaMenu();
@@ -233,8 +229,6 @@ function criarCamadaDerrota()
 			'top': '0px',
 			'style': 'display: none'})
 		.click(function(){
-			fase = jogo.bd[jogo.bdTamanho];
-			faseId = jogo.bdTamanho;
 			destruirCamadaDerrota();
 			destruirCamadaJogo();
 			sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
