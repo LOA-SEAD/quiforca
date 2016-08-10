@@ -1,5 +1,6 @@
 function sendData(points, partialPoints, win, errors, level, levelId, size, end){
     var info = {};
+    var path;
     if(window.location.hostname == "localhost" ){   // for localhost tests
         path = "/exported-resource/saveStats"
     }else {                                 // for web version in production, electron and crosswalk versions
