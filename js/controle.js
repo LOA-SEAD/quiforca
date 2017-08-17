@@ -198,6 +198,7 @@ function criarCamadaVitoria()
 			else
 			{
 				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+                                sendRankingData(jogo.pontos);
 				destruirCamadaVitoria();
 				criarCamadaMenu();
 				iniciarNovoJogo();
@@ -233,6 +234,7 @@ function criarCamadaDerrota()
 			destruirCamadaJogo();
 			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 			//salvaPontuacao(jogo.nome, pontos);
+                        sendRankingData(jogo.pontos);
 			criarCamadaMenu();
 		})
 		.appendTo($('#palco'));
