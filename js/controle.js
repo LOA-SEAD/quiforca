@@ -183,22 +183,24 @@ function criarCamadaVitoria()
 		$('<p>').attr('id', 'pontosNaTela')
 			.html('Pontos: ' + parseInt(jogo.pontos))
 			.appendTo($('#camadaVitoria'));
+             sendRankingData(jogo.pontos);
+
 	}
+	sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+
 	$('<div>').css({
 			'position': 'absolute',
 			'width': '800px',
 			'height': '600px',
 			'background-image': 'url("imgs/vitoria.png")'})
+
 		.click(function(){
 			if(jogo.bdTamanho != 0) {
-				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 				destruirCamadaVitoria();
 				criarCamadaJogo();
 			}
 			else
 			{
-				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-                                sendRankingData(jogo.pontos);
 				destruirCamadaVitoria();
 				criarCamadaMenu();
 				iniciarNovoJogo();
@@ -232,12 +234,13 @@ function criarCamadaDerrota()
 		.click(function(){
 			destruirCamadaDerrota();
 			destruirCamadaJogo();
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 			//salvaPontuacao(jogo.nome, pontos);
-                        sendRankingData(jogo.pontos);
 			criarCamadaMenu();
 		})
 		.appendTo($('#palco'));
+
+		sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+		sendRankingData(jogo.pontos);
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
