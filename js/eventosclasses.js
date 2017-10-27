@@ -4,7 +4,7 @@ function Palco()
 	//Precisa usar o this para ser atributo public
 	this.criar = function()
 	{
-		//Cria a variavel palco que ir· conter todas as camadas
+		//Cria a variavel palco que ir√° conter todas as camadas
 		var palco = document.createElement("div");
 		//Coloca a id no palco
 		palco.setAttribute("id", "palco");
@@ -44,7 +44,7 @@ function Linha(_linha)
 	document.getElementById("botoes").appendChild(linha);
 }
 
-document.body.onkeypress = function(e)
+document.body.onkeyup = function(e)
 {
 	//Pega as teclas
 	var e = window.event||e;
