@@ -1,4 +1,4 @@
-function sendData(points, partialPoints, win, errors, level, levelId, size, end){
+function sendData(points, partialPoints, win, errors, level, challengeId, size, end){
     var info = {};
     var path;
     if(window.location.hostname == "localhost" ){   // for localhost tests
@@ -13,7 +13,7 @@ function sendData(points, partialPoints, win, errors, level, levelId, size, end)
         info.errors = errors;
         info.answer = level.palavra;
         info.question = level.dica;
-        info.levelId = levelId;
+        info.challengeId = challengeId;
         info.end = end;
         info.size = size;
         info.win = win;
