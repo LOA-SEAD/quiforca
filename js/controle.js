@@ -27,13 +27,12 @@ function criarCamadaMenu()
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
-	/*botaoJogar.onfocus = function() {
+	botaoJogar.onfocus = function() {
 		adicionarComandosEnterSpace(ativarBotaoJogar, botaoJogar);
 	}
 	botaoJogar.onblur = function() {
 		removerComandosEnterSpace();
-	}*/
-	
+	}
 	botaoJogar.onclick = function()
 	{
 		ativarBotaoJogar();

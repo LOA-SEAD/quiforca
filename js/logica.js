@@ -15,14 +15,12 @@ function iniciar()
 	jogo.botaoVoltar.onclick = function() {
 		ativarBotaoVoltar();
 	}
-	
-	/*jogo.botaoVoltar.onfocus = function() {
+	jogo.botaoVoltar.onfocus = function() {
 		adicionarComandosEnterSpace(ativarBotaoVoltar, jogo.botaoVoltar);
 	}
 	jogo.botaoVoltar.onblur = function() {
 		removerComandosEnterSpace();
-	}*/
-	
+	}
 	$("#camadaJogo").append(jogo.botaoVoltar);
 
 	jogo.falador = document.createElement("div");
