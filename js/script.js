@@ -28,8 +28,6 @@ css.setAttribute("rel", "stylesheet");
 css.setAttribute("href", "css/style.css");
 document.head.appendChild(css);
 
-
-
 var script = document.createElement("script");
 script.setAttribute("src", "js/jquery-1.7.2.js");
 pai.appendChild(script);

@@ -9,6 +9,7 @@
 
 var background
 background = document.getElementById("background"); 
+background.loop = true
 var origemMenu
 var origemDerrota
 
@@ -196,9 +197,9 @@ function destruirCamadaCreditos()
 function criarCamadaVitoria()
 {
 	
-	var x = document.getElementById("vitoria"); 
+	var audio = document.getElementById("vitoria"); 
 	setTimeout(function(){
-		x.play();
+		audio.play();
 	}, 200);
 
 	var fase;
@@ -241,9 +242,9 @@ function destruirCamadaVitoria()
 
 function criarCamadaDerrota()
 {
-	var x = document.getElementById("derrota"); 
+	var audio = document.getElementById("derrota"); 
 	setTimeout(function(){
-		x.play();
+		audio.play();
 	}, 400);
 	origemDerrota = 1
 

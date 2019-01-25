@@ -32,7 +32,6 @@ function iniciar()
 	jogo.falador.setAttribute("style", "display: none;");
 	$("#camadaJogo").append(jogo.falador);
 
-
 	jogo.dicaNaTela = document.createElement("div");
 	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
 	jogo.dicaNaTela.setAttribute("tabIndex", "1");
@@ -53,7 +52,6 @@ function iniciar()
 		jogo.contribuicaoNaTela.setAttribute("class", "customfont");
 		jogo.contribuicaoNaTela.innerHTML = "Contribuição de: "+jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao;
 		$("#camadaJogo").append(jogo.contribuicaoNaTela);
-
 	}
 	$("#camadaJogo").append(jogo.dicaNaTela);
 
@@ -62,7 +60,6 @@ function iniciar()
 		.appendTo($('#camadaJogo'));
 
 	//Pegamos uma palavra aleatoria
-
 
 	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
 
@@ -118,8 +115,6 @@ function update()
 			aux = 5*Math.pow(0.8, jogo.erros);
 			jogo.pontosParciais = aux;
 			jogo.pontos = jogo.pontos + aux;
-
-
 
 			$('<div>').attr({'id': 'palavraCerta',})
 				.appendTo(el);
@@ -225,12 +220,19 @@ function verificarErro(_letra)
 	if(!deuErro)
 	{
 		$("#falador").text("Letra Certa");
+
+		var audio = document.getElementById("letraCerta"); 
+		audio.currentTime = 0
+		audio.play()
 	}
 	if(deuErro)
 	{
 		$("#falador").text("Letra Errada");
 		jogo.erros++;
 		mudarPersonagem();
+
+		var audio = document.getElementById("letraErrada"); 
+		audio.play();
 	}
 }
 
