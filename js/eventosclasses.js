@@ -64,4 +64,13 @@ document.body.onkeyup = function(e)
 		colocarLetraEmLetrasTentadas(String.fromCharCode(keyunicode-32));
 	}	
 	
+	//atalhos numéricos
+
+	//lista de letras já clicadas 
+	if(keyunicode == 49) //0
+	{
+		var audio = document.getElementById(""); 
+		audio.currentTime = 0
+		audio.play()
+	}
 }
