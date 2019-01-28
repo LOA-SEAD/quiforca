@@ -1,3 +1,5 @@
+var letraRepetida;
+
 function iniciar()
 {
 	//Essa variavel vai conter todas as letras que o jogador ja tentou
@@ -151,11 +153,13 @@ function fimDeJogo()
 function verificarErro(_letra)
 {
 	var deuErro = true;
+	letraRepetida = false;
 
 	for(var i = 0; i < jogo.letrasTentadas.length; i++)
 	{
 		if(_letra == jogo.letrasTentadas[i])
 		{
+			letraRepetida = true;
 			deuErro = false;
 		}
 	}
@@ -231,7 +235,14 @@ function verificarErro(_letra)
 		jogo.erros++;
 		mudarPersonagem();
 
-		var audio = document.getElementById("letraErrada"); 
+		if(letraRepetida){
+			var audio = document.getElementById("letraRepetida"); 
+		}
+		else
+		{
+			var audio = document.getElementById("letraErrada"); 
+		}
+
 		audio.play();
 	}
 }
@@ -410,7 +421,6 @@ function iniciarNovoJogo()
 		jogo.bdAux[i] = i;
 	}
 }
-
 
 var funcaoBotao;
 var objetoBotao;
