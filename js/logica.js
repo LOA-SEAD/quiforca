@@ -12,6 +12,9 @@ function iniciar()
 	jogo.botaoVoltar.setAttribute("role" , "button");
 	jogo.botaoVoltar.setAttribute("aria-label" , "Voltar");
 
+	jogo.linha = document.createElement("div");
+	jogo.linha.setAttribute("id", "row");
+
 	jogo.botaoVoltar.onclick = function() {
 		ativarBotaoVoltar();
 	}
@@ -23,7 +26,8 @@ function iniciar()
 		removerComandosEnterSpace();
 	}*/
 	
-	$("#camadaJogo").append(jogo.botaoVoltar);
+	
+	
 
 	jogo.falador = document.createElement("div");
 	jogo.falador.setAttribute("id", "falador");
@@ -31,6 +35,7 @@ function iniciar()
 	jogo.falador.setAttribute("role", "log");
 	jogo.falador.setAttribute("style", "display: none;");
 	$("#camadaJogo").append(jogo.falador);
+
 
 	jogo.dicaNaTela = document.createElement("div");
 	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
@@ -52,6 +57,7 @@ function iniciar()
 		jogo.contribuicaoNaTela.setAttribute("class", "customfont");
 		jogo.contribuicaoNaTela.innerHTML = "Contribuição de: "+jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao;
 		$("#camadaJogo").append(jogo.contribuicaoNaTela);
+
 	}
 	$("#camadaJogo").append(jogo.dicaNaTela);
 
@@ -60,6 +66,7 @@ function iniciar()
 		.appendTo($('#camadaJogo'));
 
 	//Pegamos uma palavra aleatoria
+
 
 	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
 
@@ -85,8 +92,11 @@ function iniciar()
 	jogo.bdAux[jogo.bdTamanho] = jogo.bdAux[jogo.sorteio];
 	jogo.bdAux[jogo.sorteio] = ajuda;
 
-	colocarTecladoNaTela();
+	$("#camadaJogo").append(jogo.linha);
+	$("#camadaJogo").append(jogo.botaoVoltar);
 	colocarPersonagem();
+	colocarTecladoNaTela();
+	
 	update();
 }
 
@@ -115,6 +125,8 @@ function update()
 			aux = 5*Math.pow(0.8, jogo.erros);
 			jogo.pontosParciais = aux;
 			jogo.pontos = jogo.pontos + aux;
+
+
 
 			$('<div>').attr({'id': 'palavraCerta',})
 				.appendTo(el);
@@ -220,28 +232,23 @@ function verificarErro(_letra)
 	if(!deuErro)
 	{
 		$("#falador").text("Letra Certa");
-
-		var audio = document.getElementById("letraCerta"); 
-		audio.currentTime = 0
-		audio.play()
 	}
 	if(deuErro)
 	{
 		$("#falador").text("Letra Errada");
 		jogo.erros++;
 		mudarPersonagem();
-
-		var audio = document.getElementById("letraErrada"); 
-		audio.play();
 	}
 }
 
 //Coloca os botoes do teclado na tela
+
+
 function colocarTecladoNaTela()
 {
 	var botoes = document.createElement("div");
 	botoes.setAttribute("id", "botoes");
-	$("#camadaJogo").append(botoes);
+	$("#row").append(botoes);
 
 	var linha1 = new Linha(1);
 	var linha1 = new Linha(2);
@@ -378,13 +385,13 @@ function colocarPersonagem()
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
-	$("#camadaJogo").append(jogo.personagem);
+	$("#row").append(jogo.personagem);
 
 
 	jogo.personagemAnt = document.createElement("div");
 	jogo.personagemAnt.setAttribute("id", "personagemAnt");
 	jogo.personagemAnt.setAttribute("class", "personagem");
-	$("#camadaJogo").append(jogo.personagemAnt);
+	$("#row").append(jogo.personagemAnt);
 }
 
 function mudarPersonagem()
