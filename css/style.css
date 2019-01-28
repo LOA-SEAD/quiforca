@@ -1,4 +1,12 @@
 /*Parte das camadas*/
+
+body, html
+{
+	height: 100%;
+	width: 100%;
+	margin: 0;	
+}
+
 body
 {
 	background-image: url("../imgs/madeira.png");
@@ -16,14 +24,11 @@ body
 }
 #palco
 {
-	position:absolute;
-	left:50%;		
-	top:50%;
-	margin-left: -400px;
-	margin-top: -300px;
-	width: 800px;
-	height: 600px;
-	background-image: url("../imgs/papel.png");	
+	min-height: 100%;
+	min-width: 450px;
+	padding: 2.5rem;
+	background: white;	
+	margin: 0px 70px 0 70px;
 }
 
 #camadaVitoria
@@ -46,8 +51,7 @@ body
 
 #camadaJogo
 {
-	width: 800px;
-	height: 600px;
+	
 }
 
 #camadaCreditos
@@ -65,19 +69,13 @@ body
 /*Parte das coisas escritas na tela*/
 #palavraNaTela
 {
-	position: absolute;
-	left: 40%;
-	top: 45%;
-	width: 350px;
+	width: 100%;
 	text-align: center;
 }
 
 #dicaNaTela
 {
-	position: absolute;
-	left: 35%;
-	top: 25%;
-	width: 450px;
+	width: 100%;
 	text-align: center;
 }
 
@@ -91,19 +89,15 @@ body
 
 #pontosNaTela
 {
-	position: absolute;
-	left: 70%;
-	top: 8%;
+	text-align: right;
 }
 
 /*Parte dos botoes no jogo*/
 #botoes
 {
-	position: relative;
-	top: 65%;
-	left: 40%;
-	width: 400px;
-	text-align: right;
+	min-width: 400px;
+	display: inline-block;
+	margin: 5rem;
 }
 
 .botaoJogo
@@ -206,18 +200,14 @@ p
 
 #btnVoltar
 {
-	position: absolute;
 	width: 50px;
 	height: 50px;
-	top: 87.5%;
-	left: 88%;
-	background-image:url("../imgs/btnVoltar.png")
+	
+	background-image:url("../imgs/btnVoltar.png");
 }
 /*Parte do personagem do jogo*/
 .personagem
 {
-	position: absolute;
-	top: 37%;
 	width: 317px;
 	height: 382px;
 	background: url(../imgs/personagem.png);
@@ -228,11 +218,13 @@ p
 {
 	
 	z-index: 11;
+	float: left;
 }
 
 #personagemAnt
 {
 	z-index: 10;
+	display: none;
 }
 
 #palavraCerta
@@ -256,3 +248,17 @@ height: 1px !important;
 width: 1px !important;
 overflow: hidden;
 }
+
+#row
+{	
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center
+}
+
+@media screen and (max-width: 1100px) {
+	#row{
+		flex-direction: column;
+	}
+  }
