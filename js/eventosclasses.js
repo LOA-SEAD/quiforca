@@ -52,7 +52,7 @@ document.body.onkeyup = function(e)
 	
 	if(keyunicode >= 65 && keyunicode <= 90)
 	{
-    keyunicode +=32;
+    	keyunicode +=32;
 	}
 	
 	//Se o codigo estiver dentro do alfabeto

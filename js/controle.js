@@ -7,9 +7,20 @@
  O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
  */
 
+var background
+background = document.getElementById("background"); 
+background.loop = true
+var origemMenu
+var origemDerrota
 
 function criarCamadaMenu()
 {
+	if(origemDerrota){
+		background.currentTime = 0
+	}
+	origemDerrota = 0
+	background.play()
+
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
 	$("#palco").append(el);
@@ -57,6 +68,7 @@ function criarCamadaMenu()
 	{
 		ativarBotaoCreditos();
 	}
+	origemMenu = 1
 }
 
 function ativarBotaoJogar()
@@ -78,6 +90,12 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
+	if(!origemMenu){
+		background.currentTime = 0
+	}
+	origemMenu = 0
+	background.play()
+
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaJogo");
 	$("#palco").append(el);
@@ -88,6 +106,7 @@ function criarCamadaJogo()
 function destruirCamadaJogo()
 {
 	$("#camadaJogo").remove();
+	background.pause()
 }
 
 function criarCamadaCreditos()
@@ -177,6 +196,12 @@ function destruirCamadaCreditos()
 
 function criarCamadaVitoria()
 {
+	
+	var audio = document.getElementById("vitoria"); 
+	setTimeout(function(){
+		audio.play();
+	}, 200);
+
 	var fase;
 	var faseId;
 	var el = $('<div>').attr("id", "camadaVitoria").appendTo($("#palco"));
@@ -217,6 +242,12 @@ function destruirCamadaVitoria()
 
 function criarCamadaDerrota()
 {
+	var audio = document.getElementById("derrota"); 
+	setTimeout(function(){
+		audio.play();
+	}, 400);
+	origemDerrota = 1
+
 	var fase;
 	var faseId;
 	var pontos = jogo.pontos;
