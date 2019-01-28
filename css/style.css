@@ -120,6 +120,12 @@ body
 	cursor: pointer;	
 }
 
+.botaoJogo:hover
+{
+	background-color: #fffc004d;
+	transition: .2s;
+}
+
 .linha
 {
 	text-align: center;
@@ -144,6 +150,8 @@ body
 	margin-top: 10px;
 	font-size: 20px;
 }
+
+
 
 /*Parte das fontes*/
 @font-face
