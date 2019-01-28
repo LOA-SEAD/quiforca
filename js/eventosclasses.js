@@ -30,7 +30,6 @@ function Botao(_letra, _linha)
 	{
 		if((jogo.emTransicao == false) && (fimDeJogo() == -1))
 		{
-			//bt.setAttribute("class", "botaoJogoPressionado");
 			verificarErro(_letra);
 			colocarLetraEmLetrasTentadas(_letra);	
 		}			
