@@ -349,7 +349,9 @@ function colocarLetraEmLetrasTentadas(_letra)
 
 function mudarCor(_letra)
 {
-	$("#botao" + _letra).attr("style", 'color: red;');
+	$("#botao" + _letra).attr("style", 'color: white;');
+	$("#botao" + _letra).removeClass("botaoJogo");
+	$("#botao" + _letra).addClass("botaoJogoPressionado");
 }
 
 //Logica para ver se palavra foi atualizada

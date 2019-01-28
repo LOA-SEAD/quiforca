@@ -116,6 +116,16 @@ body
 	cursor: pointer;	
 }
 
+.botaoJogoPressionado
+{
+	display: inline;
+	width: 40px;
+	height: 43px;
+	float: left;
+	background-image: url(../imgs/botaoJogoPressionado.png);
+	cursor: pointer;	
+}
+
 .linha
 {
 	text-align: center;
