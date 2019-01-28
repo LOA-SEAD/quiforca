@@ -116,7 +116,6 @@ function update()
 			criarCamadaDerrota();
 			break;
 		case 1:
-			//Fim de jogo: jogador ganhou
 			var el = document.getElementById("camadaJogo");
 
 			aux = 5*Math.pow(0.8, jogo.erros);
@@ -126,7 +125,7 @@ function update()
 			$('<div>').attr({'id': 'palavraCerta',})
 				.appendTo(el);
 
-			el.onclick = function() {
+			el.onmousedown = function() {
 				destruirCamadaJogo();
 				criarCamadaVitoria();
 			}
