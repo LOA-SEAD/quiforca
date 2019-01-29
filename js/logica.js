@@ -62,8 +62,8 @@ function iniciar()
 	p.setAttribute("class", "customfont");
 	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
-	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + " ( " + jogo.palavraSorteada.length + " letras )";
-	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica + " ( " + jogo.palavraSorteada.length + " letras )");
+	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.palavraSorteada.length + " letras)";
+	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.palavraSorteada.length + " letras)");
 	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
 
