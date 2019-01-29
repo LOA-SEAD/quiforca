@@ -127,10 +127,10 @@ function update()
 			$('<div>').attr({'id': 'palavraCerta',})
 				.appendTo(el);
 
-			el.onmousedown = function() {
+			//el.onmousedown = function() {
 				destruirCamadaJogo();
 				criarCamadaVitoria();
-			}
+			//}
 			break;
 	}
 }
@@ -138,7 +138,16 @@ function update()
 //Funcao que verifica se o jogo terminou(erros > 5 ou palavra completa)
 function fimDeJogo()
 {
-	if(jogo.aux == jogo.palavraNaTela.innerHTML)
+	var continua = false;
+	for(var i=0; i<jogo.palavraNaTela.innerHTML.length; i++)
+	{
+		if(jogo.palavraNaTela.innerHTML[i] == "_")
+		{
+			continua = true;
+		}
+	}
+	//if(jogo.aux == jogo.palavraNaTela.innerHTML)
+	if(!continua)
 	{
 		return 1;
 	}
@@ -378,7 +387,7 @@ function atualizarPalavra()
 		if(jogo.palavraSorteada[i] == " ")
 		{
 			//encontrar uma maneira de printar espaço
-			jogo.palavraNaTela.innerHTML += '&nbsp';
+			jogo.palavraNaTela.innerHTML += '\xa0';
 			ariaLabel += "espaço";
 		}
 		else if(jogo.achou)

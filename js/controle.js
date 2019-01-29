@@ -211,6 +211,15 @@ function criarCamadaVitoria()
 			.html('Pontos: ' + parseInt(jogo.pontos))
 			.appendTo($('#camadaVitoria'));
 	}
+
+	jogo.palavraNaTela = document.createElement("p");
+	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
+	jogo.palavraNaTela.setAttribute("tabIndex", "2");
+	jogo.palavraNaTela.setAttribute("role", "textbox");
+	jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
+	
+	$("#camadaVitoria").append(jogo.palavraNaTela);
+
 	$('<div>').css({
 			'position': 'absolute',
 			'width': '800px',
@@ -275,7 +284,7 @@ function criarCamadaDerrota()
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
-
+	
 	$("#camadaDerrota").append(jogo.palavraNaTela);
 
 	$('<div>').css({
