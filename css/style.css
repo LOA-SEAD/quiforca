@@ -71,12 +71,13 @@ body
 {
 	width: 100%;
 	text-align: center;
+	
 }
 
 #dicaNaTela
 {
-	width: 100%;
 	text-align: center;
+	padding: 0 2rem 0 2rem;
 }
 
 #contribuicaoNaTela
@@ -223,6 +224,7 @@ p
 	
 	z-index: 11;
 	float: left;
+	margin: 2rem;
 }
 
 #personagemAnt
