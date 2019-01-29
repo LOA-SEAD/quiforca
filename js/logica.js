@@ -2,6 +2,10 @@ var letraRepetida;
 
 function iniciar()
 {
+
+	//Seta número de chances do jogador
+	jogo.numChances = 5;
+
 	//Essa variavel vai conter todas as letras que o jogador ja tentou
 	jogo.letrasTentadas = new Array();
 	jogo.letrasTentadas = [" "];
@@ -244,6 +248,7 @@ function verificarErro(_letra)
 		$("#falador").text("Letra Errada");
 		jogo.erros++;
 		mudarPersonagem();
+		atualizaNumChances();
 
 		if(letraRepetida){
 			var audio = document.getElementById("letraRepetida"); 
@@ -402,11 +407,24 @@ function atualizarPalavra()
 	jogo.palavraNaTela.setAttribute("aria-label", ariaLabel);
 }
 
+function atualizaNumChances(){
+	jogo.numChances--;
+	atualizaLeituraBoneco();
+}
+
+function atualizaLeituraBoneco(){
+	if(jogo.numChances > 1)
+		jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
+	else
+		jogo.personagem.setAttribute("aria-label", "última chance");
+}
+
 function colocarPersonagem()
 {
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
+	jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
 	$("#row").append(jogo.personagem);
 
 
