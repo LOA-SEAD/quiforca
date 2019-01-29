@@ -375,21 +375,27 @@ function atualizarPalavra()
 				jogo.achou = true;
 			}
 		}
-		if(jogo.achou)
+		if(jogo.palavraSorteada[i] == " ")
+		{
+			//encontrar uma maneira de printar espaço
+			jogo.palavraNaTela.innerHTML += '&nbsp';
+			ariaLabel += "espaço";
+		}
+		else if(jogo.achou)
 		{
 			jogo.palavraNaTela.innerHTML += jogo.palavraSorteada[i];
 			ariaLabel += jogo.palavraSorteada[i];
 		}
 		else
 		{
-			jogo.palavraNaTela.innerHTML += "_"
-			ariaLabel += "_";
+			jogo.palavraNaTela.innerHTML += "_";
+			ariaLabel += "ponto";
 		}
+		ariaLabel += " ";
 		jogo.palavraNaTela.innerHTML += " ";
 
 	}
 	jogo.palavraNaTela.setAttribute("aria-label", ariaLabel);
-
 }
 
 function colocarPersonagem()
