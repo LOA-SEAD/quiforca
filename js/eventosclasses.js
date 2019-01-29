@@ -46,6 +46,8 @@ function Linha(_linha)
 
 document.body.onkeyup = function(e)
 {
+	var counter = 0
+
 	//Pega as teclas
 	var e = window.event||e;
 	var keyunicode = e.charcode || e.keyCode || e.which;
@@ -69,8 +71,27 @@ document.body.onkeyup = function(e)
 	//lista de letras já clicadas 
 	if(keyunicode == 49) //0
 	{
-		var audio = document.getElementById(""); 
+		var nomeSom
+		var somLetra = []
+		var audio = document.getElementById("atalho1"); 
 		audio.currentTime = 0
 		audio.play()
+
+		setTimeout(function(){
+			for(var i = 1; i < tamanhoLetrasTentadas(); i++)
+			{
+				if(retornaLetrasTentadas(i)){
+					nomeSom = "letra" + retornaLetrasTentadas(i)
+					somLetra[counter] = document.getElementById(nomeSom)
+					setTimeout(tocarLetra, 500*(counter),somLetra[counter])
+					counter++
+				}
+			}
+		}, 2000)
 	}
+}
+
+function tocarLetra(som)
+{
+	som.play()
 }

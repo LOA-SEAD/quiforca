@@ -8,8 +8,8 @@
  */
 
 var background
-//background = document.getElementById("background"); 
 background = document.getElementById("letraCerta"); 
+//background = document.getElementById("background"); 
 //background.loop = true
 var origemMenu
 var origemDerrota

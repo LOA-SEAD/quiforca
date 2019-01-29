@@ -2,6 +2,10 @@ var letraRepetida;
 
 function iniciar()
 {
+
+	//Seta número de chances do jogador
+	jogo.numChances = 5;
+
 	//Essa variavel vai conter todas as letras que o jogador ja tentou
 	jogo.letrasTentadas = new Array();
 	jogo.letrasTentadas = [" "];
@@ -46,12 +50,20 @@ function iniciar()
 		.html('Pontos: ' + Math.round(jogo.pontos))
 		.appendTo($('#camadaJogo'));
 
+
+	
+
+	//Sorteio de uma nova palavra
+	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;	
+
+
+	//Exibe dica da palavra + número de letras que ela contém
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
 	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
-	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;
-	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica);
+	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + " ( " + jogo.palavraSorteada.length + " letras )";
+	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica + " ( " + jogo.palavraSorteada.length + " letras )");
 	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
 
@@ -65,10 +77,6 @@ function iniciar()
 	$("#camadaJogo").append(jogo.dicaNaTela);
 
 	
-
-	//Pegamos uma palavra aleatoria
-
-	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
 
 	jogo.aux = "";
 	for(var i = 0; i < jogo.palavraSorteada.length; i++)
@@ -249,6 +257,7 @@ function verificarErro(_letra)
 		$("#falador").text("Letra Errada");
 		jogo.erros++;
 		mudarPersonagem();
+		atualizaNumChances();
 
 		if(letraRepetida){
 			var audio = document.getElementById("letraRepetida"); 
@@ -407,11 +416,25 @@ function atualizarPalavra()
 	jogo.palavraNaTela.setAttribute("aria-label", ariaLabel);
 }
 
+function atualizaNumChances(){
+	jogo.numChances--;
+	atualizaLeituraBoneco();
+}
+
+function atualizaLeituraBoneco(){
+	if(jogo.numChances > 1)
+		jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
+	else
+		jogo.personagem.setAttribute("aria-label", "última chance");
+}
+
 function colocarPersonagem()
 {
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
+	jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
+	jogo.personagem.setAttribute("tabindex", 3);
 	$("#row").append(jogo.personagem);
 
 
@@ -493,4 +516,34 @@ function keyDown(event)
 			objetoBotao.blur();
 			break;
 	}
+}
+
+function retornaLetrasTentadas(_posicao)
+{
+	if(jogo.letrasTentadas[_posicao] == "Ã" || jogo.letrasTentadas[_posicao] == "Â" || jogo.letrasTentadas[_posicao] == "Á"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "É" || jogo.letrasTentadas[_posicao] == "Ê"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "Í"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "Ó" || jogo.letrasTentadas[_posicao] == "Õ" || jogo.letrasTentadas[_posicao] == "Ô"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "Ú"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "Ç"){
+		return false
+	}
+	else{
+		return jogo.letrasTentadas[_posicao]
+	}
+}
+
+function tamanhoLetrasTentadas()
+{
+	return jogo.letrasTentadas.length
 }
