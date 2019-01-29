@@ -46,12 +46,20 @@ function iniciar()
 		.html('Pontos: ' + Math.round(jogo.pontos))
 		.appendTo($('#camadaJogo'));
 
+
+	
+
+	//Sorteio de uma nova palavra
+	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;	
+
+
+	//Exibe dica da palavra + número de letras que ela contém
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
 	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
-	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;
-	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica);
+	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + " ( " + jogo.palavraSorteada.length + " letras )";
+	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica + " ( " + jogo.palavraSorteada.length + " letras )");
 	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
 
@@ -65,10 +73,6 @@ function iniciar()
 	$("#camadaJogo").append(jogo.dicaNaTela);
 
 	
-
-	//Pegamos uma palavra aleatoria
-
-	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
 
 	jogo.aux = "";
 	for(var i = 0; i < jogo.palavraSorteada.length; i++)
