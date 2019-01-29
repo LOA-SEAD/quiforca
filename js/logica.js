@@ -473,3 +473,33 @@ function keyDown(event)
 			break;
 	}
 }
+
+function retornaLetrasTentadas(_posicao)
+{
+	if(jogo.letrasTentadas[_posicao] == "Ã" || jogo.letrasTentadas[_posicao] == "Â" || jogo.letrasTentadas[_posicao] == "Á"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "É" || jogo.letrasTentadas[_posicao] == "Ê"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "Í"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "Ó" || jogo.letrasTentadas[_posicao] == "Õ" || jogo.letrasTentadas[_posicao] == "Ô"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "Ú"){
+		return false
+	}
+	else if(jogo.letrasTentadas[_posicao] == "Ç"){
+		return false
+	}
+	else{
+		return jogo.letrasTentadas[_posicao]
+	}
+}
+
+function tamanhoLetrasTentadas()
+{
+	return jogo.letrasTentadas.length
+}
