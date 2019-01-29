@@ -425,6 +425,7 @@ function colocarPersonagem()
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
 	jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
+	jogo.personagem.setAttribute("tabindex", 3);
 	$("#row").append(jogo.personagem);
 
 
