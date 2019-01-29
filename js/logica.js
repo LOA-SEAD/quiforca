@@ -42,6 +42,10 @@ function iniciar()
 	jogo.dicaNaTela.setAttribute("tabIndex", "1");
 	jogo.dicaNaTela.setAttribute("role" , "textbox");
 
+	$('<p>').attr('id', 'pontosNaTela')
+		.html('Pontos: ' + Math.round(jogo.pontos))
+		.appendTo($('#camadaJogo'));
+
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
 	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
@@ -60,9 +64,7 @@ function iniciar()
 	}
 	$("#camadaJogo").append(jogo.dicaNaTela);
 
-	$('<p>').attr('id', 'pontosNaTela')
-		.html('Pontos: ' + Math.round(jogo.pontos))
-		.appendTo($('#camadaJogo'));
+	
 
 	//Pegamos uma palavra aleatoria
 

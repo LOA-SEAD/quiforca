@@ -97,58 +97,54 @@ body
 {
 	min-width: 400px;
 	display: inline-block;
-	margin: 5rem;
 }
 
 .botaoJogo
 {
 	display: inline;
-	width: 40px;
-	height: 43px;
+	width: 50px;
+	height: 50px;
+	margin: 1.5px;
 	float: left;
-	background-image: url(../imgs/botaoJogo.png);
+	background-image: url(../imgs/botaoTeclado.png);
 	cursor: pointer;	
 }
 
 .botaoJogoPressionado
 {
 	display: inline;
-	width: 40px;
-	height: 43px;
+	width: 50px;
+	height: 50px;
+	margin: 1.5px;
 	float: left;
-	background-image: url(../imgs/botaoJogoPressionado.png);
+	background-image: url(../imgs/botaoTecladoPressionado.png);
 	cursor: pointer;	
 }
 
 .botaoJogo:hover
 {
-	background-color: #fffc004d;
-	transition: .2s;
+	transform: scale(1.1);
 }
 
 .linha
 {
 	text-align: center;
-	position: relative;
-	height: 58px;
+	
 }
 
 #linha2
 {
-	margin-left: 20px;
-	margin-top: -20px;
+	
 }
 
 #linha3
 {
-	margin-left: 35px;
-	margin-top: -20px;
+	
 }
 
 .letraTeclado
 {
 	margin-top: 10px;
-	font-size: 20px;
 }
 
 
