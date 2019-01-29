@@ -69,7 +69,7 @@ document.body.onkeyup = function(e)
 	//atalhos numéricos
 
 	//lista de letras já clicadas 
-	if(keyunicode == 49) //0
+	if(keyunicode == 49) //1
 	{
 		var nomeSom
 		var somLetra = []
@@ -83,11 +83,20 @@ document.body.onkeyup = function(e)
 				if(retornaLetrasTentadas(i)){
 					nomeSom = "letra" + retornaLetrasTentadas(i)
 					somLetra[counter] = document.getElementById(nomeSom)
-					setTimeout(tocarLetra, 500*(counter),somLetra[counter])
+					setTimeout(tocarLetra,500*counter,somLetra[counter])
 					counter++
 				}
 			}
 		}, 2000)
+	}
+
+	//quantas vidas ainda tem
+	if(keyunicode == 50) //2
+	{
+		var nomeSom = "vidas" + numeroDeChances()
+		var audio = document.getElementById(nomeSom); 
+		audio.currentTime = 0
+		audio.play()
 	}
 }
 

@@ -547,3 +547,8 @@ function tamanhoLetrasTentadas()
 {
 	return jogo.letrasTentadas.length
 }
+
+function numeroDeChances()
+{
+	return jogo.numChances
+}
