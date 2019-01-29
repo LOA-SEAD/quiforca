@@ -2,6 +2,10 @@ var letraRepetida;
 
 function iniciar()
 {
+
+	//Seta número de chances do jogador
+	jogo.numChances = 5;
+
 	//Essa variavel vai conter todas as letras que o jogador ja tentou
 	jogo.letrasTentadas = new Array();
 	jogo.letrasTentadas = [" "];
@@ -13,6 +17,9 @@ function iniciar()
 	jogo.botaoVoltar.setAttribute("tabIndex" , "0");
 	jogo.botaoVoltar.setAttribute("role" , "button");
 	jogo.botaoVoltar.setAttribute("aria-label" , "Voltar");
+
+	jogo.linha = document.createElement("div");
+	jogo.linha.setAttribute("id", "row");
 
 	jogo.botaoVoltar.onclick = function() {
 		ativarBotaoVoltar();
@@ -39,12 +46,24 @@ function iniciar()
 	jogo.dicaNaTela.setAttribute("tabIndex", "1");
 	jogo.dicaNaTela.setAttribute("role" , "textbox");
 
+	$('<p>').attr('id', 'pontosNaTela')
+		.html('Pontos: ' + Math.round(jogo.pontos))
+		.appendTo($('#camadaJogo'));
+
+
+	
+
+	//Sorteio de uma nova palavra
+	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;	
+
+
+	//Exibe dica da palavra + número de letras que ela contém
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
 	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
-	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;
-	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica);
+	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + " ( " + jogo.palavraSorteada.length + " letras )";
+	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica + " ( " + jogo.palavraSorteada.length + " letras )");
 	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
 
@@ -57,13 +76,7 @@ function iniciar()
 	}
 	$("#camadaJogo").append(jogo.dicaNaTela);
 
-	$('<p>').attr('id', 'pontosNaTela')
-		.html('Pontos: ' + Math.round(jogo.pontos))
-		.appendTo($('#camadaJogo'));
-
-	//Pegamos uma palavra aleatoria
-
-	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
+	
 
 	jogo.aux = "";
 	for(var i = 0; i < jogo.palavraSorteada.length; i++)
@@ -87,8 +100,10 @@ function iniciar()
 	jogo.bdAux[jogo.bdTamanho] = jogo.bdAux[jogo.sorteio];
 	jogo.bdAux[jogo.sorteio] = ajuda;
 
-	colocarTecladoNaTela();
+
+	$("#camadaJogo").append(jogo.linha);
 	colocarPersonagem();
+	colocarTecladoNaTela();
 	update();
 }
 
@@ -111,7 +126,6 @@ function update()
 			criarCamadaDerrota();
 			break;
 		case 1:
-			//Fim de jogo: jogador ganhou
 			var el = document.getElementById("camadaJogo");
 
 			aux = 5*Math.pow(0.8, jogo.erros);
@@ -121,7 +135,7 @@ function update()
 			$('<div>').attr({'id': 'palavraCerta',})
 				.appendTo(el);
 
-			el.onclick = function() {
+			el.onmousedown = function() {
 				destruirCamadaJogo();
 				criarCamadaVitoria();
 			}
@@ -234,6 +248,7 @@ function verificarErro(_letra)
 		$("#falador").text("Letra Errada");
 		jogo.erros++;
 		mudarPersonagem();
+		atualizaNumChances();
 
 		if(letraRepetida){
 			var audio = document.getElementById("letraRepetida"); 
@@ -252,7 +267,7 @@ function colocarTecladoNaTela()
 {
 	var botoes = document.createElement("div");
 	botoes.setAttribute("id", "botoes");
-	$("#camadaJogo").append(botoes);
+	$("#row").append(botoes);
 
 	var linha1 = new Linha(1);
 	var linha1 = new Linha(2);
@@ -369,21 +384,39 @@ function atualizarPalavra()
 				jogo.achou = true;
 			}
 		}
-		if(jogo.achou)
+		if(jogo.palavraSorteada[i] == " ")
+		{
+			//encontrar uma maneira de printar espaço
+			jogo.palavraNaTela.innerHTML += '&nbsp';
+			ariaLabel += "espaço";
+		}
+		else if(jogo.achou)
 		{
 			jogo.palavraNaTela.innerHTML += jogo.palavraSorteada[i];
 			ariaLabel += jogo.palavraSorteada[i];
 		}
 		else
 		{
-			jogo.palavraNaTela.innerHTML += "_"
-			ariaLabel += "_";
+			jogo.palavraNaTela.innerHTML += "_";
+			ariaLabel += "ponto";
 		}
+		ariaLabel += " ";
 		jogo.palavraNaTela.innerHTML += " ";
 
 	}
 	jogo.palavraNaTela.setAttribute("aria-label", ariaLabel);
+}
 
+function atualizaNumChances(){
+	jogo.numChances--;
+	atualizaLeituraBoneco();
+}
+
+function atualizaLeituraBoneco(){
+	if(jogo.numChances > 1)
+		jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
+	else
+		jogo.personagem.setAttribute("aria-label", "última chance");
 }
 
 function colocarPersonagem()
@@ -391,13 +424,15 @@ function colocarPersonagem()
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
-	$("#camadaJogo").append(jogo.personagem);
+	jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
+	jogo.personagem.setAttribute("tabindex", 3);
+	$("#row").append(jogo.personagem);
 
 
 	jogo.personagemAnt = document.createElement("div");
 	jogo.personagemAnt.setAttribute("id", "personagemAnt");
 	jogo.personagemAnt.setAttribute("class", "personagem");
-	$("#camadaJogo").append(jogo.personagemAnt);
+	$("#row").append(jogo.personagemAnt);
 }
 
 function mudarPersonagem()
