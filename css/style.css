@@ -29,7 +29,7 @@ body
 	padding: 0.5rem 0.5rem 0.5rem 2.5rem;
 	background-image: url("../imgs/novafolha.png");
 	background-size: cover;	
-	margin: 0px 70px 0 70px;
+	margin: 20px 70px 20px 70px;
 }
 
 #camadaVitoria
@@ -79,7 +79,6 @@ body
 {
 	text-align: center;
 	padding: 0 2rem 0 2rem;
-	padding: 0.5rem;
 	margin: 3rem;
 }
 
@@ -217,7 +216,7 @@ p
 .personagem
 {
 	width: 317px;
-	height: 382px;
+	height: 312px;
 	background: url(../imgs/personagem.png);
 	background-position: 0px 0px;
 }
@@ -227,7 +226,7 @@ p
 	
 	z-index: 11;
 	float: left;
-	margin: 2rem;
+	margin: 0 2rem 0 2rem;
 }
 
 #personagemAnt
