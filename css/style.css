@@ -25,8 +25,8 @@ body
 #palco
 {
 	min-height: 100%;
-	min-width: 450px;
-	padding: 2.5rem;
+	min-width: 600px;
+	padding: 0.5rem;
 	background: white;	
 	margin: 0px 70px 0 70px;
 }
@@ -51,7 +51,7 @@ body
 
 #camadaJogo
 {
-	
+	padding: 0px 2rem 0 2rem;
 }
 
 #camadaCreditos
@@ -78,19 +78,22 @@ body
 {
 	text-align: center;
 	padding: 0 2rem 0 2rem;
+	padding: 0.5rem;
+	margin: 3rem;
+	background: white;
+	border-style: dashed;
 }
 
 #contribuicaoNaTela
-{
-	position: absolute;
-	left:70%;
-	top: 90%;	
-	font-size: 12px;
+{	
+	font-size: 15px;
+	
 }
 
 #pontosNaTela
 {
 	text-align: right;
+	margin-right: 3rem;
 }
 
 /*Parte dos botoes no jogo*/
@@ -135,12 +138,12 @@ body
 
 #linha2
 {
-	
+	margin-left: 1rem;
 }
 
 #linha3
 {
-	
+	margin-left: 2rem;
 }
 
 .letraTeclado
@@ -207,7 +210,7 @@ p
 {
 	width: 50px;
 	height: 50px;
-	
+	margin-top: 1rem;
 	background-image:url("../imgs/btnVoltar.png");
 }
 /*Parte do personagem do jogo*/
@@ -246,13 +249,13 @@ p
 .hidden-for-sighted-users
 {
     position: absolute !important;
-clip: rect(1px 1px 1px 1px);
-clip: rect(1px, 1px, 1px, 1px);
-padding: 0 !important;
-border: 0 !important;
-height: 1px !important;
-width: 1px !important;
-overflow: hidden;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	padding: 0 !important;
+	border: 0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	overflow: hidden;
 }
 
 #row
