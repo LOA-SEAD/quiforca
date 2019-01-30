@@ -313,12 +313,12 @@ function criarCamadaDerrota()
 	var faseId;
 	var pontos = jogo.pontos;
 	iniciarNovoJogo();
+	console.log(jogo.pontos);
 
 	$('<div>').attr('id', 'camadaDerrota').appendTo($('#palco'));
 
 		
-	jogo.imgBoneco = document.createElement("img");
-	jogo.imgBoneco.setAttribute("src", "..");
+	jogo.imgBoneco = document.createElement("div");
 	jogo.imgBoneco.setAttribute("id", "imgBonecoDerrota");
 
 	jogo.palavraNaTela = document.createElement("p");
@@ -330,8 +330,14 @@ function criarCamadaDerrota()
 	jogo.botoes = document.createElement("div");
 	jogo.botoes.setAttribute("id", "botoesFimDeJogo");
 
+	jogo.jogadorPontos = document.createElement("p");
+	jogo.jogadorPontos.setAttribute("id", "jogadorPontos");
+	jogo.jogadorPontos.innerHTML = "Pontuação final: " + jogo.pontos + " pontos";
+
+
 	$("#camadaDerrota").append(jogo.imgBoneco);
 	$("#camadaDerrota").append(jogo.palavraNaTela);
+	$("#camadaDerrota").append(jogo.jogadorPontos);
 	$("#camadaDerrota").append(jogo.botoes);
 
 	
