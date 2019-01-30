@@ -280,6 +280,7 @@ function criarCamadaFimdeJogo()
 	jogo.fimdeJogo.innerHTML = "Tela de Fim de Jogo"
 	$("#camadaFimdeJogo").append(jogo.fimdeJogo);
 
+	
 
 	$('<div>').css({
 		'position': 'absolute',
