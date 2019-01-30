@@ -206,11 +206,11 @@ function criarCamadaVitoria()
 	var fase;
 	var faseId;
 	var el = $('<div>').attr("id", "camadaVitoria").appendTo($("#palco"));
-	if((jogo.bdTamanho) == 0) {
+	/*if((jogo.bdTamanho) == 0) {
 		$('<p>').attr('id', 'pontosNaTela')
 			.html('Pontos: ' + parseInt(jogo.pontos))
 			.appendTo($('#camadaVitoria'));
-	}
+	}*/
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
@@ -226,18 +226,18 @@ function criarCamadaVitoria()
 			'height': '600px',
 			'background-image': 'url("imgs/vitoria.png")'})
 		.click(function(){
-			if(jogo.bdTamanho != 0) {
+			//if(jogo.bdTamanho != 0) {
 				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 				destruirCamadaVitoria();
 				criarCamadaJogo();
-			}
+			/*}
 			else
 			{
 				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 				destruirCamadaVitoria();
 				criarCamadaMenu();
 				iniciarNovoJogo();
-			}
+			}*/
 
 
 		})
@@ -248,6 +248,56 @@ function criarCamadaVitoria()
 function destruirCamadaVitoria()
 {
 	$("#camadaVitoria").remove();
+}
+
+function criarCamadaFimdeJogo()
+{
+	var audio = document.getElementById("vitoria"); 
+	setTimeout(function(){
+		audio.play();
+	}, 200);
+
+	var fase;
+	var faseId;
+	var el = $('<div>').attr("id", "camadaFimdeJogo").appendTo($("#palco"));
+	$('<p>').attr('id', 'pontosNaTela')
+		.html('Pontos: ' + parseInt(jogo.pontos))
+		.appendTo($('#camadaFimdeJogo'));
+
+	jogo.palavraNaTela = document.createElement("p");
+	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
+	jogo.palavraNaTela.setAttribute("tabIndex", "2");
+	jogo.palavraNaTela.setAttribute("role", "textbox");
+	jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
+
+	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
+
+	
+	jogo.fimdeJogo = document.createElement("p");
+	jogo.fimdeJogo.setAttribute("id", "fimdeJogo");
+	jogo.fimdeJogo.setAttribute("tabIndex", "3");
+	jogo.fimdeJogo.setAttribute("role", "textbox");
+	jogo.fimdeJogo.innerHTML = "Tela de Fim de Jogo"
+	$("#camadaFimdeJogo").append(jogo.fimdeJogo);
+
+
+	$('<div>').css({
+		'position': 'absolute',
+		'width': '800px',
+		'height': '600px',
+		'background-image': 'url("imgs/vitoria.png")'})
+	.click(function(){
+			sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			destruirCamadaFimdeJogo();
+			criarCamadaMenu();
+			iniciarNovoJogo();
+	})
+	.appendTo(el);
+}
+
+function destruirCamadaFimdeJogo()
+{
+	$("#camadaFimdeJogo").remove();
 }
 
 function criarCamadaDerrota()
