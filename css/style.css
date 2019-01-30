@@ -81,8 +81,6 @@ body
 	padding: 0 2rem 0 2rem;
 	padding: 0.5rem;
 	margin: 3rem;
-	background: white;
-	border-style: dashed;
 }
 
 #contribuicaoNaTela
@@ -164,7 +162,7 @@ body
 p
 { 
     font-family:"Fonte","Tahoma";
-	font-size: 24px;
+	font-size: 30px;
 }
 
 /*Parte dos botoes fora do jogo*/
