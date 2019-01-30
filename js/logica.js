@@ -67,13 +67,13 @@ function iniciar()
 	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
 
-	if(jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao != "0") {
+	/*if(jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao != "0") {
 		jogo.contribuicaoNaTela = document.createElement("p");
 		jogo.contribuicaoNaTela.setAttribute("id", "contribuicaoNaTela");
 		jogo.contribuicaoNaTela.setAttribute("class", "customfont");
 		jogo.contribuicaoNaTela.innerHTML = "Contribuição de: "+jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao;
 		$("#camadaJogo").append(jogo.contribuicaoNaTela);
-	}
+	}*/
 	$("#camadaJogo").append(jogo.dicaNaTela);
 
 	
