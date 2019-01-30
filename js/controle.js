@@ -264,12 +264,6 @@ function criarCamadaDerrota()
 	iniciarNovoJogo();
 
 	$('<div>').attr('id', 'camadaDerrota')
-		.css({
-			'width': '800px',
-			'height': '600px',
-			'position': 'absolute',
-			'top': '0px',
-			'style': 'display: none'})
 		.click(function(){
 			destruirCamadaDerrota();
 			destruirCamadaJogo();
@@ -283,7 +277,7 @@ function criarCamadaDerrota()
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "A palavra correta é: " + jogo.palavraSorteada;
 	
 	$("#camadaDerrota").append(jogo.palavraNaTela);
 

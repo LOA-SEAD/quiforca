@@ -32,7 +32,7 @@ function iniciar()
 		removerComandosEnterSpace();
 	}*/
 	
-	$("#camadaJogo").append(jogo.botaoVoltar);
+	
 
 	jogo.falador = document.createElement("div");
 	jogo.falador.setAttribute("id", "falador");
@@ -104,6 +104,7 @@ function iniciar()
 	$("#camadaJogo").append(jogo.linha);
 	colocarPersonagem();
 	colocarTecladoNaTela();
+	$("#camadaJogo").append(jogo.botaoVoltar);
 	update();
 }
 
