@@ -313,15 +313,12 @@ function criarCamadaDerrota()
 	var pontos = jogo.pontos;
 	iniciarNovoJogo();
 
-	$('<div>').attr('id', 'camadaDerrota')
-		.click(function(){
-			destruirCamadaDerrota();
-			destruirCamadaJogo();
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-			//salvaPontuacao(jogo.nome, pontos);
-			criarCamadaMenu();
-		})
-		.appendTo($('#palco'));
+	$('<div>').attr('id', 'camadaDerrota').appendTo($('#palco'));
+
+		
+	jogo.imgBoneco = document.createElement("img");
+	jogo.imgBoneco.setAttribute("src", "..");
+	jogo.imgBoneco.setAttribute("id", "imgBonecoDerrota");
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
@@ -329,16 +326,38 @@ function criarCamadaDerrota()
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	jogo.palavraNaTela.innerHTML = "A palavra correta é: " + jogo.palavraSorteada;
 	
+	jogo.botoes = document.createElement("div");
+	jogo.botoes.setAttribute("id", "botoesFimDeJogo");
+
+	$("#camadaDerrota").append(jogo.imgBoneco);
 	$("#camadaDerrota").append(jogo.palavraNaTela);
+	$("#camadaDerrota").append(jogo.botoes);
 
-	$('<div>').css({
-			'position': 'absolute',
-			'width': '800px',
-			'height': '600px',
-			'background-image': 'url("imgs/game_over.png")'})
-		.appendTo($('#camadaDerrota'));
+	
+	//criando botoes clicáveis
+	
+	$("<button>").attr("id", "btnReiniciar").click(
+		function(){
+			destruirCamadaDerrota();
+			destruirCamadaJogo();
+			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			//salvaPontuacao(jogo.nome, pontos);
+			criarCamadaJogo();	
+		}
+	).appendTo($("#botoesFimDeJogo"));
+
+	$("<button>").attr("id", "btnMenu").click(
+		function(){
+			destruirCamadaDerrota();
+			destruirCamadaJogo();
+			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			//salvaPontuacao(jogo.nome, pontos);
+			criarCamadaMenu();	
+		}
+	).appendTo($("#botoesFimDeJogo"));
 
 
+	
 }
 
 function destruirCamadaDerrota()

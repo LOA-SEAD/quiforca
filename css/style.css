@@ -38,6 +38,11 @@ body
 	height: 600px;
 }
 
+#camadaDerrota{
+	padding: 2rem;
+	text-align: center;
+}
+
 #camadaMenu
 {
 	position:absolute;
@@ -212,6 +217,42 @@ p
 	margin-left: 1rem;
 	background-image:url("../imgs/btnVoltar.png");
 }
+
+#botoesFimDeJogo
+{
+	display: inline-grid;
+}
+
+#btnReiniciar
+{
+	margin: 0.5rem;
+	width: 116px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/btnJogar.png");
+}
+
+#btnMenu
+{
+	margin: 0.5rem;
+	width: 119px;
+	height: 70px;
+	border: none;
+	background-image: url("../imgs/btnCreditos.png");
+}
+
+#btnReiniciar:hover
+{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+#btnMenu:hover
+{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
 /*Parte do personagem do jogo*/
 .personagem
 {
@@ -233,6 +274,10 @@ p
 {
 	z-index: 10;
 	display: none;
+}
+
+#imgBonecoDerrota{
+
 }
 
 #palavraCerta
