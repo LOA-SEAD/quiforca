@@ -67,13 +67,13 @@ function iniciar()
 	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
 
-	if(jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao != "0") {
+	/*if(jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao != "0") {
 		jogo.contribuicaoNaTela = document.createElement("p");
 		jogo.contribuicaoNaTela.setAttribute("id", "contribuicaoNaTela");
 		jogo.contribuicaoNaTela.setAttribute("class", "customfont");
 		jogo.contribuicaoNaTela.innerHTML = "Contribuição de: "+jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao;
 		$("#camadaJogo").append(jogo.contribuicaoNaTela);
-	}
+	}*/
 	$("#camadaJogo").append(jogo.dicaNaTela);
 
 	
@@ -141,6 +141,21 @@ function update()
 				criarCamadaVitoria();
 			//}
 			break;
+		case 2:
+			var el = document.getElementById("camadaJogo");
+
+			aux = 5*Math.pow(0.8, jogo.erros);
+			jogo.pontosParciais = aux;
+			jogo.pontos = jogo.pontos + aux;
+
+			$('<div>').attr({'id': 'palavraCerta',})
+				.appendTo(el);
+
+			//el.onmousedown = function() {
+				destruirCamadaJogo();
+				criarCamadaFimdeJogo();
+			//}
+			break;
 	}
 }
 
@@ -158,7 +173,14 @@ function fimDeJogo()
 	//if(jogo.aux == jogo.palavraNaTela.innerHTML)
 	if(!continua)
 	{
-		return 1;
+		if(jogo.bdTamanho != 0)
+		{
+			return 1;
+		}
+		else
+		{
+			return 2;
+		}
 	}
 	else
 	{
@@ -479,7 +501,7 @@ function ativarBotaoVoltar ()
 	criarCamadaMenu();
 }
 
-function adicionarComandosEnterSpace(funcao, objBotao)
+/*function adicionarComandosEnterSpace(funcao, objBotao)
 {
 	funcaoBotao = funcao;
 	objetoBotao = objBotao;
@@ -491,7 +513,7 @@ function removerComandosEnterSpace()
 	funcaoBotao = null;
 	objetoBotao = null;
 	window.removeEventListener("keydown", keyDown);
-}
+}*/
 
 function keyDown(event)
 {
