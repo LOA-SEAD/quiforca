@@ -16,6 +16,11 @@ var origemDerrota
 
 function criarCamadaMenu()
 {
+	$(document).keydown(function (e){
+		if(e.keyCode == 32 || e.which == 32 || e.charcode == 32)
+			return false;
+	})
+
 	if(origemDerrota){
 		background.currentTime = 0
 	}
@@ -227,7 +232,7 @@ function criarCamadaVitoria()
 			'background-image': 'url("imgs/vitoria.png")'})
 		.click(function(){
 			//if(jogo.bdTamanho != 0) {
-				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
 				destruirCamadaVitoria();
 				criarCamadaJogo();
 			/*}
@@ -271,7 +276,6 @@ function criarCamadaFimdeJogo()
 	jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
 
 	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
-
 	
 	jogo.fimdeJogo = document.createElement("p");
 	jogo.fimdeJogo.setAttribute("id", "fimdeJogo");
@@ -280,7 +284,6 @@ function criarCamadaFimdeJogo()
 	jogo.fimdeJogo.innerHTML = "Tela de Fim de Jogo"
 	$("#camadaFimdeJogo").append(jogo.fimdeJogo);
 
-	
 
 	$('<div>').css({
 		'position': 'absolute',
@@ -288,17 +291,32 @@ function criarCamadaFimdeJogo()
 		'height': '600px',
 		'background-image': 'url("imgs/vitoria.png")'})
 	.click(function(){
-			sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
 			destruirCamadaFimdeJogo();
 			criarCamadaMenu();
 			iniciarNovoJogo();
 	})
 	.appendTo(el);
+
+	document.addEventListener("keyup", FimdeJogoMenu);
+}
+
+function FimdeJogoMenu(e){
+	e.preventDefault();
+
+	if(e.keyCode == 32)
+	{
+		sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
+		destruirCamadaFimdeJogo();
+		criarCamadaMenu();
+		iniciarNovoJogo();
+	}
 }
 
 function destruirCamadaFimdeJogo()
 {
 	$("#camadaFimdeJogo").remove();
+	document.removeEventListener("keyup", FimdeJogoMenu);
 }
 
 function criarCamadaDerrota()
@@ -318,7 +336,7 @@ function criarCamadaDerrota()
 		.click(function(){
 			destruirCamadaDerrota();
 			destruirCamadaJogo();
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
 			//salvaPontuacao(jogo.nome, pontos);
 			criarCamadaMenu();
 		})
