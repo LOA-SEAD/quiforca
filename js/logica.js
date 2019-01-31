@@ -56,13 +56,14 @@ function iniciar()
 	//Sorteio de uma nova palavra
 	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;	
 
+	jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
 
 	//Exibe dica da palavra + número de letras que ela contém
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
 	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
-	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.palavraSorteada.length + " letras)";
+	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
 	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "(" + jogo.palavraSorteada.length + " letras)");
 	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
@@ -430,7 +431,7 @@ function atualizarPalavra()
 		else
 		{
 			jogo.palavraNaTela.innerHTML += "_";
-			ariaLabel += "ponto";
+			ariaLabel += "pin";
 		}
 		ariaLabel += " ";
 		jogo.palavraNaTela.innerHTML += " ";
@@ -505,7 +506,7 @@ function ativarBotaoVoltar ()
 {
 	funcaoBotao = funcao;
 	objetoBotao = objBotao;
-	window.addEventListener("keydown", keyDown);
+	window.addEventListener("", keyDown);
 }
 
 function removerComandosEnterSpace()
@@ -574,4 +575,62 @@ function tamanhoLetrasTentadas()
 function numeroDeChances()
 {
 	return jogo.numChances
+}
+
+function vetorComPalavraAtual()
+{
+	var vetorAux = []
+	var counter = 0
+	for(var i = 0; i < jogo.palavraNaTela.innerHTML.length; i++)
+	{
+		if(jogo.palavraNaTela.innerHTML[i] != "&"){
+			if(jogo.palavraNaTela.innerHTML[i] != "_")
+			{
+				if(jogo.palavraNaTela.innerHTML[i] == "Ã" || jogo.palavraNaTela.innerHTML[i] == "Â" || jogo.palavraNaTela.innerHTML[i] == "Á"){
+					vetorAux[counter++] = "A"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "É" || jogo.palavraNaTela.innerHTML[i] == "Ê"){
+					vetorAux[counter++] = "E"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "Í"){
+					vetorAux[counter++] = "I"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "Ó" || jogo.palavraNaTela.innerHTML[i] == "Õ" || jogo.palavraNaTela.innerHTML[i] == "Ô"){
+					vetorAux[counter++] = "O"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "Ú"){
+					vetorAux[counter++] = "U"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "Ç"){
+					vetorAux[counter++] = "C"
+				}
+				else
+				{
+					if(jogo.palavraNaTela.innerHTML[i] != " "){
+						vetorAux[counter++] = jogo.palavraNaTela.innerHTML[i]
+					}
+				}
+			}
+			else
+			{
+				vetorAux[counter++] = "1"
+			}
+		}
+		else
+		{
+			vetorAux[counter++] = "0"
+			i+=6
+		}
+	}
+	return vetorAux
+}
+
+function palavraAtual(_posicao)
+{
+	return vetorComPalavraAtual()[_posicao]
+}
+
+function tamanhoPalavraAtual()
+{
+	return vetorComPalavraAtual().length
 }
