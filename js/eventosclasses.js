@@ -98,9 +98,25 @@ document.body.onkeyup = function(e)
 		audio.currentTime = 0
 		audio.play()
 	}
+
+	//lê as palavras
+	if(keyunicode == 51) //3
+	{
+		var nomeSom
+		var somLetra = []
+		for(var i = 0; i < tamanhoPalavraAtual(); i++)
+		{
+			nomeSom = "letra" + palavraAtual(i)
+			console.log(nomeSom)
+			somLetra[i] = document.getElementById(nomeSom)
+			console.log(somLetra[i])
+			setTimeout(tocarLetra,500*i,somLetra[i])
+		}
+	}
 }
 
 function tocarLetra(som)
 {
+	som.currentTime = 0
 	som.play()
 }

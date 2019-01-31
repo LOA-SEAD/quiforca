@@ -575,3 +575,61 @@ function numeroDeChances()
 {
 	return jogo.numChances
 }
+
+function vetorComPalavraAtual()
+{
+	var vetorAux = []
+	var counter = 0
+	for(var i = 0; i < jogo.palavraNaTela.innerHTML.length; i++)
+	{
+		if(jogo.palavraNaTela.innerHTML[i] != "&"){
+			if(jogo.palavraNaTela.innerHTML[i] != "_")
+			{
+				if(jogo.palavraNaTela.innerHTML[i] == "Ã" || jogo.palavraNaTela.innerHTML[i] == "Â" || jogo.palavraNaTela.innerHTML[i] == "Á"){
+					vetorAux[counter++] = "A"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "É" || jogo.palavraNaTela.innerHTML[i] == "Ê"){
+					vetorAux[counter++] = "E"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "Í"){
+					vetorAux[counter++] = "I"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "Ó" || jogo.palavraNaTela.innerHTML[i] == "Õ" || jogo.palavraNaTela.innerHTML[i] == "Ô"){
+					vetorAux[counter++] = "O"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "Ú"){
+					vetorAux[counter++] = "U"
+				}
+				else if(jogo.palavraNaTela.innerHTML[i] == "Ç"){
+					vetorAux[counter++] = "C"
+				}
+				else
+				{
+					if(jogo.palavraNaTela.innerHTML[i] != " "){
+						vetorAux[counter++] = jogo.palavraNaTela.innerHTML[i]
+					}
+				}
+			}
+			else
+			{
+				vetorAux[counter++] = "1"
+			}
+		}
+		else
+		{
+			vetorAux[counter++] = "0"
+			i+=6
+		}
+	}
+	return vetorAux
+}
+
+function palavraAtual(_posicao)
+{
+	return vetorComPalavraAtual()[_posicao]
+}
+
+function tamanhoPalavraAtual()
+{
+	return vetorComPalavraAtual().length
+}
