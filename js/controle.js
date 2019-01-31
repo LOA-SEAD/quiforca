@@ -255,17 +255,31 @@ function criarCamadaVitoria()
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
 			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-			destruirCamadaDerrota();
+			destruirCamadaVitoria();
 			destruirCamadaJogo();
 			//salvaPontuacao(jogo.nome, pontos);
 			criarCamadaMenu();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
 
+	document.addEventListener("keyup", proximaFase);
+}
+
+function proximaFase(e)
+{
+	e.preventDefault();
+
+	if(e.keycode == 32 || e.which == 32 || e.charcode == 32)
+	{
+		sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+		destruirCamadaVitoria();
+		criarCamadaJogo();
+	}
 }
 
 function destruirCamadaVitoria()
 {
+	document.removeEventListener("keyup", proximaFase);
 	$("#camadaVitoria").remove();
 }
 
@@ -312,10 +326,10 @@ function criarCamadaFimdeJogo()
 	})
 	.appendTo(el);
 
-	document.addEventListener("keyup", FimdeJogoMenu);
+	document.addEventListener("keyup", fimdeJogoMenu);
 }
 
-function FimdeJogoMenu(e){
+function fimdeJogoMenu(e){
 	e.preventDefault();
 
 	if(e.keyCode == 32)
@@ -330,7 +344,7 @@ function FimdeJogoMenu(e){
 function destruirCamadaFimdeJogo()
 {
 	$("#camadaFimdeJogo").remove();
-	document.removeEventListener("keyup", FimdeJogoMenu);
+	document.removeEventListener("keyup", fimdeJogoMenu);
 }
 
 function criarCamadaDerrota()
@@ -395,12 +409,24 @@ function criarCamadaDerrota()
 		}
 	).appendTo($("#botoesFimDeJogo"));
 
+	document.addEventListener("keyup", derrotaMenu);
+}
 
-	
+function derrotaMenu(e){
+	e.preventDefault();
+
+	if(e.keycode == 32 || e.charcode == 32 || e.which == 32)
+	{
+		sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+		destruirCamadaDerrota();
+		destruirCamadaJogo();
+		criarCamadaMenu();	
+	}
 }
 
 function destruirCamadaDerrota()
 {
+	document.removeEventListener("keyup", derrotaMenu);
 	$("#camadaDerrota").remove();
 }
 

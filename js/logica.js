@@ -44,7 +44,7 @@ function iniciar()
 	jogo.dicaNaTela = document.createElement("div");
 	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
 	jogo.dicaNaTela.setAttribute("tabIndex", "1");
-	jogo.dicaNaTela.setAttribute("role" , "textbox");
+	jogo.dicaNaTela.setAttribute("role" , "button");
 
 	$('<p>').attr('id', 'pontosNaTela')
 		.html('Pontos: ' + Math.round(jogo.pontos))
@@ -64,7 +64,7 @@ function iniciar()
 	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
 	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
-	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "(" + jogo.palavraSorteada.length + " letras)");
+	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "(" + jogo.tamanhoPalavra.length + " letras)");
 	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
 
