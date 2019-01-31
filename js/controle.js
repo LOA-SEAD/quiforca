@@ -221,32 +221,40 @@ function criarCamadaVitoria()
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Você acertou ! </h2> <br> A palavra era: " + jogo.palavraSorteada;
+
+
+	jogo.imgBonecoVitoria = document.createElement("div");
+	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
+
+	jogo.botoesVitoria = document.createElement("div");
+	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
+
+
 	
 	$("#camadaVitoria").append(jogo.palavraNaTela);
+	$("#camadaVitoria").append(jogo.imgBonecoVitoria);
+	$("#camadaVitoria").append(jogo.botoesVitoria);
 
-	$('<div>').css({
-			'position': 'absolute',
-			'width': '800px',
-			'height': '600px',
-			'background-image': 'url("imgs/vitoria.png")'})
-		.click(function(){
-			//if(jogo.bdTamanho != 0) {
-				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
-				destruirCamadaVitoria();
-				criarCamadaJogo();
-			/*}
-			else
-			{
-				sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-				destruirCamadaVitoria();
-				criarCamadaMenu();
-				iniciarNovoJogo();
-			}*/
+	$("<button>").attr("id", "btnProxPalavra").click(
+		function(){
+			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			destruirCamadaVitoria();
+			criarCamadaJogo();
+			//salvaPontuacao(jogo.nome, pontos);	
+		}
+	).appendTo($("#botoesTelaVitoria"));
 
 
-		})
-		.appendTo(el);
+	$("<button>").attr("id", "btnMenu").click(
+		function(){
+			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			destruirCamadaDerrota();
+			destruirCamadaJogo();
+			//salvaPontuacao(jogo.nome, pontos);
+			criarCamadaMenu();	
+		}
+	).appendTo($("#botoesTelaVitoria"));
 
 }
 
@@ -343,7 +351,7 @@ function criarCamadaDerrota()
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "A palavra correta é: " + jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Você errou :( </h2> A palavra correta é: " + jogo.palavraSorteada;
 	
 	jogo.botoes = document.createElement("div");
 	jogo.botoes.setAttribute("id", "botoesFimDeJogo");

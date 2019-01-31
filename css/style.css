@@ -34,13 +34,16 @@ body
 
 #camadaVitoria
 {
-	width: 800px;
-	height: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #camadaDerrota{
-	padding: 2rem;
-	text-align: center;
+	padding: 3rem 1rem 1rem 1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #camadaMenu
@@ -77,6 +80,7 @@ body
 {
 	width: 100%;
 	text-align: center;
+	margin: 0;
 	
 }
 
@@ -220,12 +224,12 @@ p
 
 #botoesFimDeJogo
 {
-	display: inline-grid;
+	display: inline-block;
 }
 
 #btnReiniciar
 {
-	margin: 0.5rem;
+	margin: 1rem;
 	width: 116px;
 	height: 65px;
 	border: none;
@@ -234,11 +238,20 @@ p
 
 #btnMenu
 {
-	margin: 0.5rem;
+	margin: 1rem;
 	width: 119px;
 	height: 70px;
 	border: none;
 	background-image: url("../imgs/btnCreditos.png");
+}
+
+#btnProxPalavra
+{
+	margin: 1rem;
+	width: 116px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/btnJogar.png");
 }
 
 #btnReiniciar:hover
@@ -248,6 +261,12 @@ p
 }
 
 #btnMenu:hover
+{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+#btnProxPalavra:hover
 {
 	transform: scale(1.1);
 	cursor: pointer;
@@ -278,7 +297,17 @@ p
 
 #imgBonecoDerrota
 {
-	
+	width: 280px;
+	height: 300px;
+	background-image: url("../imgs/bonecoDerrota.png");
+}
+
+#imgBonecoVitoria
+{
+	width: 250px;
+	height: 310px;
+	background-image: url("../imgs/imagem parabens.png");
+	margin: 2rem;
 }
 
 #palavraCerta
