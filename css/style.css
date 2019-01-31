@@ -34,12 +34,13 @@ body
 
 #camadaVitoria
 {
-	width: 800px;
-	height: 600px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #camadaDerrota{
-	padding: 3rem 2rem 2rem 2rem;
+	padding: 3rem 1rem 1rem 1rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -79,6 +80,7 @@ body
 {
 	width: 100%;
 	text-align: center;
+	margin: 0;
 	
 }
 
@@ -243,6 +245,15 @@ p
 	background-image: url("../imgs/btnCreditos.png");
 }
 
+#btnProxPalavra
+{
+	margin: 1rem;
+	width: 116px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/btnJogar.png");
+}
+
 #btnReiniciar:hover
 {
 	transform: scale(1.1);
@@ -250,6 +261,12 @@ p
 }
 
 #btnMenu:hover
+{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+#btnProxPalavra:hover
 {
 	transform: scale(1.1);
 	cursor: pointer;
@@ -283,6 +300,14 @@ p
 	width: 280px;
 	height: 300px;
 	background-image: url("../imgs/bonecoDerrota.png");
+}
+
+#imgBonecoVitoria
+{
+	width: 250px;
+	height: 310px;
+	background-image: url("../imgs/imagem parabens.png");
+	margin: 2rem;
 }
 
 #palavraCerta
