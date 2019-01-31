@@ -39,8 +39,10 @@ body
 }
 
 #camadaDerrota{
-	padding: 2rem;
-	text-align: center;
+	padding: 3rem 2rem 2rem 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 #camadaMenu
@@ -220,12 +222,12 @@ p
 
 #botoesFimDeJogo
 {
-	display: inline-grid;
+	display: inline-block;
 }
 
 #btnReiniciar
 {
-	margin: 0.5rem;
+	margin: 1rem;
 	width: 116px;
 	height: 65px;
 	border: none;
@@ -234,7 +236,7 @@ p
 
 #btnMenu
 {
-	margin: 0.5rem;
+	margin: 1rem;
 	width: 119px;
 	height: 70px;
 	border: none;
@@ -278,7 +280,9 @@ p
 
 #imgBonecoDerrota
 {
-	
+	width: 280px;
+	height: 300px;
+	background-image: url("../imgs/bonecoDerrota.png");
 }
 
 #palavraCerta
