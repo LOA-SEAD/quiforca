@@ -27,9 +27,15 @@ function criarCamadaMenu()
 	origemDerrota = 0
 	background.play()
 
+
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
 	$("#palco").append(el);
+
+	var imgMenu = document.createElement("div");
+	imgMenu.setAttribute("id", "imgMenu");
+	el.appendChild(imgMenu);
+
 
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoes");

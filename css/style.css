@@ -28,8 +28,11 @@ body
 	min-width: 600px;
 	padding: 0.5rem 0.5rem 0.5rem 2.5rem;
 	background-image: url("../imgs/novafolha.png");
-	background-size: cover;	
+	background-size: cover;
 	margin: 20px 70px 20px 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #camadaVitoria
@@ -48,14 +51,15 @@ body
 
 #camadaMenu
 {
-	position:absolute;
-	left:50%;		
-	top:50%;
-	margin-left: -400px;
-	margin-top: -300px;
-	width: 800px;
-	height: 600px;
-	background-image: url("../imgs/desenhotelainicial.png");	
+		
+}
+
+#imgMenu
+{
+	margin: 2rem auto;
+	background-image: url("../imgs/desenhotelainicial.png");
+	height: 478px;
+	width: 606px;
 }
 
 #camadaJogo
@@ -176,34 +180,41 @@ p
 /*Parte dos botoes fora do jogo*/
 .botao
 {
-	display: inline;
-	position: relative;
-	margin: 50px;
-	float: left;
-	cursor: pointer;
+	display: inline-block;
+	margin: 1rem;
 }
 
 #caixaBotoes
 {
-	position: relative;
-	width: 500px;
-	height: 120px;
-	left: 30%;
-	top: 65%;
+	text-align: center;
 }
 
 #btnJogar
 {
 	width: 117px;
 	height: 65px;
-	background-image: url("../imgs/btnJogar.png")
+	background-image: url("../imgs/btnJogar.png");
+	margin: 1.5rem;
+}
+
+#btnJogar:hover
+{
+	transform: scale(1.1);
+	cursor: pointer;
 }
 
 #btnCreditos
 {
 	width: 119px;
 	height: 69px;
-	background-image: url("../imgs/btnCreditos.png")
+	background-image: url("../imgs/btnCreditos.png");
+	margin: 1.5rem;
+}
+
+#btnCreditos:hover
+{
+	transform: scale(1.1);
+	cursor: pointer;
 }
 
 #btnRanking
