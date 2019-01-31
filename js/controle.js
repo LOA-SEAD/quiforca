@@ -331,16 +331,13 @@ function criarCamadaDerrota()
 	var faseId;
 	var pontos = jogo.pontos;
 	iniciarNovoJogo();
+	console.log(jogo.pontos);
 
-	$('<div>').attr('id', 'camadaDerrota')
-		.click(function(){
-			destruirCamadaDerrota();
-			destruirCamadaJogo();
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
-			//salvaPontuacao(jogo.nome, pontos);
-			criarCamadaMenu();
-		})
-		.appendTo($('#palco'));
+	$('<div>').attr('id', 'camadaDerrota').appendTo($('#palco'));
+
+		
+	jogo.imgBoneco = document.createElement("div");
+	jogo.imgBoneco.setAttribute("id", "imgBonecoDerrota");
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
@@ -348,16 +345,44 @@ function criarCamadaDerrota()
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	jogo.palavraNaTela.innerHTML = "A palavra correta é: " + jogo.palavraSorteada;
 	
+	jogo.botoes = document.createElement("div");
+	jogo.botoes.setAttribute("id", "botoesFimDeJogo");
+
+	jogo.jogadorPontos = document.createElement("p");
+	jogo.jogadorPontos.setAttribute("id", "jogadorPontos");
+	jogo.jogadorPontos.innerHTML = "Pontuação final: " + jogo.pontos + " pontos";
+
+
+	$("#camadaDerrota").append(jogo.imgBoneco);
 	$("#camadaDerrota").append(jogo.palavraNaTela);
+	$("#camadaDerrota").append(jogo.jogadorPontos);
+	$("#camadaDerrota").append(jogo.botoes);
 
-	$('<div>').css({
-			'position': 'absolute',
-			'width': '800px',
-			'height': '600px',
-			'background-image': 'url("imgs/game_over.png")'})
-		.appendTo($('#camadaDerrota'));
+	
+	//criando botoes clicáveis
+	
+	$("<button>").attr("id", "btnReiniciar").click(
+		function(){
+			destruirCamadaDerrota();
+			destruirCamadaJogo();
+			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			//salvaPontuacao(jogo.nome, pontos);
+			criarCamadaJogo();	
+		}
+	).appendTo($("#botoesFimDeJogo"));
+
+	$("<button>").attr("id", "btnMenu").click(
+		function(){
+			destruirCamadaDerrota();
+			destruirCamadaJogo();
+			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			//salvaPontuacao(jogo.nome, pontos);
+			criarCamadaMenu();	
+		}
+	).appendTo($("#botoesFimDeJogo"));
 
 
+	
 }
 
 function destruirCamadaDerrota()
