@@ -210,6 +210,7 @@ function criarCamadaVitoria()
 {
 	
 	var audio = document.getElementById("vitoria"); 
+	audio.currentTime = 0
 	setTimeout(function(){
 		audio.play();
 	}, 200);

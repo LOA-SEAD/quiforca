@@ -107,9 +107,7 @@ document.body.onkeyup = function(e)
 		for(var i = 0; i < tamanhoPalavraAtual(); i++)
 		{
 			nomeSom = "letra" + palavraAtual(i)
-			console.log(nomeSom)
 			somLetra[i] = document.getElementById(nomeSom)
-			console.log(somLetra[i])
 			setTimeout(tocarLetra,500*i,somLetra[i])
 		}
 	}

@@ -199,6 +199,7 @@ function fimDeJogo()
 //Funcao que recebe uma letra e verifica se numero de erros deve subir
 function verificarErro(_letra)
 {
+	var audio
 	var deuErro = true;
 	letraRepetida = false;
 
@@ -272,9 +273,12 @@ function verificarErro(_letra)
 	{
 		$("#falador").text("Letra Certa");
 
-		var audio = document.getElementById("letraCerta"); 
+		audio = document.getElementById("letraCerta"); 
 		audio.currentTime = 0
 		audio.play()
+		if(letraRepetida){
+			audio = document.getElementById("letraErrada"); 
+		}
 	}
 	if(deuErro)
 	{
@@ -284,11 +288,11 @@ function verificarErro(_letra)
 		atualizaNumChances();
 
 		if(letraRepetida){
-			var audio = document.getElementById("letraRepetida"); 
+			audio = document.getElementById("letraErrada"); 
 		}
 		else
 		{
-			var audio = document.getElementById("letraErrada"); 
+			audio = document.getElementById("letraErrada"); 
 		}
 
 		audio.play();
