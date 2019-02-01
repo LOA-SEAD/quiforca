@@ -44,6 +44,11 @@ function Linha(_linha)
 	document.getElementById("botoes").appendChild(linha);
 }
 
+//Variáveis de delays
+var delayAtalho1;
+var delayLetraAtalho1;
+var delayAtalho3;
+
 document.body.onkeyup = function(e)
 {
 	var counter = 0
@@ -66,55 +71,121 @@ document.body.onkeyup = function(e)
 		colocarLetraEmLetrasTentadas(String.fromCharCode(keyunicode-32));
 	}	
 	
-	//atalhos numéricos
+	//Variaveis para atalhos
+	var counter = 0;
+	//1 - Letras já lidas
+	var audioAtalho1 = document.getElementById("atalho1");
+	var nomeAtalho1;
+	var somLetra1 = [];
 
-	//lista de letras já clicadas 
+	//2 - Vidas restantes
+	var nomeAtalho2 = "vidas" + numeroDeChances();
+	var audioAtalho2 = document.getElementById(nomeAtalho2);
+
+	//3 - Palavra na tela
+	var nomeAtalho3;
+	var somLetra3 = [];
+
+	//Lista de letras já clicadas 
 	if(keyunicode == 49) //1
 	{
-		var nomeSom
-		var somLetra = []
-		var audio = document.getElementById("atalho1"); 
-		audio.currentTime = 0
-		audio.play()
-
-		setTimeout(function(){
-			for(var i = 1; i < tamanhoLetrasTentadas(); i++)
+		stopAtalho2();
+		stopAtalho3();
+		clearTimeout(delayAtalho1);
+		clearInterval(delayLetraAtalho1);
+		counter = 0;
+		audioAtalho1.currentTime = 0;
+		audioAtalho1.play();
+		for(var i = 1; i < tamanhoLetrasTentadas(); i++)
+		{
+			if(retornaLetrasTentadas(i))
 			{
-				if(retornaLetrasTentadas(i)){
-					nomeSom = "letra" + retornaLetrasTentadas(i)
-					somLetra[counter] = document.getElementById(nomeSom)
-					setTimeout(tocarLetra,500*counter,somLetra[counter])
-					counter++
+				nomeAtalho1 = "letra" + retornaLetrasTentadas(i);
+				somLetra1[counter] = document.getElementById(nomeAtalho1);
+				counter++;
+			}
+		}
+		counter = 0;
+		delayAtalho1 = setTimeout(function(){
+			delayLetraAtalho1 = setInterval(letras, 500);
+			function letras()
+			{
+				if(counter > tamanhoLetrasTentadas())
+				{
+					clearInterval(delayAtalho1);
+				}
+				else
+				{
+					somLetra1[counter].currentTime = 0;
+					somLetra1[counter].play();
+					counter++;
 				}
 			}
-		}, 2000)
+		}, 2000);
 	}
 
-	//quantas vidas ainda tem
+	//Quantas vidas ainda tem
 	if(keyunicode == 50) //2
 	{
-		var nomeSom = "vidas" + numeroDeChances()
-		var audio = document.getElementById(nomeSom); 
-		audio.currentTime = 0
-		audio.play()
+		stopAtalho1();
+		stopAtalho3();
+		nomeAtalho2 = "vidas" + numeroDeChances();
+		audioAtalho2 = document.getElementById(nomeAtalho2);
+		audioAtalho2.currentTime = 0;
+		audioAtalho2.play();
 	}
 
-	//lê as palavras
+	//Lê as palavras
 	if(keyunicode == 51) //3
 	{
-		var nomeSom
-		var somLetra = []
+		stopAtalho1();
+		stopAtalho2();
 		for(var i = 0; i < tamanhoPalavraAtual(); i++)
 		{
-			nomeSom = "letra" + palavraAtual(i)
-			somLetra[i] = document.getElementById(nomeSom)
-			setTimeout(tocarLetra,500*i,somLetra[i])
+			nomeAtalho3 = "letra" + palavraAtual(i);
+			somLetra3[i] = document.getElementById(nomeAtalho3);
+		}
+		counter = 0;
+		delayAtalho3 = setInterval(palavra, 500);
+		function palavra()
+		{
+			if(counter > tamanhoPalavraAtual())
+			{
+				clearInterval(delayAtalho3);
+			}
+			else
+			{
+				somLetra3[counter].currentTime = 0;
+				somLetra3[counter].play();
+				counter++;
+			}
 		}
 	}
-}
 
-function tocarLetra(som)
-{
-	som.currentTime = 0
-	som.play()
+	//Para todos os audios de atalho
+	if(keyunicode == 52)
+	{
+		stopAtalho1();
+		stopAtalho2();
+		stopAtalho3();
+	}
+
+	function stopAtalho1()
+	{
+		audioAtalho1.pause();
+		audioAtalho1.currentTime = 0
+		clearTimeout(delayAtalho1);
+		clearInterval(delayLetraAtalho1);
+	}
+
+	function stopAtalho2()
+	{
+		audioAtalho2.pause();
+		audioAtalho2.currentTime = 0;
+	}
+
+	function stopAtalho3()
+	{
+		clearInterval(delayAtalho3);
+	}
 }
