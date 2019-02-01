@@ -122,17 +122,17 @@ function update()
 		case 0:
 			//Fim de jogo: jogador perdeu
 			jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
-			aux = 5*Math.pow(0.8, jogo.erros);
-			jogo.pontosParciais = aux;
+			//aux = 5*Math.pow(0.8, jogo.erros);
+			//jogo.pontosParciais = aux;
 			destruirCamadaJogo();
 			criarCamadaDerrota();
 			break;
 		case 1:
 			var el = document.getElementById("camadaJogo");
 
-			aux = 5*Math.pow(0.8, jogo.erros);
-			jogo.pontosParciais = aux;
-			jogo.pontos = jogo.pontos + aux;
+			//aux = 5*Math.pow(0.8, jogo.erros);
+			//jogo.pontosParciais = aux;
+			jogo.pontos = jogo.pontos + 10 - jogo.erros;
 
 			$('<div>').attr({'id': 'palavraCerta',})
 				.appendTo(el);
@@ -145,9 +145,10 @@ function update()
 		case 2:
 			var el = document.getElementById("camadaJogo");
 
-			aux = 5*Math.pow(0.8, jogo.erros);
-			jogo.pontosParciais = aux;
-			jogo.pontos = jogo.pontos + aux;
+			//aux = 5*Math.pow(0.8, jogo.erros);
+			//jogo.pontosParciais = aux;
+			//jogo.pontos = jogo.pontos + aux;
+			jogo.pontos = jogo.pontos + 10 - jogo.erros;
 
 			$('<div>').attr({'id': 'palavraCerta',})
 				.appendTo(el);
@@ -166,31 +167,36 @@ function fimDeJogo()
 	var continua = false;
 	for(var i=0; i<jogo.palavraNaTela.innerHTML.length; i++)
 	{
+		//quando ainda faltam letras na palavra
 		if(jogo.palavraNaTela.innerHTML[i] == "_")
 		{
 			continua = true;
 		}
 	}
-	//if(jogo.aux == jogo.palavraNaTela.innerHTML)
 	if(!continua)
 	{
 		if(jogo.bdTamanho != 0)
 		{
+			//ainda tem palavras
 			return 1;
 		}
 		else
 		{
+			//acabaram as palavras
 			return 2;
 		}
 	}
 	else
 	{
+		//se faltam letras na palavra
 		if(jogo.erros >= 5)
 		{
+			//se morreu
 			return 0;
 		}
 		else
 		{
+			//se não morreu
 			return -1;
 		}
 	}
