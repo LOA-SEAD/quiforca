@@ -45,6 +45,7 @@ function iniciar()
 	jogo.dicaNaTela.setAttribute("role" , "button");
 
 	$('<p>').attr('id', 'pontosNaTela')
+		.attr('tabIndex', '5')
 		.html('Pontos: ' + Math.round(jogo.pontos))
 		.appendTo($('#camadaJogo'));
 
@@ -422,7 +423,7 @@ function atualizarPalavra()
 		{
 			//encontrar uma maneira de printar espaço
 			jogo.palavraNaTela.innerHTML += '\xa0';
-			ariaLabel += "espaço";
+			//ariaLabel += "espaço";
 		}
 		else if(jogo.achou)
 		{
@@ -432,12 +433,13 @@ function atualizarPalavra()
 		else
 		{
 			jogo.palavraNaTela.innerHTML += "_";
-			ariaLabel += "pin";
+			//ariaLabel += "pin";
 		}
 		ariaLabel += " ";
 		jogo.palavraNaTela.innerHTML += " ";
 
 	}
+	ariaLabel = '\xa0';
 	jogo.palavraNaTela.setAttribute("aria-label", ariaLabel);
 }
 
