@@ -62,6 +62,19 @@ function criarCamadaMenu()
 		ativarBotaoJogar();
 	}
 
+	//Cria botao de instruções e adiciona a caixa de botões
+	var botaoInstrucoes = document.createElement("div");
+	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
+	botaoInstrucoes.setAttribute("role" , "button");
+	botaoInstrucoes.setAttribute("aria-label" , "Instruções");
+	botaoInstrucoes.setAttribute("class" , "botao");
+	caixaBotoes.appendChild(botaoInstrucoes);
+
+	botaoInstrucoes.onclick = function()
+	{
+		ativarBotaoInstrucoes();
+	}
+
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
 	botaoCreditos.setAttribute("tabIndex" , "0");
@@ -80,6 +93,9 @@ function criarCamadaMenu()
 	{
 		ativarBotaoCreditos();
 	}
+
+
+
 	origemMenu = 1
 }
 
@@ -88,6 +104,13 @@ function ativarBotaoJogar()
 	destruirCamadaMenu();
 	criarCamadaJogo();
 }
+
+function ativarBotaoInstrucoes()
+{
+	destruirCamadaMenu();
+	criarCamadaInstrucoes();
+}
+
 function ativarBotaoCreditos()
 {
 	destruirCamadaMenu();
@@ -525,6 +548,24 @@ function formataData(strData)
 function destruirCamadaRanking()
 {
 	$("#camadaRanking").remove();
+}
+
+function criarCamadaInstrucoes()
+{
+
+	//criação camada de instruções
+	$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
+
+	//conteúdo instruções
+	jogo.instrucoes = document.createElement("p");
+	jogo.instrucoes.setAttribute("id", "instrucoesText");
+	jogo.instrucoes.innerHTML = "Instruções aqui";
+
+	//inserindo instrucoes a camada de instruções
+	$('#camadaInstrucoes').append(jogo.instrucoes);
+
+	
+
 }
 
 jogo.palco = new Palco();
