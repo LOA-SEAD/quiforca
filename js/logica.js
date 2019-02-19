@@ -14,7 +14,7 @@ function iniciar()
 
 	jogo.botaoVoltar = document.createElement("div");
 	jogo.botaoVoltar.setAttribute("id" , "btnVoltar");
-	jogo.botaoVoltar.setAttribute("tabIndex" , "0");
+	jogo.botaoVoltar.setAttribute("tabIndex" , "4");
 	jogo.botaoVoltar.setAttribute("role" , "button");
 	jogo.botaoVoltar.setAttribute("aria-label" , "Voltar");
 
@@ -32,8 +32,6 @@ function iniciar()
 		removerComandosEnterSpace();
 	}*/
 	
-	
-
 	jogo.falador = document.createElement("div");
 	jogo.falador.setAttribute("id", "falador");
 	jogo.falador.setAttribute("aria-live", "polite");
@@ -49,9 +47,6 @@ function iniciar()
 	$('<p>').attr('id', 'pontosNaTela')
 		.html('Pontos: ' + Math.round(jogo.pontos))
 		.appendTo($('#camadaJogo'));
-
-
-	
 
 	//Sorteio de uma nova palavra
 	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;	
@@ -88,7 +83,7 @@ function iniciar()
 	//Essa é a variavel que deve ser exibida na tela
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
-	jogo.palavraNaTela.setAttribute("tabIndex", "2");
+	jogo.palavraNaTela.setAttribute("tabIndex", "3");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	$("#camadaJogo").append(jogo.palavraNaTela);
 
@@ -448,23 +443,23 @@ function atualizarPalavra()
 
 function atualizaNumChances(){
 	jogo.numChances--;
-	atualizaLeituraBoneco();
+	//atualizaLeituraBoneco();
 }
 
-function atualizaLeituraBoneco(){
+/*function atualizaLeituraBoneco(){
 	if(jogo.numChances > 1)
 		jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
 	else
 		jogo.personagem.setAttribute("aria-label", "última chance");
-}
+}*/
 
 function colocarPersonagem()
 {
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
-	jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
-	jogo.personagem.setAttribute("tabindex", 3);
+	//jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
+	//jogo.personagem.setAttribute("tabindex", 3);
 	$("#row").append(jogo.personagem);
 
 
@@ -526,7 +521,7 @@ function keyDown(event)
 {
 	event.preventDefault();
 
-	switch(event.which)
+	/*switch(event.which)
 	{
 		case 13:
 		case 32:
@@ -545,7 +540,7 @@ function keyDown(event)
 			}
 			objetoBotao.blur();
 			break;
-	}
+	}*/
 }
 
 function retornaLetrasTentadas(_posicao)
