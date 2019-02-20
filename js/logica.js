@@ -586,6 +586,11 @@ function numeroDeChances()
 	return jogo.numChances
 }
 
+function numeroSorteado()
+{
+	return jogo.sorteio
+}
+
 function vetorComPalavraAtual()
 {
 	var vetorAux = []
