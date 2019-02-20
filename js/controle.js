@@ -7,8 +7,9 @@
  O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
  */
 
-var background
-background = document.getElementById("letraCerta"); 
+var background = document.createElement("AUDIO")
+background.setAttribute("src", "audio/palavraCerta.mp3");
+//background = document.getElementById("letraCerta"); 
 //background = document.getElementById("background"); 
 //background.loop = true
 var origemMenu
@@ -26,7 +27,6 @@ function criarCamadaMenu()
 	}
 	origemDerrota = 0
 	background.play()
-
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
@@ -231,8 +231,9 @@ function destruirCamadaCreditos()
 
 function criarCamadaVitoria()
 {
-	
-	var audio = document.getElementById("vitoria"); 
+	var audio = document.createElement("AUDIO");
+	audio.setAttribute("src", "audio/vitoria2.ogg");
+	//var audio = document.getElementById("vitoria"); 
 	audio.currentTime = 0
 	setTimeout(function(){
 		audio.play();
@@ -309,7 +310,9 @@ function destruirCamadaVitoria()
 
 function criarCamadaFimdeJogo()
 {
-	var audio = document.getElementById("vitoria"); 
+	var audio = createElement("AUDIO");
+	audio.setAttribute("src", "audio/vitoria1.ogg");
+	//var audio = document.getElementById("vitoria"); 
 	setTimeout(function(){
 		audio.play();
 	}, 200);
@@ -373,7 +376,9 @@ function destruirCamadaFimdeJogo()
 
 function criarCamadaDerrota()
 {
-	var audio = document.getElementById("derrota"); 
+	var audio = document.createElement("AUDIO");
+	audio.setAttribute("src", "audio/derrota1.ogg");
+	//var audio = document.getElementById("derrota"); 
 	setTimeout(function(){
 		audio.play();
 	}, 400);
