@@ -135,7 +135,7 @@ function criarCamadaJogo()
 	el.setAttribute("id", "camadaJogo");
 	$("#palco").append(el);
 
-	var imgLogo = document.createElement("img");
+	var imgLogo = document.createElement("div");
 	imgLogo.setAttribute("id", "imgLogo");
 	el.appendChild(imgLogo);
 

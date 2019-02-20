@@ -67,8 +67,7 @@ body
 	border-width: 0px;*/
 	height: 80px;
 	width: 178px;
-	top: 30%;
-	left: 10%;
+	float: left;
 }
 
 #camadaJogo
