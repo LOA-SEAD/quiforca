@@ -559,7 +559,19 @@ function criarCamadaInstrucoes()
 	//conteúdo instruções
 	jogo.instrucoes = document.createElement("p");
 	jogo.instrucoes.setAttribute("id", "instrucoesText");
-	jogo.instrucoes.innerHTML = "Instruções aqui";
+	jogo.instrucoes.innerHTML = 
+	"Escape da forca acertando todos os desafios! <br><br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
+	 "Cada letra que você acerta é colocada na palavra. <br>"+
+	 "A cada vez que você erra, perde uma parte sua para a forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
+	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
+	 "<br>Você pode jogar usando o teclado da tela ou o seu próprio teclado.<br><br>"+
+	 "Atalhos sonoros:<br>"+
+	 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>"+
+	 "1 - Ouça a dica<br>"+
+	 "2 - Ouça o que você descobriu da palavra até agora<br>"+
+	 "3 - Saiba quantas vidas você ainda tem<br>"+
+	 "4 - Relembre as letras que você já escolheu<br>"+
+	 "5 - Saiba sua pontuação atual";
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);
