@@ -47,10 +47,10 @@ body
 	align-items: center;
 }
 
-#camadaMenu
+/*#camadaMenu
 {
 		
-}
+}*/
 
 #imgMenu
 {
@@ -58,6 +58,17 @@ body
 	background-image: url("../imgs/desenhotelainicial.png");
 	height: 478px;
 	width: 606px;
+}
+
+#imgLogo
+{
+	background-image: url("../imgs/logoforca.png");
+	/*border: none;
+	border-width: 0px;*/
+	height: 80px;
+	width: 178px;
+	top: 30%;
+	left: 10%;
 }
 
 #camadaJogo
@@ -70,10 +81,10 @@ body
 	position: relative;
 	width: 500px;
 	height: 500px;
-	left: 50%;
-	top: 50%;
-	margin-left: -250px;
-	margin-top: -250px;
+	/*left: 10%;
+	top: 50%;*/
+	/*margin-left: -250px;	
+	margin-top: -250px;*/
 	text-align: center;
 }
 

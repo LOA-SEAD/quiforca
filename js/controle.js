@@ -135,6 +135,10 @@ function criarCamadaJogo()
 	el.setAttribute("id", "camadaJogo");
 	$("#palco").append(el);
 
+	var imgLogo = document.createElement("img");
+	imgLogo.setAttribute("id", "imgLogo");
+	el.appendChild(imgLogo);
+
 	iniciar();
 }
 
@@ -413,7 +417,6 @@ function criarCamadaDerrota()
 	$("#camadaDerrota").append(jogo.jogadorPontos);
 	$("#camadaDerrota").append(jogo.botoes);
 
-	
 	//criando botoes clicáveis
 	
 	$("<button>").attr("id", "btnReiniciar").click(
