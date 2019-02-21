@@ -653,3 +653,8 @@ function tamanhoPalavraSemEspaco()
 {
 	return jogo.tamanhoPalavra.length
 }
+
+function pontuacao()
+{
+	return jogo.pontos
+}
