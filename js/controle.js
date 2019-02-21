@@ -7,18 +7,24 @@
  O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
  */
 
-var background = document.createElement("AUDIO")
+var background = document.createElement("AUDIO");
 background.setAttribute("src", "audio/palavraCerta.mp3");
+
+var audioTeclas = document.createElement("AUDIO");
+audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
 //background = document.getElementById("letraCerta"); 
 //background = document.getElementById("background"); 
 //background.loop = true
-var origemMenu
-var origemDerrota
-var opcao = 0;
+var origemMenu;
+var origemDerrota;
+var opcao;
+
+
 
 function criarCamadaMenu()
 {	
 
+	opcao = 0;
 
 	if(origemDerrota){
 		background.currentTime = 0
@@ -30,6 +36,7 @@ function criarCamadaMenu()
 	el.setAttribute("id", "camadaMenu");
 	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
+
 
 	var imgMenu = document.createElement("div");
 	imgMenu.setAttribute("id", "imgMenu");
@@ -48,6 +55,8 @@ function criarCamadaMenu()
 	botaoJogar.setAttribute("aria-label" , "Jogar");
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
+
+	inicializaFocus();
 
 	/*
 	botaoJogar.onfocus = function() {
@@ -84,12 +93,6 @@ function criarCamadaMenu()
 	botaoCreditos.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoCreditos);
 
-	/*botaoCreditos.onfocus = function() {
-		adicionarComandosEnterSpace(ativarBotaoCreditos, botaoCreditos);
-	}
-	botaoCreditos.onblur = function() {
-		removerComandosEnterSpace();
-	}*/
 
 	botaoCreditos.onclick = function()
 	{
@@ -98,6 +101,7 @@ function criarCamadaMenu()
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
+		console.log(opcao);
 	
 		switch (opcao){
 			case 0:
@@ -607,21 +611,40 @@ function selecionaOpcao(e)
 
 	switch(e.keyCode){
 		case 13:
-			if(opcao == 0)
+			if(opcao == 0){
 				ativarBotaoJogar();
-			else if(opcao == 1)
+				opcao = -1;
+			}
+			else if(opcao == 1){
 				ativarBotaoInstrucoes();
+				opcao = -1;
+			}
+			else if(opcao == 2){
+				ativarBotaoCreditos();
+				opcao = -1;
+			}
 		break;
 		case 37:
-			if(opcao > 0)
-			opcao--;
+			if(opcao > 0){
+				audioTeclas.currentTime = 0;
+				audioTeclas.play();
+				opcao--;
+			}
 		break;
 
 		case 39:
-			if(opcao < 2)
-			opcao++;
+			if(opcao < 2){
+				audioTeclas.currentTime = 0;
+				audioTeclas.play();
+				opcao++;
+			}
 		break;
 	}
+}
+
+function inicializaFocus(){
+	document.getElementById("camadaMenu").focus();
+	document.getElementById("btnJogar").focus();
 }
 
 jogo.palco = new Palco();

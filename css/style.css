@@ -48,10 +48,10 @@ body
 	align-items: center;
 }
 
-/*#camadaMenu
+#camadaMenu
 {
-		
-}*/
+	width: 100%;	
+}
 
 #imgMenu
 {

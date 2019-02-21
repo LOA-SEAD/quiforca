@@ -535,7 +535,7 @@ function keyDown(event)
 		case 32:
 			funcaoBotao();
 			break;
-		case 37:
+		case 37:		
 
 			var jobj = $(objetoBotao);
 			if(event.shiftKey)
