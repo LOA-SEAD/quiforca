@@ -379,9 +379,10 @@ function destruirCamadaVitoria()
 
 function criarCamadaFimdeJogo()
 {
-	var audio = createElement("AUDIO");
+	var audio = document.createElement("AUDIO");
 	audio.setAttribute("src", "audio/vitoria1.ogg");
 	//var audio = document.getElementById("vitoria"); 
+	audio.currentTime = 0;
 	setTimeout(function(){
 		audio.play();
 	}, 200);
@@ -389,9 +390,9 @@ function criarCamadaFimdeJogo()
 	var fase;
 	var faseId;
 	var el = $('<div>').attr("id", "camadaFimdeJogo").appendTo($("#palco"));
-	$('<p>').attr('id', 'pontosNaTela')
+	/*$('<p>').attr('id', 'pontosNaTela')
 		.html('Pontos: ' + parseInt(jogo.pontos))
-		.appendTo($('#camadaFimdeJogo'));
+		.appendTo($('#camadaFimdeJogo'));*/
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
@@ -399,8 +400,16 @@ function criarCamadaFimdeJogo()
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
 
+	jogo.imgBonecoVitoria = document.createElement("div");
+	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
+
+	jogo.botoesVitoria = document.createElement("div");
+	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
+
 	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
-	
+	$("#camadaFimdeJogo").append(jogo.imgBonecoVitoria);
+	$("#camadaFimdeJogo").append(jogo.botoesVitoria);
+
 	jogo.fimdeJogo = document.createElement("p");
 	jogo.fimdeJogo.setAttribute("id", "fimdeJogo");
 	jogo.fimdeJogo.setAttribute("tabIndex", "3");
@@ -408,8 +417,17 @@ function criarCamadaFimdeJogo()
 	jogo.fimdeJogo.innerHTML = "Tela de Fim de Jogo"
 	$("#camadaFimdeJogo").append(jogo.fimdeJogo);
 
+	$("<button>").attr("id", "btnMenu").click(
+		function(){
+			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			destruirCamadaFimdeJogo();
+			//salvaPontuacao(jogo.nome, pontos);
+			criarCamadaMenu();
+			iniciarNovoJogo();	
+		}
+	).appendTo($("#botoesTelaVitoria"));
 
-	$('<div>').css({
+	/*$('<div>').css({
 		'position': 'absolute',
 		'width': '800px',
 		'height': '600px',
@@ -420,7 +438,7 @@ function criarCamadaFimdeJogo()
 			criarCamadaMenu();
 			iniciarNovoJogo();
 	})
-	.appendTo(el);
+	.appendTo(el);*/
 
 	document.addEventListener("keyup", fimdeJogoMenu);
 }
