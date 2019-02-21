@@ -22,6 +22,7 @@ body
 	height:24px;
 	cursor: pointer;
 }
+
 #palco
 {
 	min-height: 100%;
@@ -201,6 +202,11 @@ p
 	cursor: pointer;
 }
 
+#btnJogar:focus
+{
+	transform: scale(1.1);
+}
+
 #btnInstrucoes
 {
 	width: 117px;
@@ -210,6 +216,12 @@ p
 }
 
 #btnInstrucoes:hover
+{
+	transform: scale(1.1);
+	cursor: pointer;
+}
+
+#btnInstrucoes:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;
@@ -226,7 +238,11 @@ p
 #btnCreditos:hover
 {
 	transform: scale(1.1);
-	cursor: pointer;
+}
+
+#btnCreditos:focus
+{
+	transform: scale(1.1);
 }
 
 #btnRanking

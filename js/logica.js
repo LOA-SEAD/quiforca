@@ -523,7 +523,7 @@ function keyDown(event)
 {
 	event.preventDefault();
 
-	/*switch(event.which)
+	switch(event.which)
 	{
 		case 13:
 		case 32:
@@ -542,7 +542,7 @@ function keyDown(event)
 			}
 			objetoBotao.blur();
 			break;
-	}*/
+	}	
 }
 
 function retornaLetrasTentadas(_posicao)

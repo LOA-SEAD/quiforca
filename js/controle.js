@@ -13,13 +13,11 @@ background = document.getElementById("letraCerta");
 //background.loop = true
 var origemMenu
 var origemDerrota
+var opcao = 0;
 
 function criarCamadaMenu()
-{
-	$(document).keydown(function (e){
-		if(e.keyCode == 32 || e.which == 32 || e.charcode == 32)
-			return false;
-	})
+{	
+
 
 	if(origemDerrota){
 		background.currentTime = 0
@@ -30,6 +28,7 @@ function criarCamadaMenu()
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
+	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
 
 	var imgMenu = document.createElement("div");
@@ -50,8 +49,9 @@ function criarCamadaMenu()
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
-	/*botaoJogar.onfocus = function() {
-		adicionarComandosEnterSpace(ativarBotaoJogar, botaoJogar);
+	/*
+	botaoJogar.onfocus = function() {
+		console.log("focado");
 	}
 	botaoJogar.onblur = function() {
 		removerComandosEnterSpace();
@@ -65,6 +65,7 @@ function criarCamadaMenu()
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
 	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
+	botaoInstrucoes.setAttribute("tabIndex" , "2");
 	botaoInstrucoes.setAttribute("role" , "button");
 	botaoInstrucoes.setAttribute("aria-label" , "Instruções");
 	botaoInstrucoes.setAttribute("class" , "botao");
@@ -77,24 +78,39 @@ function criarCamadaMenu()
 
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
-	botaoCreditos.setAttribute("tabIndex" , "0");
+	botaoCreditos.setAttribute("tabIndex" , "3");
 	botaoCreditos.setAttribute("role" , "button");
 	botaoCreditos.setAttribute("aria-label" , "Créditos");
 	botaoCreditos.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoCreditos);
 
-	botaoCreditos.onfocus = function() {
+	/*botaoCreditos.onfocus = function() {
 		adicionarComandosEnterSpace(ativarBotaoCreditos, botaoCreditos);
 	}
 	botaoCreditos.onblur = function() {
 		removerComandosEnterSpace();
-	}
+	}*/
+
 	botaoCreditos.onclick = function()
 	{
 		ativarBotaoCreditos();
 	}
 
-
+	$("#camadaMenu").keydown(function (e){
+		selecionaOpcao(e);	
+	
+		switch (opcao){
+			case 0:
+				document.getElementById("btnJogar").focus();
+				break;
+			case 1:
+				document.getElementById("btnInstrucoes").focus();
+				break;
+			case 2:
+				document.getElementById("btnCreditos").focus();
+				break;
+		}
+	})
 
 	origemMenu = 1
 }
@@ -562,10 +578,30 @@ function criarCamadaInstrucoes()
 	jogo.instrucoes.innerHTML = "Instruções aqui";
 
 	//inserindo instrucoes a camada de instruções
-	$('#camadaInstrucoes').append(jogo.instrucoes);
+	$('#camadaInstrucoes').append(jogo.instrucoes);	
 
-	
+}
 
+function selecionaOpcao(e)
+{
+
+	switch(e.keyCode){
+		case 13:
+			if(opcao == 0)
+				ativarBotaoJogar();
+			else if(opcao == 1)
+				ativarBotaoInstrucoes();
+		break;
+		case 37:
+			if(opcao > 0)
+			opcao--;
+		break;
+
+		case 39:
+			if(opcao < 2)
+			opcao++;
+		break;
+	}
 }
 
 jogo.palco = new Palco();
