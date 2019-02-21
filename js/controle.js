@@ -65,10 +65,10 @@ function criarCamadaMenu()
 	botaoJogar.onblur = function() {
 		removerComandosEnterSpace();
 	}*/
-	
 	botaoJogar.onclick = function()
 	{
 		ativarBotaoJogar();
+		removerComandosEnterSpace();
 	}
 
 	//Cria botao de instruções e adiciona a caixa de botões
@@ -80,11 +80,19 @@ function criarCamadaMenu()
 	botaoInstrucoes.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoInstrucoes);
 
+	botaoInstrucoes.onfocus = function() {
+		adicionarComandosEnterSpace(ativarBotaoInstrucoes, botaoInstrucoes);
+	}
+	botaoInstrucoes.onblur = function() {
+		removerComandosEnterSpace();
+	}
 	botaoInstrucoes.onclick = function()
 	{
 		ativarBotaoInstrucoes();
+		removerComandosEnterSpace();
 	}
 
+	//Cria botao de créditos na caixa de botoes
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
 	botaoCreditos.setAttribute("tabIndex" , "3");
@@ -97,6 +105,7 @@ function criarCamadaMenu()
 	botaoCreditos.onclick = function()
 	{
 		ativarBotaoCreditos();
+		removerComandosEnterSpace();
 	}
 
 	inicializaFocus();
@@ -169,7 +178,6 @@ function ativarProxPalavra()
 
 function destruirCamadaMenu()
 {
-
 	$("#camadaMenu").remove();
 }
 
