@@ -21,15 +21,17 @@ function iniciar()
 	jogo.linha = document.createElement("div");
 	jogo.linha.setAttribute("id", "row");
 
+	/*
 	jogo.botaoVoltar.onfocus = function() {
 		adicionarComandosEnterSpace(ativarBotaoVoltar, jogo.botaoVoltar);
 	}
 	jogo.botaoVoltar.onblur = function() {
 		removerComandosEnterSpace();
 	}
+	*/
+	
 	jogo.botaoVoltar.onclick = function() {
 		ativarBotaoVoltar();
-		removerComandosEnterSpace();
 	}
 	
 	jogo.falador = document.createElement("div");
@@ -510,7 +512,7 @@ function ativarBotaoVoltar ()
 	iniciarNovoJogo();
 	criarCamadaMenu();
 }
-
+/*
 function adicionarComandosEnterSpace(funcao, objBotao)
 {
 	funcaoBotao = funcao;
@@ -524,9 +526,10 @@ function removerComandosEnterSpace()
 	objetoBotao = null;
 	document.removeEventListener("keyup", keyUp);
 }
-
+*/
 function keyUp(event)
 {
+	/*
 	event.preventDefault();
 
 	switch(event.which)
@@ -548,7 +551,8 @@ function keyUp(event)
 			}
 			objetoBotao.blur();
 			break;
-	}	
+	}
+	*/	
 }
 
 function retornaLetrasTentadas(_posicao)

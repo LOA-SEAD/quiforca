@@ -58,13 +58,7 @@ function criarCamadaMenu()
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
-	/*
-	botaoJogar.onfocus = function() {
-		console.log("focado");
-	}
-	botaoJogar.onblur = function() {
-		removerComandosEnterSpace();
-	}*/
+
 	botaoJogar.onclick = function()
 	{
 		ativarBotaoJogar();
@@ -80,12 +74,7 @@ function criarCamadaMenu()
 	botaoInstrucoes.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoInstrucoes);
 
-	botaoInstrucoes.onfocus = function() {
-		adicionarComandosEnterSpace(ativarBotaoInstrucoes, botaoInstrucoes);
-	}
-	botaoInstrucoes.onblur = function() {
-		removerComandosEnterSpace();
-	}
+	
 	botaoInstrucoes.onclick = function()
 	{
 		ativarBotaoInstrucoes();
@@ -105,7 +94,6 @@ function criarCamadaMenu()
 	botaoCreditos.onclick = function()
 	{
 		ativarBotaoCreditos();
-		removerComandosEnterSpace();
 	}
 
 	inicializaFocus();
