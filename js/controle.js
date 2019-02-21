@@ -7,8 +7,9 @@
  O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
  */
 
-var background
-background = document.getElementById("letraCerta"); 
+var background = document.createElement("AUDIO")
+background.setAttribute("src", "audio/palavraCerta.mp3");
+//background = document.getElementById("letraCerta"); 
 //background = document.getElementById("background"); 
 //background.loop = true
 var origemMenu
@@ -24,7 +25,6 @@ function criarCamadaMenu()
 	}
 	origemDerrota = 0
 	background.play()
-
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
@@ -151,6 +151,10 @@ function criarCamadaJogo()
 	el.setAttribute("id", "camadaJogo");
 	$("#palco").append(el);
 
+	var imgLogo = document.createElement("div");
+	imgLogo.setAttribute("id", "imgLogo");
+	el.appendChild(imgLogo);
+
 	iniciar();
 }
 
@@ -247,8 +251,9 @@ function destruirCamadaCreditos()
 
 function criarCamadaVitoria()
 {
-	
-	var audio = document.getElementById("vitoria"); 
+	var audio = document.createElement("AUDIO");
+	audio.setAttribute("src", "audio/vitoria2.ogg");
+	//var audio = document.getElementById("vitoria"); 
 	audio.currentTime = 0
 	setTimeout(function(){
 		audio.play();
@@ -325,7 +330,9 @@ function destruirCamadaVitoria()
 
 function criarCamadaFimdeJogo()
 {
-	var audio = document.getElementById("vitoria"); 
+	var audio = createElement("AUDIO");
+	audio.setAttribute("src", "audio/vitoria1.ogg");
+	//var audio = document.getElementById("vitoria"); 
 	setTimeout(function(){
 		audio.play();
 	}, 200);
@@ -389,7 +396,9 @@ function destruirCamadaFimdeJogo()
 
 function criarCamadaDerrota()
 {
-	var audio = document.getElementById("derrota"); 
+	var audio = document.createElement("AUDIO");
+	audio.setAttribute("src", "audio/derrota1.ogg");
+	//var audio = document.getElementById("derrota"); 
 	setTimeout(function(){
 		audio.play();
 	}, 400);
@@ -424,7 +433,6 @@ function criarCamadaDerrota()
 	$("#camadaDerrota").append(jogo.jogadorPontos);
 	$("#camadaDerrota").append(jogo.botoes);
 
-	
 	//criando botoes clicáveis
 	
 	$("<button>").attr("id", "btnReiniciar").click(
@@ -575,7 +583,19 @@ function criarCamadaInstrucoes()
 	//conteúdo instruções
 	jogo.instrucoes = document.createElement("p");
 	jogo.instrucoes.setAttribute("id", "instrucoesText");
-	jogo.instrucoes.innerHTML = "Instruções aqui";
+	jogo.instrucoes.innerHTML = 
+	"Escape da forca acertando todos os desafios! <br><br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
+	 "Cada letra que você acerta é colocada na palavra. <br>"+
+	 "A cada vez que você erra, perde uma parte sua para a forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
+	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
+	 "<br>Você pode jogar usando o teclado da tela ou o seu próprio teclado.<br><br>"+
+	 "Atalhos sonoros:<br>"+
+	 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>"+
+	 "1 - Ouça a dica<br>"+
+	 "2 - Ouça o que você descobriu da palavra até agora<br>"+
+	 "3 - Saiba quantas vidas você ainda tem<br>"+
+	 "4 - Relembre as letras que você já escolheu<br>"+
+	 "5 - Saiba sua pontuação atual";
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	

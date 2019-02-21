@@ -275,11 +275,15 @@ function verificarErro(_letra)
 		$("#falador").text("Letra Certa");
 
 		if(letraRepetida){
-			var audio = document.getElementById("letraRepetida"); 
+			var audio = document.createElement("AUDIO");
+			audio.setAttribute("src", "audio/tecla_indisponível2.ogg")
+			//var audio = document.getElementById("letraRepetida"); 
 		}
 		else
 		{
-			var audio = document.getElementById("letraCerta"); 
+			var audio = document.createElement("AUDIO");
+			audio.setAttribute("src", "audio/acerta_letra1.ogg");
+			//var audio = document.getElementById("letraCerta"); 
 		}
 		audio.currentTime = 0
 		audio.play()
@@ -291,7 +295,9 @@ function verificarErro(_letra)
 		mudarPersonagem();
 		atualizaNumChances();
 
-		var audio = document.getElementById("letraErrada"); 
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/enforcamento1.ogg");
+		//var audio = document.getElementById("letraErrada"); 
 		audio.currentTime = 0
 		audio.play();
 	}
@@ -529,7 +535,7 @@ function keyDown(event)
 		case 32:
 			funcaoBotao();
 			break;
-		case 9:
+		case 37:
 
 			var jobj = $(objetoBotao);
 			if(event.shiftKey)
@@ -578,6 +584,11 @@ function tamanhoLetrasTentadas()
 function numeroDeChances()
 {
 	return jogo.numChances
+}
+
+function numeroSorteado()
+{
+	return jogo.sorteio
 }
 
 function vetorComPalavraAtual()
