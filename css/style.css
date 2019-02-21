@@ -46,6 +46,7 @@ body
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	width: 100%;
 }
 
 #camadaMenu
@@ -303,19 +304,19 @@ p
 	background-image: url("../imgs/btnJogar.png");
 }
 
-#btnReiniciar:hover
+#btnReiniciar:hover, #btnReiniciar:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;
 }
 
-#btnMenu:hover
+#btnMenu:hover, #btnMenu:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;
 }
 
-#btnProxPalavra:hover
+#btnProxPalavra:hover, #btnProxPalavra:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;
