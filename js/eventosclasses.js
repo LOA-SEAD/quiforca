@@ -162,33 +162,12 @@ document.body.onkeyup = function(e)
 			}, 300);
 			espera = 1300
 		}
-
 		delayAtalho1 = setTimeout(function(){
-<<<<<<< HEAD
-			var nomeAtalho3 = "audio/r" + numeroSorteado() + ".mp3"
-			audioAtalho5.setAttribute("src", nomeAtalho3)
-			audioAtalho5.currentTime = 0
-			audioAtalho5.play()
+			var nomeAtalho1 = "audio/r" + numeroSorteado() + ".mp3"
+			audioAtalho1.setAttribute("src", nomeAtalho1)
+			audioAtalho1.currentTime = 0
+			audioAtalho1.play()
 		}, espera);
-=======
-			var nomeAtalho1 = "audio/r" + numeroSorteado() + ".mp3";
-			audioAtalho1.setAttribute("src", nomeAtalho1);
-			audioAtalho1.currentTime = 0;
-			audioAtalho1.play();
-
-			var dezena = tamanhoPalavraAtual()%100;
-			var unidade = dezena%10;
-			dezena = dezena - unidade;
-		}, 1300);
->>>>>>> 3efe4ffa16aadf843aeee3f3d1d81f377bb1af2d
-		
-
-
-
-		/*nomeAtalho1 = "audio/r" + numeroSorteado() + ".mp3";
-		audioAtalho1.setAttribute("src", nomeAtalho1);
-		audioAtalho1.currentTime = 0;
-		audioAtalho1.play();*/
 	}
 
 	//Lê o status da palavra
