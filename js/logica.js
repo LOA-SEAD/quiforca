@@ -21,16 +21,16 @@ function iniciar()
 	jogo.linha = document.createElement("div");
 	jogo.linha.setAttribute("id", "row");
 
-	jogo.botaoVoltar.onclick = function() {
-		ativarBotaoVoltar();
-	}
-	
-	/*jogo.botaoVoltar.onfocus = function() {
+	jogo.botaoVoltar.onfocus = function() {
 		adicionarComandosEnterSpace(ativarBotaoVoltar, jogo.botaoVoltar);
 	}
 	jogo.botaoVoltar.onblur = function() {
 		removerComandosEnterSpace();
-	}*/
+	}
+	jogo.botaoVoltar.onclick = function() {
+		ativarBotaoVoltar();
+		removerComandosEnterSpace();
+	}
 	
 	jogo.falador = document.createElement("div");
 	jogo.falador.setAttribute("id", "falador");
@@ -511,30 +511,31 @@ function ativarBotaoVoltar ()
 	criarCamadaMenu();
 }
 
-/*function adicionarComandosEnterSpace(funcao, objBotao)
+function adicionarComandosEnterSpace(funcao, objBotao)
 {
 	funcaoBotao = funcao;
 	objetoBotao = objBotao;
-	window.addEventListener("", keyDown);
+	document.addEventListener("keyup", keyUp);
 }
 
 function removerComandosEnterSpace()
 {
 	funcaoBotao = null;
 	objetoBotao = null;
-	window.removeEventListener("keydown", keyDown);
-}*/
+	document.removeEventListener("keyup", keyUp);
+}
 
-function keyDown(event)
+function keyUp(event)
 {
 	event.preventDefault();
 
 	switch(event.which)
-	{/*
+	{
 		case 13:
 		case 32:
 			funcaoBotao();
-			break;*/
+			document.removeEventListener("keyup", keyUp);
+			break;
 		case 37:
 
 			var jobj = $(objetoBotao);

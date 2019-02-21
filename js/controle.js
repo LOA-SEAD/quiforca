@@ -49,31 +49,40 @@ function criarCamadaMenu()
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
-	/*botaoJogar.onfocus = function() {
+	botaoJogar.onfocus = function() {
 		adicionarComandosEnterSpace(ativarBotaoJogar, botaoJogar);
 	}
 	botaoJogar.onblur = function() {
 		removerComandosEnterSpace();
-	}*/
-	
+	}
 	botaoJogar.onclick = function()
 	{
 		ativarBotaoJogar();
+		removerComandosEnterSpace();
 	}
 
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
 	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
+	botaoInstrucoes.setAttribute("tabIndex", "2");
 	botaoInstrucoes.setAttribute("role" , "button");
 	botaoInstrucoes.setAttribute("aria-label" , "Instruções");
 	botaoInstrucoes.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoInstrucoes);
 
+	botaoInstrucoes.onfocus = function() {
+		adicionarComandosEnterSpace(ativarBotaoInstrucoes, botaoInstrucoes);
+	}
+	botaoInstrucoes.onblur = function() {
+		removerComandosEnterSpace();
+	}
 	botaoInstrucoes.onclick = function()
 	{
 		ativarBotaoInstrucoes();
+		removerComandosEnterSpace();
 	}
 
+	//Cria botao de créditos na caixa de botoes
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
 	botaoCreditos.setAttribute("tabIndex" , "0");
@@ -91,8 +100,8 @@ function criarCamadaMenu()
 	botaoCreditos.onclick = function()
 	{
 		ativarBotaoCreditos();
+		removerComandosEnterSpace();
 	}
-
 
 
 	origemMenu = 1
@@ -118,7 +127,6 @@ function ativarBotaoCreditos()
 
 function destruirCamadaMenu()
 {
-
 	$("#camadaMenu").remove();
 }
 
