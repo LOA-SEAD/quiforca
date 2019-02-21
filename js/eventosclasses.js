@@ -45,9 +45,20 @@ function Linha(_linha)
 }
 
 //Variáveis de delays
+var delayAtalho1;
 var delayAtalho2;
 var delayAtalho4;
 var delayLetraAtalho4;
+
+var audioAtalho1 = document.createElement("AUDIO");
+var dezenaLer = document.createElement("AUDIO")
+var unidadeLer = document.createElement("AUDIO");
+var letraE = document.createElement("AUDIO");
+var qLetras = document.createElement("AUDIO");
+var audioAtalho3 = document.createElement("AUDIO");
+var audioAtalho4 = document.createElement("AUDIO");
+var audioAtalho5 = document.createElement("AUDIO");
+var centenaLer = document.createElement("AUDIO");
 
 document.body.onkeyup = function(e)
 {
@@ -76,11 +87,11 @@ document.body.onkeyup = function(e)
 
 	//1 - Ouvir dica
 	var nomeAtalho1;
-	var audioAtalho1 = document.createElement("AUDIO");
+	/*var audioAtalho1 = document.createElement("AUDIO");
 	var dezenaLer = document.createElement("AUDIO")
 	var unidadeLer = document.createElement("AUDIO");
 	var letraE = document.createElement("AUDIO");
-	var qLetras = document.createElement("AUDIO");
+	var qLetras = document.createElement("AUDIO");*/
 
 	//2 - Status da palavra
 	var nomeAtalho2;
@@ -88,18 +99,18 @@ document.body.onkeyup = function(e)
 
 	//3 - Vidas restantes
 	var nomeAtalho3 = "audio/vidas" + numeroDeChances();
-	var audioAtalho3 = document.createElement("AUDIO");
+	//var audioAtalho3 = document.createElement("AUDIO");
 
 	//4 - Letras já lidas
-	var audioAtalho4 = document.createElement("AUDIO");
+	//var audioAtalho4 = document.createElement("AUDIO");
 	audioAtalho4.setAttribute("src", "audio/atalho4.mp3");
 	var nomeAtalho4;
 	var somLetra4 = [];
 
 	//5 - Pontuação
-	var audioAtalho5 = document.createElement("AUDIO");
+	//var audioAtalho5 = document.createElement("AUDIO");
 	audioAtalho5.setAttribute("src", "audio/pontos.mp3");
-	var centenaLer = document.createElement("AUDIO");
+	//var centenaLer = document.createElement("AUDIO");
 
 	//Ouve a dica
 	if(keyunicode == 49) //1
@@ -150,7 +161,7 @@ document.body.onkeyup = function(e)
 			espera = 1500
 		}
 		delayAtalho1 = setTimeout(function(){
-			var nomeAtalho1 = "audio/r" + numeroSorteado() + ".mp3"
+			nomeAtalho1 = "audio/r" + numeroSorteado() + ".mp3"
 			audioAtalho1.setAttribute("src", nomeAtalho1)
 			audioAtalho1.currentTime = 0
 			audioAtalho1.play()
@@ -357,6 +368,8 @@ document.body.onkeyup = function(e)
 		unidadeLer.currentTime = 0;
 		qLetras.pause();
 		qLetras.currentTime = 0;
+
+		clearTimeout(delayAtalho1);
 	}
 	function stopAtalho2()
 	{
