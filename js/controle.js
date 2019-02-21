@@ -7,19 +7,26 @@
  O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
  */
 
-var background = document.createElement("AUDIO")
-//background.setAttribute("src", "audio/background.mp3");
+var background = document.createElement("AUDIO");
+background.setAttribute("src", "audio/palavraCerta.mp3");
+
+var audioTeclas = document.createElement("AUDIO");
+audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
+//background = document.getElementById("letraCerta"); 
 //background = document.getElementById("background"); 
 //background.loop = true
-var origemMenu
-var origemDerrota
+var origemMenu;
+var origemDerrota;
+var opcao;
+var estado;
+
+
 
 function criarCamadaMenu()
-{
-	$(document).keydown(function (e){
-		if(e.keyCode == 32 || e.which == 32 || e.charcode == 32)
-			return false;
-	})
+{	
+
+	estado = "menu";
+	opcao = 0;
 
 	if(origemDerrota){
 		background.currentTime = 0
@@ -29,7 +36,9 @@ function criarCamadaMenu()
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
+	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
+
 
 	var imgMenu = document.createElement("div");
 	imgMenu.setAttribute("id", "imgMenu");
@@ -49,8 +58,9 @@ function criarCamadaMenu()
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
-	/*botaoJogar.onfocus = function() {
-		adicionarComandosEnterSpace(ativarBotaoJogar, botaoJogar);
+	/*
+	botaoJogar.onfocus = function() {
+		console.log("focado");
 	}
 	botaoJogar.onblur = function() {
 		removerComandosEnterSpace();
@@ -64,6 +74,7 @@ function criarCamadaMenu()
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
 	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
+	botaoInstrucoes.setAttribute("tabIndex" , "2");
 	botaoInstrucoes.setAttribute("role" , "button");
 	botaoInstrucoes.setAttribute("aria-label" , "Instruções");
 	botaoInstrucoes.setAttribute("class" , "botao");
@@ -76,24 +87,37 @@ function criarCamadaMenu()
 
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
-	botaoCreditos.setAttribute("tabIndex" , "0");
+	botaoCreditos.setAttribute("tabIndex" , "3");
 	botaoCreditos.setAttribute("role" , "button");
 	botaoCreditos.setAttribute("aria-label" , "Créditos");
 	botaoCreditos.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoCreditos);
 
-	botaoCreditos.onfocus = function() {
-		adicionarComandosEnterSpace(ativarBotaoCreditos, botaoCreditos);
-	}
-	botaoCreditos.onblur = function() {
-		removerComandosEnterSpace();
-	}
+
 	botaoCreditos.onclick = function()
 	{
 		ativarBotaoCreditos();
 	}
 
+	inicializaFocus();
 
+	console.log(opcao);
+
+	$("#camadaMenu").keydown(function (e){
+		selecionaOpcao(e);	
+	
+		switch (opcao){
+			case 0:
+				document.getElementById("btnJogar").focus();
+				break;
+			case 1:
+				document.getElementById("btnInstrucoes").focus();
+				break;
+			case 2:
+				document.getElementById("btnCreditos").focus();
+				break;
+		}
+	})
 
 	origemMenu = 1
 }
@@ -114,6 +138,33 @@ function ativarBotaoCreditos()
 {
 	destruirCamadaMenu();
 	criarCamadaCreditos();
+}
+
+function ativarBotaoReiniciar()
+{
+	destruirCamadaDerrota();
+	destruirCamadaJogo();
+	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+	//salvaPontuacao(jogo.nome, pontos);
+	criarCamadaJogo();
+}
+
+function ativarBotaoSair()
+{
+	destruirCamadaVitoria();
+	destruirCamadaDerrota();
+	destruirCamadaJogo();
+	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+	//salvaPontuacao(jogo.nome, pontos);
+	criarCamadaMenu();
+}
+
+function ativarProxPalavra()
+{
+	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+	destruirCamadaVitoria();
+	criarCamadaJogo();
+	//salvaPontuacao(jogo.nome, pontos);
 }
 
 function destruirCamadaMenu()
@@ -234,6 +285,10 @@ function destruirCamadaCreditos()
 
 function criarCamadaVitoria()
 {
+
+	estado = "vitoria";
+	opcao = 5;
+
 	var audio = document.createElement("AUDIO");
 	audio.setAttribute("src", "audio/vitoria2.ogg");
 	//var audio = document.getElementById("vitoria"); 
@@ -244,7 +299,11 @@ function criarCamadaVitoria()
 
 	var fase;
 	var faseId;
-	var el = $('<div>').attr("id", "camadaVitoria").appendTo($("#palco"));
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaVitoria");
+	el.setAttribute("tabIndex", "0");
+	$("#palco").append(el);
+
 	/*if((jogo.bdTamanho) == 0) {
 		$('<p>').attr('id', 'pontosNaTela')
 			.html('Pontos: ' + parseInt(jogo.pontos))
@@ -272,25 +331,32 @@ function criarCamadaVitoria()
 
 	$("<button>").attr("id", "btnProxPalavra").click(
 		function(){
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-			destruirCamadaVitoria();
-			criarCamadaJogo();
-			//salvaPontuacao(jogo.nome, pontos);	
+			ativarProxPalavra();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
 
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-			destruirCamadaVitoria();
-			destruirCamadaJogo();
-			//salvaPontuacao(jogo.nome, pontos);
-			criarCamadaMenu();	
+			ativarBotaoSair();
 		}
 	).appendTo($("#botoesTelaVitoria"));
 
 	document.addEventListener("keyup", proximaFase);
+
+	inicializaFocus();
+
+	$("#camadaVitoria").keydown(function (e){
+		selecionaOpcao(e);	
+	
+		if(opcao == 5){
+			document.getElementById("btnProxPalavra").focus();
+		}
+		else if(opcao == 4){
+			document.getElementById("btnMenu").focus();
+		}
+		console.log(opcao);
+	})
 }
 
 function proximaFase(e)
@@ -397,6 +463,9 @@ function destruirCamadaFimdeJogo()
 
 function criarCamadaDerrota()
 {
+
+	estado = "derrota";
+	opcao = 3;
 	var audio = document.createElement("AUDIO");
 	audio.setAttribute("src", "audio/derrota1.ogg");
 	//var audio = document.getElementById("derrota"); 
@@ -409,7 +478,10 @@ function criarCamadaDerrota()
 	var faseId;
 	//var pontos = jogo.pontos;
 
-	$('<div>').attr('id', 'camadaDerrota').appendTo($('#palco'));
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaDerrota");
+	el.setAttribute("tabIndex", "0");
+	$("#palco").append(el);
 
 		
 	jogo.imgBoneco = document.createElement("div");
@@ -417,7 +489,6 @@ function criarCamadaDerrota()
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
-	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	jogo.palavraNaTela.innerHTML = "<h2> Você errou :( </h2> A palavra correta é: " + jogo.palavraSorteada;
 	
@@ -434,29 +505,36 @@ function criarCamadaDerrota()
 	$("#camadaDerrota").append(jogo.jogadorPontos);
 	$("#camadaDerrota").append(jogo.botoes);
 
+
 	//criando botoes clicáveis
 	
 	$("<button>").attr("id", "btnReiniciar").click(
 		function(){
-			destruirCamadaDerrota();
-			destruirCamadaJogo();
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-			//salvaPontuacao(jogo.nome, pontos);
-			criarCamadaJogo();	
+			ativarBotaoReiniciar();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
-			destruirCamadaDerrota();
-			destruirCamadaJogo();
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-			//salvaPontuacao(jogo.nome, pontos);
-			criarCamadaMenu();	
+			ativarBotaoSair();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
 
 	document.addEventListener("keyup", derrotaMenu);
+
+	inicializaFocus();
+
+	$("#camadaDerrota").keydown(function (e){
+		selecionaOpcao(e);	
+		console.log(opcao);
+	
+		if(opcao == 3){
+			document.getElementById("btnReiniciar").focus();
+		}
+		else if(opcao == 4){
+			document.getElementById("btnMenu").focus();
+		}
+	})
 }
 
 function derrotaMenu(e){
@@ -599,10 +677,119 @@ function criarCamadaInstrucoes()
 	 "5 - Saiba sua pontuação atual";
 
 	//inserindo instrucoes a camada de instruções
-	$('#camadaInstrucoes').append(jogo.instrucoes);
+	$('#camadaInstrucoes').append(jogo.instrucoes);	
 
-	
+}
 
+function selecionaOpcao(e)
+{
+
+	switch(e.keyCode){
+		case 13:
+			switch(opcao){
+				case 0:
+					ativarBotaoJogar();
+					opcao = -1;
+				break;
+
+				case 1:
+					ativarBotaoInstrucoes();
+					opcao = -1;
+				break;
+
+				case 2:
+					ativarBotaoCreditos();
+					opcao = -1;
+				break;
+
+				case 3:
+					ativarBotaoReiniciar();
+					opcao = -1;
+				break;
+
+				case 4:
+					ativarBotaoSair();
+					opcao = -1;
+				break;
+
+				case 5:
+					ativarProxPalavra();
+					opcao = -1;
+				break;
+			}
+		break;
+		case 37:
+			if(estado == "menu"){
+				if(opcao > 0){
+					tocaAudio();
+					opcao--;
+				}
+			}
+			else if(estado == "derrota"){
+				if(opcao > 3){
+					tocaAudio();
+					opcao--;
+				}
+			}
+			else if(estado == "vitoria"){
+				if(opcao < 5){
+					tocaAudio();
+					opcao++;
+				}
+			}
+		break;
+
+		case 39:
+			if(estado == "menu"){
+				if(opcao < 2){
+					tocaAudio();
+					opcao++;
+				}
+			}
+			else if(estado == "derrota"){
+				if(opcao < 4){
+					tocaAudio();
+					opcao++;
+				}
+			}
+			else if(estado == "vitoria"){
+				if(opcao > 4){
+					tocaAudio();
+					opcao--;
+					
+				}
+			}
+		break;
+	}
+}
+
+function tocaAudio() {
+	audioTeclas.currentTime = 0;
+	audioTeclas.play();
+}
+
+/*
+opcoes = 0 - jogar
+		1 - ajuda
+		2 - creditos
+		3 - reiniciar
+		4 - sair
+		5 - prox palavra
+*/
+
+function inicializaFocus(){
+	if(estado == "menu"){
+		document.getElementById("camadaMenu").focus();
+		document.getElementById("btnJogar").focus();
+	}
+	else if(estado == "derrota"){
+		document.getElementById("camadaDerrota").focus();
+		document.getElementById("btnReiniciar").focus();
+	}
+	else if(estado == "vitoria"){
+		document.getElementById("camadaVitoria").focus();
+		document.getElementById("btnProxPalavra").focus();
+	}
 }
 
 jogo.palco = new Palco();

@@ -530,12 +530,12 @@ function keyDown(event)
 	event.preventDefault();
 
 	switch(event.which)
-	{/*
+	{
 		case 13:
 		case 32:
 			funcaoBotao();
-			break;*/
-		case 37:
+			break;
+		case 37:		
 
 			var jobj = $(objetoBotao);
 			if(event.shiftKey)
@@ -548,7 +548,7 @@ function keyDown(event)
 			}
 			objetoBotao.blur();
 			break;
-	}
+	}	
 }
 
 function retornaLetrasTentadas(_posicao)
