@@ -105,9 +105,12 @@ document.body.onkeyup = function(e)
 		stopAtalho4();
 		stopAtalho5();
 		
+		var espera 
 		if(tamanhoPalavraAtual() > 20 && dezena%10!=0){
-			console.log(1)
-
+			var dezena = tamanhoPalavraSemEspaco()%100
+			var unidade = dezena%10
+			dezena = dezena - unidade
+			
 			dezena = "audio/p" + dezena  + ".mp3";
 			dezenaLer.setAttribute("src", dezena)
 			dezenaLer.currentTime = 0;
@@ -117,20 +120,21 @@ document.body.onkeyup = function(e)
 				letraE.setAttribute("src", "audio/letraE.mp3")
 				letraE.currentTime = 0;
 				letraE.play();
-			}, 300);
+			}, 500);
 
 			delayAtalho1 = setTimeout(function(){
 				unidade = "audio/p" + unidade + ".mp3";
 				unidadeLer.setAttribute("src", unidade)
 				unidadeLer.currentTime = 0;
 				unidadeLer.play();
-			}, 400);
+			}, 700);
 
 			delayAtalho1 = setTimeout(function(){
-				qLetras.setAttribute("src", "pletras.mp3")
+				qLetras.setAttribute("src", "audio/pletras.mp3")
 				qLetras.currentTime = 0;
 				qLetras.play();
-			}, 700);
+			}, 1000);
+			espera = 1500
 		}
 		else
 		{
@@ -145,18 +149,15 @@ document.body.onkeyup = function(e)
 				qLetras.play();
 				console.log((audioAtalho5.duration+unidadeLer.duration)*1000)
 			}, 300);
+			espera = 1300
 		}
 
 		delayAtalho1 = setTimeout(function(){
-			var nomeAtalho3 = "audio/r" + numeroSorteado() + ".mp3";
-			audioAtalho5.setAttribute("src", nomeAtalho3);
-			audioAtalho5.currentTime = 0;
-			audioAtalho5.play();
-
-			var dezena = tamanhoPalavraAtual()%100
-			var unidade = dezena%10
-			dezena = dezena - unidade
-		}, 1300);
+			var nomeAtalho3 = "audio/r" + numeroSorteado() + ".mp3"
+			audioAtalho5.setAttribute("src", nomeAtalho3)
+			audioAtalho5.currentTime = 0
+			audioAtalho5.play()
+		}, espera);
 		
 	}
 

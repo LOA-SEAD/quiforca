@@ -648,3 +648,8 @@ function tamanhoPalavraAtual()
 {
 	return vetorComPalavraAtual().length
 }
+
+function tamanhoPalavraSemEspaco()
+{
+	return jogo.tamanhoPalavra.length
+}
