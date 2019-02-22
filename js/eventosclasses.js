@@ -64,7 +64,6 @@ document.body.onkeyup = function(e)
 {
 	if(estado != "jogando")
 	{
-		console.log(estado);
 		return false;
 	}
 	var counter = 0
@@ -90,6 +89,7 @@ document.body.onkeyup = function(e)
 	//Tecla para voltar
 	if(keyunicode == 27) //Esc
 	{
+		stopTudo();
 		ativarBotaoVoltar();
 	}
 

@@ -344,13 +344,25 @@ function criarCamadaVitoria()
 			ativarProxPalavra();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
-
+	
+	document.getElementById("btnProxPalavra").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/proxima.mp3");
+		audio.play();
+	}
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
 			ativarBotaoSair();
 		}
 	).appendTo($("#botoesTelaVitoria"));
+	document.getElementById("btnMenu").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/menu.mp3");
+		audio.play();
+	}
 
 	document.addEventListener("keyup", proximaFase);
 
@@ -436,6 +448,12 @@ function criarCamadaFimdeJogo()
 			iniciarNovoJogo();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
+	document.getElementById("btnMenu").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/menu.mp3");
+		audio.play();
+	}
 
 	/*$('<div>').css({
 		'position': 'absolute',
@@ -523,12 +541,24 @@ function criarCamadaDerrota()
 			ativarBotaoReiniciar();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
+	document.getElementById("btnReiniciar").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/recomecar.mp3");
+		audio.play();
+	}
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
 			ativarBotaoSair();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
+	document.getElementById("btnMenu").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/menu.mp3");
+		audio.play();
+	}
 
 	document.addEventListener("keyup", derrotaMenu);
 
