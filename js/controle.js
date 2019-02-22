@@ -52,9 +52,7 @@ function criarCamadaMenu()
 
 	var botaoJogar = document.createElement("div");
 	botaoJogar.setAttribute("id" , "btnJogar");
-	botaoJogar.setAttribute("tabIndex" , "1");
-	botaoJogar.setAttribute("role" , "button");
-	botaoJogar.setAttribute("aria-label" , "Jogar");
+	botaoJogar.setAttribute("tabIndex" , "-1");
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
@@ -68,9 +66,7 @@ function criarCamadaMenu()
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
 	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
-	botaoInstrucoes.setAttribute("tabIndex" , "2");
-	botaoInstrucoes.setAttribute("role" , "button");
-	botaoInstrucoes.setAttribute("aria-label" , "Instruções");
+	botaoInstrucoes.setAttribute("tabIndex" , "-1");
 	botaoInstrucoes.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoInstrucoes);
 
@@ -84,9 +80,7 @@ function criarCamadaMenu()
 	//Cria botao de créditos na caixa de botoes
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
-	botaoCreditos.setAttribute("tabIndex" , "3");
-	botaoCreditos.setAttribute("role" , "button");
-	botaoCreditos.setAttribute("aria-label" , "Créditos");
+	botaoCreditos.setAttribute("tabIndex" , "-1");
 	botaoCreditos.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoCreditos);
 
@@ -98,7 +92,6 @@ function criarCamadaMenu()
 
 	inicializaFocus();
 
-	console.log(opcao);
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
@@ -785,6 +778,9 @@ function inicializaFocus(){
 	else if(estado == "vitoria"){
 		document.getElementById("camadaVitoria").focus();
 		document.getElementById("btnProxPalavra").focus();
+	}
+	else if(estado == "jogando"){
+		document.getElementById("palavraNaTela").focus();
 	}
 }
 

@@ -55,6 +55,11 @@ body
 	width: 100%;	
 }
 
+#camadaMenu:focus{
+	outline: none;
+}
+
+
 #imgMenu
 {
 	margin: 2rem auto;
@@ -207,15 +212,11 @@ p
 	margin: 1.5rem;
 }
 
-#btnJogar:hover
+#btnJogar:hover, #btnJogar:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;
-}
-
-#btnJogar:focus
-{
-	transform: scale(1.1);
+	outline: none;
 }
 
 #btnInstrucoes
@@ -226,17 +227,13 @@ p
 	margin: 1.5rem;
 }
 
-#btnInstrucoes:hover
+#btnInstrucoes:hover, #btnInstrucoes:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;
+	outline: none;
 }
 
-#btnInstrucoes:focus
-{
-	transform: scale(1.1);
-	cursor: pointer;
-}
 
 #btnCreditos
 {
@@ -246,15 +243,13 @@ p
 	margin: 1.5rem;
 }
 
-#btnCreditos:hover
+#btnCreditos:hover, #btnCreditos:focus
 {
 	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
 }
 
-#btnCreditos:focus
-{
-	transform: scale(1.1);
-}
 
 #btnRanking
 {
@@ -308,18 +303,21 @@ p
 {
 	transform: scale(1.1);
 	cursor: pointer;
+	outline: none;
 }
 
 #btnMenu:hover, #btnMenu:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;
+	outline: none;
 }
 
 #btnProxPalavra:hover, #btnProxPalavra:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;
+	outline: none;
 }
 
 /*Parte do personagem do jogo*/

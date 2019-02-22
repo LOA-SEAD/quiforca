@@ -242,7 +242,7 @@ document.body.onkeyup = function(e)
 	}
 
 	//Pontuação atual
-	if(keyunicode == 53) //5
+	if(keyunicode == 53 || leituraDicaAtual()) //5
 	{
 		var aux
 		var centena
