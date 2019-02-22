@@ -301,7 +301,7 @@ function destruirCamadaCreditos()
 	$("#camadaCreditos").remove();
 }
 
-function criarCamadaVitoria()
+function criarCamadaVitoria(fim)
 {
 
 	estado = "vitoria";
@@ -416,7 +416,7 @@ function criarCamadaFimdeJogo()
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Você acertou ! </h2> <br> A palavra era: " + jogo.palavraSorteada;
 
 	jogo.imgBonecoVitoria = document.createElement("div");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
