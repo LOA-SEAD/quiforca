@@ -293,11 +293,23 @@ function verificarErro(_letra)
 	{
 		$("#falador").text("Letra Errada");
 		jogo.erros++;
-		mudarPersonagem();
 		atualizaNumChances();
-
+		mudarPersonagem();
 		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/enforcamento1.ogg");
+		switch(jogo.erros)
+		{
+			case 1:
+				audio.setAttribute("src", "audio/enforcamento1.ogg");
+				break;
+			case 2:
+				audio.setAttribute("src", "audio/enforcamento3.ogg");
+				break;
+			case 3:
+				audio.setAttribute("src", "audio/enforcamento7.ogg");
+				break;
+			case 4:
+				audio.setAttribute("src", "audio/enforcamento8.ogg");
+		}
 		audio.currentTime = 0
 		audio.volume = 0.5
 		audio.play();
