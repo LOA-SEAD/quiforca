@@ -192,6 +192,7 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
+	estado = "jogo";
 	if(!origemMenu){
 		background.currentTime = 0
 	}
@@ -217,6 +218,8 @@ function destruirCamadaJogo()
 
 function criarCamadaCreditos()
 {
+	estado = "creditos";
+
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaCreditos");
 	$("#palco").append(el);
@@ -704,7 +707,7 @@ function selecionaOpcao(e)
 {
 
 	switch(e.keyCode){
-		case 13:
+		case 13: //Enter
 			switch(opcao){
 				case 0:
 					ativarBotaoJogar();
@@ -737,7 +740,7 @@ function selecionaOpcao(e)
 				break;
 			}
 		break;
-		case 37:
+		case 37: //ArrowLeft
 			if(estado == "menu"){
 				if(opcao > 0){
 					tocaAudio();
@@ -758,7 +761,7 @@ function selecionaOpcao(e)
 			}
 		break;
 
-		case 39:
+		case 39: //ArrowRight
 			if(estado == "menu"){
 				if(opcao < 2){
 					tocaAudio();
@@ -779,6 +782,7 @@ function selecionaOpcao(e)
 				}
 			}
 		break;
+
 	}
 }
 

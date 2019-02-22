@@ -62,6 +62,10 @@ var centenaLer = document.createElement("AUDIO");
 
 document.body.onkeyup = function(e)
 {
+	if(estado != "jogo")
+	{
+		return false;
+	}
 	var counter = 0
 
 	//Pega as teclas
@@ -80,8 +84,15 @@ document.body.onkeyup = function(e)
 		verificarErro(String.fromCharCode(keyunicode-32));
 		//Coloca nas letras tentadas
 		colocarLetraEmLetrasTentadas(String.fromCharCode(keyunicode-32));
-	}	
-	
+	}
+
+	//Tecla para voltar
+	if(keyunicode == 27) //Esc
+	{
+		ativarBotaoVoltar();
+	}
+
+
 	//Variaveis para atalhos
 	var counter = 0;
 
