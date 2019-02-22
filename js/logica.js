@@ -271,30 +271,48 @@ function verificarErro(_letra)
 		if(letraRepetida){
 			var audio = document.createElement("AUDIO");
 			audio.setAttribute("src", "audio/tecla_indisponível2.ogg")
-			//var audio = document.getElementById("letraRepetida"); 
 		}
 		else
 		{
 			var audio = document.createElement("AUDIO");
 			audio.setAttribute("src", "audio/acerta_letra1.ogg");
-			//var audio = document.getElementById("letraCerta"); 
 		}
 		audio.currentTime = 0
+		audio.volume = 0.2
 		audio.play()
 	}
 	if(deuErro)
 	{
 		$("#falador").text("Letra Errada");
 		jogo.erros++;
-		mudarPersonagem();
 		atualizaNumChances();
-
+		mudarPersonagem();
 		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/enforcamento1.ogg");
-		//var audio = document.getElementById("letraErrada"); 
+		switch(jogo.erros)
+		{
+			case 1:
+				audio.setAttribute("src", "audio/enforcamento1.ogg");
+				break;
+			case 2:
+				audio.setAttribute("src", "audio/enforcamento3.ogg");
+				break;
+			case 3:
+				audio.setAttribute("src", "audio/enforcamento7.ogg");
+				break;
+			case 4:
+				audio.setAttribute("src", "audio/enforcamento8.ogg");
+		}
 		audio.currentTime = 0
+		audio.volume = 0.5
 		audio.play();
 	}
+	delay = setTimeout(function(){
+		var audio2 = document.createElement("AUDIO")
+		var nomeAudio = "audio/letra" + _letra + ".mp3"
+		audio2.setAttribute("src", nomeAudio)
+		audio2.currentTime = 0
+		audio2.play()
+	}, 50);
 }
 
 //Coloca os botoes do teclado na tela

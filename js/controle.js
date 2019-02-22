@@ -8,12 +8,11 @@
  */
 
 var background = document.createElement("AUDIO");
-background.setAttribute("src", "audio/palavraCerta.mp3");
+//background.setAttribute("src", "audio/palavraCerta.mp3");
 
 var audioTeclas = document.createElement("AUDIO");
 audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
-//background = document.getElementById("letraCerta"); 
-//background = document.getElementById("background"); 
+audioTeclas.volume = 0.4;
 //background.loop = true
 var origemMenu;
 var origemDerrota;
@@ -62,6 +61,12 @@ function criarCamadaMenu()
 	{
 		ativarBotaoJogar();
 	}
+	botaoJogar.onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/jogar.mp3");
+		audio.play();
+	}
 
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
@@ -75,6 +80,13 @@ function criarCamadaMenu()
 	{
 		ativarBotaoInstrucoes();
 	}
+	botaoInstrucoes.onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/ajuda.mp3");
+		audio.play();
+	}
+
 
 	//Cria botao de créditos na caixa de botoes
 	var botaoCreditos = document.createElement("div");
@@ -88,6 +100,13 @@ function criarCamadaMenu()
 	{
 		ativarBotaoCreditos();
 	}
+	botaoCreditos.onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/creditos.mp3");
+		audio.play();
+	}
+
 
 	inicializaFocus();
 
@@ -163,6 +182,7 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
+	estado = "jogo";
 	if(!origemMenu){
 		background.currentTime = 0
 	}
@@ -189,6 +209,8 @@ function destruirCamadaJogo()
 
 function criarCamadaCreditos()
 {
+	estado = "creditos";
+
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaCreditos");
 	$("#palco").append(el);
@@ -654,7 +676,7 @@ function criarCamadaInstrucoes()
 	jogo.instrucoes.innerHTML = 
 	"Escape da forca acertando todos os desafios! <br><br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
 	 "Cada letra que você acerta é colocada na palavra. <br>"+
-	 "A cada vez que você erra, perde uma parte sua para a forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
+	 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
 	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
 	 "<br>Você pode jogar usando o teclado da tela ou o seu próprio teclado.<br><br>"+
 	 "Atalhos sonoros:<br>"+
@@ -663,7 +685,10 @@ function criarCamadaInstrucoes()
 	 "2 - Ouça o que você descobriu da palavra até agora<br>"+
 	 "3 - Saiba quantas vidas você ainda tem<br>"+
 	 "4 - Relembre as letras que você já escolheu<br>"+
-	 "5 - Saiba sua pontuação atual";
+	 "5 - Saiba sua pontuação atual<br>"+
+	 "6 - Pare o som do atalho em que você clicou<br>"+
+	 "Esc - Menu<br><br>"+
+	 "Boa sorte!";
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
@@ -674,7 +699,7 @@ function selecionaOpcao(e)
 {
 
 	switch(e.keyCode){
-		case 13:
+		case 13: //Enter
 			switch(opcao){
 				case 0:
 					ativarBotaoJogar();
@@ -707,7 +732,7 @@ function selecionaOpcao(e)
 				break;
 			}
 		break;
-		case 37:
+		case 37: //ArrowLeft
 			if(estado == "menu"){
 				if(opcao > 0){
 					tocaAudio();
@@ -728,7 +753,7 @@ function selecionaOpcao(e)
 			}
 		break;
 
-		case 39:
+		case 39: //ArrowRight
 			if(estado == "menu"){
 				if(opcao < 2){
 					tocaAudio();
@@ -749,6 +774,7 @@ function selecionaOpcao(e)
 				}
 			}
 		break;
+
 	}
 }
 
