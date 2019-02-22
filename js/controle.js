@@ -8,10 +8,11 @@
  */
 
 var background = document.createElement("AUDIO");
-background.setAttribute("src", "audio/palavraCerta.mp3");
+//background.setAttribute("src", "audio/palavraCerta.mp3");
 
 var audioTeclas = document.createElement("AUDIO");
 audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
+audioTeclas.volume = 0.4;
 //background = document.getElementById("letraCerta"); 
 //background = document.getElementById("background"); 
 //background.loop = true
@@ -64,6 +65,12 @@ function criarCamadaMenu()
 		ativarBotaoJogar();
 		removerComandosEnterSpace();
 	}
+	botaoJogar.onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/jogar.mp3");
+		audio.play();
+	}
 
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
@@ -80,6 +87,13 @@ function criarCamadaMenu()
 		ativarBotaoInstrucoes();
 		removerComandosEnterSpace();
 	}
+	botaoInstrucoes.onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/ajuda.mp3");
+		audio.play();
+	}
+
 
 	//Cria botao de créditos na caixa de botoes
 	var botaoCreditos = document.createElement("div");
@@ -95,6 +109,13 @@ function criarCamadaMenu()
 	{
 		ativarBotaoCreditos();
 	}
+	botaoCreditos.onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/creditos.mp3");
+		audio.play();
+	}
+
 
 	inicializaFocus();
 
