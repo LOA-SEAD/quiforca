@@ -145,8 +145,8 @@ function update()
 
 			//el.onmousedown = function() {
 				destruirCamadaJogo();
-				//criarCamadaVitoria(1);
-				criarCamadaFimdeJogo();
+				criarCamadaVitoria(1);
+				//criarCamadaFimdeJogo();
 			//}
 			break;
 	}

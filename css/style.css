@@ -284,10 +284,10 @@ p
 #btnMenu
 {
 	margin: 1rem;
-	width: 119px;
-	height: 70px;
+	width: 116px;
+	height: 65px;
 	border: none;
-	background-image: url("../imgs/btnCreditos.png");
+	background-image: url("../imgs/btnVoltar.png");
 }
 
 #btnProxPalavra
@@ -296,7 +296,7 @@ p
 	width: 116px;
 	height: 65px;
 	border: none;
-	background-image: url("../imgs/btnJogar.png");
+	background-image: url("../imgs/btnContinuar.png");
 }
 
 #btnReiniciar:hover, #btnReiniciar:focus
