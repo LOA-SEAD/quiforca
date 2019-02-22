@@ -324,26 +324,34 @@ function criarCamadaVitoria(fim)
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "<h2> Você acertou ! </h2> <br> A palavra era: " + jogo.palavraSorteada;
-
+	jogo.palavraNaTela.innerHTML = "<h2> Você acertou! </h2> <br> A palavra é " + jogo.palavraSorteada;
 
 	jogo.imgBonecoVitoria = document.createElement("div");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
 
 	jogo.botoesVitoria = document.createElement("div");
 	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
-
-
 	
 	$("#camadaVitoria").append(jogo.palavraNaTela);
 	$("#camadaVitoria").append(jogo.imgBonecoVitoria);
 	$("#camadaVitoria").append(jogo.botoesVitoria);
 
-	$("<button>").attr("id", "btnProxPalavra").click(
-		function(){
-			ativarProxPalavra();	
-		}
-	).appendTo($("#botoesTelaVitoria"));
+	if(!fim){
+		$("<button>").attr("id", "btnProxPalavra").click(
+			function(){
+				ativarProxPalavra();	
+			}
+		).appendTo($("#botoesTelaVitoria"));
+	}
+	else{
+		$("<button>").attr("id", "btnProxPalavra").click(
+			function(){
+				destruirCamadaFimdeJogo()
+				criarCamadaFimdeJogo()
+				console.log("acabou")
+			}
+		).appendTo($("#botoesTelaVitoria"));
+	}
 	
 	document.getElementById("btnProxPalavra").onfocus = function()
 	{
@@ -420,7 +428,7 @@ function criarCamadaFimdeJogo()
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "<h2> Você acertou ! </h2> <br> A palavra era: " + jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Você acertou! </h2> <br> A palavra é: " + jogo.palavraSorteada;
 
 	jogo.imgBonecoVitoria = document.createElement("div");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
