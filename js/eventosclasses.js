@@ -62,7 +62,7 @@ var centenaLer = document.createElement("AUDIO");
 
 document.body.onkeyup = function(e)
 {
-	if(estado != "jogo")
+	if(estado != "jogando")
 	{
 		return false;
 	}
@@ -89,6 +89,7 @@ document.body.onkeyup = function(e)
 	//Tecla para voltar
 	if(keyunicode == 27) //Esc
 	{
+		stopTudo();
 		ativarBotaoVoltar();
 	}
 
@@ -115,8 +116,9 @@ document.body.onkeyup = function(e)
 	audioAtalho5.setAttribute("src", "audio/pontos.mp3");
 
 	//Ouve a dica
-	if(keyunicode == 49) //1
+	if(keyunicode == 49 || realizaLeitura) //1
 	{
+		realizaLeitura = false;
 		stopTudo()
 		var espera 
 		if(tamanhoPalavraSemEspaco() > 20 && dezena%10!=0){

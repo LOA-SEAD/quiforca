@@ -18,6 +18,7 @@ var origemMenu;
 var origemDerrota;
 var opcao;
 var estado;
+var realizaLeitura = false;
 
 
 
@@ -51,9 +52,7 @@ function criarCamadaMenu()
 
 	var botaoJogar = document.createElement("div");
 	botaoJogar.setAttribute("id" , "btnJogar");
-	botaoJogar.setAttribute("tabIndex" , "1");
-	botaoJogar.setAttribute("role" , "button");
-	botaoJogar.setAttribute("aria-label" , "Jogar");
+	botaoJogar.setAttribute("tabIndex" , "-1");
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
@@ -61,7 +60,6 @@ function criarCamadaMenu()
 	botaoJogar.onclick = function()
 	{
 		ativarBotaoJogar();
-		removerComandosEnterSpace();
 	}
 	botaoJogar.onfocus = function()
 	{
@@ -73,9 +71,7 @@ function criarCamadaMenu()
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
 	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
-	botaoInstrucoes.setAttribute("tabIndex" , "2");
-	botaoInstrucoes.setAttribute("role" , "button");
-	botaoInstrucoes.setAttribute("aria-label" , "Instruções");
+	botaoInstrucoes.setAttribute("tabIndex" , "-1");
 	botaoInstrucoes.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoInstrucoes);
 
@@ -83,7 +79,6 @@ function criarCamadaMenu()
 	botaoInstrucoes.onclick = function()
 	{
 		ativarBotaoInstrucoes();
-		removerComandosEnterSpace();
 	}
 	botaoInstrucoes.onfocus = function()
 	{
@@ -96,9 +91,7 @@ function criarCamadaMenu()
 	//Cria botao de créditos na caixa de botoes
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
-	botaoCreditos.setAttribute("tabIndex" , "3");
-	botaoCreditos.setAttribute("role" , "button");
-	botaoCreditos.setAttribute("aria-label" , "Créditos");
+	botaoCreditos.setAttribute("tabIndex" , "-1");
 	botaoCreditos.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoCreditos);
 
@@ -117,7 +110,6 @@ function criarCamadaMenu()
 
 	inicializaFocus();
 
-	console.log(opcao);
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
@@ -190,7 +182,6 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
-	estado = "jogo";
 	if(!origemMenu){
 		background.currentTime = 0
 	}
@@ -205,6 +196,7 @@ function criarCamadaJogo()
 	imgLogo.setAttribute("id", "imgLogo");
 	el.appendChild(imgLogo);
 
+	realizaLeitura = true;
 	iniciar();
 }
 
@@ -352,13 +344,25 @@ function criarCamadaVitoria(fim)
 			ativarProxPalavra();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
-
+	
+	document.getElementById("btnProxPalavra").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/proxima.mp3");
+		audio.play();
+	}
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
 			ativarBotaoSair();
 		}
 	).appendTo($("#botoesTelaVitoria"));
+	document.getElementById("btnMenu").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/menu.mp3");
+		audio.play();
+	}
 
 	document.addEventListener("keyup", proximaFase);
 
@@ -444,6 +448,12 @@ function criarCamadaFimdeJogo()
 			iniciarNovoJogo();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
+	document.getElementById("btnMenu").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/menu.mp3");
+		audio.play();
+	}
 
 	/*$('<div>').css({
 		'position': 'absolute',
@@ -531,12 +541,24 @@ function criarCamadaDerrota()
 			ativarBotaoReiniciar();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
+	document.getElementById("btnReiniciar").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/recomecar.mp3");
+		audio.play();
+	}
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
 			ativarBotaoSair();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
+	document.getElementById("btnMenu").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/menu.mp3");
+		audio.play();
+	}
 
 	document.addEventListener("keyup", derrotaMenu);
 
@@ -811,6 +833,9 @@ function inicializaFocus(){
 	else if(estado == "vitoria"){
 		document.getElementById("camadaVitoria").focus();
 		document.getElementById("btnProxPalavra").focus();
+	}
+	else if(estado == "jogando"){
+		document.getElementById("palavraNaTela").focus();
 	}
 }
 

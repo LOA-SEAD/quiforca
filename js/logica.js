@@ -2,7 +2,8 @@ var letraRepetida;
 
 function iniciar()
 {
-
+	//Seta estado do jogo
+	estado = "jogando";
 	//Seta número de chances do jogador
 	jogo.numChances = 5;
 
@@ -14,21 +15,12 @@ function iniciar()
 
 	jogo.botaoVoltar = document.createElement("div");
 	jogo.botaoVoltar.setAttribute("id" , "btnVoltar");
-	jogo.botaoVoltar.setAttribute("tabIndex" , "4");
 	jogo.botaoVoltar.setAttribute("role" , "button");
 	jogo.botaoVoltar.setAttribute("aria-label" , "Voltar");
 
 	jogo.linha = document.createElement("div");
 	jogo.linha.setAttribute("id", "row");
 
-	/*
-	jogo.botaoVoltar.onfocus = function() {
-		adicionarComandosEnterSpace(ativarBotaoVoltar, jogo.botaoVoltar);
-	}
-	jogo.botaoVoltar.onblur = function() {
-		removerComandosEnterSpace();
-	}
-	*/
 	
 	jogo.botaoVoltar.onclick = function() {
 		ativarBotaoVoltar();
@@ -43,11 +35,9 @@ function iniciar()
 
 	jogo.dicaNaTela = document.createElement("div");
 	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
-	jogo.dicaNaTela.setAttribute("tabIndex", "1");
 	jogo.dicaNaTela.setAttribute("role" , "button");
 
 	$('<p>').attr('id', 'pontosNaTela')
-		.attr('tabIndex', '5')
 		.html('Pontos: ' + Math.round(jogo.pontos))
 		.appendTo($('#camadaJogo'));
 
@@ -86,7 +76,7 @@ function iniciar()
 	//Essa é a variavel que deve ser exibida na tela
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
-	jogo.palavraNaTela.setAttribute("tabIndex", "3");
+	jogo.palavraNaTela.setAttribute("tabIndex", "0");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	$("#camadaJogo").append(jogo.palavraNaTela);
 
@@ -100,10 +90,12 @@ function iniciar()
 	jogo.bdAux[jogo.sorteio] = ajuda;
 
 
+
 	$("#camadaJogo").append(jogo.linha);
 	colocarPersonagem();
 	colocarTecladoNaTela();
 	$("#camadaJogo").append(jogo.botaoVoltar);
+	inicializaFocus();
 	update();
 }
 
