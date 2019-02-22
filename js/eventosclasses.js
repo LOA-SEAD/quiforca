@@ -62,8 +62,9 @@ var centenaLer = document.createElement("AUDIO");
 
 document.body.onkeyup = function(e)
 {
-	if(estado != "jogo")
+	if(estado != "jogando")
 	{
+		console.log(estado);
 		return false;
 	}
 	var counter = 0

@@ -182,7 +182,6 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
-	estado = "jogo";
 	if(!origemMenu){
 		background.currentTime = 0
 	}
