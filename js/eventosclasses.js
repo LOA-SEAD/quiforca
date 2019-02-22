@@ -113,8 +113,9 @@ document.body.onkeyup = function(e)
 	//var centenaLer = document.createElement("AUDIO");
 
 	//Ouve a dica
-	if(keyunicode == 49) //1
+	if(keyunicode == 49 || realizaLeitura) //1
 	{
+		realizaLeitura = false;
 		stopTudo()
 		var espera 
 		if(tamanhoPalavraSemEspaco() > 20 && dezena%10!=0){
@@ -242,7 +243,7 @@ document.body.onkeyup = function(e)
 	}
 
 	//Pontuação atual
-	if(keyunicode == 53 || leituraDicaAtual()) //5
+	if(keyunicode == 53) //5
 	{
 		var aux
 		var centena

@@ -19,6 +19,7 @@ var origemMenu;
 var origemDerrota;
 var opcao;
 var estado;
+var realizaLeitura = false;
 
 
 
@@ -60,7 +61,6 @@ function criarCamadaMenu()
 	botaoJogar.onclick = function()
 	{
 		ativarBotaoJogar();
-		removerComandosEnterSpace();
 	}
 
 	//Cria botao de instruções e adiciona a caixa de botões
@@ -74,7 +74,6 @@ function criarCamadaMenu()
 	botaoInstrucoes.onclick = function()
 	{
 		ativarBotaoInstrucoes();
-		removerComandosEnterSpace();
 	}
 
 	//Cria botao de créditos na caixa de botoes
@@ -178,6 +177,7 @@ function criarCamadaJogo()
 	imgLogo.setAttribute("id", "imgLogo");
 	el.appendChild(imgLogo);
 
+	realizaLeitura = true;
 	iniciar();
 }
 
