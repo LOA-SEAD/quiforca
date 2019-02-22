@@ -98,11 +98,6 @@ document.body.onkeyup = function(e)
 
 	//1 - Ouvir dica
 	var nomeAtalho1;
-	/*var audioAtalho1 = document.createElement("AUDIO");
-	var dezenaLer = document.createElement("AUDIO")
-	var unidadeLer = document.createElement("AUDIO");
-	var letraE = document.createElement("AUDIO");
-	var qLetras = document.createElement("AUDIO");*/
 
 	//2 - Status da palavra
 	var nomeAtalho2;
@@ -110,18 +105,14 @@ document.body.onkeyup = function(e)
 
 	//3 - Vidas restantes
 	var nomeAtalho3 = "audio/vidas" + numeroDeChances();
-	//var audioAtalho3 = document.createElement("AUDIO");
 
 	//4 - Letras já lidas
-	//var audioAtalho4 = document.createElement("AUDIO");
 	audioAtalho4.setAttribute("src", "audio/atalho4.mp3");
 	var nomeAtalho4;
 	var somLetra4 = [];
 
 	//5 - Pontuação
-	//var audioAtalho5 = document.createElement("AUDIO");
 	audioAtalho5.setAttribute("src", "audio/pontos.mp3");
-	//var centenaLer = document.createElement("AUDIO");
 
 	//Ouve a dica
 	if(keyunicode == 49) //1

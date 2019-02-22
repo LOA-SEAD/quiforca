@@ -13,8 +13,6 @@ var background = document.createElement("AUDIO");
 var audioTeclas = document.createElement("AUDIO");
 audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
 audioTeclas.volume = 0.4;
-//background = document.getElementById("letraCerta"); 
-//background = document.getElementById("background"); 
 //background.loop = true
 var origemMenu;
 var origemDerrota;
@@ -695,7 +693,8 @@ function criarCamadaInstrucoes()
 	 "3 - Saiba quantas vidas você ainda tem<br>"+
 	 "4 - Relembre as letras que você já escolheu<br>"+
 	 "5 - Saiba sua pontuação atual<br>"+
-	 "6 - Pare o som do atalho em que você clicou<br><br>"+
+	 "6 - Pare o som do atalho em que você clicou<br>"+
+	 "Esc - Menu<br><br>"+
 	 "Boa sorte!";
 
 	//inserindo instrucoes a camada de instruções
