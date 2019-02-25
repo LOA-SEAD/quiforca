@@ -194,7 +194,8 @@ function criarCamadaJogo()
 
 	iniciar();
 	//leituraDica();
-	testeLeitura(tamanhoPalavraSemEspaco() + " letras " + jogo.dicaPalavra);
+	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
+	testeLeitura(texto);
 }
 
 function destruirCamadaJogo()
@@ -331,18 +332,20 @@ var audioVitP = document.createElement("AUDIO");
 
 function criarCamadaVitoria()
 {
-	vitoria1 = setTimeout(function(){
+	/*vitoria1 = setTimeout(function(){
 		audioVit.currentTime = 0
 		audioVit.volume = 1
 		audioVit.play();
-	}, 3000);
+	}, 3000);*/
 	vitoria2 = setTimeout(function(){
-		var txt = "audio/" + numeroSorteado() + ".mp3"
+		/*var txt = "audio/" + numeroSorteado() + ".mp3"
 		audioVitP.setAttribute("src", txt);
 		audioVitP.currentTime = 0
 		audioVitP.volume = 1
-		audioVitP.play();
-	}, 5200);
+		audioVitP.play();*/
+		var texto = "Você acertou, a palavra é: " + jogo.palavraSorteada;
+		testeLeitura(texto);
+	}, 3800);
 
 	estado = "vitoria";
 	opcao = 5;
