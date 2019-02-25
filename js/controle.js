@@ -324,7 +324,7 @@ function criarCamadaVitoria()
 		audioVitP.setAttribute("src", txt);
 		audioVitP.currentTime = 0
 		audioVitP.play();
-	}, 4500);
+	}, 5200);
 
 	estado = "vitoria";
 	opcao = 5;
