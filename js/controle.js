@@ -283,7 +283,7 @@ function criarCamadaCreditos()
 	document.onkeydown = function(e)
 	{
 		e = window.event||e;
-		if(e.which == 27 || e.keyCode == 27 || e.charCode == 24)
+		if((e.which == 27 || e.keyCode == 27 || e.charCode == 24) && estado == "creditos")
 		{
 			destruirCamadaCreditos();
 			criarCamadaMenu();
@@ -308,7 +308,7 @@ function criarCamadaVitoria()
 	audio.currentTime = 0
 	setTimeout(function(){
 		audio.play();
-	}, 200);
+	}, 500);
 
 	var fase;
 	var faseId;
@@ -346,10 +346,10 @@ function criarCamadaVitoria()
 	).appendTo($("#botoesTelaVitoria"));
 
 	
-	document.getElementById("btnProxPalavra").onfocus = function()
+	/*document.getElementById("btnProxPalavra").onfocus = function()
 	{
 		AudioBotoes("audio/proxima.mp3");
-	}
+	}*/
 	document.getElementById("btnProxPalavra").onmouseenter = function()
 	{
 		AudioBotoes("audio/proxima.mp3");
@@ -692,6 +692,7 @@ function destruirCamadaRanking()
 
 function criarCamadaInstrucoes()
 {
+	estado = "instrucoes"
 
 	//criação camada de instruções
 	$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
@@ -722,7 +723,7 @@ function criarCamadaInstrucoes()
 	document.onkeydown = function(e)
 	{
 		e = window.event||e;
-		if(e.which == 27 || e.keyCode == 27 || e.charCode == 24)
+		if((e.which == 27 || e.keyCode == 27 || e.charCode == 24) && estado == "instrucoes")
 		{
 			destruirCamadaInstrucoes();
 			criarCamadaMenu();
@@ -871,7 +872,9 @@ function inicializaFocus(){
 	else if(estado == "vitoria"){
 		document.getElementById("camadaVitoria").focus();
 		document.getElementById("btnProxPalavra").focus();
-		AudioBotoes("audio/proxima.mp3");
+		setTimeout(function(){
+			AudioBotoes("audio/proxima.mp3");
+		}, 100);
 	}
 	else if(estado == "jogando"){
 		document.getElementById("palavraNaTela").focus();
