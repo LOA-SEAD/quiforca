@@ -129,7 +129,7 @@ function update()
 
 			//el.onmousedown = function() {
 				destruirCamadaJogo();
-				criarCamadaVitoria(0);
+				criarCamadaVitoria();
 			//}
 			break;
 		case 2:
@@ -145,7 +145,7 @@ function update()
 
 			//el.onmousedown = function() {
 				destruirCamadaJogo();
-				//criarCamadaVitoria(1);
+				//criarCamadaVitoria();
 				criarCamadaFimdeJogo();
 			//}
 			break;

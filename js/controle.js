@@ -293,7 +293,7 @@ function destruirCamadaCreditos()
 	$("#camadaCreditos").remove();
 }
 
-function criarCamadaVitoria(fim)
+function criarCamadaVitoria()
 {
 
 	estado = "vitoria";
@@ -336,22 +336,12 @@ function criarCamadaVitoria(fim)
 	$("#camadaVitoria").append(jogo.imgBonecoVitoria);
 	$("#camadaVitoria").append(jogo.botoesVitoria);
 
-	if(!fim){
-		$("<button>").attr("id", "btnProxPalavra").click(
-			function(){
-				ativarProxPalavra();	
-			}
-		).appendTo($("#botoesTelaVitoria"));
-	}
-	else{
-		$("<button>").attr("id", "btnProxPalavra").click(
-			function(){
-				destruirCamadaFimdeJogo()
-				criarCamadaFimdeJogo()
-				console.log("acabou")
-			}
-		).appendTo($("#botoesTelaVitoria"));
-	}
+	$("<button>").attr("id", "btnProxPalavra").click(
+		function(){
+			ativarProxPalavra();	
+		}
+	).appendTo($("#botoesTelaVitoria"));
+
 	
 	document.getElementById("btnProxPalavra").onfocus = function()
 	{
@@ -428,7 +418,7 @@ function criarCamadaFimdeJogo()
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "<h2> Você acertou! </h2> <br> A palavra é: " + jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2> <br> A palavra é " + jogo.palavraSorteada + "<br><br>Pontuação final: "+jogo.pontos;
 
 	jogo.imgBonecoVitoria = document.createElement("div");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
@@ -440,12 +430,12 @@ function criarCamadaFimdeJogo()
 	$("#camadaFimdeJogo").append(jogo.imgBonecoVitoria);
 	$("#camadaFimdeJogo").append(jogo.botoesVitoria);
 
-	jogo.fimdeJogo = document.createElement("p");
+	/*jogo.fimdeJogo = document.createElement("p");
 	jogo.fimdeJogo.setAttribute("id", "fimdeJogo");
 	jogo.fimdeJogo.setAttribute("tabIndex", "3");
 	jogo.fimdeJogo.setAttribute("role", "textbox");
 	jogo.fimdeJogo.innerHTML = "Tela de Fim de Jogo"
-	$("#camadaFimdeJogo").append(jogo.fimdeJogo);
+	$("#camadaFimdeJogo").append(jogo.fimdeJogo);*/
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
