@@ -332,14 +332,16 @@ function criarCamadaVitoria()
 {
 	setTimeout(function(){
 		audioVit.currentTime = 0
+		audioVit.volume = 1
 		audioVit.play();
 	}, 3000);
 	setTimeout(function(){
 		var txt = "audio/" + numeroSorteado() + ".mp3"
 		audioVitP.setAttribute("src", txt);
 		audioVitP.currentTime = 0
+		audioVitP.volume = 1
 		audioVitP.play();
-	}, 4500);
+	}, 5200);
 
 	estado = "vitoria";
 	opcao = 5;
@@ -438,6 +440,8 @@ function proximaFase(e)
 
 function destruirCamadaVitoria()
 {
+	audioVit.volume = 0
+	audioVitP.volume = 0
 	document.removeEventListener("keyup", proximaFase);
 	$("#camadaVitoria").remove();
 }
@@ -542,8 +546,125 @@ function destruirCamadaFimdeJogo()
 	document.removeEventListener("keyup", fimdeJogoMenu);
 }
 
+var audioDer = document.createElement("AUDIO");
+audioDer.setAttribute("src", "audio/frasederrota.mp3");
+var pontfinal = document.createElement("AUDIO");
+pontfinal.setAttribute("src", "audio/pontuacaofinal.mp3");
+
 function criarCamadaDerrota()
 {
+	setTimeout(function(){
+		audioDer.currentTime = 0
+		audioDer.play()
+	}, 3000);
+	setTimeout(function(){
+		var txt = "audio/" + numeroSorteado() + ".mp3"
+		audioVitP.setAttribute("src", txt);
+		audioVitP.currentTime = 0
+		audioVitP.play();
+	}, 5300);
+	setTimeout(function(){
+		pontfinal.currentTime = 0
+		pontfinal.play()
+	}, 7300);
+
+	var aux
+	var centena
+	setTimeout(function(){
+		if(pontuacao() <= 20 || (pontuacao() % 10 == 0 && pontuacao() < 100) || (pontuacao() % 100 == 0 && pontuacao() > 100) || pontuacao() == 1000){
+			unidade = "audio/p" + pontuacao() + ".mp3"
+			unidadeLer.setAttribute("src", unidade)
+			unidadeLer.currentTime = 0
+			unidadeLer.play()
+		}
+		else if(pontuacao() <= 99)
+		{
+			unidade = pontuacao()%10
+			dezena = pontuacao() - unidade
+
+			aux = "audio/p" + dezena + ".mp3"
+			dezenaLer.setAttribute("src", aux)
+			dezenaLer.currentTime = 0
+			dezenaLer.play()
+
+			delayAtalho4 = setTimeout(function(){
+				letraE.setAttribute("src", "audio/letraE.mp3")
+				letraE.currentTime = 0;
+				letraE.play();
+			}, 600)
+
+			delayAtalho4 = setTimeout(function(){
+				aux = "audio/p" + unidade + ".mp3"
+				unidadeLer.setAttribute("src", aux)
+				unidadeLer.currentTime = 0;
+				unidadeLer.play();
+			}, 800)
+		}
+		else if(pontuacao() == 100){
+			unidadeLer.setAttribute("src", "audio/pcem.mp3")
+			unidadeLer.currentTime = 0
+			unidadeLer.play()
+		}
+		else
+		{
+			unidade = pontuacao()%10
+			dezena = pontuacao()%100 - unidade
+			centena = pontuacao() - unidade - dezena
+
+			aux = "audio/p" + centena + ".mp3"
+			centenaLer.setAttribute("src", aux)
+			centenaLer.currentTime = 0
+			centenaLer.play()
+
+			var aux2 = pontuacao() - centena
+			if(aux2 >= 20)
+			{
+				if(dezena != 0){
+					delayAtalho4 = setTimeout(function(){
+						letraE.setAttribute("src", "audio/letraE.mp3")
+						letraE.currentTime = 0;
+						letraE.play();
+					}, 600)
+				}
+
+				delayAtalho4 = setTimeout(function(){
+					aux = "audio/p" + dezena + ".mp3"
+					dezenaLer.setAttribute("src", aux)
+					dezenaLer.currentTime = 0
+					dezenaLer.play()
+				}, 800)
+
+				if(unidade != 0){
+					delayAtalho4 = setTimeout(function(){
+						letraE.setAttribute("src", "audio/letraE.mp3")
+						letraE.currentTime = 0;
+						letraE.play();
+					}, 1200)
+
+					delayAtalho4 = setTimeout(function(){
+						aux = "audio/p" + unidade + ".mp3"
+						unidadeLer.setAttribute("src", aux)
+						unidadeLer.currentTime = 0;
+						unidadeLer.play();
+					}, 1500)
+				}
+			}
+			else
+			{
+				delayAtalho4 = setTimeout(function(){
+					letraE.setAttribute("src", "audio/letraE.mp3")
+					letraE.currentTime = 0;
+					letraE.play();
+				}, 600)
+				delayAtalho4 = setTimeout(function(){
+					aux = "audio/p" + aux2 + ".mp3"
+					unidadeLer.setAttribute("src", aux)
+					unidadeLer.currentTime = 0;
+					unidadeLer.play();
+				}, 800)
+			}
+		}
+	}, 8200)
 
 	estado = "derrota";
 	opcao = 3;
@@ -578,7 +699,7 @@ function criarCamadaDerrota()
 
 	jogo.jogadorPontos = document.createElement("p");
 	jogo.jogadorPontos.setAttribute("id", "jogadorPontos");
-	jogo.jogadorPontos.innerHTML = "Pontuação final: " + parseInt(jogo.pontos) + " pontos";
+	jogo.jogadorPontos.innerHTML = "Pontuação final: " + parseInt(jogo.pontos);
 
 
 	$("#camadaDerrota").append(jogo.imgBoneco);
