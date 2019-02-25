@@ -103,52 +103,54 @@ function update()
 {
 	atualizarPalavra();
 	var aux;
-	switch(fimDeJogo())
-	{
-		case -1:
-			//Continua o jogo normal
-			setTimeout(update, 50);
-			break;
-		case 0:
-			//Fim de jogo: jogador perdeu
-			jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
-			//aux = 5*Math.pow(0.8, jogo.erros);
-			//jogo.pontosParciais = aux;
-			destruirCamadaJogo();
-			criarCamadaDerrota();
-			break;
-		case 1:
-			var el = document.getElementById("camadaJogo");
-
-			//aux = 5*Math.pow(0.8, jogo.erros);
-			//jogo.pontosParciais = aux;
-			jogo.pontos = jogo.pontos + 10 - jogo.erros;
-
-			$('<div>').attr({'id': 'palavraCerta',})
-				.appendTo(el);
-
-			//el.onmousedown = function() {
+	if(estado == "jogando"){
+		switch(fimDeJogo())
+		{
+			case -1:
+				//Continua o jogo normal
+				setTimeout(update, 50);
+				break;
+			case 0:
+				//Fim de jogo: jogador perdeu
+				jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
+				//aux = 5*Math.pow(0.8, jogo.erros);
+				//jogo.pontosParciais = aux;
 				destruirCamadaJogo();
-				criarCamadaVitoria();
-			//}
-			break;
-		case 2:
-			var el = document.getElementById("camadaJogo");
+				criarCamadaDerrota();
+				break;
+			case 1:
+				var el = document.getElementById("camadaJogo");
 
-			//aux = 5*Math.pow(0.8, jogo.erros);
-			//jogo.pontosParciais = aux;
-			//jogo.pontos = jogo.pontos + aux;
-			jogo.pontos = jogo.pontos + 10 - jogo.erros;
+				//aux = 5*Math.pow(0.8, jogo.erros);
+				//jogo.pontosParciais = aux;
+				jogo.pontos = jogo.pontos + 10 - jogo.erros;
 
-			$('<div>').attr({'id': 'palavraCerta',})
-				.appendTo(el);
+				$('<div>').attr({'id': 'palavraCerta',})
+					.appendTo(el);
 
-			//el.onmousedown = function() {
-				destruirCamadaJogo();
-				//criarCamadaVitoria();
-				criarCamadaFimdeJogo();
-			//}
-			break;
+				//el.onmousedown = function() {
+					destruirCamadaJogo();
+					criarCamadaVitoria();
+				//}
+				break;
+			case 2:
+				var el = document.getElementById("camadaJogo");
+
+				//aux = 5*Math.pow(0.8, jogo.erros);
+				//jogo.pontosParciais = aux;
+				//jogo.pontos = jogo.pontos + aux;
+				jogo.pontos = jogo.pontos + 10 - jogo.erros;
+
+				$('<div>').attr({'id': 'palavraCerta',})
+					.appendTo(el);
+
+				//el.onmousedown = function() {
+					destruirCamadaJogo();
+					//criarCamadaVitoria();
+					criarCamadaFimdeJogo();
+				//}
+				break;
+		}
 	}
 }
 
