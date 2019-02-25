@@ -71,12 +71,17 @@ document.body.onkeyup = function(e)
 	//Pega as teclas
 	var e = window.event||e;
 	var keyunicode = e.charcode || e.keyCode || e.which;
+
+	if(keyunicode >= 112 && keyunicode <= 123)
+	{
+		return false;
+	}
 	
 	if(keyunicode >= 65 && keyunicode <= 90)
 	{
     	keyunicode +=32;
 	}
-	
+
 	//Se o codigo estiver dentro do alfabeto
 	if((keyunicode >= 97 && keyunicode <= 122) && (jogo.emTransicao == false) && (fimDeJogo() == -1))
 	{	

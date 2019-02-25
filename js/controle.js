@@ -378,7 +378,7 @@ function criarCamadaVitoria()
 		else if(opcao == 4){
 			document.getElementById("btnMenu").focus();
 		}
-		console.log(opcao);
+		//console.log(opcao);
 	})
 }
 
@@ -402,13 +402,14 @@ function destruirCamadaVitoria()
 
 function criarCamadaFimdeJogo()
 {
+	estado = "fimdeJogo";
 	var audio = document.createElement("AUDIO");
 	audio.setAttribute("src", "audio/vitoria1.ogg");
 	//var audio = document.getElementById("vitoria"); 
 	audio.currentTime = 0;
 	setTimeout(function(){
 		audio.play();
-	}, 200);
+	}, 500);
 
 	var fase;
 	var faseId;
@@ -449,13 +450,12 @@ function criarCamadaFimdeJogo()
 			iniciarNovoJogo();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
-	document.getElementById("btnMenu").onfocus = function()
+	document.getElementById("btnMenu").onmouseenter = function()
 	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/menu.mp3");
-		audio.play();
+		AudioBotoes("audio/menu.mp3");
 	}
 
+	inicializaFocus();
 	/*$('<div>').css({
 		'position': 'absolute',
 		'width': '800px',
@@ -468,6 +468,16 @@ function criarCamadaFimdeJogo()
 			iniciarNovoJogo();
 	})
 	.appendTo(el);*/
+
+	document.onkeydown = function(e)
+	{
+		e = window.event||e;
+		var setas = e.which || e.keyCode || e.charCode;
+		if((setas == 37 || setas == 39) && estado == "fimdeJogo")
+		{
+			AudioBotoes("audio/menu.mp3");
+		}
+	}
 
 	document.addEventListener("keyup", fimdeJogoMenu);
 }
@@ -500,7 +510,7 @@ function criarCamadaDerrota()
 	//var audio = document.getElementById("derrota"); 
 	setTimeout(function(){
 		audio.play();
-	}, 400);
+	}, 500);
 	origemDerrota = 1
 
 	var fase;
@@ -563,7 +573,7 @@ function criarCamadaDerrota()
 
 	$("#camadaDerrota").keydown(function (e){
 		selecionaOpcao(e);	
-		console.log(opcao);
+		//console.log(opcao);
 	
 		if(opcao == 3){
 			document.getElementById("btnReiniciar").focus();
@@ -867,7 +877,9 @@ function inicializaFocus(){
 	else if(estado == "derrota"){
 		document.getElementById("camadaDerrota").focus();
 		document.getElementById("btnReiniciar").focus();
-		AudioBotoes("audio/recomecar.mp3");
+		setTimeout(function(){
+			AudioBotoes("audio/recomecar.mp3");
+		}, 100);
 	}
 	else if(estado == "vitoria"){
 		document.getElementById("camadaVitoria").focus();
@@ -878,6 +890,13 @@ function inicializaFocus(){
 	}
 	else if(estado == "jogando"){
 		document.getElementById("palavraNaTela").focus();
+	}
+	else if(estado == "fimdeJogo"){
+		document.getElementById("camadaFimdeJogo").focus();
+		document.getElementById("btnMenu").focus();
+		setTimeout(function(){
+			AudioBotoes("audio/menu.mp3");
+		}, 100);
 	}
 }
 
