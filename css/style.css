@@ -43,6 +43,14 @@ body
 	width: 100%;
 }
 
+#camadaFimdeJogo
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
 #camadaDerrota{
 	display: flex;
 	flex-direction: column;
