@@ -42,8 +42,9 @@ function iniciar()
 		.appendTo($('#camadaJogo'));
 
 	//Sorteio de uma nova palavra
-	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;	
-
+	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
+	jogo.dicaPalavra = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;	
+	
 	jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
 
 	//Exibe dica da palavra + número de letras que ela contém

@@ -126,7 +126,7 @@ document.body.onkeyup = function(e)
 	if(keyunicode == 49) //1
 	{
 		stopTudo();
-		leituraDica();
+		testeLeitura(tamanhoPalavraSemEspaco() + " letras " + jogo.dicaPalavra);
 	}
 
 	//Lê o status da palavra
@@ -316,7 +316,9 @@ document.body.onkeyup = function(e)
 
 	function stopAtalho1()
 	{
-		audioAtalho1.pause();
+		window.speechSynthesis.cancel();
+
+		/*audioAtalho1.pause();
 		audioAtalho1.currentTime = 0;
 
 		if(tamanhoPalavraSemEspaco() > 20 && dezena%10!=0){
@@ -330,7 +332,7 @@ document.body.onkeyup = function(e)
 		qLetras.pause();
 		qLetras.currentTime = 0;
 
-		clearTimeout(delayAtalho1);
+		clearTimeout(delayAtalho1);*/
 	}
 	function stopAtalho2()
 	{
@@ -421,4 +423,12 @@ function leituraDica()
 			audioAtalho1.currentTime = 0
 			audioAtalho1.play()
 		}, espera);
+}
+
+function testeLeitura(texto)
+{
+	var msg = new SpeechSynthesisUtterance(texto);
+	msg.volume = 1; // 0 to 1
+	msg.rate = 1.5; // 0.1 to 10
+	window.speechSynthesis.speak(msg);
 }

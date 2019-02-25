@@ -193,7 +193,8 @@ function criarCamadaJogo()
 	el.appendChild(imgLogo);
 
 	iniciar();
-	leituraDica();
+	//leituraDica();
+	testeLeitura(tamanhoPalavraSemEspaco() + " letras " + jogo.dicaPalavra);
 }
 
 function destruirCamadaJogo()
