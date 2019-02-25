@@ -429,6 +429,6 @@ function testeLeitura(texto)
 {
 	var msg = new SpeechSynthesisUtterance(texto);
 	msg.volume = 1; // 0 to 1
-	msg.rate = 1.5; // 0.1 to 10
+	msg.rate = 1.3; // 0.1 to 10
 	window.speechSynthesis.speak(msg);
 }
