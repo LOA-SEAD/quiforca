@@ -67,6 +67,12 @@ function criarCamadaMenu()
 		audio.setAttribute("src", "audio/jogar.mp3");
 		audio.play();
 	}
+	botaoJogar.onmouseenter = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/jogar.mp3");
+		audio.play();
+	}
 
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
@@ -81,6 +87,12 @@ function criarCamadaMenu()
 		ativarBotaoInstrucoes();
 	}
 	botaoInstrucoes.onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/ajuda.mp3");
+		audio.play();
+	}
+	botaoInstrucoes.onmouseenter = function()
 	{
 		var audio = document.createElement("AUDIO");
 		audio.setAttribute("src", "audio/ajuda.mp3");
@@ -106,7 +118,13 @@ function criarCamadaMenu()
 		audio.setAttribute("src", "audio/creditos.mp3");
 		audio.play();
 	}
-
+	botaoCreditos.onmouseenter = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/creditos.mp3");
+		audio.play();
+	}
+	
 
 	inicializaFocus();
 
@@ -286,6 +304,15 @@ function criarCamadaCreditos()
 		destruirCamadaCreditos();
 		criarCamadaMenu();
 	}
+	document.onkeydown = function(e)
+	{
+		e = window.event||e;
+		if(e.which == 27 || e.keyCode == 27 || e.charCode == 24)
+		{
+			destruirCamadaCreditos();
+			criarCamadaMenu();
+		}
+	}
 }
 
 function destruirCamadaCreditos()
@@ -349,6 +376,12 @@ function criarCamadaVitoria()
 		audio.setAttribute("src", "audio/proxima.mp3");
 		audio.play();
 	}
+	document.getElementById("btnProxPalavra").onmouseenter = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/proxima.mp3");
+		audio.play();
+	}
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
@@ -356,6 +389,12 @@ function criarCamadaVitoria()
 		}
 	).appendTo($("#botoesTelaVitoria"));
 	document.getElementById("btnMenu").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/menu.mp3");
+		audio.play();
+	}
+	document.getElementById("btnMenu").onmouseenter = function()
 	{
 		var audio = document.createElement("AUDIO");
 		audio.setAttribute("src", "audio/menu.mp3");
@@ -545,6 +584,12 @@ function criarCamadaDerrota()
 		audio.setAttribute("src", "audio/recomecar.mp3");
 		audio.play();
 	}
+	document.getElementById("btnReiniciar").onmouseenter = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/recomecar.mp3");
+		audio.play();
+	}
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
@@ -552,6 +597,12 @@ function criarCamadaDerrota()
 		}
 	).appendTo($("#botoesFimDeJogo"));
 	document.getElementById("btnMenu").onfocus = function()
+	{
+		var audio = document.createElement("AUDIO");
+		audio.setAttribute("src", "audio/menu.mp3");
+		audio.play();
+	}
+	document.getElementById("btnMenu").onmouseenter = function()
 	{
 		var audio = document.createElement("AUDIO");
 		audio.setAttribute("src", "audio/menu.mp3");
@@ -720,6 +771,20 @@ function criarCamadaInstrucoes()
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
 
+	document.onkeydown = function(e)
+	{
+		e = window.event||e;
+		if(e.which == 27 || e.keyCode == 27 || e.charCode == 24)
+		{
+			destruirCamadaInstrucoes();
+			criarCamadaMenu();
+		}
+	}
+}
+
+function destruirCamadaInstrucoes()
+{
+	$("#camadaInstrucoes").remove();
 }
 
 function selecionaOpcao(e)
