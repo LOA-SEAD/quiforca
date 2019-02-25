@@ -80,6 +80,7 @@ document.body.onkeyup = function(e)
 	//Se o codigo estiver dentro do alfabeto
 	if((keyunicode >= 97 && keyunicode <= 122) && (jogo.emTransicao == false) && (fimDeJogo() == -1))
 	{	
+		stopTudo();
 		//Verifica se deu erro
 		verificarErro(String.fromCharCode(keyunicode-32));
 		//Coloca nas letras tentadas
