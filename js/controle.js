@@ -190,8 +190,8 @@ function criarCamadaJogo()
 	imgLogo.setAttribute("id", "imgLogo");
 	el.appendChild(imgLogo);
 
-	realizaLeitura = true;
 	iniciar();
+	leituraDica();
 }
 
 function destruirCamadaJogo()
@@ -421,7 +421,7 @@ function criarCamadaFimdeJogo()
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2> <br> A palavra é " + jogo.palavraSorteada + "<br><br>Pontuação final: "+jogo.pontos;
+	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2><h3>Pontuação final: "+jogo.pontos + "</h3> A palavra é " + jogo.palavraSorteada;
 
 	jogo.imgBonecoVitoria = document.createElement("div");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");

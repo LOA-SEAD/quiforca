@@ -279,7 +279,7 @@ function verificarErro(_letra)
 			audio.setAttribute("src", "audio/acerta_letra1.ogg");
 		}
 		audio.currentTime = 0
-		audio.volume = 0.2
+		audio.volume = 0.5
 		audio.play()
 	}
 	if(deuErro)
