@@ -286,10 +286,25 @@ function criarCamadaCreditos()
 	colRight.appendChild(para);
 
 
-	el.onmousedown = function()
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoes");
+	el.appendChild(caixaBotoes);
+
+
+	var botaoMenu = document.createElement("div");
+	botaoMenu.setAttribute("id" , "btnMenu");
+	botaoMenu.setAttribute("tabIndex" , "-1");
+	botaoMenu.setAttribute("class" , "botao");
+	caixaBotoes.appendChild(botaoMenu);
+
+	botaoMenu.onmousedown = function()
 	{
 		destruirCamadaCreditos();
 		criarCamadaMenu();
+	}
+	botaoMenu.onmouseenter = function()
+	{
+		AudioBotoes("audio/menu.mp3");
 	}
 	document.onkeydown = function(e)
 	{
@@ -852,8 +867,13 @@ function criarCamadaInstrucoes()
 {
 	estado = "instrucoes"
 
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaInstrucoes");
+	el.setAttribute("tabIndex", "0");
+	$("#palco").append(el);
+
 	//criação camada de instruções
-	$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
+	//$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
 
 	//conteúdo instruções
 	jogo.instrucoes = document.createElement("p");
@@ -871,12 +891,30 @@ function criarCamadaInstrucoes()
 	 "3 - Saiba quantas vidas você ainda tem<br>"+
 	 "4 - Relembre as letras que você já escolheu<br>"+
 	 "5 - Saiba sua pontuação atual<br>"+
-	 "6 - Pare o som do atalho em que você clicou<br>"+
-	 "Esc - Menu<br><br>"+
-	 "Boa sorte!";
+	 "Esc - Menu<br>";
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
+
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoes");
+	el.appendChild(caixaBotoes);
+
+	var botaoMenu = document.createElement("div");
+	botaoMenu.setAttribute("id" , "btnMenu");
+	botaoMenu.setAttribute("tabIndex" , "-1");
+	botaoMenu.setAttribute("class" , "botao");
+	caixaBotoes.append(botaoMenu);
+
+	botaoMenu.onclick = function()
+	{
+		destruirCamadaInstrucoes();
+		criarCamadaMenu();
+	}
+	botaoMenu.onmouseenter = function()
+	{
+		AudioBotoes("audio/menu.mp3");
+	}
 
 	document.onkeydown = function(e)
 	{

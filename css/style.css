@@ -97,8 +97,8 @@ body
 	left: 10%;
 	top: 50%;
 	margin-left: -250px;	
-	margin-top: -250px;
-	text-align: center;*/
+	margin-top: -250px;*/
+	text-align: center;
 	display: flex;
 	flex-direction: column;
 	/*align-items: center;*/
