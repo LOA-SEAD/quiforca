@@ -13,10 +13,14 @@ function iniciar()
 
 	jogo.sorteio = parseInt((Math.random()*10000)%jogo.bdTamanho);
 
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoes");
+
 	jogo.botaoVoltar = document.createElement("div");
-	jogo.botaoVoltar.setAttribute("id" , "btnVoltar");
+	jogo.botaoVoltar.setAttribute("id" , "btnMenu");
 	jogo.botaoVoltar.setAttribute("role" , "button");
 	jogo.botaoVoltar.setAttribute("aria-label" , "Voltar");
+	jogo.botaoVoltar.setAttribute("class", "botao");
 
 	jogo.linha = document.createElement("div");
 	jogo.linha.setAttribute("id", "row");
@@ -95,7 +99,9 @@ function iniciar()
 	$("#camadaJogo").append(jogo.linha);
 	colocarPersonagem();
 	colocarTecladoNaTela();
-	$("#camadaJogo").append(jogo.botaoVoltar);
+	$("#camadaJogo").append(caixaBotoes);
+	caixaBotoes.appendChild(jogo.botaoVoltar);
+	//$("#camadaJogo").append(jogo.botaoVoltar);
 	inicializaFocus();
 	update();
 }

@@ -203,20 +203,29 @@ function destruirCamadaJogo()
 	background.pause()
 }
 
+var audioCreditos = document.createElement("AUDIO");
+audioCreditos.setAttribute("src", "audio/creditostxt.mp3");
+audioCreditos.currentTime = 0
+
 function criarCamadaCreditos()
 {
+	audioCreditos.currentTime = 0
+	audioCreditos.play();
 	estado = "creditos";
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaCreditos");
 	$("#palco").append(el);
 
-
 	var para = $('<br>').appendTo(el);
 	var para = $('<br>').appendTo(el);
 	var para = $('<br>').appendTo(el);
 
-	var para = document.createElement("p");
+	var para = document.createElement("h1");
+	para.innerHTML = "Créditos";
+	el.appendChild(para);
+
+	var para = document.createElement("h1");
 	para.innerHTML = "Coordenação";
 	el.appendChild(para);
 
@@ -236,7 +245,7 @@ function criarCamadaCreditos()
 	para.innerHTML = "Joice Lee Otsuka";
 	colRight.appendChild(para);
 
-	var para = document.createElement("p");
+	var para = document.createElement("h1");
 	para.innerHTML = "Equipe";
 	el.appendChild(para);
 
@@ -278,10 +287,25 @@ function criarCamadaCreditos()
 	colRight.appendChild(para);
 
 
-	el.onmousedown = function()
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoes");
+	el.appendChild(caixaBotoes);
+
+
+	var botaoMenu = document.createElement("div");
+	botaoMenu.setAttribute("id" , "btnMenu");
+	botaoMenu.setAttribute("tabIndex" , "-1");
+	botaoMenu.setAttribute("class" , "botao");
+	caixaBotoes.appendChild(botaoMenu);
+
+	botaoMenu.onmousedown = function()
 	{
 		destruirCamadaCreditos();
 		criarCamadaMenu();
+	}
+	botaoMenu.onmouseenter = function()
+	{
+		AudioBotoes("audio/menu.mp3");
 	}
 	document.onkeydown = function(e)
 	{
@@ -296,11 +320,29 @@ function criarCamadaCreditos()
 
 function destruirCamadaCreditos()
 {
+	audioCreditos.pause()
 	$("#camadaCreditos").remove();
 }
 
+var audioVit = document.createElement("AUDIO");
+audioVit.setAttribute("src", "audio/frasevitoria.mp3");
+
+var audioVitP = document.createElement("AUDIO");
+
 function criarCamadaVitoria()
 {
+	vitoria1 = setTimeout(function(){
+		audioVit.currentTime = 0
+		audioVit.volume = 1
+		audioVit.play();
+	}, 3000);
+	vitoria2 = setTimeout(function(){
+		var txt = "audio/" + numeroSorteado() + ".mp3"
+		audioVitP.setAttribute("src", txt);
+		audioVitP.currentTime = 0
+		audioVitP.volume = 1
+		audioVitP.play();
+	}, 5200);
 
 	estado = "vitoria";
 	opcao = 5;
@@ -399,6 +441,10 @@ function proximaFase(e)
 
 function destruirCamadaVitoria()
 {
+	clearTimeout(vitoria1)
+	clearTimeout(vitoria2)
+	audioVit.pause()
+	audioVitP.pause()
 	document.removeEventListener("keyup", proximaFase);
 	$("#camadaVitoria").remove();
 }
@@ -503,8 +549,137 @@ function destruirCamadaFimdeJogo()
 	document.removeEventListener("keyup", fimdeJogoMenu);
 }
 
+var audioDer = document.createElement("AUDIO");
+audioDer.setAttribute("src", "audio/frasederrota.mp3");
+var pontfinal = document.createElement("AUDIO");
+pontfinal.setAttribute("src", "audio/pontuacaofinal.mp3");
+
+derrota1 = false
+derrota2 = false
+derrota3 = false
+derrota4 = false
+derrota5 = false
+derrota6 = false
+derrota7 = false
+derrota8 = false
+derrota9 = false
+derrota10 = false
+
 function criarCamadaDerrota()
 {
+	derrota1 = setTimeout(function(){
+		audioDer.currentTime = 0
+		audioDer.play()
+	}, 3000);
+	derrota2 = setTimeout(function(){
+		var txt = "audio/" + numeroSorteado() + ".mp3"
+		audioVitP.setAttribute("src", txt);
+		audioVitP.currentTime = 0
+		audioVitP.play();
+	}, 5300);
+	derrota3 = setTimeout(function(){
+		pontfinal.currentTime = 0
+		pontfinal.play()
+	}, 7300);
+
+	var aux
+	var centena
+	
+	derrota4 = setTimeout(function(){
+		if(pontuacao() <= 20 || (pontuacao() % 10 == 0 && pontuacao() < 100) || (pontuacao() % 100 == 0 && pontuacao() > 100) || pontuacao() == 1000){
+			unidade = "audio/p" + pontuacao() + ".mp3"
+			unidadeLer.setAttribute("src", unidade)
+			unidadeLer.currentTime = 0
+			unidadeLer.play()
+		}
+		else if(pontuacao() <= 99)
+		{
+			unidade = pontuacao()%10
+			dezena = pontuacao() - unidade
+
+			aux = "audio/p" + dezena + ".mp3"
+			dezenaLer.setAttribute("src", aux)
+			dezenaLer.currentTime = 0
+			dezenaLer.play()
+
+			derrota5 = setTimeout(function(){
+				letraE.setAttribute("src", "audio/letraE.mp3")
+				letraE.currentTime = 0;
+				letraE.play();
+			}, 600)
+
+			derrota6 = setTimeout(function(){
+				aux = "audio/p" + unidade + ".mp3"
+				unidadeLer.setAttribute("src", aux)
+				unidadeLer.currentTime = 0;
+				unidadeLer.play();
+			}, 800)
+		}
+		else if(pontuacao() == 100){
+			unidadeLer.setAttribute("src", "audio/pcem.mp3")
+			unidadeLer.currentTime = 0
+			unidadeLer.play()
+		}
+		else
+		{
+			unidade = pontuacao()%10
+			dezena = pontuacao()%100 - unidade
+			centena = pontuacao() - unidade - dezena
+
+			aux = "audio/p" + centena + ".mp3"
+			centenaLer.setAttribute("src", aux)
+			centenaLer.currentTime = 0
+			centenaLer.play()
+
+			var aux2 = pontuacao() - centena
+			if(aux2 >= 20)
+			{
+				if(dezena != 0){
+					derrota7 = setTimeout(function(){
+						letraE.setAttribute("src", "audio/letraE.mp3")
+						letraE.currentTime = 0;
+						letraE.play();
+					}, 600)
+				}
+
+				derrota8 = setTimeout(function(){
+					aux = "audio/p" + dezena + ".mp3"
+					dezenaLer.setAttribute("src", aux)
+					dezenaLer.currentTime = 0
+					dezenaLer.play()
+				}, 800)
+
+				if(unidade != 0){
+					derrota9 = setTimeout(function(){
+						letraE.setAttribute("src", "audio/letraE.mp3")
+						letraE.currentTime = 0;
+						letraE.play();
+					}, 1200)
+
+					derrota10 = setTimeout(function(){
+						aux = "audio/p" + unidade + ".mp3"
+						unidadeLer.setAttribute("src", aux)
+						unidadeLer.currentTime = 0;
+						unidadeLer.play();
+					}, 1500)
+				}
+			}
+			else
+			{
+				derrota7 = setTimeout(function(){
+					letraE.setAttribute("src", "audio/letraE.mp3")
+					letraE.currentTime = 0;
+					letraE.play();
+				}, 600)
+				derrota8 = setTimeout(function(){
+					aux = "audio/p" + aux2 + ".mp3"
+					unidadeLer.setAttribute("src", aux)
+					unidadeLer.currentTime = 0;
+					unidadeLer.play();
+				}, 800)
+			}
+		}
+	}, 8300)
 
 	estado = "derrota";
 	opcao = 3;
@@ -539,7 +714,7 @@ function criarCamadaDerrota()
 
 	jogo.jogadorPontos = document.createElement("p");
 	jogo.jogadorPontos.setAttribute("id", "jogadorPontos");
-	jogo.jogadorPontos.innerHTML = "Pontuação final: " + parseInt(jogo.pontos) + " pontos";
+	jogo.jogadorPontos.innerHTML = "Pontuação final: " + parseInt(jogo.pontos);
 
 
 	$("#camadaDerrota").append(jogo.imgBoneco);
@@ -601,6 +776,21 @@ function derrotaMenu(e){
 
 function destruirCamadaDerrota()
 {
+	clearTimeout(derrota1)
+	clearTimeout(derrota2)
+	clearTimeout(derrota3)
+	clearTimeout(derrota4)
+	clearTimeout(derrota5)
+	clearTimeout(derrota6)
+	clearTimeout(derrota7)
+	clearTimeout(derrota8)
+	clearTimeout(derrota9)
+	clearTimeout(derrota10)
+
+	audioDer.pause()
+	audioVitP.pause()
+	pontfinal.pause()
+
 	document.removeEventListener("keyup", derrotaMenu);
 	$("#camadaDerrota").remove();
 }
@@ -707,8 +897,13 @@ function criarCamadaInstrucoes()
 {
 	estado = "instrucoes"
 
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaInstrucoes");
+	el.setAttribute("tabIndex", "0");
+	$("#palco").append(el);
+
 	//criação camada de instruções
-	$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
+	//$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
 
 	//conteúdo instruções
 	jogo.instrucoes = document.createElement("p");
@@ -726,12 +921,30 @@ function criarCamadaInstrucoes()
 	 "3 - Saiba quantas vidas você ainda tem<br>"+
 	 "4 - Relembre as letras que você já escolheu<br>"+
 	 "5 - Saiba sua pontuação atual<br>"+
-	 "6 - Pare o som do atalho em que você clicou<br>"+
-	 "Esc - Menu<br><br>"+
-	 "Boa sorte!";
+	 "Esc - Menu<br>";
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
+
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoes");
+	el.appendChild(caixaBotoes);
+
+	var botaoMenu = document.createElement("div");
+	botaoMenu.setAttribute("id" , "btnMenu");
+	botaoMenu.setAttribute("tabIndex" , "-1");
+	botaoMenu.setAttribute("class" , "botao");
+	caixaBotoes.append(botaoMenu);
+
+	botaoMenu.onclick = function()
+	{
+		destruirCamadaInstrucoes();
+		criarCamadaMenu();
+	}
+	botaoMenu.onmouseenter = function()
+	{
+		AudioBotoes("audio/menu.mp3");
+	}
 
 	document.onkeydown = function(e)
 	{
