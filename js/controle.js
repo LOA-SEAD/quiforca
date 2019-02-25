@@ -148,6 +148,7 @@ function ativarBotaoReiniciar()
 	destruirCamadaJogo();
 	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	//salvaPontuacao(jogo.nome, pontos);
+	iniciarNovoJogo();
 	criarCamadaJogo();
 }
 
@@ -158,15 +159,16 @@ function ativarBotaoSair()
 	destruirCamadaJogo();
 	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	//salvaPontuacao(jogo.nome, pontos);
+	iniciarNovoJogo();
 	criarCamadaMenu();
 }
 
 function ativarProxPalavra()
 {
-	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-	destruirCamadaVitoria();
-	criarCamadaJogo();
-	//salvaPontuacao(jogo.nome, pontos);
+		sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+		destruirCamadaVitoria();
+		criarCamadaJogo();
+		//salvaPontuacao(jogo.nome, pontos);	
 }
 
 function destruirCamadaMenu()
