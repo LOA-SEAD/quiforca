@@ -200,20 +200,29 @@ function destruirCamadaJogo()
 	background.pause()
 }
 
+var audioCreditos = document.createElement("AUDIO");
+audioCreditos.setAttribute("src", "audio/creditostxt.mp3");
+audioCreditos.currentTime = 0
+
 function criarCamadaCreditos()
 {
+	audioCreditos.currentTime = 0
+	audioCreditos.play();
 	estado = "creditos";
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaCreditos");
 	$("#palco").append(el);
 
-
 	var para = $('<br>').appendTo(el);
 	var para = $('<br>').appendTo(el);
 	var para = $('<br>').appendTo(el);
 
-	var para = document.createElement("p");
+	var para = document.createElement("h1");
+	para.innerHTML = "Créditos";
+	el.appendChild(para);
+
+	var para = document.createElement("h1");
 	para.innerHTML = "Coordenação";
 	el.appendChild(para);
 
@@ -233,7 +242,7 @@ function criarCamadaCreditos()
 	para.innerHTML = "Joice Lee Otsuka";
 	colRight.appendChild(para);
 
-	var para = document.createElement("p");
+	var para = document.createElement("h1");
 	para.innerHTML = "Equipe";
 	el.appendChild(para);
 
@@ -293,11 +302,27 @@ function criarCamadaCreditos()
 
 function destruirCamadaCreditos()
 {
+	audioCreditos.pause()
 	$("#camadaCreditos").remove();
 }
 
+var audioVit = document.createElement("AUDIO");
+audioVit.setAttribute("src", "audio/frasevitoria.mp3");
+
+var audioVitP = document.createElement("AUDIO");
+
 function criarCamadaVitoria()
 {
+	setTimeout(function(){
+		audioVit.currentTime = 0
+		audioVit.play();
+	}, 3000);
+	setTimeout(function(){
+		var txt = "audio/" + numeroSorteado() + ".mp3"
+		audioVitP.setAttribute("src", txt);
+		audioVitP.currentTime = 0
+		audioVitP.play();
+	}, 4500);
 
 	estado = "vitoria";
 	opcao = 5;

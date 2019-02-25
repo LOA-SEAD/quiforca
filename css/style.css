@@ -67,7 +67,6 @@ body
 	outline: none;
 }
 
-
 #imgMenu
 {
 	margin: 2rem auto;
@@ -92,14 +91,18 @@ body
 
 #camadaCreditos
 {
-	position: relative;
+	/*position: relative;
 	width: 500px;
 	height: 500px;
-	/*left: 10%;
-	top: 50%;*/
-	/*margin-left: -250px;	
-	margin-top: -250px;*/
-	text-align: center;
+	left: 10%;
+	top: 50%;
+	margin-left: -250px;	
+	margin-top: -250px;
+	text-align: center;*/
+	display: flex;
+	flex-direction: column;
+	/*align-items: center;*/
+	width: 100%;
 }
 
 /*Parte das coisas escritas na tela*/
@@ -192,6 +195,12 @@ body
  {
     font-family: "Fonte";
     src: url(../fonte/Teclado.ttf) format("truetype");
+}
+
+h1
+{
+	font-family:"Fonte","Tahoma";
+	font-size: 50px;
 }
 
 p
