@@ -277,7 +277,11 @@ p
 
 #btnVoltar
 {
+<<<<<<< HEAD
+	width: 115px;
+=======
 	width: 116px;
+>>>>>>> 317d5112b4c2428a7445a42065d53a042b537807
 	height: 65px;
 	margin-top: 1rem;
 	margin-left: 1rem;
@@ -410,3 +414,4 @@ p
 		flex-direction: column;
 	}
   }
+  

@@ -193,7 +193,8 @@ function criarCamadaJogo()
 	el.appendChild(imgLogo);
 
 	iniciar();
-	leituraDica();
+	//leituraDica();
+	testeLeitura(tamanhoPalavraSemEspaco() + " letras " + jogo.dicaPalavra);
 }
 
 function destruirCamadaJogo()
@@ -330,12 +331,12 @@ var audioVitP = document.createElement("AUDIO");
 
 function criarCamadaVitoria()
 {
-	setTimeout(function(){
+	vitoria1 = setTimeout(function(){
 		audioVit.currentTime = 0
 		audioVit.volume = 1
 		audioVit.play();
 	}, 3000);
-	setTimeout(function(){
+	vitoria2 = setTimeout(function(){
 		var txt = "audio/" + numeroSorteado() + ".mp3"
 		audioVitP.setAttribute("src", txt);
 		audioVitP.currentTime = 0
@@ -440,8 +441,10 @@ function proximaFase(e)
 
 function destruirCamadaVitoria()
 {
-	audioVit.volume = 0
-	audioVitP.volume = 0
+	clearTimeout(vitoria1)
+	clearTimeout(vitoria2)
+	audioVit.pause()
+	audioVitP.pause()
 	document.removeEventListener("keyup", proximaFase);
 	$("#camadaVitoria").remove();
 }
@@ -551,26 +554,38 @@ audioDer.setAttribute("src", "audio/frasederrota.mp3");
 var pontfinal = document.createElement("AUDIO");
 pontfinal.setAttribute("src", "audio/pontuacaofinal.mp3");
 
+derrota1 = false
+derrota2 = false
+derrota3 = false
+derrota4 = false
+derrota5 = false
+derrota6 = false
+derrota7 = false
+derrota8 = false
+derrota9 = false
+derrota10 = false
+
 function criarCamadaDerrota()
 {
-	setTimeout(function(){
+	derrota1 = setTimeout(function(){
 		audioDer.currentTime = 0
 		audioDer.play()
 	}, 3000);
-	setTimeout(function(){
+	derrota2 = setTimeout(function(){
 		var txt = "audio/" + numeroSorteado() + ".mp3"
 		audioVitP.setAttribute("src", txt);
 		audioVitP.currentTime = 0
 		audioVitP.play();
 	}, 5300);
-	setTimeout(function(){
+	derrota3 = setTimeout(function(){
 		pontfinal.currentTime = 0
 		pontfinal.play()
 	}, 7300);
 
 	var aux
 	var centena
-	setTimeout(function(){
+	
+	derrota4 = setTimeout(function(){
 		if(pontuacao() <= 20 || (pontuacao() % 10 == 0 && pontuacao() < 100) || (pontuacao() % 100 == 0 && pontuacao() > 100) || pontuacao() == 1000){
 			unidade = "audio/p" + pontuacao() + ".mp3"
 			unidadeLer.setAttribute("src", unidade)
@@ -587,13 +602,13 @@ function criarCamadaDerrota()
 			dezenaLer.currentTime = 0
 			dezenaLer.play()
 
-			delayAtalho4 = setTimeout(function(){
+			derrota5 = setTimeout(function(){
 				letraE.setAttribute("src", "audio/letraE.mp3")
 				letraE.currentTime = 0;
 				letraE.play();
 			}, 600)
 
-			delayAtalho4 = setTimeout(function(){
+			derrota6 = setTimeout(function(){
 				aux = "audio/p" + unidade + ".mp3"
 				unidadeLer.setAttribute("src", aux)
 				unidadeLer.currentTime = 0;
@@ -620,14 +635,14 @@ function criarCamadaDerrota()
 			if(aux2 >= 20)
 			{
 				if(dezena != 0){
-					delayAtalho4 = setTimeout(function(){
+					derrota7 = setTimeout(function(){
 						letraE.setAttribute("src", "audio/letraE.mp3")
 						letraE.currentTime = 0;
 						letraE.play();
 					}, 600)
 				}
 
-				delayAtalho4 = setTimeout(function(){
+				derrota8 = setTimeout(function(){
 					aux = "audio/p" + dezena + ".mp3"
 					dezenaLer.setAttribute("src", aux)
 					dezenaLer.currentTime = 0
@@ -635,13 +650,13 @@ function criarCamadaDerrota()
 				}, 800)
 
 				if(unidade != 0){
-					delayAtalho4 = setTimeout(function(){
+					derrota9 = setTimeout(function(){
 						letraE.setAttribute("src", "audio/letraE.mp3")
 						letraE.currentTime = 0;
 						letraE.play();
 					}, 1200)
 
-					delayAtalho4 = setTimeout(function(){
+					derrota10 = setTimeout(function(){
 						aux = "audio/p" + unidade + ".mp3"
 						unidadeLer.setAttribute("src", aux)
 						unidadeLer.currentTime = 0;
@@ -651,12 +666,12 @@ function criarCamadaDerrota()
 			}
 			else
 			{
-				delayAtalho4 = setTimeout(function(){
+				derrota7 = setTimeout(function(){
 					letraE.setAttribute("src", "audio/letraE.mp3")
 					letraE.currentTime = 0;
 					letraE.play();
 				}, 600)
-				delayAtalho4 = setTimeout(function(){
+				derrota8 = setTimeout(function(){
 					aux = "audio/p" + aux2 + ".mp3"
 					unidadeLer.setAttribute("src", aux)
 					unidadeLer.currentTime = 0;
@@ -664,7 +679,7 @@ function criarCamadaDerrota()
 				}, 800)
 			}
 		}
-	}, 8200)
+	}, 8300)
 
 	estado = "derrota";
 	opcao = 3;
@@ -761,6 +776,21 @@ function derrotaMenu(e){
 
 function destruirCamadaDerrota()
 {
+	clearTimeout(derrota1)
+	clearTimeout(derrota2)
+	clearTimeout(derrota3)
+	clearTimeout(derrota4)
+	clearTimeout(derrota5)
+	clearTimeout(derrota6)
+	clearTimeout(derrota7)
+	clearTimeout(derrota8)
+	clearTimeout(derrota9)
+	clearTimeout(derrota10)
+
+	audioDer.pause()
+	audioVitP.pause()
+	pontfinal.pause()
+
 	document.removeEventListener("keyup", derrotaMenu);
 	$("#camadaDerrota").remove();
 }
