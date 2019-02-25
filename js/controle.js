@@ -196,8 +196,8 @@ function criarCamadaJogo()
 	imgLogo.setAttribute("id", "imgLogo");
 	el.appendChild(imgLogo);
 
-	realizaLeitura = true;
 	iniciar();
+	leituraDica();
 }
 
 function destruirCamadaJogo()

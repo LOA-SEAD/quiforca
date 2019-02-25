@@ -116,60 +116,10 @@ document.body.onkeyup = function(e)
 	audioAtalho5.setAttribute("src", "audio/pontos.mp3");
 
 	//Ouve a dica
-	if(keyunicode == 49 || realizaLeitura) //1
+	if(keyunicode == 49) //1
 	{
-		realizaLeitura = false;
-		stopTudo()
-		var espera 
-		if(tamanhoPalavraSemEspaco() > 20 && dezena%10!=0){
-			var dezena = tamanhoPalavraSemEspaco()%100
-			var unidade = dezena%10
-			dezena = dezena - unidade
-			
-			dezena = "audio/p" + dezena  + ".mp3";
-			dezenaLer.setAttribute("src", dezena)
-			dezenaLer.currentTime = 0;
-			dezenaLer.play();
-			
-			delayAtalho1 = setTimeout(function(){
-				letraE.setAttribute("src", "audio/letraE.mp3")
-				letraE.currentTime = 0;
-				letraE.play();
-			}, 500);
-
-			delayAtalho1 = setTimeout(function(){
-				unidade = "audio/p" + unidade + ".mp3";
-				unidadeLer.setAttribute("src", unidade)
-				unidadeLer.currentTime = 0;
-				unidadeLer.play();
-			}, 700);
-
-			delayAtalho1 = setTimeout(function(){
-				qLetras.setAttribute("src", "audio/pletras.mp3")
-				qLetras.currentTime = 0;
-				qLetras.play();
-			}, 1000);
-			espera = 1500
-		}
-		else
-		{
-			var ler = "audio/p"+tamanhoPalavraSemEspaco() + ".mp3";
-			unidadeLer.setAttribute("src", ler);
-			unidadeLer.currentTime = 0;
-			unidadeLer.play();
-			delayAtalho1 = setTimeout(function(){
-				qLetras.setAttribute("src", "audio/pletras.mp3")
-				qLetras.currentTime = 0;
-				qLetras.play();
-			}, 600);
-			espera = 1500
-		}
-		delayAtalho1 = setTimeout(function(){
-			nomeAtalho1 = "audio/r" + numeroSorteado() + ".mp3"
-			audioAtalho1.setAttribute("src", nomeAtalho1)
-			audioAtalho1.currentTime = 0
-			audioAtalho1.play()
-		}, espera);
+		stopTudo();
+		leituraDica();
 	}
 
 	//Lê o status da palavra
@@ -412,3 +362,56 @@ function track(source)
 	return audio;
 }
 
+function leituraDica()
+{
+	var espera
+		if(tamanhoPalavraSemEspaco() > 20 && dezena%10!=0){
+			var dezena = tamanhoPalavraSemEspaco()%100
+			var unidade = dezena%10
+			dezena = dezena - unidade
+			
+			dezena = "audio/p" + dezena  + ".mp3";
+			dezenaLer.setAttribute("src", dezena)
+			dezenaLer.currentTime = 0;
+			dezenaLer.play();
+			
+			delayAtalho1 = setTimeout(function(){
+				letraE.setAttribute("src", "audio/letraE.mp3")
+				letraE.currentTime = 0;
+				letraE.play();
+			}, 500);
+
+			delayAtalho1 = setTimeout(function(){
+				unidade = "audio/p" + unidade + ".mp3";
+				unidadeLer.setAttribute("src", unidade)
+				unidadeLer.currentTime = 0;
+				unidadeLer.play();
+			}, 700);
+
+			delayAtalho1 = setTimeout(function(){
+				qLetras.setAttribute("src", "audio/pletras.mp3")
+				qLetras.currentTime = 0;
+				qLetras.play();
+			}, 1000);
+			espera = 1500
+		}
+		else
+		{
+			var ler = "audio/p"+tamanhoPalavraSemEspaco() + ".mp3";
+			unidadeLer.setAttribute("src", ler);
+			unidadeLer.currentTime = 0;
+			unidadeLer.play();
+			delayAtalho1 = setTimeout(function(){
+				qLetras.setAttribute("src", "audio/pletras.mp3")
+				qLetras.currentTime = 0;
+				qLetras.play();
+			}, 600);
+			espera = 1500
+		}
+		delayAtalho1 = setTimeout(function(){
+			nomeAtalho1 = "audio/r" + numeroSorteado() + ".mp3"
+			audioAtalho1.setAttribute("src", nomeAtalho1)
+			audioAtalho1.currentTime = 0
+			audioAtalho1.play()
+		}, espera);
+}
