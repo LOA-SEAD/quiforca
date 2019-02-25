@@ -61,17 +61,9 @@ function criarCamadaMenu()
 	{
 		ativarBotaoJogar();
 	}
-	botaoJogar.onfocus = function()
-	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/jogar.mp3");
-		audio.play();
-	}
 	botaoJogar.onmouseenter = function()
 	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/jogar.mp3");
-		audio.play();
+		AudioBotoes("audio/jogar.mp3");
 	}
 
 	//Cria botao de instruções e adiciona a caixa de botões
@@ -86,17 +78,9 @@ function criarCamadaMenu()
 	{
 		ativarBotaoInstrucoes();
 	}
-	botaoInstrucoes.onfocus = function()
-	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/ajuda.mp3");
-		audio.play();
-	}
 	botaoInstrucoes.onmouseenter = function()
 	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/ajuda.mp3");
-		audio.play();
+		AudioBotoes("audio/ajuda.mp3");
 	}
 
 
@@ -112,17 +96,9 @@ function criarCamadaMenu()
 	{
 		ativarBotaoCreditos();
 	}
-	botaoCreditos.onfocus = function()
-	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/creditos.mp3");
-		audio.play();
-	}
 	botaoCreditos.onmouseenter = function()
 	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/creditos.mp3");
-		audio.play();
+		AudioBotoes("audio/creditos.mp3");
 	}
 	
 
@@ -372,15 +348,11 @@ function criarCamadaVitoria()
 	
 	document.getElementById("btnProxPalavra").onfocus = function()
 	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/proxima.mp3");
-		audio.play();
+		AudioBotoes("audio/proxima.mp3");
 	}
 	document.getElementById("btnProxPalavra").onmouseenter = function()
 	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/proxima.mp3");
-		audio.play();
+		AudioBotoes("audio/proxima.mp3");
 	}
 
 	$("<button>").attr("id", "btnMenu").click(
@@ -388,17 +360,9 @@ function criarCamadaVitoria()
 			ativarBotaoSair();
 		}
 	).appendTo($("#botoesTelaVitoria"));
-	document.getElementById("btnMenu").onfocus = function()
-	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/menu.mp3");
-		audio.play();
-	}
 	document.getElementById("btnMenu").onmouseenter = function()
 	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/menu.mp3");
-		audio.play();
+		AudioBotoes("audio/menu.mp3");
 	}
 
 	document.addEventListener("keyup", proximaFase);
@@ -578,17 +542,9 @@ function criarCamadaDerrota()
 			ativarBotaoReiniciar();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
-	document.getElementById("btnReiniciar").onfocus = function()
-	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/recomecar.mp3");
-		audio.play();
-	}
 	document.getElementById("btnReiniciar").onmouseenter = function()
 	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/recomecar.mp3");
-		audio.play();
+		AudioBotoes("audio/recomecar.mp3");
 	}
 
 	$("<button>").attr("id", "btnMenu").click(
@@ -596,17 +552,9 @@ function criarCamadaDerrota()
 			ativarBotaoSair();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
-	document.getElementById("btnMenu").onfocus = function()
-	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/menu.mp3");
-		audio.play();
-	}
 	document.getElementById("btnMenu").onmouseenter = function()
 	{
-		var audio = document.createElement("AUDIO");
-		audio.setAttribute("src", "audio/menu.mp3");
-		audio.play();
+		AudioBotoes("audio/menu.mp3");
 	}
 
 	document.addEventListener("keyup", derrotaMenu);
@@ -789,7 +737,6 @@ function destruirCamadaInstrucoes()
 
 function selecionaOpcao(e)
 {
-
 	switch(e.keyCode){
 		case 13: //Enter
 			switch(opcao){
@@ -830,16 +777,26 @@ function selecionaOpcao(e)
 					tocaAudio();
 					opcao--;
 				}
+				if(opcao == 0)
+				{
+					AudioBotoes("audio/jogar.mp3");
+				}
+				if(opcao == 1)
+				{
+					AudioBotoes("audio/ajuda.mp3");
+				}
 			}
 			else if(estado == "derrota"){
 				if(opcao > 3){
 					tocaAudio();
+					AudioBotoes("audio/recomecar.mp3");
 					opcao--;
 				}
 			}
 			else if(estado == "vitoria"){
 				if(opcao < 5){
 					tocaAudio();
+					AudioBotoes("audio/proxima.mp3");
 					opcao++;
 				}
 			}
@@ -851,18 +808,27 @@ function selecionaOpcao(e)
 					tocaAudio();
 					opcao++;
 				}
+				if(opcao == 1)
+				{
+					AudioBotoes("audio/ajuda.mp3");
+				}
+				if(opcao == 2)
+				{
+					AudioBotoes("audio/creditos.mp3");
+				}
 			}
 			else if(estado == "derrota"){
 				if(opcao < 4){
 					tocaAudio();
+					AudioBotoes("audio/menu.mp3");
 					opcao++;
 				}
 			}
 			else if(estado == "vitoria"){
 				if(opcao > 4){
 					tocaAudio();
+					AudioBotoes("audio/menu.mp3");
 					opcao--;
-					
 				}
 			}
 		break;
@@ -873,6 +839,13 @@ function selecionaOpcao(e)
 function tocaAudio() {
 	audioTeclas.currentTime = 0;
 	audioTeclas.play();
+}
+
+function AudioBotoes(nomeAudio)
+{
+	var audio = document.createElement("AUDIO");
+	audio.setAttribute("src", nomeAudio);
+	audio.play();
 }
 
 /*
@@ -888,14 +861,17 @@ function inicializaFocus(){
 	if(estado == "menu"){
 		document.getElementById("camadaMenu").focus();
 		document.getElementById("btnJogar").focus();
+		AudioBotoes("audio/jogar.mp3");
 	}
 	else if(estado == "derrota"){
 		document.getElementById("camadaDerrota").focus();
 		document.getElementById("btnReiniciar").focus();
+		AudioBotoes("audio/recomecar.mp3");
 	}
 	else if(estado == "vitoria"){
 		document.getElementById("camadaVitoria").focus();
 		document.getElementById("btnProxPalavra").focus();
+		AudioBotoes("audio/proxima.mp3");
 	}
 	else if(estado == "jogando"){
 		document.getElementById("palavraNaTela").focus();
