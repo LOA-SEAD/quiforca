@@ -126,7 +126,8 @@ document.body.onkeyup = function(e)
 	if(keyunicode == 49) //1
 	{
 		stopTudo();
-		testeLeitura(tamanhoPalavraSemEspaco() + " letras " + jogo.dicaPalavra);
+		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
+		testeLeitura(texto);
 	}
 
 	//Lê o status da palavra
