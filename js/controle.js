@@ -1172,21 +1172,6 @@ function paraDeFalar(){
 	pulouVitoria = true;
 	window.speechSynthesis.cancel();
 }
-function inicializaFalaInicial(){
-	var txtInicial = "Bem-vindo ao jogo da Forca, navegue utilizando as teclas direcionais para esquerda ou direita e enter para selecionar 1 opção";
-	var msg = new SpeechSynthesisUtterance(txtInicial);
-	msg.volume = 1; // 0 to 1
-	msg.rate = 1.3; // 0.1 to 10
-	msg.lang = "pt-BR";
-	window.speechSynthesis.speak(msg);
-}
-
-function paraDeFalar(){
-	pulouMenu = true;
-	pulouDerrota = true;
-	pulouVitoria = true;
-	window.speechSynthesis.cancel();
-}
 
 jogo.palco = new Palco();
 jogo.palco.criar();
