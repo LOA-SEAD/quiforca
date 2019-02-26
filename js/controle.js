@@ -61,12 +61,12 @@ function criarCamadaMenu()
 	{
 		ativarBotaoJogar();
 	}
-	botaoJogar.onmouseenter = function()
+	/*botaoJogar.onmouseenter = function()
 	{
 		//window.speechSynthesis.cancel();
 		testeLeitura("Jogar");
 		//AudioBotoes("audio/jogar.mp3");
-	}
+	}*/
 
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
@@ -80,11 +80,11 @@ function criarCamadaMenu()
 	{
 		ativarBotaoInstrucoes();
 	}
-	botaoInstrucoes.onmouseenter = function()
+	/*botaoInstrucoes.onmouseenter = function()
 	{
 		testeLeitura("Ajuda");
 		//AudioBotoes("audio/ajuda.mp3");
-	}
+	}*/
 
 
 	//Cria botao de créditos na caixa de botoes
@@ -99,11 +99,11 @@ function criarCamadaMenu()
 	{
 		ativarBotaoCreditos();
 	}
-	botaoCreditos.onmouseenter = function()
+	/*botaoCreditos.onmouseenter = function()
 	{
-		testeLeitura("Creditos");
+		testeLeitura("Créditos");
 		//AudioBotoes("audio/creditos.mp3");
-	}
+	}*/
 	
 
 	inicializaFocus();
@@ -311,11 +311,11 @@ function criarCamadaCreditos()
 		destruirCamadaCreditos();
 		criarCamadaMenu();
 	}
-	botaoMenu.onmouseenter = function()
+	/*botaoMenu.onmouseenter = function()
 	{
 		testeLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
-	}
+	}*/
 	document.onkeydown = function(e)
 	{
 		e = window.event||e;
@@ -409,22 +409,22 @@ function criarCamadaVitoria()
 	{
 		AudioBotoes("audio/proxima.mp3");
 	}*/
-	document.getElementById("btnProxPalavra").onmouseenter = function()
+	/*document.getElementById("btnProxPalavra").onmouseenter = function()
 	{
 		testeLeitura("Continuar");
 		//AudioBotoes("audio/proxima.mp3");
-	}
+	}*/
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
 			ativarBotaoSair();
 		}
 	).appendTo($("#botoesTelaVitoria"));
-	document.getElementById("btnMenu").onmouseenter = function()
+	/*document.getElementById("btnMenu").onmouseenter = function()
 	{
 		testeLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
-	}
+	}*/
 
 	document.addEventListener("keyup", proximaFase);
 
@@ -518,11 +518,11 @@ function criarCamadaFimdeJogo()
 			iniciarNovoJogo();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
-	document.getElementById("btnMenu").onmouseenter = function()
+	/*document.getElementById("btnMenu").onmouseenter = function()
 	{
 		testeLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
-	}
+	}*/
 
 	inicializaFocus();
 	/*$('<div>').css({
@@ -755,11 +755,11 @@ function criarCamadaDerrota()
 			ativarBotaoReiniciar();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
-	document.getElementById("btnReiniciar").onmouseenter = function()
+	/*document.getElementById("btnReiniciar").onmouseenter = function()
 	{
 		testeLeitura("Recomeçar");
 		//AudioBotoes("audio/recomecar.mp3");
-	}
+	}*/
 
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
@@ -767,11 +767,11 @@ function criarCamadaDerrota()
 			console.log("eoq")
 		}
 	).appendTo($("#botoesFimDeJogo"));
-	document.getElementById("btnMenu").onmouseenter = function()
+	/*document.getElementById("btnMenu").onmouseenter = function()
 	{
 		testeLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
-	}
+	}*/
 
 	document.addEventListener("keyup", derrotaMenu);
 
@@ -966,11 +966,11 @@ function criarCamadaInstrucoes()
 		destruirCamadaInstrucoes();
 		criarCamadaMenu();
 	}
-	botaoMenu.onmouseenter = function()
+	/*botaoMenu.onmouseenter = function()
 	{
 		testeLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
-	}
+	}*/
 
 	document.onkeydown = function(e)
 	{
