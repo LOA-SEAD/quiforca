@@ -287,9 +287,11 @@ function verificarErro(_letra)
 			var audio = document.createElement("AUDIO");
 			audio.setAttribute("src", "audio/acerta_letra1.ogg");
 		}
-		audio.currentTime = 0
-		audio.volume = 0.5
-		audio.play()
+		setTimeout(function(){
+			audio.currentTime = 0
+			audio.volume = 0.5
+			audio.play()
+		}, 250);
 	}
 	if(deuErro)
 	{
@@ -312,17 +314,20 @@ function verificarErro(_letra)
 			case 4:
 				audio.setAttribute("src", "audio/enforcamento8.ogg");
 		}
-		audio.currentTime = 0
-		audio.volume = 0.5
-		audio.play();
+		setTimeout(function(){
+			audio.currentTime = 0
+			audio.volume = 0.5
+			audio.play();
+		}, 100);
 	}
-	delay = setTimeout(function(){
-		var audio2 = document.createElement("AUDIO")
+	//delay = setTimeout(function(){
+		/*var audio2 = document.createElement("AUDIO")
 		var nomeAudio = "audio/letra" + _letra + ".mp3"
 		audio2.setAttribute("src", nomeAudio)
 		audio2.currentTime = 0
-		audio2.play()
-	}, 50);
+		audio2.play()*/
+		testeLeitura(_letra);
+	//}, 50);
 }
 
 //Coloca os botoes do teclado na tela

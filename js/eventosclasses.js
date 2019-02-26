@@ -55,6 +55,7 @@ var dezenaLer = document.createElement("AUDIO")
 var unidadeLer = document.createElement("AUDIO");
 var letraE = document.createElement("AUDIO");
 var qLetras = document.createElement("AUDIO");
+var audioAtalho2 = document.createElement("AUDIO");
 var audioAtalho3 = document.createElement("AUDIO");
 var audioAtalho4 = document.createElement("AUDIO");
 var audioAtalho5 = document.createElement("AUDIO");
@@ -108,6 +109,7 @@ document.body.onkeyup = function(e)
 	var nomeAtalho1;
 
 	//2 - Status da palavra
+	audioAtalho2.setAttribute("src", "audio/letra1.mp3");
 	var nomeAtalho2;
 	var somLetra2 = [];
 
@@ -134,25 +136,41 @@ document.body.onkeyup = function(e)
 	if(keyunicode == 50) //2
 	{
 		stopTudo()
-		for(var i = 0; i < tamanhoPalavraAtual(); i++)
+		/*for(var i = 0; i < tamanhoPalavraAtual(); i++)
 		{
 			nomeAtalho2 = "audio/letra" + palavraAtual(i) + ".mp3";
 			somLetra2.push(track(nomeAtalho2));
-		}
+		}*/
 		counter = 0;
 		delayAtalho2 = setInterval(palavra, 500);
 		function palavra()
 		{
-			if(counter > tamanhoPalavraAtual())
+			if(counter >= tamanhoPalavraAtual())
 			{
 				clearInterval(delayAtalho2);
 			}
+			else if(palavraAtual(counter) == 0)
+			{
+				testeLeitura("Espaço");
+				counter++;
+			}
+			else if(palavraAtual(counter) == 1)
+			{
+				audioAtalho2.currentTime = 0;
+				audioAtalho2.play();
+				counter++;
+			}
 			else
+			{
+				testeLeitura(palavraAtual(counter));
+				counter++;
+			}
+			/*else
 			{
 				somLetra2[counter].currentTime = 0;
 				somLetra2[counter].play();
 				counter++;
-			}
+			}*/
 		}
 	}
 
@@ -164,8 +182,24 @@ document.body.onkeyup = function(e)
 		audioAtalho3.setAttribute("src", nomeAtalho3);
 		audioAtalho3.currentTime = 0;
 		audioAtalho3.play();*/
-
-		testeLeitura("Você tem"+numeroDeChances()+"vidas")
+		switch(numeroDeChances())
+		{
+			case 1:
+				testeLeitura("Tome cuidado, você só tem uma vida");
+				break;
+			case 2:
+				testeLeitura("Suas chances estão acabando, você só tem duas vidas");
+				break;
+			case 3:
+				testeLeitura("Você ainda tem três vidas");
+				break;
+			case 4:
+				testeLeitura("Você tem quatro vidas");
+				break;
+			case 5:
+				testeLeitura("Você tem todas as cinco vidas");
+				break;
+		}
 	}
 
 	//Letras já escolhidas
@@ -176,8 +210,9 @@ document.body.onkeyup = function(e)
 		clearInterval(delayLetraAtalho4);
 
 		counter = 0;
-		audioAtalho4.currentTime = 0;
-		audioAtalho4.play();
+		testeLeitura("Letras que já foram escolhidas: ")
+		//audioAtalho4.currentTime = 0;
+		//audioAtalho4.play();
 		for(var i = 1; i < tamanhoLetrasTentadas(); i++)
 		{
 			if(retornaLetrasTentadas(i))
@@ -208,7 +243,15 @@ document.body.onkeyup = function(e)
 	//Pontuação atual
 	if(keyunicode == 53) //5
 	{
-		testeLeitura("Pontos" + pontuacao())
+		stopTudo();
+		if(pontuacao() == 1)
+		{
+			testeLeitura("Um ponto");
+		}
+		else
+		{
+			testeLeitura(pontuacao() + " pontos.");
+		}
 
 		/*var aux
 		var centena
@@ -432,6 +475,7 @@ function leituraDica()
 
 function testeLeitura(texto)
 {
+	window.speechSynthesis.cancel();
 	var msg = new SpeechSynthesisUtterance(texto);
 	msg.volume = 1; // 0 to 1
 	msg.rate = 1.3; // 0.1 to 10

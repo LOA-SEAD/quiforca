@@ -63,7 +63,9 @@ function criarCamadaMenu()
 	}
 	botaoJogar.onmouseenter = function()
 	{
-		AudioBotoes("audio/jogar.mp3");
+		//window.speechSynthesis.cancel();
+		testeLeitura("Jogar");
+		//AudioBotoes("audio/jogar.mp3");
 	}
 
 	//Cria botao de instruções e adiciona a caixa de botões
@@ -80,7 +82,8 @@ function criarCamadaMenu()
 	}
 	botaoInstrucoes.onmouseenter = function()
 	{
-		AudioBotoes("audio/ajuda.mp3");
+		testeLeitura("Ajuda");
+		//AudioBotoes("audio/ajuda.mp3");
 	}
 
 
@@ -98,7 +101,8 @@ function criarCamadaMenu()
 	}
 	botaoCreditos.onmouseenter = function()
 	{
-		AudioBotoes("audio/creditos.mp3");
+		testeLeitura("Creditos");
+		//AudioBotoes("audio/creditos.mp3");
 	}
 	
 
@@ -210,8 +214,8 @@ audioCreditos.currentTime = 0
 
 function criarCamadaCreditos()
 {
-	testeLeitura("Créditos. Coordenação. Delano Medeiros Beder. Joice Lee Otsuka. Equipe.")
-	testeLeitura("Marcelo Lopes Lotufo. Murilo Dell Agnolo Garcia. Luiz Valério Neto. Henrique Souza Barros. Kátia Carnier. Rafaela Ferraz Majaron. Diana Gomes Ragnole Silva. Catarine Santana Ohnuma.")
+	var texto = "Créditos. Coordenação. Delano Medeiros Beder. Joice Lee Otsuka. Equipe. Marcelo Lopes Lotufo. Murilo Dell Agnolo Garcia. Luiz Valério Neto. Henrique Souza Barros. Kátia Carnier. Rafaela Ferraz Majaron. Diana Gomes Ragnole Silva. Catarine Santana Ohnuma."
+	testeLeitura(texto);
 
 	/*audioCreditos.currentTime = 0
 	audioCreditos.play();*/
@@ -309,7 +313,8 @@ function criarCamadaCreditos()
 	}
 	botaoMenu.onmouseenter = function()
 	{
-		AudioBotoes("audio/menu.mp3");
+		testeLeitura("Menu");
+		//AudioBotoes("audio/menu.mp3");
 	}
 	document.onkeydown = function(e)
 	{
@@ -403,7 +408,8 @@ function criarCamadaVitoria()
 	}*/
 	document.getElementById("btnProxPalavra").onmouseenter = function()
 	{
-		AudioBotoes("audio/proxima.mp3");
+		testeLeitura("Continuar");
+		//AudioBotoes("audio/proxima.mp3");
 	}
 
 	$("<button>").attr("id", "btnMenu").click(
@@ -413,7 +419,8 @@ function criarCamadaVitoria()
 	).appendTo($("#botoesTelaVitoria"));
 	document.getElementById("btnMenu").onmouseenter = function()
 	{
-		AudioBotoes("audio/menu.mp3");
+		testeLeitura("Menu");
+		//AudioBotoes("audio/menu.mp3");
 	}
 
 	document.addEventListener("keyup", proximaFase);
@@ -507,7 +514,8 @@ function criarCamadaFimdeJogo()
 	).appendTo($("#botoesTelaVitoria"));
 	document.getElementById("btnMenu").onmouseenter = function()
 	{
-		AudioBotoes("audio/menu.mp3");
+		testeLeitura("Menu");
+		//AudioBotoes("audio/menu.mp3");
 	}
 
 	inicializaFocus();
@@ -530,7 +538,8 @@ function criarCamadaFimdeJogo()
 		var setas = e.which || e.keyCode || e.charCode;
 		if((setas == 37 || setas == 39) && estado == "fimdeJogo")
 		{
-			AudioBotoes("audio/menu.mp3");
+			testeLeitura("Menu");
+			//AudioBotoes("audio/menu.mp3");
 		}
 	}
 
@@ -738,7 +747,8 @@ function criarCamadaDerrota()
 	).appendTo($("#botoesFimDeJogo"));
 	document.getElementById("btnReiniciar").onmouseenter = function()
 	{
-		AudioBotoes("audio/recomecar.mp3");
+		testeLeitura("Recomeçar");
+		//AudioBotoes("audio/recomecar.mp3");
 	}
 
 	$("<button>").attr("id", "btnMenu").click(
@@ -748,7 +758,8 @@ function criarCamadaDerrota()
 	).appendTo($("#botoesFimDeJogo"));
 	document.getElementById("btnMenu").onmouseenter = function()
 	{
-		AudioBotoes("audio/menu.mp3");
+		testeLeitura("Menu");
+		//AudioBotoes("audio/menu.mp3");
 	}
 
 	document.addEventListener("keyup", derrotaMenu);
@@ -901,12 +912,13 @@ function destruirCamadaRanking()
 
 function criarCamadaInstrucoes()
 {
-	testeLeitura("Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra.")
-	testeLeitura("A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar.")
-	testeLeitura("A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio teclado.")
-	testeLeitura("Atalhos sonoros: Para usá-los, pressione os números no seu teclado alfanumérico.")
-	testeLeitura("1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já escolheu.")
-	testeLeitura("5. Saiba sua pontuação atual. Esc. Menu")
+	var texto = "Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra.";
+	texto += " A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar.";
+	texto += "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio teclado.";
+	texto += " Atalhos sonoros: Para usá-los, pressione os números no seu teclado alfanumérico.";
+	texto += "Esc. Menu. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já escolheu.";
+	texto += "5. Saiba sua pontuação atual.";
+	testeLeitura(texto);
 
 	estado = "instrucoes"
 
@@ -929,12 +941,12 @@ function criarCamadaInstrucoes()
 	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>"+
 	 "Atalhos sonoros:<br>"+
 	 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>"+
+	 "Esc - Menu<br>" +
 	 "1 - Ouça a dica<br>"+
 	 "2 - Ouça o que você descobriu da palavra até agora<br>"+
 	 "3 - Saiba quantas vidas você ainda tem<br>"+
 	 "4 - Relembre as letras que você já escolheu<br>"+
-	 "5 - Saiba sua pontuação atual<br>"+
-	 "Esc - Menu<br>";
+	 "5 - Saiba sua pontuação atual<br>";
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
@@ -956,7 +968,8 @@ function criarCamadaInstrucoes()
 	}
 	botaoMenu.onmouseenter = function()
 	{
-		AudioBotoes("audio/menu.mp3");
+		testeLeitura("Menu");
+		//AudioBotoes("audio/menu.mp3");
 	}
 
 	document.onkeydown = function(e)
@@ -1019,24 +1032,28 @@ function selecionaOpcao(e)
 				}
 				if(opcao == 0)
 				{
-					AudioBotoes("audio/jogar.mp3");
+					testeLeitura("Jogar");
+					//AudioBotoes("audio/jogar.mp3");
 				}
 				if(opcao == 1)
 				{
-					AudioBotoes("audio/ajuda.mp3");
+					testeLeitura("Ajuda");
+					//AudioBotoes("audio/ajuda.mp3");
 				}
 			}
 			else if(estado == "derrota"){
 				if(opcao > 3){
 					tocaAudio();
-					AudioBotoes("audio/recomecar.mp3");
+					testeLeitura("Recomeçar");
+					//AudioBotoes("audio/recomecar.mp3");
 					opcao--;
 				}
 			}
 			else if(estado == "vitoria"){
 				if(opcao < 5){
 					tocaAudio();
-					AudioBotoes("audio/proxima.mp3");
+					testeLeitura("Continuar");
+					//AudioBotoes("audio/proxima.mp3");
 					opcao++;
 				}
 			}
@@ -1050,24 +1067,28 @@ function selecionaOpcao(e)
 				}
 				if(opcao == 1)
 				{
-					AudioBotoes("audio/ajuda.mp3");
+					testeLeitura("Ajuda");
+					//AudioBotoes("audio/ajuda.mp3");
 				}
 				if(opcao == 2)
 				{
-					AudioBotoes("audio/creditos.mp3");
+					testeLeitura("Créditos");
+					//AudioBotoes("audio/creditos.mp3");
 				}
 			}
 			else if(estado == "derrota"){
 				if(opcao < 4){
 					tocaAudio();
-					AudioBotoes("audio/menu.mp3");
+					testeLeitura("Menu");
+					//AudioBotoes("audio/menu.mp3");
 					opcao++;
 				}
 			}
 			else if(estado == "vitoria"){
 				if(opcao > 4){
 					tocaAudio();
-					AudioBotoes("audio/menu.mp3");
+					testeLeitura("Menu");
+					//AudioBotoes("audio/menu.mp3");
 					opcao--;
 				}
 			}
@@ -1101,20 +1122,23 @@ function inicializaFocus(){
 	if(estado == "menu"){
 		document.getElementById("camadaMenu").focus();
 		document.getElementById("btnJogar").focus();
-		AudioBotoes("audio/jogar.mp3");
+		testeLeitura("Jogar");
+		//AudioBotoes("audio/jogar.mp3");
 	}
 	else if(estado == "derrota"){
 		document.getElementById("camadaDerrota").focus();
 		document.getElementById("btnReiniciar").focus();
 		setTimeout(function(){
-			AudioBotoes("audio/recomecar.mp3");
+			testeLeitura("Recomeçar");
+			//AudioBotoes("audio/recomecar.mp3");
 		}, 100);
 	}
 	else if(estado == "vitoria"){
 		document.getElementById("camadaVitoria").focus();
 		document.getElementById("btnProxPalavra").focus();
 		setTimeout(function(){
-			AudioBotoes("audio/proxima.mp3");
+			testeLeitura("Continuar");
+			//AudioBotoes("audio/proxima.mp3");
 		}, 100);
 	}
 	else if(estado == "jogando"){
@@ -1124,7 +1148,8 @@ function inicializaFocus(){
 		document.getElementById("camadaFimdeJogo").focus();
 		document.getElementById("btnMenu").focus();
 		setTimeout(function(){
-			AudioBotoes("audio/menu.mp3");
+			testeLeitura("Menu");
+			//AudioBotoes("audio/menu.mp3");
 		}, 100);
 	}
 }
