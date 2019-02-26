@@ -907,12 +907,12 @@ function destruirCamadaRanking()
 
 function criarCamadaInstrucoes()
 {
-	var texto = "Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra.";
-	texto += "A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar.";
-	texto += "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio teclado.";
-	texto += "Atalhos sonoros: Para usá-los, pressione os números no seu teclado alfanumérico.";
-	texto += "Esc. Menu. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já escolheu.";
-	texto += "5. Saiba sua pontuação atual.";
+	var texto = "Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra. A ";
+	texto += "cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. A ";
+	texto += "cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio";
+	texto += " teclado. Atalhos sonoros: Para usá-los, pressione os números no seu teclado";
+	texto += " alfanumérico. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já";
+	texto += " escolheu. 5. Saiba sua pontuação atual. Esc. Menu";
 	testeLeitura(texto);
 
 	estado = "instrucoes"
@@ -926,8 +926,8 @@ function criarCamadaInstrucoes()
 	//$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
 
 	//conteúdo instruções
-	jogo.instrucoes = document.createElement("p");
-	jogo.instrucoes.setAttribute("id", "instrucoesText");
+	jogo.instrucoes = document.createElement("p")
+	jogo.instrucoes.setAttribute("id", "instrucoesText")
 	jogo.instrucoes.innerHTML = 
 	"Escape da forca acertando todos os desafios! <br><br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
 	 "Cada letra que você acerta é colocada na palavra. <br>"+
@@ -936,12 +936,12 @@ function criarCamadaInstrucoes()
 	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>"+
 	 "Atalhos sonoros:<br>"+
 	 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>"+
-	 "Esc - Menu<br>"+
 	 "1 - Ouça a dica<br>"+
 	 "2 - Ouça o que você descobriu da palavra até agora<br>"+
 	 "3 - Saiba quantas vidas você ainda tem<br>"+
 	 "4 - Relembre as letras que você já escolheu<br>"+
-	 "5 - Saiba sua pontuação atual<br>";
+	 "5 - Saiba sua pontuação atual<br>"+
+	 "Esc - Menu<br>"
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
@@ -1158,7 +1158,7 @@ function inicializaFocus(){
 }
 
 function inicializaFalaInicial(){
-	var txtInicial = "Bem-vindo ao jogo da Forca, navegue utilizando as teclas direcionais para esquerda ou direita e enter para selecionar 1 opção";
+	var txtInicial = "Bem-vindo ao jogo da Forca, navegue utilizando as teclas direcionais para esquerda ou direita e pressione enter para selecionar a opção";
 	var msg = new SpeechSynthesisUtterance(txtInicial);
 	msg.volume = 1; // 0 to 1
 	msg.rate = 1.3; // 0.1 to 10
