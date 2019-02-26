@@ -333,6 +333,8 @@ audioVit.setAttribute("src", "audio/frasevitoria.mp3");
 
 var audioVitP = document.createElement("AUDIO");
 
+vitoria2 = false
+
 function criarCamadaVitoria()
 {
 	/*vitoria1 = setTimeout(function(){
@@ -429,7 +431,6 @@ function criarCamadaVitoria()
 		else if(opcao == 4){
 			document.getElementById("btnMenu").focus();
 		}
-		//console.log(opcao);
 	})
 }
 
@@ -448,7 +449,11 @@ function proximaFase(e)
 function destruirCamadaVitoria()
 {
 	//clearTimeout(vitoria1)
-	clearTimeout(vitoria2)
+	if(vitoria2)
+	{
+		clearTimeout(vitoria2)
+	}
+	
 	audioVit.pause()
 	audioVitP.pause()
 	document.removeEventListener("keyup", proximaFase);
@@ -560,7 +565,7 @@ audioDer.setAttribute("src", "audio/frasederrota.mp3");
 var pontfinal = document.createElement("AUDIO");
 pontfinal.setAttribute("src", "audio/pontuacaofinal.mp3");
 
-derrota1 = false
+/*derrota1 = false
 derrota2 = false
 derrota3 = false
 derrota4 = false
@@ -569,7 +574,7 @@ derrota6 = false
 derrota7 = false
 derrota8 = false
 derrota9 = false
-derrota10 = false
+derrota10 = false*/
 
 function criarCamadaDerrota()
 {
@@ -748,6 +753,7 @@ function criarCamadaDerrota()
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
 			ativarBotaoSair();	
+			console.log("eoq")
 		}
 	).appendTo($("#botoesFimDeJogo"));
 	document.getElementById("btnMenu").onmouseenter = function()
