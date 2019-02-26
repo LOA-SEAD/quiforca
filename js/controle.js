@@ -19,12 +19,13 @@ var origemDerrota;
 var opcao;
 var estado;
 var realizaLeitura = false;
-
-
+var pulouMenu;
+var pulouDerrota;
+var pulouVitoria;
 
 function criarCamadaMenu()
 {	
-
+	pulouMenu = false;
 	estado = "menu";
 	opcao = 0;
 
@@ -105,7 +106,7 @@ function criarCamadaMenu()
 		//AudioBotoes("audio/creditos.mp3");
 	}*/
 	
-
+	inicializaFalaInicial();
 	inicializaFocus();
 
 
@@ -338,11 +339,12 @@ var audioVit = document.createElement("AUDIO");
 audioVit.setAttribute("src", "audio/frasevitoria.mp3");
 
 var audioVitP = document.createElement("AUDIO");
-
 vitoria2 = false
-
 function criarCamadaVitoria()
 {
+	estado = "vitoria";
+	opcao = 5;
+	pulouVitoria = false;
 	/*vitoria1 = setTimeout(function(){
 		audioVit.currentTime = 0
 		audioVit.volume = 1
@@ -357,9 +359,6 @@ function criarCamadaVitoria()
 		var texto = "Você acertou, a palavra é: " + jogo.palavraSorteada;
 		testeLeitura(texto);
 	}, 3800);
-
-	estado = "vitoria";
-	opcao = 5;
 
 	var audio = document.createElement("AUDIO");
 	audio.setAttribute("src", "audio/vitoria2.ogg");
@@ -439,6 +438,7 @@ function criarCamadaVitoria()
 		else if(opcao == 4){
 			document.getElementById("btnMenu").focus();
 		}
+		//console.log(opcao);
 	})
 }
 
@@ -457,11 +457,7 @@ function proximaFase(e)
 function destruirCamadaVitoria()
 {
 	//clearTimeout(vitoria1)
-	if(vitoria2)
-	{
-		clearTimeout(vitoria2)
-	}
-	
+	clearTimeout(vitoria2)
 	audioVit.pause()
 	audioVitP.pause()
 	document.removeEventListener("keyup", proximaFase);
@@ -544,8 +540,7 @@ function criarCamadaFimdeJogo()
 		var setas = e.which || e.keyCode || e.charCode;
 		if((setas == 37 || setas == 39) && estado == "fimdeJogo")
 		{
-			testeLeitura("Menu");
-			//AudioBotoes("audio/menu.mp3");
+			AudioBotoes("audio/menu.mp3");
 		}
 	}
 
@@ -575,7 +570,7 @@ audioDer.setAttribute("src", "audio/frasederrota.mp3");
 var pontfinal = document.createElement("AUDIO");
 pontfinal.setAttribute("src", "audio/pontuacaofinal.mp3");
 
-/*derrota1 = false
+derrota1 = false
 derrota2 = false
 derrota3 = false
 derrota4 = false
@@ -584,10 +579,13 @@ derrota6 = false
 derrota7 = false
 derrota8 = false
 derrota9 = false
-derrota10 = false*/
+derrota10 = false
 
 function criarCamadaDerrota()
 {
+	estado = "derrota";
+	opcao = 3;
+	pulouDerrota = false;
 	/*derrota1 = setTimeout(function(){
 		audioDer.currentTime = 0
 		audioDer.play()
@@ -706,8 +704,6 @@ function criarCamadaDerrota()
 		}
 	}, 8300)*/
 
-	estado = "derrota";
-	opcao = 3;
 	var audio = document.createElement("AUDIO");
 	audio.setAttribute("src", "audio/derrota1.ogg");
 	//var audio = document.getElementById("derrota"); 
@@ -764,7 +760,6 @@ function criarCamadaDerrota()
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
 			ativarBotaoSair();	
-			console.log("eoq")
 		}
 	).appendTo($("#botoesFimDeJogo"));
 	/*document.getElementById("btnMenu").onmouseenter = function()
@@ -913,9 +908,9 @@ function destruirCamadaRanking()
 function criarCamadaInstrucoes()
 {
 	var texto = "Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra.";
-	texto += " A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar.";
+	texto += "A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar.";
 	texto += "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio teclado.";
-	texto += " Atalhos sonoros: Para usá-los, pressione os números no seu teclado alfanumérico.";
+	texto += "Atalhos sonoros: Para usá-los, pressione os números no seu teclado alfanumérico.";
 	texto += "Esc. Menu. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já escolheu.";
 	texto += "5. Saiba sua pontuação atual.";
 	testeLeitura(texto);
@@ -941,7 +936,7 @@ function criarCamadaInstrucoes()
 	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>"+
 	 "Atalhos sonoros:<br>"+
 	 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>"+
-	 "Esc - Menu<br>" +
+	 "Esc - Menu<br>"+
 	 "1 - Ouça a dica<br>"+
 	 "2 - Ouça o que você descobriu da palavra até agora<br>"+
 	 "3 - Saiba quantas vidas você ainda tem<br>"+
@@ -971,7 +966,6 @@ function criarCamadaInstrucoes()
 		testeLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
 	}*/
-
 	document.onkeydown = function(e)
 	{
 		e = window.event||e;
@@ -985,7 +979,7 @@ function criarCamadaInstrucoes()
 
 function destruirCamadaInstrucoes()
 {
-	pararLeitura()
+	pararLeitura();
 	$("#camadaInstrucoes").remove();
 }
 
@@ -993,6 +987,7 @@ function selecionaOpcao(e)
 {
 	switch(e.keyCode){
 		case 13: //Enter
+			paraDeFalar();
 			switch(opcao){
 				case 0:
 					ativarBotaoJogar();
@@ -1026,6 +1021,7 @@ function selecionaOpcao(e)
 			}
 		break;
 		case 37: //ArrowLeft
+			paraDeFalar();
 			if(estado == "menu"){
 				if(opcao > 0){
 					tocaAudio();
@@ -1061,6 +1057,7 @@ function selecionaOpcao(e)
 		break;
 
 		case 39: //ArrowRight
+			paraDeFalar();
 			if(estado == "menu"){
 				if(opcao < 2){
 					tocaAudio();
@@ -1123,24 +1120,29 @@ function inicializaFocus(){
 	if(estado == "menu"){
 		document.getElementById("camadaMenu").focus();
 		document.getElementById("btnJogar").focus();
-		testeLeitura("Jogar");
-		//AudioBotoes("audio/jogar.mp3");
+		setTimeout(function(){
+			if(!pulouMenu)
+				testeLeitura("Jogar");
+				//AudioBotoes("audio/jogar.mp3");
+		}, 8000);
 	}
 	else if(estado == "derrota"){
 		document.getElementById("camadaDerrota").focus();
 		document.getElementById("btnReiniciar").focus();
 		setTimeout(function(){
-			testeLeitura("Recomeçar");
-			//AudioBotoes("audio/recomecar.mp3");
-		}, 100);
+			if(!pulouDerrota)
+				testeLeitura("Recomeçar");
+				//AudioBotoes("audio/recomecar.mp3");
+		}, 9200);
 	}
 	else if(estado == "vitoria"){
 		document.getElementById("camadaVitoria").focus();
 		document.getElementById("btnProxPalavra").focus();
 		setTimeout(function(){
-			testeLeitura("Continuar");
-			//AudioBotoes("audio/proxima.mp3");
-		}, 100);
+			if(!pulouVitoria)
+				testeLeitura("Continuar");
+				//AudioBotoes("audio/proxima.mp3");
+		}, 7000);
 	}
 	else if(estado == "jogando"){
 		document.getElementById("palavraNaTela").focus();
@@ -1151,8 +1153,39 @@ function inicializaFocus(){
 		setTimeout(function(){
 			testeLeitura("Menu");
 			//AudioBotoes("audio/menu.mp3");
-		}, 100);
+		}, 7000);
 	}
+}
+
+function inicializaFalaInicial(){
+	var txtInicial = "Bem-vindo ao jogo da Forca, navegue utilizando as teclas direcionais para esquerda ou direita e enter para selecionar 1 opção";
+	var msg = new SpeechSynthesisUtterance(txtInicial);
+	msg.volume = 1; // 0 to 1
+	msg.rate = 1.3; // 0.1 to 10
+	msg.lang = "pt-BR";
+	window.speechSynthesis.speak(msg);
+}
+
+function paraDeFalar(){
+	pulouMenu = true;
+	pulouDerrota = true;
+	pulouVitoria = true;
+	window.speechSynthesis.cancel();
+}
+function inicializaFalaInicial(){
+	var txtInicial = "Bem-vindo ao jogo da Forca, navegue utilizando as teclas direcionais para esquerda ou direita e enter para selecionar 1 opção";
+	var msg = new SpeechSynthesisUtterance(txtInicial);
+	msg.volume = 1; // 0 to 1
+	msg.rate = 1.3; // 0.1 to 10
+	msg.lang = "pt-BR";
+	window.speechSynthesis.speak(msg);
+}
+
+function paraDeFalar(){
+	pulouMenu = true;
+	pulouDerrota = true;
+	pulouVitoria = true;
+	window.speechSynthesis.cancel();
 }
 
 jogo.palco = new Palco();
