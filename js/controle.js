@@ -329,7 +329,8 @@ function criarCamadaCreditos()
 
 function destruirCamadaCreditos()
 {
-	audioCreditos.pause()
+	//audioCreditos.pause()
+	pararLeitura()
 	$("#camadaCreditos").remove();
 }
 
@@ -337,6 +338,8 @@ var audioVit = document.createElement("AUDIO");
 audioVit.setAttribute("src", "audio/frasevitoria.mp3");
 
 var audioVitP = document.createElement("AUDIO");
+
+vitoria2 = false
 
 function criarCamadaVitoria()
 {
@@ -436,7 +439,6 @@ function criarCamadaVitoria()
 		else if(opcao == 4){
 			document.getElementById("btnMenu").focus();
 		}
-		//console.log(opcao);
 	})
 }
 
@@ -455,7 +457,11 @@ function proximaFase(e)
 function destruirCamadaVitoria()
 {
 	//clearTimeout(vitoria1)
-	clearTimeout(vitoria2)
+	if(vitoria2)
+	{
+		clearTimeout(vitoria2)
+	}
+	
 	audioVit.pause()
 	audioVitP.pause()
 	document.removeEventListener("keyup", proximaFase);
@@ -569,7 +575,7 @@ audioDer.setAttribute("src", "audio/frasederrota.mp3");
 var pontfinal = document.createElement("AUDIO");
 pontfinal.setAttribute("src", "audio/pontuacaofinal.mp3");
 
-derrota1 = false
+/*derrota1 = false
 derrota2 = false
 derrota3 = false
 derrota4 = false
@@ -578,11 +584,11 @@ derrota6 = false
 derrota7 = false
 derrota8 = false
 derrota9 = false
-derrota10 = false
+derrota10 = false*/
 
 function criarCamadaDerrota()
 {
-	derrota1 = setTimeout(function(){
+	/*derrota1 = setTimeout(function(){
 		audioDer.currentTime = 0
 		audioDer.play()
 	}, 3000);
@@ -595,9 +601,13 @@ function criarCamadaDerrota()
 	derrota3 = setTimeout(function(){
 		pontfinal.currentTime = 0
 		pontfinal.play()
-	}, 7300);
+	}, 7300);*/
 
-	var aux
+	derrota1 = setTimeout(function(){
+		testeLeitura("Você errou. A palavra correta é: " + jogo.palavraSorteada + ". Pontuação final: "+pontuacao())
+	}, 3000);
+
+	/*var aux
 	var centena
 	
 	derrota4 = setTimeout(function(){
@@ -694,7 +704,7 @@ function criarCamadaDerrota()
 				}, 800)
 			}
 		}
-	}, 8300)
+	}, 8300)*/
 
 	estado = "derrota";
 	opcao = 3;
@@ -722,7 +732,7 @@ function criarCamadaDerrota()
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "<h2> Você errou :( </h2> A palavra correta é: " + jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Você errou :( </h2> A palavra correta é " + jogo.palavraSorteada;
 	
 	jogo.botoes = document.createElement("div");
 	jogo.botoes.setAttribute("id", "botoesFimDeJogo");
@@ -754,6 +764,7 @@ function criarCamadaDerrota()
 	$("<button>").attr("id", "btnMenu").click(
 		function(){
 			ativarBotaoSair();	
+			console.log("eoq")
 		}
 	).appendTo($("#botoesFimDeJogo"));
 	document.getElementById("btnMenu").onmouseenter = function()
@@ -794,19 +805,8 @@ function derrotaMenu(e){
 function destruirCamadaDerrota()
 {
 	clearTimeout(derrota1)
-	clearTimeout(derrota2)
-	clearTimeout(derrota3)
-	clearTimeout(derrota4)
-	clearTimeout(derrota5)
-	clearTimeout(derrota6)
-	clearTimeout(derrota7)
-	clearTimeout(derrota8)
-	clearTimeout(derrota9)
-	clearTimeout(derrota10)
 
-	audioDer.pause()
-	audioVitP.pause()
-	pontfinal.pause()
+	pararLeitura()
 
 	document.removeEventListener("keyup", derrotaMenu);
 	$("#camadaDerrota").remove();
@@ -985,6 +985,7 @@ function criarCamadaInstrucoes()
 
 function destruirCamadaInstrucoes()
 {
+	pararLeitura()
 	$("#camadaInstrucoes").remove();
 }
 

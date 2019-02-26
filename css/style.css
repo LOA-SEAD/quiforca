@@ -78,10 +78,11 @@ body
 #imgLogo
 {
 	background-image: url("../imgs/logoforca.png");
-	height: 80px;
-	width: 178px;
+	height: 139px;
+	width: 180px;
 	float: left;
 	margin-left: 3rem;
+	margin-top: 0.5rem;
 }
 
 #camadaJogo
