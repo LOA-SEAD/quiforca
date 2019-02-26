@@ -972,6 +972,7 @@ function criarCamadaInstrucoes()
 
 function destruirCamadaInstrucoes()
 {
+	pararLeitura()
 	$("#camadaInstrucoes").remove();
 }
 
