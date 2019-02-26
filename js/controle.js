@@ -324,7 +324,8 @@ function criarCamadaCreditos()
 
 function destruirCamadaCreditos()
 {
-	audioCreditos.pause()
+	//audioCreditos.pause()
+	pararLeitura()
 	$("#camadaCreditos").remove();
 }
 
