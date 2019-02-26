@@ -194,7 +194,7 @@ function criarCamadaJogo()
 
 	iniciar();
 	//leituraDica();
-	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
+	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
 	testeLeitura(texto);
 }
 
@@ -447,7 +447,7 @@ function proximaFase(e)
 
 function destruirCamadaVitoria()
 {
-	clearTimeout(vitoria1)
+	//clearTimeout(vitoria1)
 	clearTimeout(vitoria2)
 	audioVit.pause()
 	audioVitP.pause()
