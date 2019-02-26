@@ -438,3 +438,8 @@ function testeLeitura(texto)
 	msg.lang = "pt-BR";
 	window.speechSynthesis.speak(msg);
 }
+
+function pararLeitura()
+{
+	window.speechSynthesis.cancel()
+}

@@ -573,7 +573,7 @@ derrota10 = false
 
 function criarCamadaDerrota()
 {
-	derrota1 = setTimeout(function(){
+	/*derrota1 = setTimeout(function(){
 		audioDer.currentTime = 0
 		audioDer.play()
 	}, 3000);
@@ -586,9 +586,13 @@ function criarCamadaDerrota()
 	derrota3 = setTimeout(function(){
 		pontfinal.currentTime = 0
 		pontfinal.play()
-	}, 7300);
+	}, 7300);*/
 
-	var aux
+	derrota1 = setTimeout(function(){
+		testeLeitura("Você errou. A palavra correta é: " + jogo.palavraSorteada + ". Pontuação final: "+pontuacao())
+	}, 3000);
+
+	/*var aux
 	var centena
 	
 	derrota4 = setTimeout(function(){
@@ -685,7 +689,7 @@ function criarCamadaDerrota()
 				}, 800)
 			}
 		}
-	}, 8300)
+	}, 8300)*/
 
 	estado = "derrota";
 	opcao = 3;
@@ -713,7 +717,7 @@ function criarCamadaDerrota()
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "<h2> Você errou :( </h2> A palavra correta é: " + jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Você errou :( </h2> A palavra correta é " + jogo.palavraSorteada;
 	
 	jogo.botoes = document.createElement("div");
 	jogo.botoes.setAttribute("id", "botoesFimDeJogo");
@@ -783,19 +787,8 @@ function derrotaMenu(e){
 function destruirCamadaDerrota()
 {
 	clearTimeout(derrota1)
-	clearTimeout(derrota2)
-	clearTimeout(derrota3)
-	clearTimeout(derrota4)
-	clearTimeout(derrota5)
-	clearTimeout(derrota6)
-	clearTimeout(derrota7)
-	clearTimeout(derrota8)
-	clearTimeout(derrota9)
-	clearTimeout(derrota10)
 
-	audioDer.pause()
-	audioVitP.pause()
-	pontfinal.pause()
+	pararLeitura()
 
 	document.removeEventListener("keyup", derrotaMenu);
 	$("#camadaDerrota").remove();
