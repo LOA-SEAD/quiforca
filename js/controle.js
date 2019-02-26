@@ -210,8 +210,11 @@ audioCreditos.currentTime = 0
 
 function criarCamadaCreditos()
 {
-	audioCreditos.currentTime = 0
-	audioCreditos.play();
+	testeLeitura("Créditos. Coordenação. Delano Medeiros Beder. Joice Lee Otsuka. Equipe.")
+	testeLeitura("Marcelo Lopes Lotufo. Murilo Dell Agnolo Garcia. Luiz Valério Neto. Henrique Souza Barros. Kátia Carnier. Rafaela Ferraz Majaron. Diana Gomes Ragnole Silva. Catarine Santana Ohnuma.")
+
+	/*audioCreditos.currentTime = 0
+	audioCreditos.play();*/
 	estado = "creditos";
 
 	var el = document.createElement("div");
