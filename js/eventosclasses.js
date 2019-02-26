@@ -135,7 +135,7 @@ document.body.onkeyup = function(e)
 	{
 		stopTudo()
 		for(var i = 0; i < tamanhoPalavraAtual(); i++)
-		{1
+		{
 			nomeAtalho2 = "audio/letra" + palavraAtual(i) + ".mp3";
 			somLetra2.push(track(nomeAtalho2));
 		}
@@ -160,10 +160,12 @@ document.body.onkeyup = function(e)
 	if(keyunicode == 51) //3
 	{
 		stopTudo()
-		nomeAtalho3 = "audio/vidas" + numeroDeChances() + ".mp3";
+		/*nomeAtalho3 = "audio/vidas" + numeroDeChances() + ".mp3";
 		audioAtalho3.setAttribute("src", nomeAtalho3);
 		audioAtalho3.currentTime = 0;
-		audioAtalho3.play();
+		audioAtalho3.play();*/
+
+		testeLeitura("Você tem"+numeroDeChances()+"vidas")
 	}
 
 	//Letras já escolhidas
@@ -206,7 +208,9 @@ document.body.onkeyup = function(e)
 	//Pontuação atual
 	if(keyunicode == 53) //5
 	{
-		var aux
+		testeLeitura("Pontos" + pontuacao())
+
+		/*var aux
 		var centena
 		stopTudo()
 		audioAtalho5.currentTime = 0
@@ -306,7 +310,7 @@ document.body.onkeyup = function(e)
 					}, 800)
 				}
 			}
-		}, 500)
+		}, 500)*/
 	}
 
 	//Para todos os atalhos
@@ -432,7 +436,8 @@ function testeLeitura(texto)
 	var msg = new SpeechSynthesisUtterance(texto);
 	msg.volume = 1; // 0 to 1
 	msg.rate = 1.3; // 0.1 to 10
-	msg.lang = "pt-BR";
+	msg.lang = "cpp";
+	msg.localService = true
 	msg.voiceURI = 'Google português do Brasil';
 	msg.voice = voices[15];
 	window.speechSynthesis.speak(msg);
