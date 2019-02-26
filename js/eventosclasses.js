@@ -428,12 +428,9 @@ function leituraDica()
 
 function testeLeitura(texto)
 {
-	var voices = window.speechSynthesis.getVoices();
 	var msg = new SpeechSynthesisUtterance(texto);
 	msg.volume = 1; // 0 to 1
 	msg.rate = 1.3; // 0.1 to 10
 	msg.lang = "pt-BR";
-	msg.voiceURI = 'Google português do Brasil';
-	msg.voice = voices[15];
 	window.speechSynthesis.speak(msg);
 }
