@@ -898,6 +898,13 @@ function destruirCamadaRanking()
 
 function criarCamadaInstrucoes()
 {
+	testeLeitura("Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra.")
+	testeLeitura("A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar.")
+	testeLeitura("A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio teclado.")
+	testeLeitura("Atalhos sonoros: Para usá-los, pressione os números no seu teclado alfanumérico.")
+	testeLeitura("1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já escolheu.")
+	testeLeitura("5. Saiba sua pontuação atual. Esc. Menu")
+
 	estado = "instrucoes"
 
 	var el = document.createElement("div");
@@ -916,7 +923,7 @@ function criarCamadaInstrucoes()
 	 "Cada letra que você acerta é colocada na palavra. <br>"+
 	 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
 	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
-	 "<br>Você pode jogar usando o teclado da tela ou o seu próprio teclado.<br><br>"+
+	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>"+
 	 "Atalhos sonoros:<br>"+
 	 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>"+
 	 "1 - Ouça a dica<br>"+
