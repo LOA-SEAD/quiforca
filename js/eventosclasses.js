@@ -99,7 +99,6 @@ document.body.onkeyup = function(e)
 	//Tecla para voltar
 	if(keyunicode == 27) //Esc
 	{
-		//stopAtalhos = true;
 		stopTudo();
 		criarCamadaOpcoes();
 	}

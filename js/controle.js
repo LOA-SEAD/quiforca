@@ -1007,17 +1007,23 @@ function selecionaOpcao(e)
 			paraDeFalar();
 			switch(opcao){
 				case 0:
-					if(estado == "menu"){
+					if(estado == "menu")
 						ativarBotaoInstrucoes();
-						opcao = -1;
-					}
+					else if(estado== "vitoria")
+						ativarProxPalavra();
+					else if(estado == "derrota")
+						ativarBotaoReiniciar();
+					else if(estado == "opcoes")
+						ativarOpcaoContinuar();
+					opcao = -1;
 				break;
 
 				case 1:
-					if(estado == "menu"){
+					if(estado == "menu")
 						ativarBotaoJogar();
-						opcao = -1;
-					}
+					else if(estado == "vitoria" || estadoo == "derrota")
+						ativarBotaoSair();
+					opcao = -1;
 				break;
 
 				case 2:
@@ -1025,25 +1031,7 @@ function selecionaOpcao(e)
 						ativarBotaoCreditos();
 						opcao = -1;
 					}
-					
 				break;
-
-				case 3:
-					if(estado == "menu"){
-						ativarBotaoReiniciar();
-						opcao = -1;		
-					}
-				break;
-/*
-				case 4:
-					ativarBotaoSair();
-					opcao = -1;
-				break;
-
-				case 5:
-					ativarProxPalavra();
-					opcao = -1;
-				break;*/
 			}
 		break;
 		case 37: //ArrowLeft
@@ -1223,6 +1211,8 @@ function paraDeFalar(){
 function criarCamadaOpcoes(){
 
 	estado = "opcoes";
+	opcao = 0;
+
 
 	//Cria div camada opcoes
 	var el = document.createElement("div");
@@ -1280,10 +1270,33 @@ function criarCamadaOpcoes(){
 
 	//Inicializa o foco da camada
 	inicializaFocus();
+
+	$("#camadaOpcoes").keydown(function (e){
+		selecionaOpcao(e);	
+	
+		if(opcao == 0){
+			document.getElementById("opcaoContinuar").focus();
+		}
+		else if(opcao == 1){
+			document.getElementById("opcaoAudio").focus();
+		}
+		else if(opcao == 2){
+			document.getElementById("opcaoInstrucoes").focus();
+		}
+		else if(opcao == 3){
+			document.getElementById("opcaoMenu").focus();
+		}
+		//console.log(opcao);
+	})
 }
 
-function destuirCamadaOpcoes(){
+function destruirCamadaOpcoes(){
 	$("#camadaOpcoes").remove();
+}
+
+function ativarOpcaoContinuar(){
+	estado = "jogando";
+	destruirCamadaOpcoes();
 }
 
 
