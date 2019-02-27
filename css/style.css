@@ -85,6 +85,23 @@ body
 	margin-top: 0.5rem;
 }
 
+#imgLogoInstrucoes
+{
+	background-image: url("../imgs/logoforca.png");
+	height: 139px;
+	width: 180px;
+	float: left;
+	margin-left: 6rem;
+	margin-top: 1.3rem;
+}
+
+#instrucoesText
+{
+	margin-top: 10rem;
+	margin-left: 5rem;
+	margin-right: 5rem;
+}
+
 #camadaJogo
 {
 	padding: 0px 2rem 0 2rem;
@@ -202,6 +219,13 @@ h1
 {
 	font-family:"Fonte","Tahoma";
 	font-size: 50px;
+	text-align: center
+}
+
+h3
+{
+	font-family:"Fonte","Tahoma";
+	text-align: center
 }
 
 p

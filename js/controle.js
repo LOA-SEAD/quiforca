@@ -920,12 +920,12 @@ function destruirCamadaRanking()
 
 function criarCamadaInstrucoes()
 {
-	var texto = "Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra. A ";
+	var texto = "Instruções. Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra. A ";
 	texto += "cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. A ";
 	texto += "cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio";
 	texto += " teclado. Atalhos sonoros: Para usá-los, pressione os números no seu teclado";
 	texto += " alfanumérico. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já";
-	texto += " escolheu. 5. Saiba sua pontuação atual. Esc. Menu";
+	texto += " escolheu. 5. Saiba sua pontuação atual. Esc. Voltar para o menu";
 	testeLeitura(texto);
 
 	estado = "instrucoes"
@@ -935,6 +935,10 @@ function criarCamadaInstrucoes()
 	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
 
+	var imgLogo = document.createElement("div");
+	imgLogo.setAttribute("id", "imgLogoInstrucoes");
+	el.appendChild(imgLogo);
+
 	//criação camada de instruções
 	//$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
 
@@ -942,19 +946,19 @@ function criarCamadaInstrucoes()
 	jogo.instrucoes = document.createElement("p")
 	jogo.instrucoes.setAttribute("id", "instrucoesText")
 	jogo.instrucoes.innerHTML = 
-	"Escape da forca acertando todos os desafios! <br><br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
+	"<h1>Instruções</h1> <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
 	 "Cada letra que você acerta é colocada na palavra. <br>"+
 	 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
 	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
 	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>"+
-	 "Atalhos sonoros:<br>"+
+	 "<h3>Atalhos sonoros:</h3><br>"+
 	 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>"+
 	 "1 - Ouça a dica<br>"+
 	 "2 - Ouça o que você descobriu da palavra até agora<br>"+
 	 "3 - Saiba quantas vidas você ainda tem<br>"+
 	 "4 - Relembre as letras que você já escolheu<br>"+
 	 "5 - Saiba sua pontuação atual<br>"+
-	 "Esc - Menu<br>"
+	 "Esc - Voltar para o menu<br>"
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
