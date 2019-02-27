@@ -1155,6 +1155,9 @@ function inicializaFocus(){
 			//AudioBotoes("audio/menu.mp3");
 		}, 7000);
 	}
+	else if(estado == "opcoes"){
+		document.getElementById("opcaoContinuar").focus();
+	}
 }
 
 function inicializaFalaInicial(){
@@ -1172,6 +1175,74 @@ function paraDeFalar(){
 	pulouVitoria = true;
 	window.speechSynthesis.cancel();
 }
+
+function criarCamadaOpcoes(){
+
+	estado = "opcoes";
+
+	//Cria div camada opcoes
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaOpcoes");
+	el.setAttribute("tabIndex", 0);
+	$("#palco").append(el);
+	el.focus();
+	/*Opcoes : ->Continuar
+			   ->Áudio
+			   ->Instruções
+			   ->Menu*/
+
+
+	//titulo
+
+	var divOpcoes = document.createElement("div");
+	divOpcoes.setAttribute("id", "divOpcoes");
+	el.appendChild(divOpcoes);
+
+	var opcoesTxt = document.createElement("p");
+	opcoesTxt.setAttribute("id", "opcoesTxt");
+	opcoesTxt.innerHTML = "Opções";
+	divOpcoes.appendChild(opcoesTxt);
+
+	//Cria div caixa de botoes
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoesOpcao");
+	divOpcoes.appendChild(caixaBotoes);
+
+	//btnContinuar
+	var opcoesContinuar = document.createElement("div");
+	opcoesContinuar.setAttribute("id", "opcaoContinuar");
+	opcoesContinuar.setAttribute("tabIndex", 0);
+
+	//btnAudio
+	var opcoesAudio = document.createElement("div");
+	opcoesAudio.setAttribute("id", "opcaoAudio");
+	opcoesAudio.setAttribute("tabIndex", 0);
+
+	//btnIntrucoes
+	var opcoesInstrucoes = document.createElement("div");
+	opcoesInstrucoes.setAttribute("id", "opcaoInstrucoes");
+	opcoesInstrucoes.setAttribute("tabIndex", 0);
+
+	//btnMenu
+	var opcoesMenu = document.createElement("div");
+	opcoesMenu.setAttribute("id", "opcaoMenu");
+	opcoesMenu.setAttribute("tabIndex", 0);
+
+	//adicionando botões a caixa de botoes
+	caixaBotoes.appendChild(opcoesContinuar);
+	caixaBotoes.appendChild(opcoesAudio);
+	caixaBotoes.appendChild(opcoesInstrucoes);
+	caixaBotoes.appendChild(opcoesMenu);
+
+	//Inicializa o foco da camada
+	inicializaFocus();
+}
+
+function destuirCamadaOpcoes(){
+	$("#camadaOpcoes").remove();
+}
+
+
 
 jogo.palco = new Palco();
 jogo.palco.criar();

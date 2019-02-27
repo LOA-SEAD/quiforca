@@ -61,6 +61,8 @@ var audioAtalho4 = document.createElement("AUDIO");
 var audioAtalho5 = document.createElement("AUDIO");
 var centenaLer = document.createElement("AUDIO");
 
+var stopAtalhos;
+
 document.body.onkeyup = function(e)
 {
 	if(estado != "jogando")
@@ -85,7 +87,7 @@ document.body.onkeyup = function(e)
 
 	//Se o codigo estiver dentro do alfabeto
 	if((keyunicode >= 97 && keyunicode <= 122) && (jogo.emTransicao == false) && (fimDeJogo() == -1))
-	{	
+	{		
 		//para a leitura de qualquer atalho
 		stopTudo()
 		//Verifica se deu erro
@@ -97,8 +99,9 @@ document.body.onkeyup = function(e)
 	//Tecla para voltar
 	if(keyunicode == 27) //Esc
 	{
+		//stopAtalhos = true;
 		stopTudo();
-		ativarBotaoVoltar();
+		criarCamadaOpcoes();
 	}
 
 

@@ -35,6 +35,24 @@ body
 	justify-content: center;
 }
 
+#camadaOpcoes{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	
+}
+
+#divOpcoes{
+	width: 400px;
+	height: 495px;
+	background-color: blanchedalmond;
+	position: relative;
+}
+
 #camadaVitoria
 {
 	display: flex;
@@ -222,6 +240,10 @@ p
 	text-align: center;
 }
 
+#caixaBotoesOpcao{
+	margin-top: 4rem;
+}
+
 #btnJogar
 {
 	width: 117px;
@@ -349,8 +371,6 @@ p
 
 #personagem
 {
-	
-	z-index: 11;
 	float: left;
 	margin: 0 2rem 0 2rem;
 }
@@ -405,6 +425,19 @@ p
 	justify-content: center;
 	align-items: center
 }
+
+#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
+	background: white;
+	width: 151px;
+	height: 50px;
+	margin: 0 auto;
+	margin-top: 2rem;
+}
+
+#opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
+	transform: scale(1.1);
+}
+
 
 @media screen and (max-width: 1100px) {
 	#row{
