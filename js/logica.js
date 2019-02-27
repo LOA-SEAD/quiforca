@@ -1,5 +1,6 @@
 var letraRepetida;
 
+//Preenche a camada de jogo
 function iniciar()
 {
 	//Seta estado do jogo
@@ -11,24 +12,29 @@ function iniciar()
 	jogo.letrasTentadas = new Array();
 	jogo.letrasTentadas = [" "];
 
+	//Sorteio de uma nova palavra
 	jogo.sorteio = parseInt((Math.random()*10000)%jogo.bdTamanho);
+	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
+	jogo.dicaPalavra = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;	
 
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoes");
-
 	jogo.botaoVoltar = document.createElement("div");
 	jogo.botaoVoltar.setAttribute("id" , "btnMenu");
 	jogo.botaoVoltar.setAttribute("role" , "button");
 	jogo.botaoVoltar.setAttribute("aria-label" , "Voltar");
 	jogo.botaoVoltar.setAttribute("class", "botao");
-
-	jogo.linha = document.createElement("div");
-	jogo.linha.setAttribute("id", "row");
-
-	
 	jogo.botaoVoltar.onclick = function() {
 		ativarBotaoVoltar();
 	}
+
+	jogo.linha = document.createElement("div");
+	jogo.linha.setAttribute("id", "row");
+	
+	//Logo FORCA
+	var imgLogo = document.createElement("div");
+	imgLogo.setAttribute("id", "imgLogo");
+	$("#camadaJogo").append(imgLogo);
 	
 	jogo.falador = document.createElement("div");
 	jogo.falador.setAttribute("id", "falador");
@@ -37,47 +43,31 @@ function iniciar()
 	jogo.falador.setAttribute("style", "display: none;");
 	$("#camadaJogo").append(jogo.falador);
 
-	jogo.dicaNaTela = document.createElement("div");
-	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
-	jogo.dicaNaTela.setAttribute("role" , "button");
-
+	//Pontos
 	$('<p>').attr('id', 'pontosNaTela')
 		.html('Pontos: ' + Math.round(jogo.pontos))
 		.appendTo($('#camadaJogo'));
 
-	//Sorteio de uma nova palavra
-	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
-	jogo.dicaPalavra = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;	
-	
+	//Dica
+	jogo.dicaNaTela = document.createElement("div");
+	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
+	jogo.dicaNaTela.setAttribute("role" , "button");
 	jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
-
 	//Exibe dica da palavra + número de letras que ela contém
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
 	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
 	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
-	jogo.dicaNaTela.setAttribute("aria-label", jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "(" + jogo.tamanhoPalavra.length + " letras)");
-	//jogo.dicaNaTela.setAttribute("role", "textbox");
 	jogo.dicaNaTela.appendChild(p);
-
-	/*if(jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao != "0") {
-		jogo.contribuicaoNaTela = document.createElement("p");
-		jogo.contribuicaoNaTela.setAttribute("id", "contribuicaoNaTela");
-		jogo.contribuicaoNaTela.setAttribute("class", "customfont");
-		jogo.contribuicaoNaTela.innerHTML = "Contribuição de: "+jogo.bd[jogo.bdAux[jogo.sorteio]].contribuicao;
-		$("#camadaJogo").append(jogo.contribuicaoNaTela);
-	}*/
 	$("#camadaJogo").append(jogo.dicaNaTela);
 
-	
-
+	//Exibe a palavra na tela
 	jogo.aux = "";
 	for(var i = 0; i < jogo.palavraSorteada.length; i++)
 	{
 		jogo.aux += jogo.palavraSorteada[i] + " ";
 	}
-
 	//Essa é a variavel que deve ser exibida na tela
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
@@ -95,13 +85,11 @@ function iniciar()
 	jogo.bdAux[jogo.sorteio] = ajuda;
 
 
-
 	$("#camadaJogo").append(jogo.linha);
 	colocarPersonagem();
 	colocarTecladoNaTela();
 	$("#camadaJogo").append(caixaBotoes);
 	caixaBotoes.appendChild(jogo.botaoVoltar);
-	//$("#camadaJogo").append(jogo.botaoVoltar);
 	inicializaFocus();
 	update();
 }
@@ -109,53 +97,32 @@ function iniciar()
 function update()
 {
 	atualizarPalavra();
-	var aux;
 	if(estado == "jogando"){
 		switch(fimDeJogo())
 		{
-			case -1:
-				//Continua o jogo normal
+			case -1: //Continua o jogo normal
 				setTimeout(update, 50);
 				break;
-			case 0:
-				//Fim de jogo: jogador perdeu
+			case 0: //Fim de jogo: Jogador perdeu
 				jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
-				//aux = 5*Math.pow(0.8, jogo.erros);
-				//jogo.pontosParciais = aux;
 				destruirCamadaJogo();
 				criarCamadaDerrota();
 				break;
-			case 1:
+			case 1: //Fim de jogo: Próxima fase
 				var el = document.getElementById("camadaJogo");
-
-				//aux = 5*Math.pow(0.8, jogo.erros);
-				//jogo.pontosParciais = aux;
 				jogo.pontos = jogo.pontos + 10 - jogo.erros;
-
 				$('<div>').attr({'id': 'palavraCerta',})
 					.appendTo(el);
-
-				//el.onmousedown = function() {
-					destruirCamadaJogo();
-					criarCamadaVitoria();
-				//}
+				destruirCamadaJogo();
+				criarCamadaVitoria();
 				break;
-			case 2:
+			case 2: //Fim de jogo: Acabaram as palavras
 				var el = document.getElementById("camadaJogo");
-
-				//aux = 5*Math.pow(0.8, jogo.erros);
-				//jogo.pontosParciais = aux;
-				//jogo.pontos = jogo.pontos + aux;
 				jogo.pontos = jogo.pontos + 10 - jogo.erros;
-
 				$('<div>').attr({'id': 'palavraCerta',})
 					.appendTo(el);
-
-				//el.onmousedown = function() {
-					destruirCamadaJogo();
-					//criarCamadaVitoria();
-					criarCamadaFimdeJogo();
-				//}
+				destruirCamadaJogo();
+				criarCamadaFimdeJogo();
 				break;
 		}
 	}
@@ -320,14 +287,7 @@ function verificarErro(_letra)
 			audio.play();
 		}, 100);
 	}
-	//delay = setTimeout(function(){
-		/*var audio2 = document.createElement("AUDIO")
-		var nomeAudio = "audio/letra" + _letra + ".mp3"
-		audio2.setAttribute("src", nomeAudio)
-		audio2.currentTime = 0
-		audio2.play()*/
-		testeLeitura(_letra);
-	//}, 50);
+	testeLeitura(_letra);
 }
 
 //Coloca os botoes do teclado na tela
@@ -440,7 +400,6 @@ function mudarCor(_letra)
 //Logica para ver se palavra foi atualizada
 function atualizarPalavra()
 {
-	var ariaLabel = "";
 	jogo.palavraNaTela.innerHTML = "";
 	for(var i = 0; i < jogo.palavraSorteada.length; i++)
 	{
@@ -454,49 +413,31 @@ function atualizarPalavra()
 		}
 		if(jogo.palavraSorteada[i] == " ")
 		{
-			//encontrar uma maneira de printar espaço
 			jogo.palavraNaTela.innerHTML += '\xa0';
-			//ariaLabel += "espaço";
 		}
 		else if(jogo.achou)
 		{
 			jogo.palavraNaTela.innerHTML += jogo.palavraSorteada[i];
-			ariaLabel += jogo.palavraSorteada[i];
 		}
 		else
 		{
 			jogo.palavraNaTela.innerHTML += "_";
-			//ariaLabel += "pin";
 		}
-		ariaLabel += " ";
 		jogo.palavraNaTela.innerHTML += " ";
 
 	}
-	ariaLabel = '\xa0';
-	jogo.palavraNaTela.setAttribute("aria-label", ariaLabel);
 }
 
 function atualizaNumChances(){
 	jogo.numChances--;
-	//atualizaLeituraBoneco();
 }
-
-/*function atualizaLeituraBoneco(){
-	if(jogo.numChances > 1)
-		jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
-	else
-		jogo.personagem.setAttribute("aria-label", "última chance");
-}*/
 
 function colocarPersonagem()
 {
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
-	//jogo.personagem.setAttribute("aria-label", "Você tem " + jogo.numChances + " chances");
-	//jogo.personagem.setAttribute("tabindex", 3);
 	$("#row").append(jogo.personagem);
-
 
 	jogo.personagemAnt = document.createElement("div");
 	jogo.personagemAnt.setAttribute("id", "personagemAnt");
@@ -507,7 +448,6 @@ function colocarPersonagem()
 function mudarPersonagem()
 {
 	jogo.emTransicao = true;
-
 	$('#personagemAnt').fadeIn(1, function() {}).attr('style', 'background-position: -' + (jogo.erros-1)*317 + 'px 0px;').css("z-index", 12);
 	$('#personagem').attr('style', 'background-position: -' + jogo.erros*317 + 'px 0px;').fadeOut(0,00001, function() {});
 	$('#personagem').fadeIn(500, function() {});
@@ -537,132 +477,90 @@ function ativarBotaoVoltar ()
 	iniciarNovoJogo();
 	criarCamadaMenu();
 }
-/*
-function adicionarComandosEnterSpace(funcao, objBotao)
-{
-	funcaoBotao = funcao;
-	objetoBotao = objBotao;
-	document.addEventListener("keyup", keyUp);
-}
-
-function removerComandosEnterSpace()
-{
-	funcaoBotao = null;
-	objetoBotao = null;
-	document.removeEventListener("keyup", keyUp);
-}
-*/
-function keyUp(event)
-{
-	/*
-	event.preventDefault();
-
-	switch(event.which)
-	{
-		case 13:
-		case 32:
-			funcaoBotao();
-			break;
-		case 37:		
-
-			var jobj = $(objetoBotao);
-			if(event.shiftKey)
-			{
-				$('[tabIndex='+(jobj.attr("tabIndex")+1)+']').focus();
-			}
-			else
-			{
-				$('[tabIndex='+(jobj.attr("tabIndex")-1)+']').focus();
-			}
-			objetoBotao.blur();
-			break;
-	}
-	*/	
-}
 
 function retornaLetrasTentadas(_posicao)
 {
 	if(jogo.letrasTentadas[_posicao] == "Ã" || jogo.letrasTentadas[_posicao] == "Â" || jogo.letrasTentadas[_posicao] == "Á"){
-		return false
+		return false;
 	}
 	else if(jogo.letrasTentadas[_posicao] == "É" || jogo.letrasTentadas[_posicao] == "Ê"){
-		return false
+		return false;
 	}
 	else if(jogo.letrasTentadas[_posicao] == "Í"){
-		return false
+		return false;
 	}
 	else if(jogo.letrasTentadas[_posicao] == "Ó" || jogo.letrasTentadas[_posicao] == "Õ" || jogo.letrasTentadas[_posicao] == "Ô"){
-		return false
+		return false;
 	}
 	else if(jogo.letrasTentadas[_posicao] == "Ú"){
-		return false
+		return false;
 	}
 	else if(jogo.letrasTentadas[_posicao] == "Ç"){
-		return false
+		return false;
 	}
 	else{
-		return jogo.letrasTentadas[_posicao]
+		return jogo.letrasTentadas[_posicao];
 	}
 }
 
 function tamanhoLetrasTentadas()
 {
-	return jogo.letrasTentadas.length
+	return jogo.letrasTentadas.length;
 }
 
 function numeroDeChances()
 {
-	return jogo.numChances
+	return jogo.numChances;
 }
 
 function numeroSorteado()
 {
-	return jogo.sorteio
+	return jogo.sorteio;
 }
 
 function vetorComPalavraAtual()
 {
-	var vetorAux = []
-	var counter = 0
+	var vetorAux = [];
+	var counter = 0;
 	for(var i = 0; i < jogo.palavraNaTela.innerHTML.length; i++)
 	{
 		if(jogo.palavraNaTela.innerHTML[i] != "&"){
 			if(jogo.palavraNaTela.innerHTML[i] != "_")
 			{
 				if(jogo.palavraNaTela.innerHTML[i] == "Ã" || jogo.palavraNaTela.innerHTML[i] == "Â" || jogo.palavraNaTela.innerHTML[i] == "Á"){
-					vetorAux[counter++] = "A"
+					vetorAux[counter++] = "A";
 				}
 				else if(jogo.palavraNaTela.innerHTML[i] == "É" || jogo.palavraNaTela.innerHTML[i] == "Ê"){
-					vetorAux[counter++] = "E"
+					vetorAux[counter++] = "E";
 				}
 				else if(jogo.palavraNaTela.innerHTML[i] == "Í"){
-					vetorAux[counter++] = "I"
+					vetorAux[counter++] = "I";
 				}
 				else if(jogo.palavraNaTela.innerHTML[i] == "Ó" || jogo.palavraNaTela.innerHTML[i] == "Õ" || jogo.palavraNaTela.innerHTML[i] == "Ô"){
-					vetorAux[counter++] = "O"
+					vetorAux[counter++] = "O";
 				}
 				else if(jogo.palavraNaTela.innerHTML[i] == "Ú"){
-					vetorAux[counter++] = "U"
+					vetorAux[counter++] = "U";
 				}
 				else if(jogo.palavraNaTela.innerHTML[i] == "Ç"){
-					vetorAux[counter++] = "C"
+					vetorAux[counter++] = "C";
 				}
 				else
 				{
 					if(jogo.palavraNaTela.innerHTML[i] != " "){
-						vetorAux[counter++] = jogo.palavraNaTela.innerHTML[i]
+						vetorAux[counter++] = jogo.palavraNaTela.innerHTML[i];
 					}
 				}
 			}
 			else
 			{
-				vetorAux[counter++] = "1"
+				vetorAux[counter++] = "1";
 			}
 		}
 		else
 		{
-			vetorAux[counter++] = "0"
-			i+=6
+			vetorAux[counter++] = "0";
+			i+=6;
 		}
 	}
 	return vetorAux
@@ -670,20 +568,20 @@ function vetorComPalavraAtual()
 
 function palavraAtual(_posicao)
 {
-	return vetorComPalavraAtual()[_posicao]
+	return vetorComPalavraAtual()[_posicao];
 }
 
 function tamanhoPalavraAtual()
 {
-	return vetorComPalavraAtual().length
+	return vetorComPalavraAtual().length;
 }
 
 function tamanhoPalavraSemEspaco()
 {
-	return jogo.tamanhoPalavra.length
+	return jogo.tamanhoPalavra.length;
 }
 
 function pontuacao()
 {
-	return jogo.pontos
+	return jogo.pontos;
 }
