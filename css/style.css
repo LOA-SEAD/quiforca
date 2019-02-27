@@ -93,8 +93,8 @@ body
 #camadaCreditos
 {
 	position: relative;
-	/*width: 500px;
-	height: 500px;
+	max-width: 600px;
+	/*height: 500px;
 	left: 10%;
 	top: 50%;
 	margin-left: -250px;	
@@ -411,4 +411,3 @@ p
 		flex-direction: column;
 	}
   }
-  

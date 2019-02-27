@@ -243,17 +243,20 @@ function criarCamadaCreditos()
 	para.innerHTML = "Coordenação";
 	el.appendChild(para);
 
+	var coord = document.createElement("div");
+	el.appendChild(coord);
+
 	var colLeft = document.createElement("div");
-	colLeft.setAttribute("style", "width: 230px; float: left;  text-align: right;");
-	el.appendChild(colLeft);
+	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
+	coord.appendChild(colLeft);
 
 	var para = document.createElement("p");
 	para.innerHTML = "Delano Medeiros Beder";
 	colLeft.appendChild(para);
 
 	var colRight = document.createElement("div");
-	colRight.setAttribute("style", "width: 230px; float: right; text-align: left;");
-	el.appendChild(colRight);
+	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
+	coord.appendChild(colRight);
 
 	var para = document.createElement("p");
 	para.innerHTML = "Joice Lee Otsuka";
@@ -263,9 +266,12 @@ function criarCamadaCreditos()
 	para.innerHTML = "Equipe";
 	el.appendChild(para);
 
+	var equipe = document.createElement("div");
+	el.appendChild(equipe);
+
 	var colLeft = document.createElement("div");
-	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: center;");
-	el.appendChild(colLeft);
+	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
+	equipe.appendChild(colLeft);
 
 	var para = document.createElement("p");
 	para.innerHTML = "Marcelo Lopes Lotufo";
@@ -284,8 +290,8 @@ function criarCamadaCreditos()
 	colLeft.appendChild(para);
 
 	var colRight = document.createElement("div");
-	colRight.setAttribute("style", "width: 250px; float: right; text-align: center;");
-	el.appendChild(colRight);
+	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
+	equipe.appendChild(colRight);
 
 	var para = document.createElement("p");
 	para.innerHTML = "Kátia Carnier";
