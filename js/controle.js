@@ -198,10 +198,6 @@ function criarCamadaJogo()
 	el.setAttribute("id", "camadaJogo");
 	$("#palco").append(el);
 
-	var imgLogo = document.createElement("div");
-	imgLogo.setAttribute("id", "imgLogo");
-	el.appendChild(imgLogo);
-
 	iniciar();
 	//leituraDica();
 	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
