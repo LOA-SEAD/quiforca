@@ -354,7 +354,7 @@ vitoria2 = false
 function criarCamadaVitoria()
 {
 	estado = "vitoria";
-	opcao = 5;
+	opcao = 0;
 	pulouVitoria = false;
 	/*vitoria1 = setTimeout(function(){
 		audioVit.currentTime = 0
@@ -420,7 +420,7 @@ function criarCamadaVitoria()
 	document.getElementById("btnProxPalavra").onmouseenter = function()
 	{
 		document.getElementById("btnProxPalavra").focus();
-		opcao = 5;
+		opcao = 0;
 		clearTimeout(delayInicializaFocus);
 	}
 
@@ -432,7 +432,7 @@ function criarCamadaVitoria()
 	document.getElementById("btnMenu").onmouseenter = function()
 	{
 		document.getElementById("btnMenu").focus();
-		opcao = 4;
+		opcao = 1;
 		clearTimeout(delayInicializaFocus);
 	}
 
@@ -443,10 +443,10 @@ function criarCamadaVitoria()
 	$("#camadaVitoria").keydown(function (e){
 		selecionaOpcao(e);	
 	
-		if(opcao == 5){
+		if(opcao == 0){
 			document.getElementById("btnProxPalavra").focus();
 		}
-		else if(opcao == 4){
+		else if(opcao == 1){
 			document.getElementById("btnMenu").focus();
 		}
 		//console.log(opcao);
@@ -595,7 +595,7 @@ derrota10 = false
 function criarCamadaDerrota()
 {
 	estado = "derrota";
-	opcao = 3;
+	opcao = 0;
 	pulouDerrota = false;
 	/*derrota1 = setTimeout(function(){
 		audioDer.currentTime = 0
@@ -765,7 +765,7 @@ function criarCamadaDerrota()
 	document.getElementById("btnReiniciar").onmouseenter = function()
 	{
 		document.getElementById("btnReiniciar").focus();
-		opcao = 3;
+		opcao = 0;
 		clearTimeout(delayInicializaFocus);
 	}
 
@@ -777,7 +777,7 @@ function criarCamadaDerrota()
 	document.getElementById("btnMenu").onmouseenter = function()
 	{
 		document.getElementById("btnMenu").focus();
-		opcao = 4;
+		opcao = 1;
 		clearTimeout(delayInicializaFocus);
 	}
 
@@ -789,10 +789,10 @@ function criarCamadaDerrota()
 		selecionaOpcao(e);	
 		//console.log(opcao);
 	
-		if(opcao == 3){
+		if(opcao == 0){
 			document.getElementById("btnReiniciar").focus();
 		}
-		else if(opcao == 4){
+		else if(opcao == 1){
 			document.getElementById("btnMenu").focus();
 		}
 	})
@@ -1007,25 +1007,34 @@ function selecionaOpcao(e)
 			paraDeFalar();
 			switch(opcao){
 				case 0:
-					ativarBotaoInstrucoes();
-					opcao = -1;
+					if(estado == "menu"){
+						ativarBotaoInstrucoes();
+						opcao = -1;
+					}
 				break;
 
 				case 1:
-					ativarBotaoJogar();
-					opcao = -1;
+					if(estado == "menu"){
+						ativarBotaoJogar();
+						opcao = -1;
+					}
 				break;
 
 				case 2:
-					ativarBotaoCreditos();
-					opcao = -1;
+					if(estado == "menu"){
+						ativarBotaoCreditos();
+						opcao = -1;
+					}
+					
 				break;
 
 				case 3:
-					ativarBotaoReiniciar();
-					opcao = -1;
+					if(estado == "menu"){
+						ativarBotaoReiniciar();
+						opcao = -1;		
+					}
 				break;
-
+/*
 				case 4:
 					ativarBotaoSair();
 					opcao = -1;
@@ -1034,7 +1043,7 @@ function selecionaOpcao(e)
 				case 5:
 					ativarProxPalavra();
 					opcao = -1;
-				break;
+				break;*/
 			}
 		break;
 		case 37: //ArrowLeft
@@ -1056,19 +1065,35 @@ function selecionaOpcao(e)
 				}
 			}
 			else if(estado == "derrota"){
-				if(opcao > 3){
+				if(opcao > 0){
 					tocaAudio();
-					testeLeitura("Recomeçar");
-					//AudioBotoes("audio/recomecar.mp3");
 					opcao--;
+				}
+				if(opcao == 0)
+				{
+					testeLeitura("Recomeçar");
+					//AudioBotoes("audio/jogar.mp3");
+				}
+				if(opcao == 1)
+				{
+					testeLeitura("Menu");
+					//AudioBotoes("audio/ajuda.mp3");
 				}
 			}
 			else if(estado == "vitoria"){
-				if(opcao < 5){
+				if(opcao > 0){
 					tocaAudio();
+					opcao--;
+				}
+				if(opcao == 0)
+				{
 					testeLeitura("Continuar");
-					//AudioBotoes("audio/proxima.mp3");
-					opcao++;
+					//AudioBotoes("audio/jogar.mp3");
+				}
+				if(opcao == 1)
+				{
+					testeLeitura("Menu");
+					//AudioBotoes("audio/ajuda.mp3");
 				}
 			}
 		break;
@@ -1091,21 +1116,21 @@ function selecionaOpcao(e)
 					//AudioBotoes("audio/creditos.mp3");
 				}
 			}
-			else if(estado == "derrota"){
-				if(opcao < 4){
+			else if(estado == "derrota" || estado == "vitoria"){
+				if(opcao < 1){
 					tocaAudio();
 					testeLeitura("Menu");
 					//AudioBotoes("audio/menu.mp3");
 					opcao++;
 				}
-			}
-			else if(estado == "vitoria"){
-				if(opcao > 4){
-					tocaAudio();
-					testeLeitura("Menu");
-					//AudioBotoes("audio/menu.mp3");
-					opcao--;
+				if(opcao == 1){
+					if(estado == "derrota")
+						testeLeitura("Reiniciar");
+					else if(estado == "vitoria")
+						testeLeitura("Continuar");
 				}
+				if(opcao == 1)
+					testeLeitura("Menu");
 			}
 		break;
 
