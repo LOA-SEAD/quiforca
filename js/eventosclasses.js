@@ -142,7 +142,7 @@ document.body.onkeyup = function(e)
 			somLetra2.push(track(nomeAtalho2));
 		}*/
 		counter = 0;
-		delayAtalho2 = setInterval(palavra, 500);
+		delayAtalho2 = setInterval(palavra, 600);
 		function palavra()
 		{
 			if(counter >= tamanhoPalavraAtual())
@@ -223,7 +223,7 @@ document.body.onkeyup = function(e)
 		}
 		counter = 0;
 		delayAtalho4 = setTimeout(function(){
-			delayLetraAtalho4 = setInterval(letras, 500);
+			delayLetraAtalho4 = setInterval(letras, 600);
 			function letras()
 			{
 				if(counter > tamanhoLetrasTentadas())

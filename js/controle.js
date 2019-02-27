@@ -1034,7 +1034,7 @@ function selecionaOpcao(e)
 				}
 				if(opcao == 1)
 				{
-					testeLeitura("Ajuda");
+					testeLeitura("Instruções");
 					//AudioBotoes("audio/ajuda.mp3");
 				}
 			}
@@ -1065,7 +1065,7 @@ function selecionaOpcao(e)
 				}
 				if(opcao == 1)
 				{
-					testeLeitura("Ajuda");
+					testeLeitura("Instruções");
 					//AudioBotoes("audio/ajuda.mp3");
 				}
 				if(opcao == 2)
