@@ -1289,6 +1289,45 @@ function criarCamadaOpcoes(){
 	caixaBotoes.appendChild(opcoesInstrucoes);
 	caixaBotoes.appendChild(opcoesMenu);
 
+	//Implementação tela de opções navegação pelo mouse
+
+	//btnContinuar
+	opcoesContinuar.onclick = function(){
+		ativarOpcaoContinuar();
+	}
+	opcoesContinuar.onmouseenter = function(){
+		opcoesContinuar.focus();
+		opcao = 0;
+	}
+
+	//btnAudio
+	opcoesAudio.onclick = function(){
+		ativarOpcaoAudio();
+	}
+	opcoesAudio.onmouseenter = function(){
+		opcoesAudio.focus();
+		opcao = 1;
+	}
+
+	//btnInstrucoes
+	opcoesInstrucoes.onclick = function(){
+		ativarOpcaoInstrucoes();
+	}
+	opcoesInstrucoes.onmouseenter = function(){
+		opcoesInstrucoes.focus();
+		opcao = 2;
+	}
+
+	//btnMenu
+	opcoesMenu.onclick = function(){
+		ativarOpcaoMenu();
+	}
+	opcoesMenu.onmouseenter = function(){
+		opcoesMenu.focus();
+		opcao = 3;
+	}
+
+
 	//Inicializa o foco da camada
 	inicializaFocus();
 
