@@ -1019,16 +1019,24 @@ function selecionaOpcao(e)
 						ativarBotaoJogar();
 					else if(estado == "vitoria" || estadoo == "derrota")
 						ativarBotaoSair();
+					else if(estado == "opcoes")
+						ativarOpcaoAudio();
 					opcao = -1;
 				break;
 
 				case 2:
-					if(estado == "menu"){
+					if(estado == "menu")
 						ativarBotaoCreditos();
-						opcao = -1;
-					}
+					else if(estado == "opcoes")
+						ativarOpcaoInstrucoes();
+					opcao = -1;
 				break;
-			}
+
+				case 3:
+					if(estado == "opcoes")
+						ativarOpcaoMenu();
+					opcao = -1;
+			}	
 		break;
 		case 37: //ArrowLeft
 			paraDeFalar();
@@ -1080,6 +1088,20 @@ function selecionaOpcao(e)
 					//AudioBotoes("audio/ajuda.mp3");
 				}
 			}
+			else if(estado == "opcoes"){
+				if(opcao > 0){
+					tocaAudio();
+					opcao--;
+				}
+				if(opcao == 0)
+					testeLeitura("Continuar");
+				if(opcao == 1)
+					testeLeitura("Áudio");
+				if(opcao == 2)
+					testeLeitura("Instruções");
+				if(opcao == 3)
+					testeLeitura("Menu");
+			}
 		break;
 
 		case 39: //ArrowRight
@@ -1114,6 +1136,18 @@ function selecionaOpcao(e)
 						testeLeitura("Continuar");
 				}
 				if(opcao == 1)
+					testeLeitura("Menu");
+			}
+			else if(estado == "opcoes"){
+				if(opcao < 3){
+					tocaAudio();
+					opcao++;
+				}
+				if(opcao == 1)
+					testeLeitura("Áudio");
+				if(opcao == 2)
+					testeLeitura("Instruções");
+				if(opcao == 3)
 					testeLeitura("Menu");
 			}
 		break;
@@ -1185,6 +1219,10 @@ function inicializaFocus(){
 	}
 	else if(estado == "opcoes"){
 		document.getElementById("opcaoContinuar").focus();
+		testeLeitura("Menu de Opções");
+		delayInicializaFocus = setTimeout(function(){
+			testeLeitura("Continuar");
+		}, 1000);
 	}
 }
 
@@ -1198,10 +1236,10 @@ function inicializaFalaInicial(){
 }
 
 function paraDeFalar(){
+	window.speechSynthesis.cancel();
 	pulouMenu = true;
 	pulouDerrota = true;
 	pulouVitoria = true;
-	window.speechSynthesis.cancel();
 }
 
 function criarCamadaOpcoes(){
@@ -1226,6 +1264,7 @@ function criarCamadaOpcoes(){
 
 	var divOpcoes = document.createElement("div");
 	divOpcoes.setAttribute("id", "divOpcoes");
+	divOpcoes.setAttribute("tabIndex", 0)
 	el.appendChild(divOpcoes);
 
 	var opcoesTxt = document.createElement("p");
@@ -1241,22 +1280,22 @@ function criarCamadaOpcoes(){
 	//btnContinuar
 	var opcoesContinuar = document.createElement("div");
 	opcoesContinuar.setAttribute("id", "opcaoContinuar");
-	opcoesContinuar.setAttribute("tabIndex", 0);
+	opcoesContinuar.setAttribute("tabIndex", -1);
 
 	//btnAudio
 	var opcoesAudio = document.createElement("div");
 	opcoesAudio.setAttribute("id", "opcaoAudio");
-	opcoesAudio.setAttribute("tabIndex", 0);
+	opcoesAudio.setAttribute("tabIndex", -1);
 
 	//btnIntrucoes
 	var opcoesInstrucoes = document.createElement("div");
 	opcoesInstrucoes.setAttribute("id", "opcaoInstrucoes");
-	opcoesInstrucoes.setAttribute("tabIndex", 0);
+	opcoesInstrucoes.setAttribute("tabIndex", -1);
 
 	//btnMenu
 	var opcoesMenu = document.createElement("div");
 	opcoesMenu.setAttribute("id", "opcaoMenu");
-	opcoesMenu.setAttribute("tabIndex", 0);
+	opcoesMenu.setAttribute("tabIndex", -1);
 
 	//adicionando botões a caixa de botoes
 	caixaBotoes.appendChild(opcoesContinuar);
@@ -1291,8 +1330,21 @@ function destruirCamadaOpcoes(){
 }
 
 function ativarOpcaoContinuar(){
-	estado = "jogando";
 	destruirCamadaOpcoes();
+	estado = "jogando";
+	setTimeout(update, 50);
+}
+
+function ativarOpcaoAudio(){
+
+}
+
+function ativarOpcaoInstrucoes(){
+
+}
+
+function ativarOpcaoMenu(){
+	
 }
 
 

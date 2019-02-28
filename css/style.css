@@ -49,8 +49,10 @@ body
 #divOpcoes{
 	width: 400px;
 	height: 495px;
-	background-color: blanchedalmond;
+	background-color: white;
 	position: relative;
+	border: solid;
+	border-radius: .5rem;
 }
 
 #camadaVitoria
@@ -451,11 +453,13 @@ p
 }
 
 #opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
-	background: white;
-	width: 151px;
-	height: 50px;
+    background-image: none;
+	width: 117px;
+	height: 65px;
 	margin: 0 auto;
-	margin-top: 2rem;
+	margin-top: 0px;
+	margin-top: 1rem;
+	background-image: url("../imgs/btnContinuar.png");
 }
 
 #opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
