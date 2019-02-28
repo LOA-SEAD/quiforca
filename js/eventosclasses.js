@@ -475,7 +475,7 @@ function leituraDica()
 		}, espera);
 }
 
-function testeLeitura(texto)
+function realizarLeitura(texto)
 {
 	window.speechSynthesis.cancel();
 	var msg = new SpeechSynthesisUtterance(texto);

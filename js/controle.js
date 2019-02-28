@@ -201,7 +201,7 @@ function criarCamadaJogo()
 	iniciar();
 	//leituraDica();
 	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
-	testeLeitura(texto);
+	realizarLeitura(texto);
 }
 
 function destruirCamadaJogo()
@@ -217,7 +217,7 @@ audioCreditos.currentTime = 0
 function criarCamadaCreditos()
 {
 	var texto = "Créditos. Coordenação. Delano Medeiros Beder. Joice Lee Otsuka. Equipe. Marcelo Lopes Lotufo. Murilo Dell Agnolo Garcia. Luiz Valério Neto. Henrique Souza Barros. Kátia Carnier. Rafaela Ferraz Majaron. Diana Gomes Ragnole Silva. Catarine Santana Ohnuma."
-	testeLeitura(texto);
+	realizarLeitura(texto);
 
 	/*audioCreditos.currentTime = 0
 	audioCreditos.play();*/
@@ -321,7 +321,7 @@ function criarCamadaCreditos()
 	}
 	/*botaoMenu.onmouseenter = function()
 	{
-		testeLeitura("Menu");
+		realizarLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
 	}*/
 	document.onkeydown = function(e)
@@ -364,7 +364,7 @@ function criarCamadaVitoria()
 		audioVitP.volume = 1
 		audioVitP.play();*/
 		var texto = "Você acertou, a palavra é: " + jogo.palavraSorteada;
-		testeLeitura(texto);
+		realizarLeitura(texto);
 	}, 3800);
 
 	var audio = document.createElement("AUDIO");
@@ -523,7 +523,7 @@ function criarCamadaFimdeJogo()
 	).appendTo($("#botoesTelaVitoria"));
 	/*document.getElementById("btnMenu").onmouseenter = function()
 	{
-		testeLeitura("Menu");
+		realizarLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
 	}*/
 
@@ -609,7 +609,7 @@ function criarCamadaDerrota()
 	}, 7300);*/
 
 	derrota1 = setTimeout(function(){
-		testeLeitura("Você errou. A palavra correta é: " + jogo.palavraSorteada + ". Pontuação final: "+pontuacao())
+		realizarLeitura("Você errou. A palavra correta é: " + jogo.palavraSorteada + ". Pontuação final: "+pontuacao())
 	}, 3000);
 
 	/*var aux
@@ -922,7 +922,7 @@ function criarCamadaInstrucoes()
 	texto += " teclado. Atalhos sonoros: Para usá-los, pressione os números no seu teclado";
 	texto += " alfanumérico. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já";
 	texto += " escolheu. 5. Saiba sua pontuação atual. Esc. Voltar para o menu";
-	testeLeitura(texto);
+	realizarLeitura(texto);
 
 	estado = "instrucoes"
 
@@ -976,7 +976,7 @@ function criarCamadaInstrucoes()
 	}
 	/*botaoMenu.onmouseenter = function()
 	{
-		testeLeitura("Menu");
+		realizarLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
 	}*/
 	document.onkeydown = function(e)
@@ -1047,12 +1047,12 @@ function selecionaOpcao(e)
 				}
 				if(opcao == 0)
 				{
-					testeLeitura("Instruções");
+					realizarLeitura("Instruções");
 					//AudioBotoes("audio/jogar.mp3");
 				}
 				if(opcao == 1)
 				{
-					testeLeitura("Jogar");
+					realizarLeitura("Jogar");
 					//AudioBotoes("audio/ajuda.mp3");
 				}
 			}
@@ -1063,12 +1063,12 @@ function selecionaOpcao(e)
 				}
 				if(opcao == 0)
 				{
-					testeLeitura("Recomeçar");
+					realizarLeitura("Recomeçar");
 					//AudioBotoes("audio/jogar.mp3");
 				}
 				if(opcao == 1)
 				{
-					testeLeitura("Menu");
+					realizarLeitura("Menu");
 					//AudioBotoes("audio/ajuda.mp3");
 				}
 			}
@@ -1079,12 +1079,12 @@ function selecionaOpcao(e)
 				}
 				if(opcao == 0)
 				{
-					testeLeitura("Continuar");
+					realizarLeitura("Continuar");
 					//AudioBotoes("audio/jogar.mp3");
 				}
 				if(opcao == 1)
 				{
-					testeLeitura("Menu");
+					realizarLeitura("Menu");
 					//AudioBotoes("audio/ajuda.mp3");
 				}
 			}
@@ -1105,30 +1105,30 @@ function selecionaOpcao(e)
 				}
 				if(opcao == 1)
 				{
-					testeLeitura("Jogar");
+					realizarLeitura("Jogar");
 					//AudioBotoes("audio/ajuda.mp3");
 				}
 				if(opcao == 2)
 				{
-					testeLeitura("Créditos");
+					realizarLeitura("Créditos");
 					//AudioBotoes("audio/creditos.mp3");
 				}
 			}
 			else if(estado == "derrota" || estado == "vitoria"){
 				if(opcao < 1){
 					tocaAudio();
-					testeLeitura("Menu");
+					realizarLeitura("Menu");
 					//AudioBotoes("audio/menu.mp3");
 					opcao++;
 				}
 				if(opcao == 1){
 					if(estado == "derrota")
-						testeLeitura("Reiniciar");
+						realizarLeitura("Reiniciar");
 					else if(estado == "vitoria")
-						testeLeitura("Continuar");
+						realizarLeitura("Continuar");
 				}
 				if(opcao == 1)
-					testeLeitura("Menu");
+					realizarLeitura("Menu");
 			}
 			else if(estado == "opcoes"){
 				if(opcao < 3){
@@ -1170,7 +1170,7 @@ function inicializaFocus(){
 		document.getElementById("btnInstrucoes").focus();
 		delayInicializaFocus = setTimeout(function(){
 			if(!pulouMenu)
-				testeLeitura("Instruções");
+				realizarLeitura("Instruções");
 				//AudioBotoes("audio/jogar.mp3");
 		}, 8000);
 	}
@@ -1179,7 +1179,7 @@ function inicializaFocus(){
 		document.getElementById("btnReiniciar").focus();
 		delayInicializaFocus = setTimeout(function(){
 			if(!pulouDerrota)
-				testeLeitura("Recomeçar");
+				realizarLeitura("Recomeçar");
 				//AudioBotoes("audio/recomecar.mp3");
 		}, 9200);
 	}
@@ -1188,7 +1188,7 @@ function inicializaFocus(){
 		document.getElementById("btnProxPalavra").focus();
 		delayInicializaFocus = setTimeout(function(){
 			if(!pulouVitoria)
-				testeLeitura("Continuar");
+				realizarLeitura("Continuar");
 				//AudioBotoes("audio/proxima.mp3");
 		}, 7000);
 	}
@@ -1199,15 +1199,15 @@ function inicializaFocus(){
 		document.getElementById("camadaFimdeJogo").focus();
 		document.getElementById("btnMenu").focus();
 		delayInicializaFocus = setTimeout(function(){
-			testeLeitura("Menu");
+			realizarLeitura("Menu");
 			//AudioBotoes("audio/menu.mp3");
 		}, 7000);
 	}
 	else if(estado == "opcoes"){
 		document.getElementById("opcaoContinuar").focus();
-		testeLeitura("Menu de Opções");
+		realizarLeitura("Menu de Opções");
 		delayInicializaFocus = setTimeout(function(){
-			testeLeitura("Continuar");
+			realizarLeitura("Continuar");
 		}, 1000);
 	}
 }
@@ -1297,19 +1297,19 @@ function criarCamadaOpcoes(){
 	
 		if(opcao == 0){
 			document.getElementById("opcaoContinuar").focus();
-			testeLeitura("Continuar");
+			realizarLeitura("Continuar");
 		}
 		else if(opcao == 1){
 			document.getElementById("opcaoAudio").focus();
-			testeLeitura("Áudio");
+			realizarLeitura("Áudio");
 		}
 		else if(opcao == 2){
 			document.getElementById("opcaoInstrucoes").focus();
-			testeLeitura("Instruções");
+			realizarLeitura("Instruções");
 		}
 		else if(opcao == 3){
 			document.getElementById("opcaoMenu").focus();
-			testeLeitura("Menu");
+			realizarLeitura("Menu");
 		}
 		//console.log(opcao);
 	})
