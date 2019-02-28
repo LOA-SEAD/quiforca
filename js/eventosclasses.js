@@ -131,7 +131,7 @@ document.body.onkeyup = function(e)
 	{
 		stopTudo();
 		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
-		testeLeitura(texto);
+		realizarLeitura(texto);
 	}
 
 	//Lê o status da palavra
@@ -153,7 +153,7 @@ document.body.onkeyup = function(e)
 			}
 			else if(palavraAtual(counter) == 0)
 			{
-				testeLeitura("Espaço");
+				realizarLeitura("Espaço");
 				counter++;
 			}
 			else if(palavraAtual(counter) == 1)
@@ -164,7 +164,7 @@ document.body.onkeyup = function(e)
 			}
 			else
 			{
-				testeLeitura(palavraAtual(counter));
+				realizarLeitura(palavraAtual(counter));
 				counter++;
 			}
 			/*else
@@ -187,19 +187,19 @@ document.body.onkeyup = function(e)
 		switch(numeroDeChances())
 		{
 			case 1:
-				testeLeitura("Tome cuidado, você só tem uma vida");
+				realizarLeitura("Tome cuidado, você só tem uma vida");
 				break;
 			case 2:
-				testeLeitura("Suas chances estão acabando, você só tem duas vidas");
+				realizarLeitura("Suas chances estão acabando, você só tem duas vidas");
 				break;
 			case 3:
-				testeLeitura("Você ainda tem três vidas");
+				realizarLeitura("Você ainda tem três vidas");
 				break;
 			case 4:
-				testeLeitura("Você tem quatro vidas");
+				realizarLeitura("Você tem quatro vidas");
 				break;
 			case 5:
-				testeLeitura("Você tem todas as cinco vidas");
+				realizarLeitura("Você tem todas as cinco vidas");
 				break;
 		}
 	}
@@ -212,7 +212,7 @@ document.body.onkeyup = function(e)
 		clearInterval(delayLetraAtalho4);
 
 		counter = 0;
-		testeLeitura("Letras que já foram escolhidas: ")
+		realizarLeitura("Letras que já foram escolhidas: ")
 		//audioAtalho4.currentTime = 0;
 		//audioAtalho4.play();
 		for(var i = 1; i < tamanhoLetrasTentadas(); i++)
@@ -248,11 +248,11 @@ document.body.onkeyup = function(e)
 		stopTudo();
 		if(pontuacao() == 1)
 		{
-			testeLeitura("Um ponto");
+			realizarLeitura("Um ponto");
 		}
 		else
 		{
-			testeLeitura(pontuacao() + " pontos.");
+			realizarLeitura(pontuacao() + " pontos.");
 		}
 
 		/*var aux

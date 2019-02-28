@@ -1289,44 +1289,6 @@ function criarCamadaOpcoes(){
 	caixaBotoes.appendChild(opcoesInstrucoes);
 	caixaBotoes.appendChild(opcoesMenu);
 
-	//Implementando navegação por mouse + alterando foco quando mouse hover
-
-	//botao continuar
-	opcoesContinuar.onclick = function(){
-		ativarOpcaoContinuar();
-	}
-	opcoesContinuar.onmouseenter = function(){
-		opcoesContinuar.focus();
-		opcao = 0;
-	}
-
-	//botao áudio
-	opcoesAudio.onclick = function(){
-		ativarOpcaoAudio();
-	}
-	opcoesAudio.onmouseenter = function(){
-		opcoesAudio.focus();
-		opcao = 1;
-	}
-
-	//botao instrucoes
-	opcoesInstrucoes.onclick = function(){
-		ativarOpcaoInstrucoes();
-	}
-	opcoesInstrucoes.onmouseenter = function(){
-		opcoesInstrucoes.focus();
-		opcao = 2;
-	}
-
-	//botao menu
-	opcoesMenu.onclick = function(){
-		ativarOpcaoMenu();
-	}
-	opcoesMenu.onmouseenter = function(){
-		opcoesMenu.focus();
-		opcao = 3;
-	}
-
 	//Inicializa o foco da camada
 	inicializaFocus();
 
@@ -1349,6 +1311,7 @@ function criarCamadaOpcoes(){
 			document.getElementById("opcaoMenu").focus();
 			realizarLeitura("Menu");
 		}
+		//console.log(opcao);
 	})
 }
 

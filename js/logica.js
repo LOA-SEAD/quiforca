@@ -287,7 +287,7 @@ function verificarErro(_letra)
 			audio.play();
 		}, 100);
 	}
-	testeLeitura(_letra);
+	realizarLeitura(_letra);
 }
 
 //Coloca os botoes do teclado na tela
