@@ -1093,14 +1093,6 @@ function selecionaOpcao(e)
 					tocaAudio();
 					opcao--;
 				}
-				if(opcao == 0)
-					testeLeitura("Continuar");
-				if(opcao == 1)
-					testeLeitura("Áudio");
-				if(opcao == 2)
-					testeLeitura("Instruções");
-				if(opcao == 3)
-					testeLeitura("Menu");
 			}
 		break;
 
@@ -1143,12 +1135,6 @@ function selecionaOpcao(e)
 					tocaAudio();
 					opcao++;
 				}
-				if(opcao == 1)
-					testeLeitura("Áudio");
-				if(opcao == 2)
-					testeLeitura("Instruções");
-				if(opcao == 3)
-					testeLeitura("Menu");
 			}
 		break;
 
@@ -1311,15 +1297,19 @@ function criarCamadaOpcoes(){
 	
 		if(opcao == 0){
 			document.getElementById("opcaoContinuar").focus();
+			testeLeitura("Continuar");
 		}
 		else if(opcao == 1){
 			document.getElementById("opcaoAudio").focus();
+			testeLeitura("Áudio");
 		}
 		else if(opcao == 2){
 			document.getElementById("opcaoInstrucoes").focus();
+			testeLeitura("Instruções");
 		}
 		else if(opcao == 3){
 			document.getElementById("opcaoMenu").focus();
+			testeLeitura("Menu");
 		}
 		//console.log(opcao);
 	})
@@ -1344,7 +1334,9 @@ function ativarOpcaoInstrucoes(){
 }
 
 function ativarOpcaoMenu(){
-	
+	destruirCamadaOpcoes();
+	destruirCamadaJogo();
+	criarCamadaMenu();
 }
 
 

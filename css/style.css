@@ -464,6 +464,7 @@ p
 
 #opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
 	transform: scale(1.1);
+	outline: none;
 }
 
 
