@@ -216,7 +216,7 @@ audioCreditos.currentTime = 0
 
 function criarCamadaCreditos()
 {
-	var texto = "Créditos. Coordenação. Delano Medeiros Beder. Joice Lee Otsuka. Equipe. Marcelo Lopes Lotufo. Murilo Dell Agnolo Garcia. Luiz Valério Neto. Henrique Souza Barros. Kátia Carnier. Rafaela Ferraz Majaron. Diana Gomes Ragnole Silva. Catarine Santana Ohnuma."
+	var texto = "Créditos. Coordenação. Delano Medeiros Beder. Joice Lee Otsuka. Equipe. Marcelo Lopes Lotufo. Rafaela Ferraz Majaron. Murilo Dell Agnolo Garcia. Diana Gomes Ragnole Silva. Luiz Valério Neto. Kátia Carnier. Henrique Souza Barros. Catarine Santana Ohnuma. Acessibilidade. Caio Vinícius Barbosa Santos. Mariana Zagatti Sabino. Jhonata Nícollas Carvalho Querobim. Rogério Augusto Bordini."
 	testeLeitura(texto);
 
 	/*audioCreditos.currentTime = 0
@@ -272,15 +272,12 @@ function criarCamadaCreditos()
 	var para = document.createElement("p");
 	para.innerHTML = "Marcelo Lopes Lotufo";
 	colLeft.appendChild(para);
-
 	var para = document.createElement("p");
 	para.innerHTML = "Murilo Dell Agnolo Garcia";
 	colLeft.appendChild(para);
-
 	var para = document.createElement("p");
 	para.innerHTML = "Luiz Valério Neto";
 	colLeft.appendChild(para);
-
 	var para = document.createElement("p");
 	para.innerHTML = "Henrique Souza Barros";
 	colLeft.appendChild(para);
@@ -290,18 +287,46 @@ function criarCamadaCreditos()
 	equipe.appendChild(colRight);
 
 	var para = document.createElement("p");
-	para.innerHTML = "Kátia Carnier";
-	colRight.appendChild(para);
-	var para = document.createElement("p");
 	para.innerHTML = "Rafaela Ferraz Majaron";
 	colRight.appendChild(para);
 	var para = document.createElement("p");
 	para.innerHTML = "Diana Gomes Ragnole Silva";
 	colRight.appendChild(para);
 	var para = document.createElement("p");
+	para.innerHTML = "Kátia Carnier";
+	colRight.appendChild(para);
+	var para = document.createElement("p");
 	para.innerHTML = "Catarine Santana Ohnuma";
 	colRight.appendChild(para);
 
+	var para = document.createElement("h1");
+	para.innerHTML = "Acessibilidade";
+	el.appendChild(para);
+
+	var acessibilidade = document.createElement("div");
+	el.appendChild(acessibilidade);
+
+	var colLeft = document.createElement("div");
+	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
+	acessibilidade.appendChild(colLeft);
+
+	var para = document.createElement("p");
+	para.innerHTML = "Caio Vinícius Barbosa Santos";
+	colLeft.appendChild(para);
+	var para = document.createElement("p");
+	para.innerHTML = "Jhonata Nícollas Carvalho Querobim";
+	colLeft.appendChild(para);
+
+	var colRight = document.createElement("div");
+	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
+	acessibilidade.appendChild(colRight);
+
+	var para = document.createElement("p");
+	para.innerHTML = "Mariana Zagatti Sabino";
+	colRight.appendChild(para);
+	var para = document.createElement("p");
+	para.innerHTML = "Rogério Augusto Bordini";
+	colRight.appendChild(para);
 
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoes");

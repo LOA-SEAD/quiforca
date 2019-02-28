@@ -17,50 +17,53 @@ function iniciar()
 	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
 	jogo.dicaPalavra = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;	
 
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	jogo.botaoVoltar = document.createElement("div");
-	jogo.botaoVoltar.setAttribute("id" , "btnMenu");
-	jogo.botaoVoltar.setAttribute("role" , "button");
-	jogo.botaoVoltar.setAttribute("aria-label" , "Voltar");
-	jogo.botaoVoltar.setAttribute("class", "botao");
-	jogo.botaoVoltar.onclick = function() {
-		ativarBotaoVoltar();
-	}
-
 	jogo.linha = document.createElement("div");
 	jogo.linha.setAttribute("id", "row");
+	jogo.linha.setAttribute("style", "margin-top: 4rem")
 	
-	//Logo FORCA
+	var colleft = document.createElement("div");
+	colleft.setAttribute("id", "ColLeft");
+	colleft.setAttribute("class", "clearfix");
+	$("#camadaJogo").append(colleft);
+
+	var colright = document.createElement("div");
+	colright.setAttribute("id", "ColRight");
+	colright.setAttribute("class", "clearfix");
+	$("#camadaJogo").append(colright);
+
+	//Logo FORCA -- NA TELA
 	var imgLogo = document.createElement("div");
 	imgLogo.setAttribute("id", "imgLogo");
-	$("#camadaJogo").append(imgLogo);
+	colleft.append(imgLogo);
 	
 	jogo.falador = document.createElement("div");
 	jogo.falador.setAttribute("id", "falador");
 	jogo.falador.setAttribute("aria-live", "polite");
 	jogo.falador.setAttribute("role", "log");
 	jogo.falador.setAttribute("style", "display: none;");
-	$("#camadaJogo").append(jogo.falador);
+	//$("#camadaJogo").append(jogo.falador);
+	colright.append(jogo.falador)
 
-	//Pontos
+	//Pontos -- NA TELA
 	$('<p>').attr('id', 'pontosNaTela')
 		.html('Pontos: ' + Math.round(jogo.pontos))
-		.appendTo($('#camadaJogo'));
+		//.appendTo($('#camadaJogo'));
+		.appendTo($('#ColRight'));
 
 	//Dica
 	jogo.dicaNaTela = document.createElement("div");
 	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
 	jogo.dicaNaTela.setAttribute("role" , "button");
 	jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
-	//Exibe dica da palavra + número de letras que ela contém
+	//Exibe dica da palavra + número de letras que ela contém -- NA TELA
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
 	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
 	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
 	jogo.dicaNaTela.appendChild(p);
-	$("#camadaJogo").append(jogo.dicaNaTela);
+	//$("#camadaJogo").append(jogo.dicaNaTela);
+	colright.append(jogo.dicaNaTela);
 
 	//Exibe a palavra na tela
 	jogo.aux = "";
@@ -68,12 +71,13 @@ function iniciar()
 	{
 		jogo.aux += jogo.palavraSorteada[i] + " ";
 	}
-	//Essa é a variavel que deve ser exibida na tela
+	//Essa é a variavel que deve ser exibida na tela -- NA TELA
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "0");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	$("#camadaJogo").append(jogo.palavraNaTela);
+	//$("#camadaJogo").append(jogo.palavraNaTela);
+	colright.append(jogo.palavraNaTela);
 
 	jogo.erros = 0;
 	jogo.emTransicao = false;
@@ -85,11 +89,25 @@ function iniciar()
 	jogo.bdAux[jogo.sorteio] = ajuda;
 
 
-	$("#camadaJogo").append(jogo.linha);
-	colocarPersonagem();
-	colocarTecladoNaTela();
+	//$("#camadaJogo").append(jogo.linha); -- NA TELA
+	colright.append(jogo.linha);
+	colocarPersonagem(); // -- NA TELA
+	colocarTecladoNaTela(); // -- NA TELA
+
+
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoes");
+	caixaBotoes.setAttribute("class", "clearfix");
 	$("#camadaJogo").append(caixaBotoes);
-	caixaBotoes.appendChild(jogo.botaoVoltar);
+	jogo.botaoVoltar = document.createElement("div");
+	jogo.botaoVoltar.setAttribute("id" , "btnMenu");
+	jogo.botaoVoltar.setAttribute("role" , "button");
+	jogo.botaoVoltar.setAttribute("class", "botao");
+	jogo.botaoVoltar.onclick = function() {
+		ativarBotaoVoltar();
+	}
+	caixaBotoes.append(jogo.botaoVoltar);
+	//$("#camadaJogo").append(jogo.botaoVoltar);
 	inicializaFocus();
 	update();
 }
@@ -258,7 +276,7 @@ function verificarErro(_letra)
 			audio.currentTime = 0
 			audio.volume = 0.5
 			audio.play()
-		}, 250);
+		}, 300);
 	}
 	if(deuErro)
 	{
@@ -285,7 +303,7 @@ function verificarErro(_letra)
 			audio.currentTime = 0
 			audio.volume = 0.5
 			audio.play();
-		}, 100);
+		}, 300);
 	}
 	testeLeitura(_letra);
 }
@@ -437,12 +455,12 @@ function colocarPersonagem()
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
-	$("#row").append(jogo.personagem);
+	$("#ColLeft").append(jogo.personagem);
 
 	jogo.personagemAnt = document.createElement("div");
 	jogo.personagemAnt.setAttribute("id", "personagemAnt");
 	jogo.personagemAnt.setAttribute("class", "personagem");
-	$("#row").append(jogo.personagemAnt);
+	$("#ColLeft").append(jogo.personagemAnt);
 }
 
 function mudarPersonagem()
