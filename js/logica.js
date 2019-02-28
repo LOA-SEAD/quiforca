@@ -114,8 +114,8 @@ function iniciar()
 
 function update()
 {
-	atualizarPalavra();
 	if(estado == "jogando"){
+		atualizarPalavra();
 		switch(fimDeJogo())
 		{
 			case -1: //Continua o jogo normal
@@ -305,7 +305,7 @@ function verificarErro(_letra)
 			audio.play();
 		}, 300);
 	}
-	testeLeitura(_letra);
+	realizarLeitura(_letra);
 }
 
 //Coloca os botoes do teclado na tela
