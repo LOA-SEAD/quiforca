@@ -474,9 +474,6 @@ p
 	clear: both;
 }
 
-<<<<<<< HEAD
-#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
-=======
 .botaoOpcoes{
 	height: 65px;
 	margin: 0 auto;
@@ -492,7 +489,6 @@ p
 
 /*#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
     background-image: none;
->>>>>>> 867d4f4cd46a0756ee236efb547302a476008bf6
 	width: 117px;
 	height: 65px;
 	margin: 0 auto;

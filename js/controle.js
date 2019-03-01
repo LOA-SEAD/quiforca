@@ -1067,33 +1067,10 @@ function selecionaOpcao(e)
 		break;
 		case 37: //ArrowLeft
 			paraDeFalar();
-			if(estado == "menu"){
-				if(opcao > 0){
-					tocaAudio();
-					opcao--;
-					setaFoco();
-				}
-			}
-			else if(estado == "derrota"){
-				if(opcao > 0){
-					tocaAudio();
-					opcao--;
-					setaFoco();
-				}
-			}
-			else if(estado == "vitoria"){
-				if(opcao > 0){
-					tocaAudio();
-					opcao--;
-					setaFoco();
-				}
-			}
-			else if(estado == "opcoes"){
-				if(opcao > 0){
-					tocaAudio();
-					opcao--;
-					setaFoco();
-				}
+			if(opcao > 0){
+				tocaAudio();
+				opcao--;
+				setaFoco();
 			}
 		break;
 
