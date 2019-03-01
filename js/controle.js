@@ -111,18 +111,6 @@ function criarCamadaMenu()
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
-	
-		switch (opcao){
-			case 0:
-				document.getElementById("btnInstrucoes").focus();
-				break;
-			case 1:
-				document.getElementById("btnJogar").focus();
-				break;
-			case 2:
-				document.getElementById("btnCreditos").focus();
-				break;
-		}
 	})
 
 	origemMenu = 1
@@ -463,14 +451,6 @@ function criarCamadaVitoria()
 
 	$("#camadaVitoria").keydown(function (e){
 		selecionaOpcao(e);	
-	
-		if(opcao == 0){
-			document.getElementById("btnProxPalavra").focus();
-		}
-		else if(opcao == 1){
-			document.getElementById("btnMenu").focus();
-		}
-		//console.log(opcao);
 	})
 }
 
@@ -808,14 +788,6 @@ function criarCamadaDerrota()
 
 	$("#camadaDerrota").keydown(function (e){
 		selecionaOpcao(e);	
-		//console.log(opcao);
-	
-		if(opcao == 0){
-			document.getElementById("btnReiniciar").focus();
-		}
-		else if(opcao == 1){
-			document.getElementById("btnMenu").focus();
-		}
 	})
 }
 
@@ -1036,17 +1008,15 @@ function selecionaOpcao(e)
 						ativarBotaoReiniciar();
 					else if(estado == "opcoes")
 						ativarOpcaoContinuar();
-					opcao = -1;
 				break;
 
 				case 1:
 					if(estado == "menu")
 						ativarBotaoJogar();
-					else if(estado == "vitoria" || estadoo == "derrota")
+					else if(estado == "vitoria" || estado == "derrota")
 						ativarBotaoSair();
 					else if(estado == "opcoes")
 						ativarOpcaoAudio();
-					opcao = -1;
 				break;
 
 				case 2:
@@ -1054,13 +1024,11 @@ function selecionaOpcao(e)
 						ativarBotaoCreditos();
 					else if(estado == "opcoes")
 						ativarOpcaoInstrucoes();
-					opcao = -1;
 				break;
 
 				case 3:
 					if(estado == "opcoes")
 						ativarOpcaoMenu();
-					opcao = -1;
 			}	
 		break;
 		case 37: //ArrowLeft
@@ -1069,54 +1037,28 @@ function selecionaOpcao(e)
 				if(opcao > 0){
 					tocaAudio();
 					opcao--;
-				}
-				if(opcao == 0)
-				{
-					realizarLeitura("Instruções");
-					//AudioBotoes("audio/jogar.mp3");
-				}
-				if(opcao == 1)
-				{
-					realizarLeitura("Jogar");
-					//AudioBotoes("audio/ajuda.mp3");
+					setaFoco();
 				}
 			}
 			else if(estado == "derrota"){
 				if(opcao > 0){
 					tocaAudio();
 					opcao--;
-				}
-				if(opcao == 0)
-				{
-					realizarLeitura("Recomeçar");
-					//AudioBotoes("audio/jogar.mp3");
-				}
-				if(opcao == 1)
-				{
-					realizarLeitura("Menu");
-					//AudioBotoes("audio/ajuda.mp3");
+					setaFoco();
 				}
 			}
 			else if(estado == "vitoria"){
 				if(opcao > 0){
 					tocaAudio();
 					opcao--;
-				}
-				if(opcao == 0)
-				{
-					realizarLeitura("Continuar");
-					//AudioBotoes("audio/jogar.mp3");
-				}
-				if(opcao == 1)
-				{
-					realizarLeitura("Menu");
-					//AudioBotoes("audio/ajuda.mp3");
+					setaFoco();
 				}
 			}
 			else if(estado == "opcoes"){
 				if(opcao > 0){
 					tocaAudio();
 					opcao--;
+					setaFoco();
 				}
 			}
 		break;
@@ -1127,16 +1069,7 @@ function selecionaOpcao(e)
 				if(opcao < 2){
 					tocaAudio();
 					opcao++;
-				}
-				if(opcao == 1)
-				{
-					realizarLeitura("Jogar");
-					//AudioBotoes("audio/ajuda.mp3");
-				}
-				if(opcao == 2)
-				{
-					realizarLeitura("Créditos");
-					//AudioBotoes("audio/creditos.mp3");
+					setaFoco();
 				}
 			}
 			else if(estado == "derrota" || estado == "vitoria"){
@@ -1145,20 +1078,14 @@ function selecionaOpcao(e)
 					realizarLeitura("Menu");
 					//AudioBotoes("audio/menu.mp3");
 					opcao++;
+					setaFoco();
 				}
-				if(opcao == 1){
-					if(estado == "derrota")
-						realizarLeitura("Reiniciar");
-					else if(estado == "vitoria")
-						realizarLeitura("Continuar");
-				}
-				if(opcao == 1)
-					realizarLeitura("Menu");
 			}
 			else if(estado == "opcoes"){
 				if(opcao < 3){
 					tocaAudio();
 					opcao++;
+					setaFoco();
 				}
 			}
 		break;
@@ -1234,6 +1161,63 @@ function inicializaFocus(){
 		delayInicializaFocus = setTimeout(function(){
 			realizarLeitura("Continuar");
 		}, 1000);
+	}
+}
+
+function setaFoco(){
+	switch(estado){
+		case "menu":
+			if(opcao == 0){
+				document.getElementById("btnInstrucoes").focus();
+				realizarLeitura("Instruções");
+			}
+			else if(opcao == 1){
+				document.getElementById("btnJogar").focus();
+				realizarLeitura("Jogar");
+			}
+			else if(opcao == 2){
+				document.getElementById("btnCreditos").focus();
+				realizarLeitura("Créditos");
+			}
+		break;
+		case "vitoria":
+			if(opcao == 0){
+				document.getElementById("btnProxPalavra").focus();
+				realizarLeitura("Continuar");
+			}
+			else if(opcao == 1){
+				document.getElementById("btnMenu").focus();
+				realizarLeitura("Menu");
+			}
+		break;
+		case "derrota":
+			if(opcao == 0){
+				document.getElementById("btnReiniciar").focus();
+				realizarLeitura("Reiniciar");
+			}
+			else if(opcao == 1){
+				document.getElementById("btnMenu").focus();
+				realizarLeitura("Menu");
+			}
+		break;
+		case "opcoes":
+			if(opcao == 0){
+				document.getElementById("opcaoContinuar").focus();
+				realizarLeitura("Continuar");
+			}
+			else if(opcao == 1){
+				document.getElementById("opcaoAudio").focus();
+				realizarLeitura("Áudio");
+			}
+			else if(opcao == 2){
+				document.getElementById("opcaoInstrucoes").focus();
+				realizarLeitura("Instruções");
+			}
+			else if(opcao == 3){
+				document.getElementById("opcaoMenu").focus();
+				realizarLeitura("Menu");
+			}
+		break;
 	}
 }
 
@@ -1358,24 +1342,6 @@ function criarCamadaOpcoes(){
 
 	$("#camadaOpcoes").keydown(function (e){
 		selecionaOpcao(e);	
-	
-		if(opcao == 0){
-			document.getElementById("opcaoContinuar").focus();
-			realizarLeitura("Continuar");
-		}
-		else if(opcao == 1){
-			document.getElementById("opcaoAudio").focus();
-			realizarLeitura("Áudio");
-		}
-		else if(opcao == 2){
-			document.getElementById("opcaoInstrucoes").focus();
-			realizarLeitura("Instruções");
-		}
-		else if(opcao == 3){
-			document.getElementById("opcaoMenu").focus();
-			realizarLeitura("Menu");
-		}
-		//console.log(opcao);
 	})
 }
 

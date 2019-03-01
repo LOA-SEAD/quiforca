@@ -475,11 +475,9 @@ p
 }
 
 #opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
-    background-image: none;
 	width: 117px;
 	height: 65px;
 	margin: 0 auto;
-	margin-top: 0px;
 	margin-top: 1rem;
 	background-image: url("../imgs/btnContinuar.png");
 }

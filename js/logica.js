@@ -3,6 +3,8 @@ var letraRepetida;
 //Preenche a camada de jogo
 function iniciar()
 {
+	//Seta opcao para -1
+	opcao = -1;
 	//Seta estado do jogo
 	estado = "jogando";
 	//Seta número de chances do jogador
