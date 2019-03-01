@@ -452,7 +452,7 @@ p
 	align-items: center
 }
 
-#ColLeft
+#ColLeftJogo
 {
 	position: relative;
 	max-width: 300px;
@@ -460,7 +460,7 @@ p
 	display: block;
 }
 
-#ColRight
+#ColRightJogo
 {
 	position: relative;
 	max-width: 800px;
@@ -474,19 +474,57 @@ p
 	clear: both;
 }
 
+<<<<<<< HEAD
 #opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
+=======
+.botaoOpcoes{
+	height: 65px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-top: 1rem;
+}
+
+.botaoOpcoes:focus{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+/*#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
+    background-image: none;
+>>>>>>> 867d4f4cd46a0756ee236efb547302a476008bf6
 	width: 117px;
 	height: 65px;
 	margin: 0 auto;
 	margin-top: 1rem;
 	background-image: url("../imgs/btnContinuar.png");
+}*/
+
+#opcaoContinuar{
+	width: 117px;
+	background-image: url("../imgs/btnContinuar.png");
 }
 
-#opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
+#opcaoAudio{
+	width: 117px;
+	background-image: url("../imgs/btnContinuar.png");
+}
+
+#opcaoInstrucoes{
+	width: 137px;
+	background-image: url("../imgs/btnInstrucoes.png");
+}	
+
+#opcaoMenu{
+	width: 115px;
+	background-image: url("../imgs/btnVoltar.png");
+}
+
+/*#opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
 	transform: scale(1.1);
 	cursor: pointer;
 	outline: none;
-}
+}*/
 
 
 @media screen and (max-width: 1100px) {
@@ -496,22 +534,22 @@ p
   }
 
 @media screen and (max-width: 1336px){
-	#ColLeft{
+	#ColLeftJogo{
 		max-width: 225px
 	}
-	#ColRight{
+	#ColRightJogo{
 		max-width: 550px
 	}
 }
 
 @media screen and (max-width: 980px){
-	#ColLeft{
+	#ColLeftJogo{
 		max-width: 300px;
 		float: none;
 		margin: 0 auto;
 		display: block;
 	}
-	#ColRight{
+	#ColRightJogo{
 		max-width: 550px;
 		float: none;
 		margin: 0 auto;
