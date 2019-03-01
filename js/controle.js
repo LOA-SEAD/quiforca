@@ -23,11 +23,16 @@ var pulouMenu;
 var pulouDerrota;
 var pulouVitoria;
 
+var origemInstrucoes;
+
 function criarCamadaMenu()
 {	
+	origemInstrucoes = "menu";
+	console.log(opcao);
 	pulouMenu = false;
 	estado = "menu";
 	opcao = 0;
+	console.log(opcao);
 
 	if(origemDerrota){
 		background.currentTime = 0
@@ -217,7 +222,7 @@ audioCreditos.currentTime = 0
 function criarCamadaCreditos()
 {
 	var texto = "Créditos. Coordenação. Delano Medeiros Beder. Joice Lee Otsuka. Equipe. Marcelo Lopes Lotufo. Rafaela Ferraz Majaron. Murilo Dell Agnolo Garcia. Diana Gomes Ragnole Silva. Luiz Valério Neto. Kátia Carnier. Henrique Souza Barros. Catarine Santana Ohnuma. Acessibilidade. Caio Vinícius Barbosa Santos. Mariana Zagatti Sabino. Jhonata Nícollas Carvalho Querobim. Rogério Augusto Bordini."
-	testeLeitura(texto);
+	realizarLeitura(texto);
 
 	/*audioCreditos.currentTime = 0
 	audioCreditos.play();*/
@@ -941,13 +946,21 @@ function destruirCamadaRanking()
 
 function criarCamadaInstrucoes()
 {
-	var texto = "Instruções. Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra. A ";
-	texto += "cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. A ";
-	texto += "cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio";
-	texto += " teclado. Atalhos sonoros: Para usá-los, pressione os números no seu teclado";
-	texto += " alfanumérico. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já";
-	texto += " escolheu. 5. Saiba sua pontuação atual. Esc. Voltar para o menu";
-	realizarLeitura(texto);
+	if(origemInstrucoes == "menu")
+	{
+		var textoInstrucoes = "Instruções. Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra. A ";
+		textoInstrucoes += "cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. A ";
+		textoInstrucoes += "cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio";
+		textoInstrucoes += " teclado. Atalhos sonoros durante o jogo: Para usá-los, pressione os números no seu teclado";
+		textoInstrucoes += " alfanumérico. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já";
+		textoInstrucoes += " escolheu. 5. Saiba sua pontuação atual; Esc. Pausar o jogo e acessar as configurações. Para voltar ao menu, pressione esc.";
+	}
+	else if(origemInstrucoes == "opcoes")
+	{
+		var textoInstrucoes = "Instruções: 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já";
+		textoInstrucoes += " escolheu. 5. Saiba sua pontuação atual; Esc. Voltar para o jogo";
+	}
+	realizarLeitura(textoInstrucoes);
 
 	estado = "instrucoes"
 
@@ -966,20 +979,33 @@ function criarCamadaInstrucoes()
 	//conteúdo instruções
 	jogo.instrucoes = document.createElement("p")
 	jogo.instrucoes.setAttribute("id", "instrucoesText")
-	jogo.instrucoes.innerHTML = 
-	"<h1>Instruções</h1> <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
+	jogo.instrucoes.innerHTML = "<h1>Instruções</h1>";
+	if(origemInstrucoes == "menu")
+	{
+	jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
 	 "Cada letra que você acerta é colocada na palavra. <br>"+
 	 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
 	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
 	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>"+
-	 "<h3>Atalhos sonoros:</h3><br>"+
-	 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>"+
-	 "1 - Ouça a dica<br>"+
+	 "<h3>Atalhos sonoros durante o jogo:</h3><br>"+
+	 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>";
+	}
+	jogo.instrucoes.innerHTML += "1 - Ouça a dica<br>"+
 	 "2 - Ouça o que você descobriu da palavra até agora<br>"+
 	 "3 - Saiba quantas vidas você ainda tem<br>"+
 	 "4 - Relembre as letras que você já escolheu<br>"+
-	 "5 - Saiba sua pontuação atual<br>"+
-	 "Esc - Voltar para o menu<br>"
+	 "5 - Saiba sua pontuação atual<br>";
+	if(origemInstrucoes == "menu")
+	{
+		jogo.instrucoes.innerHTML += 
+		"Esc - Pausar o jogo e acessar as configurações<br><br>" +
+		"Para voltar ao menu, pressione Esc";
+	}
+	else if(origemInstrucoes == "opcoes")
+	{
+		jogo.instrucoes.innerHTML += "Esc - Voltar para o jogo<br>";
+	}
+	 
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
@@ -1010,7 +1036,15 @@ function criarCamadaInstrucoes()
 		if((e.which == 27 || e.keyCode == 27 || e.charCode == 24) && estado == "instrucoes")
 		{
 			destruirCamadaInstrucoes();
-			criarCamadaMenu();
+			if(origemInstrucoes == "menu")
+			{
+				criarCamadaMenu();
+			}
+			else if(origemInstrucoes == "opcoes")
+			{
+				$("#camadaJogo").toggle();
+				estado = "jogando";
+			}
 		}
 	}
 }
@@ -1163,6 +1197,25 @@ function selecionaOpcao(e)
 			}
 		break;
 
+		case 40: //ArrowDown
+			if(estado == "opcoes")
+			{
+				if(opcao < 3){
+					tocaAudio();
+					opcao++;
+				}
+			}
+		break;
+
+		case 38: //ArrowUp
+			if(estado == "opcoes")
+			{
+				if(opcao > 0){
+					tocaAudio();
+					opcao--;
+				}
+			}
+		break;
 	}
 }
 
@@ -1257,7 +1310,7 @@ function criarCamadaOpcoes(){
 
 	estado = "opcoes";
 	opcao = 0;
-
+	origemInstrucoes = "opcoes";
 
 	//Cria div camada opcoes
 	var el = document.createElement("div");
@@ -1291,21 +1344,25 @@ function criarCamadaOpcoes(){
 	//btnContinuar
 	var opcoesContinuar = document.createElement("div");
 	opcoesContinuar.setAttribute("id", "opcaoContinuar");
+	opcoesContinuar.setAttribute("class", "botaoOpcoes");
 	opcoesContinuar.setAttribute("tabIndex", -1);
 
 	//btnAudio
 	var opcoesAudio = document.createElement("div");
 	opcoesAudio.setAttribute("id", "opcaoAudio");
+	opcoesAudio.setAttribute("class", "botaoOpcoes");
 	opcoesAudio.setAttribute("tabIndex", -1);
 
 	//btnIntrucoes
 	var opcoesInstrucoes = document.createElement("div");
 	opcoesInstrucoes.setAttribute("id", "opcaoInstrucoes");
+	opcoesInstrucoes.setAttribute("class", "botaoOpcoes");
 	opcoesInstrucoes.setAttribute("tabIndex", -1);
 
 	//btnMenu
 	var opcoesMenu = document.createElement("div");
 	opcoesMenu.setAttribute("id", "opcaoMenu");
+	opcoesMenu.setAttribute("class", "botaoOpcoes");
 	opcoesMenu.setAttribute("tabIndex", -1);
 
 	//adicionando botões a caixa de botoes
@@ -1394,7 +1451,10 @@ function ativarOpcaoAudio(){
 }
 
 function ativarOpcaoInstrucoes(){
-
+	destruirCamadaOpcoes();
+	$("#camadaJogo").toggle();
+	criarCamadaInstrucoes();
+	estado = "instrucoes";
 }
 
 function ativarOpcaoMenu(){

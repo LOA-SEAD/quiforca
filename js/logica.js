@@ -22,12 +22,12 @@ function iniciar()
 	jogo.linha.setAttribute("style", "margin-top: 4rem")
 	
 	var colleft = document.createElement("div");
-	colleft.setAttribute("id", "ColLeft");
+	colleft.setAttribute("id", "ColLeftJogo");
 	colleft.setAttribute("class", "clearfix");
 	$("#camadaJogo").append(colleft);
 
 	var colright = document.createElement("div");
-	colright.setAttribute("id", "ColRight");
+	colright.setAttribute("id", "ColRightJogo");
 	colright.setAttribute("class", "clearfix");
 	$("#camadaJogo").append(colright);
 
@@ -48,7 +48,7 @@ function iniciar()
 	$('<p>').attr('id', 'pontosNaTela')
 		.html('Pontos: ' + Math.round(jogo.pontos))
 		//.appendTo($('#camadaJogo'));
-		.appendTo($('#ColRight'));
+		.appendTo($('#ColRightJogo'));
 
 	//Dica
 	jogo.dicaNaTela = document.createElement("div");
@@ -455,12 +455,12 @@ function colocarPersonagem()
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
-	$("#ColLeft").append(jogo.personagem);
+	$("#ColLeftJogo").append(jogo.personagem);
 
 	jogo.personagemAnt = document.createElement("div");
 	jogo.personagemAnt.setAttribute("id", "personagemAnt");
 	jogo.personagemAnt.setAttribute("class", "personagem");
-	$("#ColLeft").append(jogo.personagemAnt);
+	$("#ColLeftJogo").append(jogo.personagemAnt);
 }
 
 function mudarPersonagem()

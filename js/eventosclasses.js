@@ -253,6 +253,7 @@ document.body.onkeyup = function(e)
 		else
 		{
 			realizarLeitura(pontuacao() + " pontos.");
+			//window.speechSynthesis.
 		}
 
 		/*var aux
