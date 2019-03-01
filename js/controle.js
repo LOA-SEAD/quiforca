@@ -586,16 +586,16 @@ audioDer.setAttribute("src", "audio/frasederrota.mp3");
 var pontfinal = document.createElement("AUDIO");
 pontfinal.setAttribute("src", "audio/pontuacaofinal.mp3");
 
-derrota1 = false
-derrota2 = false
-derrota3 = false
-derrota4 = false
-derrota5 = false
-derrota6 = false
-derrota7 = false
-derrota8 = false
-derrota9 = false
-derrota10 = false
+var derrota1 = false
+var derrota2 = false
+var derrota3 = false
+var derrota4 = false
+var derrota5 = false
+var derrota6 = false
+var derrota7 = false
+var derrota8 = false
+var derrota9 = false
+var derrota10 = false
 
 function criarCamadaDerrota()
 {
@@ -985,11 +985,13 @@ function criarCamadaInstrucoes()
 	caixaBotoes.setAttribute("id", "caixaBotoes");
 	el.appendChild(caixaBotoes);
 
+	if(origemInstrucoes == "menu"){
 	var botaoMenu = document.createElement("div");
 	botaoMenu.setAttribute("id" , "btnMenu");
 	botaoMenu.setAttribute("tabIndex" , "-1");
 	botaoMenu.setAttribute("class" , "botao");
 	caixaBotoes.append(botaoMenu);
+	}
 
 	botaoMenu.onclick = function()
 	{
@@ -1106,6 +1108,7 @@ function selecionaOpcao(e)
 				if(opcao < 3){
 					tocaAudio();
 					opcao++;
+					setaFoco();
 				}
 			}
 		break;
@@ -1116,6 +1119,7 @@ function selecionaOpcao(e)
 				if(opcao > 0){
 					tocaAudio();
 					opcao--;
+					setaFoco();
 				}
 			}
 		break;
@@ -1186,10 +1190,10 @@ function inicializaFocus(){
 	}
 	else if(estado == "opcoes"){
 		document.getElementById("opcaoContinuar").focus();
-		realizarLeitura("Menu de Opções");
+		realizarLeitura("Configurações");
 		delayInicializaFocus = setTimeout(function(){
 			realizarLeitura("Continuar");
-		}, 1000);
+		}, 800);
 	}
 }
 

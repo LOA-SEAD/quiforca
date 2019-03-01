@@ -144,7 +144,7 @@ document.body.onkeyup = function(e)
 			somLetra2.push(track(nomeAtalho2));
 		}*/
 		counter = 0;
-		delayAtalho2 = setInterval(palavra, 600);
+		delayAtalho2 = setInterval(palavra, 700);
 		function palavra()
 		{
 			if(counter >= tamanhoPalavraAtual())
