@@ -985,13 +985,11 @@ function criarCamadaInstrucoes()
 	caixaBotoes.setAttribute("id", "caixaBotoes");
 	el.appendChild(caixaBotoes);
 
-	if(origemInstrucoes == "menu"){
 	var botaoMenu = document.createElement("div");
 	botaoMenu.setAttribute("id" , "btnMenu");
 	botaoMenu.setAttribute("tabIndex" , "-1");
 	botaoMenu.setAttribute("class" , "botao");
 	caixaBotoes.append(botaoMenu);
-	}
 
 	botaoMenu.onclick = function()
 	{
