@@ -28,11 +28,10 @@ var origemInstrucoes;
 function criarCamadaMenu()
 {	
 	origemInstrucoes = "menu";
-	console.log(opcao);
 	pulouMenu = false;
 	estado = "menu";
 	opcao = 0;
-	console.log(opcao);
+
 
 	if(origemDerrota){
 		background.currentTime = 0
