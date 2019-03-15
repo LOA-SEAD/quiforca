@@ -497,23 +497,23 @@ p
 }*/
 
 #opcaoContinuar{
-	width: 117px;
-	background-image: url("../imgs/btnContinuar.png");
+	width: 137px;
+	background-image: url("../imgs/menu2.png");
 }
 
 #opcaoAudio{
-	width: 117px;
-	background-image: url("../imgs/btnContinuar.png");
+	width: 137px;
+	background-image: url("../imgs/menu3.png");
 }
 
 #opcaoInstrucoes{
 	width: 137px;
-	background-image: url("../imgs/btnInstrucoes.png");
+	background-image: url("../imgs/menu1.png");
 }	
 
 #opcaoMenu{
-	width: 115px;
-	background-image: url("../imgs/btnVoltar.png");
+	width: 137px;
+	background-image: url("../imgs/menu4.png");
 }
 
 /*#opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
