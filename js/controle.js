@@ -25,6 +25,8 @@ var pulouVitoria;
 
 var origemInstrucoes;
 
+var sairInstrucoes = false;
+
 function criarCamadaMenu()
 {	
 	origemInstrucoes = "menu";
@@ -1012,8 +1014,9 @@ function criarCamadaInstrucoes()
 			}
 			else if(origemInstrucoes == "opcoes")
 			{
-				$("#camadaJogo").toggle();
+				sairInstrucoes = true;
 				estado = "jogando";
+				$("#camadaJogo").toggle();
 			}
 		}
 	}
@@ -1268,7 +1271,6 @@ function paraDeFalar(){
 }
 
 function criarCamadaOpcoes(){
-
 	estado = "opcoes";
 	opcao = 0;
 	origemInstrucoes = "opcoes";
@@ -1376,6 +1378,15 @@ function criarCamadaOpcoes(){
 
 	$("#camadaOpcoes").keydown(function (e){
 		selecionaOpcao(e);	
+	})
+
+	$("#camadaOpcoes").keyup(function(e){
+		if(e.charCode == 27 || e.which == 27 || e.keyCode == 27)
+		{
+			destruirCamadaOpcoes();
+			sairInstrucoes = true;
+			estado = "jogando";
+		}
 	})
 }
 

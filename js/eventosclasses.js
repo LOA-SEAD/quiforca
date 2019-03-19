@@ -100,7 +100,12 @@ document.body.onkeyup = function(e)
 	if(keyunicode == 27) //Esc
 	{
 		stopTudo();
-		criarCamadaOpcoes();
+		if(!sairInstrucoes)
+		{
+			criarCamadaOpcoes();
+		}
+		sairInstrucoes = false;
+		setTimeout(update, 50);
 	}
 
 
