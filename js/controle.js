@@ -992,11 +992,23 @@ function criarCamadaInstrucoes()
 	botaoMenu.setAttribute("class" , "botao");
 	caixaBotoes.append(botaoMenu);
 
+
 	botaoMenu.onclick = function()
 	{
-		destruirCamadaInstrucoes();
-		criarCamadaMenu();
+		if(origemInstrucoes == "menu")
+		{
+			destruirCamadaInstrucoes();
+			criarCamadaMenu();
+		}
+		else if(origemInstrucoes == "opcoes")
+		{
+			destruirCamadaInstrucoes();
+			estado = "jogando";
+			$("#camadaJogo").toggle();
+			setTimeout(update, 50);
+		}
 	}
+
 	/*botaoMenu.onmouseenter = function()
 	{
 		realizarLeitura("Menu");

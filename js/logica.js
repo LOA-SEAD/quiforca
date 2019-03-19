@@ -106,7 +106,7 @@ function iniciar()
 	jogo.botaoVoltar.setAttribute("role" , "button");
 	jogo.botaoVoltar.setAttribute("class", "botao");
 	jogo.botaoVoltar.onclick = function() {
-		ativarBotaoVoltar();
+		criarCamadaOpcoes();
 	}
 	caixaBotoes.append(jogo.botaoVoltar);
 	//$("#camadaJogo").append(jogo.botaoVoltar);
