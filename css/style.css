@@ -356,6 +356,30 @@ p
 	background-image: url("../imgs/btnVoltar.png");
 }
 
+#btnMenu:hover, #btnMenu:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnMenu2
+{
+	margin: 1rem;
+	width: 116px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/btnVoltar2.png");
+}
+
+#btnMenu2:hover, #btnMenu2:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+
 #btnProxPalavra
 {
 	margin: 1rem;
@@ -366,13 +390,6 @@ p
 }
 
 #btnReiniciar:hover, #btnReiniciar:focus
-{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
-}
-
-#btnMenu:hover, #btnMenu:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;

@@ -987,7 +987,7 @@ function criarCamadaInstrucoes()
 	el.appendChild(caixaBotoes);
 
 	var botaoMenu = document.createElement("div");
-	botaoMenu.setAttribute("id" , "btnMenu");
+	botaoMenu.setAttribute("id" , "btnMenu2");
 	botaoMenu.setAttribute("tabIndex" , "-1");
 	botaoMenu.setAttribute("class" , "botao");
 	caixaBotoes.append(botaoMenu);
@@ -1248,7 +1248,7 @@ function setaFoco(){
 			}
 			else if(opcao == 3){
 				document.getElementById("opcaoMenu").focus();
-				realizarLeitura("Sair");
+				realizarLeitura("Desistir");
 			}
 		break;
 	}
