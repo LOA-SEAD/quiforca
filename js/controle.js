@@ -1217,7 +1217,7 @@ function setaFoco(){
 			}
 			else if(opcao == 1){
 				document.getElementById("btnMenu").focus();
-				realizarLeitura("Menu");
+				realizarLeitura("Sair");
 			}
 		break;
 		case "derrota":
@@ -1245,7 +1245,7 @@ function setaFoco(){
 			}
 			else if(opcao == 3){
 				document.getElementById("opcaoMenu").focus();
-				realizarLeitura("Menu");
+				realizarLeitura("Sair");
 			}
 		break;
 	}
