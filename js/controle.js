@@ -924,7 +924,7 @@ function criarCamadaInstrucoes()
 		textoInstrucoes += "cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio";
 		textoInstrucoes += " teclado. Atalhos sonoros durante o jogo: Para usá-los, pressione os números no seu teclado";
 		textoInstrucoes += " alfanumérico. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já";
-		textoInstrucoes += " escolheu. 5. Saiba sua pontuação atual; Esc. Pausar o jogo e acessar as configurações. Para voltar ao menu, pressione esc.";
+		textoInstrucoes += " escolheu. 5. Saiba sua pontuação atual; Esc. Pausar o jogo e acessar as configurações.";
 	}
 	else if(origemInstrucoes == "opcoes")
 	{
@@ -969,8 +969,7 @@ function criarCamadaInstrucoes()
 	if(origemInstrucoes == "menu")
 	{
 		jogo.instrucoes.innerHTML += 
-		"Esc - Pausar o jogo e acessar as configurações<br><br>" +
-		"Para voltar ao menu, pressione Esc";
+		"Esc - Pausar o jogo e acessar as configurações<br><br>";
 	}
 	else if(origemInstrucoes == "opcoes")
 	{
