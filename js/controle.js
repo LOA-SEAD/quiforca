@@ -328,7 +328,7 @@ function criarCamadaCreditos()
 
 
 	var botaoMenu = document.createElement("div");
-	botaoMenu.setAttribute("id" , "btnMenu");
+	botaoMenu.setAttribute("id" , "btnMenu2");
 	botaoMenu.setAttribute("tabIndex" , "-1");
 	botaoMenu.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoMenu);
