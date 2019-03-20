@@ -783,14 +783,14 @@ function criarCamadaDerrota()
 		clearTimeout(delayInicializaFocus);
 	}
 
-	$("<button>").attr("id", "btnMenu").click(
+	$("<button>").attr("id", "btnMenu3").click(
 		function(){
 			ativarBotaoSair();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
-	document.getElementById("btnMenu").onmouseenter = function()
+	document.getElementById("btnMenu3").onmouseenter = function()
 	{
-		document.getElementById("btnMenu").focus();
+		document.getElementById("btnMenu3").focus();
 		opcao = 1;
 		clearTimeout(delayInicializaFocus);
 	}
@@ -1282,7 +1282,7 @@ function setaFoco(){
 				realizarLeitura("Reiniciar");
 			}
 			else if(opcao == 1){
-				document.getElementById("btnMenu").focus();
+				document.getElementById("btnMenu3").focus();
 				realizarLeitura("Menu");
 			}
 		break;
