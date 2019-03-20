@@ -43,15 +43,40 @@ body
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	z-index: 0;
 }
 
 #divOpcoes{
-	width: 400px;
-	height: 495px;
-	background-color: white;
+	width: 430px;
+	height: 530px;
+	background-color: #fcf394;;
 	position: relative;
-	border: solid;
-	border-radius: .5rem;
+	-webkit-border-bottom-left-radius: 3rem 15rem;
+	-webkit-border-bottom-right-radius: 7rem 3rem;
+}
+
+#divOpcoes::before, #divOpcoes::after{
+	content: '';
+    z-index: -1;
+    position: absolute;
+    bottom: 23px;
+    left: 26px;
+    width: 30%;
+    top: 85%;
+    max-width: 300px;
+    background: #777;
+    box-shadow: 0px 27px 30px #777;
+    transform: rotate(-9deg);
+}
+
+#divOpcoes::after{
+	-webkit-transform: rotate(8deg);
+	-moz-transform: rotate(8deg);
+	-o-transform: rotate(8deg);
+	-ms-transform: rotate(8deg);
+	transform: rotate(-5deg);
+	right: 10px;
+	left: auto;
 }
 
 #camadaAudio{
@@ -134,6 +159,7 @@ body
 #camadaMenu
 {
 	width: 100%;	
+	text-align: center;
 }
 
 #camadaMenu:focus{
@@ -142,10 +168,8 @@ body
 
 #imgMenu
 {
-	margin: 2rem auto;
-	background-image: url("../imgs/desenhotelainicial.png");
-	height: 478px;
-	width: 606px;
+	height: auto;
+	width: 55%;
 }
 
 #imgLogo
@@ -166,6 +190,20 @@ body
 	float: left;
 	margin-left: 6rem;
 	margin-top: 1.3rem;
+}
+
+#imgLogoVit
+{
+	background-image: url("../imgs/logovitoria.png");
+	height: 139px;
+	width: 180px;
+	float: left;
+	margin-top: 1.3rem;
+}
+
+#palavraCertaNaTela
+{
+	text-align: center;
 }
 
 #instrucoesText
@@ -209,7 +247,6 @@ body
 {
 	text-align: center;
 	padding: 0 2rem 0 2rem;
-	margin: 3rem;
 }
 
 #contribuicaoNaTela
@@ -221,7 +258,6 @@ body
 #pontosNaTela
 {
 	text-align: right;
-	margin-right: 3rem;
 }
 
 /*Parte dos botoes no jogo*/
@@ -325,7 +361,7 @@ p
 
 #btnJogar
 {
-	width: 117px;
+	width: 137px;
 	height: 65px;
 	background-image: url("../imgs/btnJogar.png");
 	margin: 1.5rem;
@@ -356,8 +392,8 @@ p
 
 #btnCreditos
 {
-	width: 119px;
-	height: 69px;
+	width: 137px;
+	height: 65px;
 	background-image: url("../imgs/btnCreditos.png");
 	margin: 1.5rem;
 }
@@ -432,6 +468,22 @@ p
 	outline: none;
 }
 
+#btnMenu3
+{
+	margin: 1rem;
+	width: 137px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/menu4.png");
+}
+
+#btnMenu3:hover, #btnMenu3:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
 
 #btnProxPalavra
 {
@@ -479,16 +531,14 @@ p
 
 #imgBonecoDerrota
 {
-	width: 280px;
-	height: 300px;
-	background-image: url("../imgs/bonecoDerrota.png");
+	width: 25%;
+	height: auto;
 }
 
 #imgBonecoVitoria
 {
-	width: 395px;
-	height: 257px;
-	background-image: url("../imgs/imagem parabens.png");
+	width: 40%;
+	height: auto;
 	margin: 2rem;
 }
 
@@ -620,5 +670,22 @@ p
 		float: none;
 		margin: 0 auto;
 		display: block;
+	}
+
+	#imgMenu{
+		width: 100%;
+	}
+
+	#dicaNaTela{
+		width: 100%;
+		text-align: center;
+	}
+
+	#imgBonecoDerrota{
+		width: 55%;
+	}
+
+	#imgBonecoVitoria{
+		width: 80%;
 	}
 }
