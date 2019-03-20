@@ -294,7 +294,7 @@ p
 
 #btnJogar
 {
-	width: 117px;
+	width: 137px;
 	height: 65px;
 	background-image: url("../imgs/btnJogar.png");
 	margin: 1.5rem;
@@ -325,8 +325,8 @@ p
 
 #btnCreditos
 {
-	width: 119px;
-	height: 69px;
+	width: 137px;
+	height: 65px;
 	background-image: url("../imgs/btnCreditos.png");
 	margin: 1.5rem;
 }
