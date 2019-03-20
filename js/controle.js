@@ -1062,6 +1062,8 @@ function selecionaOpcao(e)
 						ativarBotaoReiniciar();
 					else if(estado == "opcoes")
 						ativarOpcaoContinuar();
+					else if(estado == "audio")
+						enterMusicaFundo();
 				break;
 
 				case 1:
@@ -1071,6 +1073,8 @@ function selecionaOpcao(e)
 						ativarBotaoSair();
 					else if(estado == "opcoes")
 						ativarOpcaoAudio();
+					else if(estado == "audio")
+						enterEfeitos();
 				break;
 
 				case 2:
@@ -1078,6 +1082,8 @@ function selecionaOpcao(e)
 						ativarBotaoCreditos();
 					else if(estado == "opcoes")
 						ativarOpcaoInstrucoes();
+					else if(estado == "audio")
+						enterLeituraTela();
 				break;
 
 				case 3:
@@ -1087,7 +1093,7 @@ function selecionaOpcao(e)
 		break;
 		case 37: //ArrowLeft
 			paraDeFalar();
-			if(opcao > 0){
+			if(opcao > 0 && !transicaoBarra){
 				tocaAudio();
 				opcao--;
 				setaFoco();
@@ -1119,6 +1125,13 @@ function selecionaOpcao(e)
 					setaFoco();
 				}
 			}
+			else if(estado == "audio"){
+				if(opcao < 2 && !transicaoBarra){
+					tocaAudio();
+					opcao++;
+					setaFoco();
+				}
+			}
 		break;
 
 		case 40: //ArrowDown
@@ -1130,12 +1143,26 @@ function selecionaOpcao(e)
 					setaFoco();
 				}
 			}
+			else if(estado == "audio"){
+				if(opcao < 2 && !transicaoBarra){
+					tocaAudio();
+					opcao++;
+					setaFoco();
+				}
+			}
 		break;
 
 		case 38: //ArrowUp
 			if(estado == "opcoes")
 			{
 				if(opcao > 0){
+					tocaAudio();
+					opcao--;
+					setaFoco();
+				}
+			}
+			else if(estado == "audio"){
+				if(opcao > 0 && !transicaoBarra){
 					tocaAudio();
 					opcao--;
 					setaFoco();
@@ -1214,6 +1241,13 @@ function inicializaFocus(){
 			realizarLeitura("Continuar");
 		}, 800);
 	}
+	else if(estado == "audio"){
+		document.getElementById("MusicaFundo").focus();
+		realizarLeitura("Configurações de áudio");
+		delayInicializaFocus = setTimeout(function(){
+			realizarLeitura("Musica de Fundo");
+		}, 1200);
+	}
 }
 
 function setaFoco(){
@@ -1270,6 +1304,20 @@ function setaFoco(){
 				realizarLeitura("Desistir");
 			}
 		break;
+		case "audio":
+			if(opcao == 0){
+				document.getElementById("MusicaFundo").focus();
+				realizarLeitura("Musica de fundo");
+			}
+			else if(opcao == 1){
+				document.getElementById("Efeitos").focus();
+				realizarLeitura("Efeitos");
+			}
+			else if(opcao == 2){
+				document.getElementById("LeituraTela").focus();
+				realizarLeitura("Leitura de Tela e Atalhos");
+			}
+		break;
 	}
 }
 
@@ -1289,9 +1337,12 @@ function paraDeFalar(){
 	pulouVitoria = true;
 }
 
+var transicaoBarra = false;
+
 function criarCamadaAudio()
 {
-	estado = "audio";
+	opcao = 0;
+	transicaoBarra = false;
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaAudio");
@@ -1308,7 +1359,6 @@ function criarCamadaAudio()
 	audioTxt.setAttribute("id", "audioTxt");
 	audioTxt.innerHTML = "Configurações de Audio";
 	divAudio.appendChild(audioTxt);
-
 
 	var valor = document.createElement("demo");
 
@@ -1361,11 +1411,36 @@ function criarCamadaAudio()
 	sliderLeituraTela.setAttribute("id", "sliderLeituraTela");
 	sliderLeituraTela.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderLeituraTela);
-	caixaBarras.appendChild(sliderLeituraTela);
+
+	inicializaFocus();
+
+	$("#camadaAudio").keydown(function (e){
+		selecionaOpcao(e);	
+	})
 }
 
 function destruirCamadaAudio(){
 	$("#camadaAudio").remove();
+}
+
+function enterMusicaFundo(){
+	if(transicaoBarra){
+		//FOCO NÃO ESTÁ VOLTANDO PARA A O TEXTO
+		document.getElementById("MusicaFundo").focus();
+		transicaoBarra = false;
+	}
+	else if(!transicaoBarra){
+		document.getElementById("sliderMusicaFundo").focus();
+		transicaoBarra = true;
+	}
+}
+
+function enterEfeitos(){
+
+}
+
+function enterLeituraTela(){
+
 }
 
 function criarCamadaOpcoes(){
@@ -1500,6 +1575,7 @@ function ativarOpcaoContinuar(){
 
 function ativarOpcaoAudio(){
 	destruirCamadaOpcoes();
+	estado = "audio";
 	criarCamadaAudio();
 }
 
