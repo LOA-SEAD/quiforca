@@ -115,6 +115,20 @@ body
 	margin-top: 1.3rem;
 }
 
+#imgLogoVit
+{
+	background-image: url("../imgs/logovitoria.png");
+	height: 139px;
+	width: 180px;
+	float: left;
+	margin-top: 1.3rem;
+}
+
+#palavraCertaNaTela
+{
+	text-align: center;
+}
+
 #instrucoesText
 {
 	margin-top: 10rem;
@@ -373,6 +387,22 @@ p
 }
 
 #btnMenu2:hover, #btnMenu2:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnMenu3
+{
+	margin: 1rem;
+	width: 137px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/menu4.png");
+}
+
+#btnMenu3:hover, #btnMenu3:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;

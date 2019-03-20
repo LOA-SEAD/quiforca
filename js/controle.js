@@ -401,6 +401,10 @@ function criarCamadaVitoria()
 	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
 
+	var imgLogo = document.createElement("div");
+	imgLogo.setAttribute("id", "imgLogoVit");
+	el.appendChild(imgLogo);
+
 	/*if((jogo.bdTamanho) == 0) {
 		$('<p>').attr('id', 'pontosNaTela')
 			.html('Pontos: ' + parseInt(jogo.pontos))
@@ -408,7 +412,7 @@ function criarCamadaVitoria()
 	}*/
 
 	jogo.palavraNaTela = document.createElement("p");
-	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
+	jogo.palavraNaTela.setAttribute("id", "palavraCertaNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	jogo.palavraNaTela.innerHTML = "<h2> Você acertou! </h2> <br> A palavra é " + jogo.palavraSorteada;
@@ -439,14 +443,14 @@ function criarCamadaVitoria()
 		clearTimeout(delayInicializaFocus);
 	}
 
-	$("<button>").attr("id", "btnMenu").click(
+	$("<button>").attr("id", "btnMenu3").click(
 		function(){
 			ativarBotaoSair();
 		}
 	).appendTo($("#botoesTelaVitoria"));
-	document.getElementById("btnMenu").onmouseenter = function()
+	document.getElementById("btnMenu3").onmouseenter = function()
 	{
-		document.getElementById("btnMenu").focus();
+		document.getElementById("btnMenu3").focus();
 		opcao = 1;
 		clearTimeout(delayInicializaFocus);
 	}
@@ -1231,7 +1235,7 @@ function setaFoco(){
 				realizarLeitura("Continuar");
 			}
 			else if(opcao == 1){
-				document.getElementById("btnMenu").focus();
+				document.getElementById("btnMenu3").focus();
 				realizarLeitura("Sair");
 			}
 		break;
