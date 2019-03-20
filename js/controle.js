@@ -47,8 +47,9 @@ function criarCamadaMenu()
 	$("#palco").append(el);
 
 
-	var imgMenu = document.createElement("div");
+	var imgMenu = document.createElement("img");
 	imgMenu.setAttribute("id", "imgMenu");
+	imgMenu.setAttribute("src", "imgs/desenhotelainicial.png")
 	el.appendChild(imgMenu);
 
 
@@ -417,8 +418,9 @@ function criarCamadaVitoria()
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	jogo.palavraNaTela.innerHTML = "<h2> Você acertou! </h2> <br> A palavra é " + jogo.palavraSorteada;
 
-	jogo.imgBonecoVitoria = document.createElement("div");
+	jogo.imgBonecoVitoria = document.createElement("img");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
+	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem parabens.png");
 
 	jogo.botoesVitoria = document.createElement("div");
 	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
@@ -744,8 +746,9 @@ function criarCamadaDerrota()
 	$("#palco").append(el);
 
 		
-	jogo.imgBoneco = document.createElement("div");
+	jogo.imgBoneco = document.createElement("img");
 	jogo.imgBoneco.setAttribute("id", "imgBonecoDerrota");
+	jogo.imgBoneco.setAttribute("src", "imgs/bonecoDerrota.png");
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
