@@ -529,7 +529,7 @@ function criarCamadaFimdeJogo()
 	jogo.fimdeJogo.innerHTML = "Tela de Fim de Jogo"
 	$("#camadaFimdeJogo").append(jogo.fimdeJogo);*/
 
-	$("<button>").attr("id", "btnMenu").click(
+	$("<button>").attr("id", "btnProxPalavra").click(
 		function(){
 			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 			destruirCamadaFimdeJogo();
