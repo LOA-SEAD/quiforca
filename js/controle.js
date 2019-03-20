@@ -1289,6 +1289,85 @@ function paraDeFalar(){
 	pulouVitoria = true;
 }
 
+function criarCamadaAudio()
+{
+	estado = "audio";
+
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaAudio");
+	el.setAttribute("tabIndex", 0);
+	$("#palco").append(el);
+	el.focus();
+
+	var divAudio = document.createElement("div");
+	divAudio.setAttribute("id", "divAudio");
+	divAudio.setAttribute("tabIndex", 0);
+	el.appendChild(divAudio);
+
+	var audioTxt = document.createElement("p");
+	audioTxt.setAttribute("id", "audioTxt");
+	audioTxt.innerHTML = "Configurações de Audio";
+	divAudio.appendChild(audioTxt);
+
+
+	var valor = document.createElement("demo");
+
+	//Div com as barras de audio
+	var caixaBarras = document.createElement("div");
+	caixaBarras.setAttribute("id", "caixaBarrasAudio");
+	divAudio.appendChild(caixaBarras);
+
+	var MusicaFundo = document.createElement("p");
+	MusicaFundo.setAttribute("id", "MusicaFundo");
+	MusicaFundo.innerHTML = "Música de Fundo";
+	caixaBarras.appendChild(MusicaFundo);
+
+	var sliderMusicaFundo = document.createElement("input");
+	sliderMusicaFundo.setAttribute("type", "range");
+	sliderMusicaFundo.setAttribute("min", "1");
+	sliderMusicaFundo.setAttribute("max", "10");
+	sliderMusicaFundo.setAttribute("id", "sliderMusicaFundo");
+	sliderMusicaFundo.setAttribute("class", "slider");
+	caixaBarras.appendChild(sliderMusicaFundo);
+	valor.innerHTML = sliderMusicaFundo.value;
+	sliderMusicaFundo.oninput = function(){
+		valor.innerHTML = this.value;
+	}
+	caixaBarras.appendChild(valor);
+
+	var Efeitos = document.createElement("p");
+	Efeitos.setAttribute("id", "Efeitos");
+	Efeitos.innerHTML = "Efeitos";
+	caixaBarras.appendChild(Efeitos);
+
+	var sliderEfeitos = document.createElement("input");
+	sliderEfeitos.setAttribute("type", "range");
+	sliderEfeitos.setAttribute("min", "1");
+	sliderEfeitos.setAttribute("max", "10");
+	sliderEfeitos.setAttribute("id", "sliderEfeitos");
+	sliderEfeitos.setAttribute("class", "slider");
+	caixaBarras.appendChild(sliderEfeitos);
+	caixaBarras.appendChild(sliderEfeitos);
+
+	var LeituraTela = document.createElement("p");
+	LeituraTela.setAttribute("id", "LeituraTela");
+	LeituraTela.innerHTML = "Leitura de Tela e Atalhos";
+	caixaBarras.appendChild(LeituraTela);
+
+	var sliderLeituraTela = document.createElement("input");
+	sliderLeituraTela.setAttribute("type", "range");
+	sliderLeituraTela.setAttribute("min", "1");
+	sliderLeituraTela.setAttribute("max", "10");
+	sliderLeituraTela.setAttribute("id", "sliderLeituraTela");
+	sliderLeituraTela.setAttribute("class", "slider");
+	caixaBarras.appendChild(sliderLeituraTela);
+	caixaBarras.appendChild(sliderLeituraTela);
+}
+
+function destruirCamadaAudio(){
+	$("#camadaAudio").remove();
+}
+
 function criarCamadaOpcoes(){
 	estado = "opcoes";
 	opcao = 0;
@@ -1420,7 +1499,8 @@ function ativarOpcaoContinuar(){
 }
 
 function ativarOpcaoAudio(){
-
+	destruirCamadaOpcoes();
+	criarCamadaAudio();
 }
 
 function ativarOpcaoInstrucoes(){
