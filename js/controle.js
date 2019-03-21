@@ -1369,6 +1369,7 @@ function criarCamadaAudio()
 
 	var MusicaFundo = document.createElement("p");
 	MusicaFundo.setAttribute("id", "MusicaFundo");
+	MusicaFundo.setAttribute("tabIndex", -1);
 	MusicaFundo.innerHTML = "Música de Fundo";
 	caixaBarras.appendChild(MusicaFundo);
 
@@ -1377,6 +1378,7 @@ function criarCamadaAudio()
 	sliderMusicaFundo.setAttribute("min", "1");
 	sliderMusicaFundo.setAttribute("max", "10");
 	sliderMusicaFundo.setAttribute("id", "sliderMusicaFundo");
+	sliderMusicaFundo.setAttribute("tabIndex", -1);
 	sliderMusicaFundo.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderMusicaFundo);
 	valor.innerHTML = sliderMusicaFundo.value;
@@ -1387,6 +1389,7 @@ function criarCamadaAudio()
 
 	var Efeitos = document.createElement("p");
 	Efeitos.setAttribute("id", "Efeitos");
+	Efeitos.setAttribute("tabIndex", -1);
 	Efeitos.innerHTML = "Efeitos";
 	caixaBarras.appendChild(Efeitos);
 
@@ -1395,12 +1398,14 @@ function criarCamadaAudio()
 	sliderEfeitos.setAttribute("min", "1");
 	sliderEfeitos.setAttribute("max", "10");
 	sliderEfeitos.setAttribute("id", "sliderEfeitos");
+	sliderEfeitos.setAttribute("tabIndex", -1);
 	sliderEfeitos.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderEfeitos);
 	caixaBarras.appendChild(sliderEfeitos);
 
 	var LeituraTela = document.createElement("p");
 	LeituraTela.setAttribute("id", "LeituraTela");
+	LeituraTela.setAttribute("tabIndex", -1);
 	LeituraTela.innerHTML = "Leitura de Tela e Atalhos";
 	caixaBarras.appendChild(LeituraTela);
 
@@ -1409,6 +1414,7 @@ function criarCamadaAudio()
 	sliderLeituraTela.setAttribute("min", "1");
 	sliderLeituraTela.setAttribute("max", "10");
 	sliderLeituraTela.setAttribute("id", "sliderLeituraTela");
+	sliderLeituraTela.setAttribute("tabIndex", -1);
 	sliderLeituraTela.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderLeituraTela);
 
@@ -1425,8 +1431,8 @@ function destruirCamadaAudio(){
 
 function enterMusicaFundo(){
 	if(transicaoBarra){
-		//FOCO NÃO ESTÁ VOLTANDO PARA A O TEXTO
 		document.getElementById("MusicaFundo").focus();
+		realizarLeitura("Música de fundo");
 		transicaoBarra = false;
 	}
 	else if(!transicaoBarra){
@@ -1436,11 +1442,27 @@ function enterMusicaFundo(){
 }
 
 function enterEfeitos(){
-
+	if(transicaoBarra){
+		document.getElementById("Efeitos").focus();
+		realizarLeitura("Efeitos");
+		transicaoBarra = false;
+	}
+	else if(!transicaoBarra){
+		document.getElementById("sliderEfeitos").focus();
+		transicaoBarra = true;
+	}
 }
 
 function enterLeituraTela(){
-
+	if(transicaoBarra){
+		document.getElementById("LeituraTela").focus();
+		realizarLeitura("Leitura de tela e atalhos");
+		transicaoBarra = false;
+	}
+	else if(!transicaoBarra){
+		document.getElementById("sliderLeituraTela").focus();
+		transicaoBarra = true;
+	}
 }
 
 function criarCamadaOpcoes(){
