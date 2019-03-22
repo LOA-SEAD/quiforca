@@ -8,12 +8,12 @@
  */
 
 var background = document.createElement("AUDIO");
-//background.setAttribute("src", "audio/palavraCerta.mp3");
-
+background.setAttribute("src", "audio/background.mp3");
+background.volume = 1
 var audioTeclas = document.createElement("AUDIO");
 audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
-audioTeclas.volume = 0.4;
-//background.loop = true
+audioTeclas.volume = 1;
+background.loop = true
 var origemMenu;
 var origemDerrota;
 var opcao;
@@ -1311,11 +1311,11 @@ function setaFoco(){
 			}
 			else if(opcao == 1){
 				document.getElementById("Efeitos").focus();
-				realizarLeitura("Efeitos");
+				realizarLeitura("Efeitos sonoros");
 			}
 			else if(opcao == 2){
 				document.getElementById("LeituraTela").focus();
-				realizarLeitura("Leitura de Tela e Atalhos");
+				realizarLeitura("Leitura de Tela e acessibilidade");
 			}
 		break;
 	}
@@ -1357,7 +1357,7 @@ function criarCamadaAudio()
 
 	var audioTxt = document.createElement("p");
 	audioTxt.setAttribute("id", "audioTxt");
-	audioTxt.innerHTML = "Configurações de Audio";
+	audioTxt.innerHTML = "Configurações de áudio";
 	divAudio.appendChild(audioTxt);
 
 	var valor = document.createElement("demo");
@@ -1370,33 +1370,35 @@ function criarCamadaAudio()
 	var MusicaFundo = document.createElement("p");
 	MusicaFundo.setAttribute("id", "MusicaFundo");
 	MusicaFundo.setAttribute("tabIndex", -1);
-	MusicaFundo.innerHTML = "Música de Fundo";
+	MusicaFundo.innerHTML = "Música de fundo";
 	caixaBarras.appendChild(MusicaFundo);
 
 	var sliderMusicaFundo = document.createElement("input");
 	sliderMusicaFundo.setAttribute("type", "range");
-	sliderMusicaFundo.setAttribute("min", "1");
+	sliderMusicaFundo.setAttribute("min", "0");
 	sliderMusicaFundo.setAttribute("max", "10");
+	sliderMusicaFundo.setAttribute("value", background.volume*10);
 	sliderMusicaFundo.setAttribute("id", "sliderMusicaFundo");
 	sliderMusicaFundo.setAttribute("tabIndex", -1);
 	sliderMusicaFundo.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderMusicaFundo);
-	valor.innerHTML = sliderMusicaFundo.value;
+	/*valor.innerHTML = sliderMusicaFundo.value;
 	sliderMusicaFundo.oninput = function(){
 		valor.innerHTML = this.value;
-	}
+	}*/
 	caixaBarras.appendChild(valor);
 
 	var Efeitos = document.createElement("p");
 	Efeitos.setAttribute("id", "Efeitos");
 	Efeitos.setAttribute("tabIndex", -1);
-	Efeitos.innerHTML = "Efeitos";
+	Efeitos.innerHTML = "Efeitos sonoros";
 	caixaBarras.appendChild(Efeitos);
 
 	var sliderEfeitos = document.createElement("input");
 	sliderEfeitos.setAttribute("type", "range");
-	sliderEfeitos.setAttribute("min", "1");
+	sliderEfeitos.setAttribute("min", "0");
 	sliderEfeitos.setAttribute("max", "10");
+	sliderEfeitos.setAttribute("value", audioTeclas.volume*10);
 	sliderEfeitos.setAttribute("id", "sliderEfeitos");
 	sliderEfeitos.setAttribute("tabIndex", -1);
 	sliderEfeitos.setAttribute("class", "slider");
@@ -1406,13 +1408,14 @@ function criarCamadaAudio()
 	var LeituraTela = document.createElement("p");
 	LeituraTela.setAttribute("id", "LeituraTela");
 	LeituraTela.setAttribute("tabIndex", -1);
-	LeituraTela.innerHTML = "Leitura de Tela e Atalhos";
+	LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
 	caixaBarras.appendChild(LeituraTela);
 
 	var sliderLeituraTela = document.createElement("input");
 	sliderLeituraTela.setAttribute("type", "range");
-	sliderLeituraTela.setAttribute("min", "1");
+	sliderLeituraTela.setAttribute("min", "0");
 	sliderLeituraTela.setAttribute("max", "10");
+	sliderLeituraTela.setAttribute("value", volumeDef*10);
 	sliderLeituraTela.setAttribute("id", "sliderLeituraTela");
 	sliderLeituraTela.setAttribute("tabIndex", -1);
 	sliderLeituraTela.setAttribute("class", "slider");
@@ -1422,6 +1425,14 @@ function criarCamadaAudio()
 
 	$("#camadaAudio").keydown(function (e){
 		selecionaOpcao(e);	
+	})
+
+	$("#camadaAudio").keyup(function(e){
+		if(e.charCode == 27 || e.which == 27 || e.keyCode == 27)
+		{
+			destruirCamadaAudio();
+			criarCamadaOpcoes();
+		}
 	})
 }
 
@@ -1436,27 +1447,41 @@ function enterMusicaFundo(){
 		transicaoBarra = false;
 	}
 	else if(!transicaoBarra){
-		document.getElementById("sliderMusicaFundo").focus();
-		transicaoBarra = true;
+		document.getElementById("sliderMusicaFundo").focus()
+		transicaoBarra = true
+		$("#camadaAudio").keyup(function(e){
+			if(e.charCode == 39 || e.which == 39 || e.keyCode == 39 || e.charCode == 37 || e.which == 37 || e.keyCode == 37 || e.charCode == 38 || e.which == 38 || e.keyCode == 38 || e.charCode == 40 || e.which == 40 || e.keyCode == 40)
+			{
+				background.volume = sliderMusicaFundo.value/10
+			}
+		})
 	}
 }
 
 function enterEfeitos(){
 	if(transicaoBarra){
 		document.getElementById("Efeitos").focus();
-		realizarLeitura("Efeitos");
+		realizarLeitura("Efeitos sonoros");
 		transicaoBarra = false;
 	}
 	else if(!transicaoBarra){
 		document.getElementById("sliderEfeitos").focus();
 		transicaoBarra = true;
+		$("#camadaAudio").keyup(function(e){
+			if(e.charCode == 39 || e.which == 39 || e.keyCode == 39 || e.charCode == 37 || e.which == 37 || e.keyCode == 37 || e.charCode == 38 || e.which == 38 || e.keyCode == 38 || e.charCode == 40 || e.which == 40 || e.keyCode == 40)
+			{
+				audio.volume = sliderMusicaFundo.value/10
+				audioTeclas.volume = sliderMusicaFundo.value/10
+			}
+		})
 	}
 }
 
 function enterLeituraTela(){
 	if(transicaoBarra){
+		volumeDef = sliderLeituraTela.value/10
 		document.getElementById("LeituraTela").focus();
-		realizarLeitura("Leitura de tela e atalhos");
+		realizarLeitura("Leitura de tela e acessibilidade");
 		transicaoBarra = false;
 	}
 	else if(!transicaoBarra){

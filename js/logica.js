@@ -1,4 +1,5 @@
 var letraRepetida;
+var audio
 
 //Preenche a camada de jogo
 function iniciar()
@@ -266,17 +267,16 @@ function verificarErro(_letra)
 		$("#falador").text("Letra Certa");
 
 		if(letraRepetida){
-			var audio = document.createElement("AUDIO");
+			audio = document.createElement("AUDIO");
 			audio.setAttribute("src", "audio/tecla_indisponível2.ogg")
 		}
 		else
 		{
-			var audio = document.createElement("AUDIO");
+			audio = document.createElement("AUDIO");
 			audio.setAttribute("src", "audio/acerta_letra1.ogg");
 		}
 		setTimeout(function(){
 			audio.currentTime = 0
-			audio.volume = 0.5
 			audio.play()
 		}, 300);
 	}
@@ -286,7 +286,7 @@ function verificarErro(_letra)
 		jogo.erros++;
 		atualizaNumChances();
 		mudarPersonagem();
-		var audio = document.createElement("AUDIO");
+		audio = document.createElement("AUDIO");
 		switch(jogo.erros)
 		{
 			case 1:
@@ -303,7 +303,6 @@ function verificarErro(_letra)
 		}
 		setTimeout(function(){
 			audio.currentTime = 0
-			audio.volume = 0.5
 			audio.play();
 		}, 300);
 	}
