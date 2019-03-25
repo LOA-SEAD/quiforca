@@ -165,7 +165,8 @@ document.body.onkeyup = function(e)
 			}
 			else
 			{
-				realizarLeitura(palavraAtual(counter));
+				//console.log(palavraAtual(counter));
+				realizarLeituraLetra(palavraAtual(counter));
 				counter++;
 			}
 			/*else
