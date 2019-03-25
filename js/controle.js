@@ -212,9 +212,8 @@ audioCreditos.currentTime = 0
 
 function criarCamadaCreditos()
 {
-	var texto = "Créditos. Coordenação. Delano Medeiros Beder. Joice Lee Otsuka. Equipe. Marcelo Lopes Lotufo. Rafaela Ferraz Majaron. Murilo Dell Agnolo Garcia. Diana Gomes Ragnole Silva. Luiz Valério Neto. Kátia Carnier. Henrique Souza Barros. Catarine Santana Ohnuma. Acessibilidade. Caio Vinícius Barbosa Santos. Mariana Zagatti Sabino. Jhonata Nícollas Carvalho Querobim. Rogério Augusto Bordini."
-	realizarLeitura(texto);
-
+	
+	realizarFala(baseURL + "creditosCompleto.mp3");
 	/*audioCreditos.currentTime = 0
 	audioCreditos.play();*/
 	estado = "creditos";
@@ -1218,7 +1217,7 @@ function inicializaFocus(){
 	}
 	else if(estado == "opcoes"){
 		document.getElementById("opcaoContinuar").focus();
-		realizarLeitura("Configurações");
+		leituraInicial(baseURL + "configuracoes.mp3");
 	}
 	else if(estado == "audio"){
 		document.getElementById("MusicaFundo").focus();
@@ -1231,7 +1230,9 @@ function inicializaFocusFala(){
 		if(!pulouMenu){
 			realizarFala(baseURL + "instrucoes.mp3");
 		}
-
+	}
+	else if(estado == "opcoes"){
+		realizarFala(baseURL + "continuar.mp3");
 	}
 }
 
@@ -1274,19 +1275,19 @@ function setaFoco(){
 		case "opcoes":
 			if(opcao == 0){
 				document.getElementById("opcaoContinuar").focus();
-				realizarLeitura("Continuar");
+				realizarFala(baseURL + "continuar.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("opcaoAudio").focus();
-				realizarLeitura("Áudio");
+				realizarFala(baseURL + "audio.mp3");
 			}
 			else if(opcao == 2){
 				document.getElementById("opcaoInstrucoes").focus();
-				realizarLeitura("Instruções");
+				realizarFala(baseURL + "instrucoesAcessibilidade.mp3");
 			}
 			else if(opcao == 3){
 				document.getElementById("opcaoMenu").focus();
-				realizarLeitura("Desistir");
+				realizarFala(baseURL + "desistir.mp3");
 			}
 		break;
 		case "audio":
