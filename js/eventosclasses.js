@@ -89,7 +89,8 @@ document.body.onkeyup = function(e)
 	if((keyunicode >= 97 && keyunicode <= 122) && (jogo.emTransicao == false) && (fimDeJogo() == -1))
 	{		
 		//para a leitura de qualquer atalho
-		stopTudo()
+		stopTudo();
+		paraFala();
 		//Verifica se deu erro
 		verificarErro(String.fromCharCode(keyunicode-32));
 		//Coloca nas letras tentadas
@@ -142,7 +143,8 @@ document.body.onkeyup = function(e)
 	//Lê o status da palavra
 	if(keyunicode == 50) //2
 	{
-		stopTudo()
+		stopTudo();
+		paraFala();
 		
 		counter = 0;
 		delayAtalho2 = setInterval(palavra, 700);
@@ -181,7 +183,8 @@ document.body.onkeyup = function(e)
 	//Quantas vidas ainda tem
 	if(keyunicode == 51) //3
 	{
-		stopTudo()
+		stopTudo();
+		paraFala();
 		/*nomeAtalho3 = "audio/vidas" + numeroDeChances() + ".mp3";
 		audioAtalho3.setAttribute("src", nomeAtalho3);
 		audioAtalho3.currentTime = 0;
@@ -214,7 +217,7 @@ document.body.onkeyup = function(e)
 		clearInterval(delayLetraAtalho4);
 
 		counter = 0;
-		realizarLeitura("Letras que já foram escolhidas: ")
+		realizarFala(baseURL + "letrasEscolhidas.mp3");
 		//audioAtalho4.currentTime = 0;
 		//audioAtalho4.play();
 		for(var i = 1; i < tamanhoLetrasTentadas(); i++)
@@ -242,12 +245,13 @@ document.body.onkeyup = function(e)
 				}
 			}
 		}, 2000);
-	}
+}
 
 	//Pontuação atual
 	if(keyunicode == 53) //5
 	{
 		stopTudo();
+		paraFala();
 		if(pontuacao() == 1)
 		{
 			realizarLeitura("Um ponto");

@@ -264,8 +264,6 @@ function verificarErro(_letra)
 	}
 	if(!deuErro)
 	{
-		$("#falador").text("Letra Certa");
-
 		if(letraRepetida){
 			audio = document.createElement("AUDIO");
 			audio.setAttribute("src", "audio/tecla_indisponível2.ogg")
@@ -282,7 +280,6 @@ function verificarErro(_letra)
 	}
 	if(deuErro)
 	{
-		$("#falador").text("Letra Errada");
 		jogo.erros++;
 		atualizaNumChances();
 		mudarPersonagem();
@@ -306,7 +303,8 @@ function verificarErro(_letra)
 			audio.play();
 		}, 300);
 	}
-	realizarLeitura(_letra);
+
+	realizarLeituraLetra(_letra);
 }
 
 //Coloca os botoes do teclado na tela

@@ -133,6 +133,11 @@ function realizarLeituraLetra(letra){
         break;
     }
 
+
+    audio.addEventListener('ended', function(){
+        delete(audio);
+    })
+
     audio.play();
 }
 
