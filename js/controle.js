@@ -7,6 +7,7 @@
  O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
  */
 
+var baseURL = "audio/audioGravado/";
 var background = document.createElement("AUDIO");
 background.setAttribute("src", "audio/background.mp3");
 background.volume = 1
@@ -113,7 +114,7 @@ function criarCamadaMenu()
 	}
 	
 	inicializaFalaInicial();
-	inicializaFocus();
+	inicializaFocusBotao();
 
 
 	$("#camadaMenu").keydown(function (e){
@@ -1092,7 +1093,7 @@ function selecionaOpcao(e)
 			}	
 		break;
 		case 37: //ArrowLeft
-			paraDeFalar();
+			paraFala();
 			if(opcao > 0 && !transicaoBarra){
 				tocaAudio();
 				opcao--;
@@ -1101,7 +1102,7 @@ function selecionaOpcao(e)
 		break;
 
 		case 39: //ArrowRight
-			paraDeFalar();
+			paraFala();
 			if(estado == "menu"){
 				if(opcao < 2){
 					tocaAudio();
@@ -1195,33 +1196,18 @@ opcoes = 0 - instruções
 
 var delayInicializaFocus
 
-function inicializaFocus(){
+function inicializaFocusBotao(){
 	if(estado == "menu"){
 		document.getElementById("camadaMenu").focus();
 		document.getElementById("btnInstrucoes").focus();
-		delayInicializaFocus = setTimeout(function(){
-			if(!pulouMenu)
-				realizarLeitura("Instruções");
-				//AudioBotoes("audio/jogar.mp3");
-		}, 8000);
 	}
 	else if(estado == "derrota"){
 		document.getElementById("camadaDerrota").focus();
 		document.getElementById("btnReiniciar").focus();
-		delayInicializaFocus = setTimeout(function(){
-			if(!pulouDerrota)
-				realizarLeitura("Recomeçar");
-				//AudioBotoes("audio/recomecar.mp3");
-		}, 9200);
 	}
 	else if(estado == "vitoria"){
 		document.getElementById("camadaVitoria").focus();
 		document.getElementById("btnProxPalavra").focus();
-		delayInicializaFocus = setTimeout(function(){
-			if(!pulouVitoria)
-				realizarLeitura("Continuar");
-				//AudioBotoes("audio/proxima.mp3");
-		}, 7000);
 	}
 	else if(estado == "jogando"){
 		document.getElementById("palavraNaTela").focus();
@@ -1229,24 +1215,23 @@ function inicializaFocus(){
 	else if(estado == "fimdeJogo"){
 		document.getElementById("camadaFimdeJogo").focus();
 		document.getElementById("btnMenu").focus();
-		delayInicializaFocus = setTimeout(function(){
-			realizarLeitura("Menu");
-			//AudioBotoes("audio/menu.mp3");
-		}, 7000);
 	}
 	else if(estado == "opcoes"){
 		document.getElementById("opcaoContinuar").focus();
 		realizarLeitura("Configurações");
-		delayInicializaFocus = setTimeout(function(){
-			realizarLeitura("Continuar");
-		}, 800);
 	}
 	else if(estado == "audio"){
 		document.getElementById("MusicaFundo").focus();
 		realizarLeitura("Configurações de áudio");
-		delayInicializaFocus = setTimeout(function(){
-			realizarLeitura("Musica de Fundo");
-		}, 1200);
+	}
+}
+
+function inicializaFocusFala(){
+	if(estado == "menu"){
+		if(!pulouMenu){
+			realizarFalaBotao(baseURL + "instrucoes.mp3");
+		}
+
 	}
 }
 
@@ -1255,15 +1240,15 @@ function setaFoco(){
 		case "menu":
 			if(opcao == 0){
 				document.getElementById("btnInstrucoes").focus();
-				realizarLeitura("Instruções");
+				realizarFalaBotao(baseURL + "instrucoes.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("btnJogar").focus();
-				realizarLeitura("Jogar");
+				realizarFalaBotao(baseURL + "jogar.mp3");
 			}
 			else if(opcao == 2){
 				document.getElementById("btnCreditos").focus();
-				realizarLeitura("Créditos");
+				realizarFalaBotao(baseURL + "creditos.mp3");
 			}
 		break;
 		case "vitoria":
@@ -1322,12 +1307,7 @@ function setaFoco(){
 }
 
 function inicializaFalaInicial(){
-	var txtInicial = "Bem-vindo ao jogo da Forca, navegue utilizando as teclas direcionais para esquerda ou direita e pressione enter para selecionar a opção";
-	var msg = new SpeechSynthesisUtterance(txtInicial);
-	msg.volume = 1; // 0 to 1
-	msg.rate = 1.3; // 0.1 to 10
-	msg.lang = "pt-BR";
-	window.speechSynthesis.speak(msg);
+	realizarFala(baseURL + "audioInicial.mp3");
 }
 
 function paraDeFalar(){
