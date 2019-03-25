@@ -1,6 +1,8 @@
 var audio;
 
-function realizarFala(src){
+
+//LEITURA INICIAL: UTILIZADA QUANDO HOUVER UMA SEQUENCIA COM FOCO
+function leituraInicial(src){
     audio = new Audio(src);
     audio.addEventListener('ended', function(){
         inicializaFocusFala();
@@ -9,7 +11,9 @@ function realizarFala(src){
     audio.play();
 }
 
-function realizarFalaBotao(src){
+
+//REALIZAR FALA: LEITURA PADRAO
+function realizarFala(src){
     audio = new Audio(src);
     audio.addEventListener('ended', function(){
         delete(audio);

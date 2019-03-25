@@ -143,11 +143,7 @@ document.body.onkeyup = function(e)
 	if(keyunicode == 50) //2
 	{
 		stopTudo()
-		/*for(var i = 0; i < tamanhoPalavraAtual(); i++)
-		{
-			nomeAtalho2 = "audio/letra" + palavraAtual(i) + ".mp3";
-			somLetra2.push(track(nomeAtalho2));
-		}*/
+		
 		counter = 0;
 		delayAtalho2 = setInterval(palavra, 700);
 		function palavra()
@@ -192,19 +188,19 @@ document.body.onkeyup = function(e)
 		switch(numeroDeChances())
 		{
 			case 1:
-				realizarLeitura("Tome cuidado, você só tem uma vida");
+				realizarFala(baseURL + "1vida.mp3");
 				break;
 			case 2:
-				realizarLeitura("Suas chances estão acabando, você só tem duas vidas");
+				realizarFala(baseURL + "2vidas.mp3");
 				break;
 			case 3:
-				realizarLeitura("Você ainda tem três vidas");
+				realizarFala(baseURL + "3vidas.mp3");
 				break;
 			case 4:
-				realizarLeitura("Você tem quatro vidas");
+				realizarFala(baseURL + "4vidas.mp3");
 				break;
 			case 5:
-				realizarLeitura("Você tem todas as cinco vidas");
+				realizarFala(baseURL + "5vidas.mp3");
 				break;
 		}
 	}

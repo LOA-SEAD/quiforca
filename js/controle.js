@@ -114,7 +114,7 @@ function criarCamadaMenu()
 	}
 	
 	inicializaFalaInicial();
-	inicializaFocusBotao();
+	inicializaFocus();
 
 
 	$("#camadaMenu").keydown(function (e){
@@ -1196,7 +1196,7 @@ opcoes = 0 - instruções
 
 var delayInicializaFocus
 
-function inicializaFocusBotao(){
+function inicializaFocus(){
 	if(estado == "menu"){
 		document.getElementById("camadaMenu").focus();
 		document.getElementById("btnInstrucoes").focus();
@@ -1229,7 +1229,7 @@ function inicializaFocusBotao(){
 function inicializaFocusFala(){
 	if(estado == "menu"){
 		if(!pulouMenu){
-			realizarFalaBotao(baseURL + "instrucoes.mp3");
+			realizarFala(baseURL + "instrucoes.mp3");
 		}
 
 	}
@@ -1240,15 +1240,15 @@ function setaFoco(){
 		case "menu":
 			if(opcao == 0){
 				document.getElementById("btnInstrucoes").focus();
-				realizarFalaBotao(baseURL + "instrucoes.mp3");
+				realizarFala(baseURL + "instrucoes.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("btnJogar").focus();
-				realizarFalaBotao(baseURL + "jogar.mp3");
+				realizarFala(baseURL + "jogar.mp3");
 			}
 			else if(opcao == 2){
 				document.getElementById("btnCreditos").focus();
-				realizarFalaBotao(baseURL + "creditos.mp3");
+				realizarFala(baseURL + "creditos.mp3");
 			}
 		break;
 		case "vitoria":
@@ -1307,7 +1307,7 @@ function setaFoco(){
 }
 
 function inicializaFalaInicial(){
-	realizarFala(baseURL + "audioInicial.mp3");
+	leituraInicial(baseURL + "audioInicial.mp3");
 }
 
 function paraDeFalar(){
