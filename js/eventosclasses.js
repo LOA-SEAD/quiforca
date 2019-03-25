@@ -224,7 +224,7 @@ document.body.onkeyup = function(e)
 		{
 			if(retornaLetrasTentadas(i))
 			{
-				nomeAtalho4 = "audio/letra" + retornaLetrasTentadas(i) + ".mp3";
+				nomeAtalho4 = baseURL + retornaLetrasTentadas(i) + ".mp3";
 				somLetra4.push(track(nomeAtalho4));
 			}
 		}
