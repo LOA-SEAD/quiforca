@@ -928,19 +928,12 @@ function criarCamadaInstrucoes()
 {
 	if(origemInstrucoes == "menu")
 	{
-		var textoInstrucoes = "Instruções. Escape da forca acertando todos os desafios! Para isso, você deve decifrar qual palavra corresponde à dica. Cada letra que você acerta é colocada na palavra. A ";
-		textoInstrucoes += "cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. A ";
-		textoInstrucoes += "cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. Você pode jogar usando o teclado do jogo ou o seu próprio";
-		textoInstrucoes += " teclado. Atalhos sonoros durante o jogo: Para usá-los, pressione os números no seu teclado";
-		textoInstrucoes += " alfanumérico. 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já";
-		textoInstrucoes += " escolheu. 5. Saiba sua pontuação atual; Esc. Pausar o jogo e acessar as configurações.";
+		realizarFala(baseURL + "lerinstrucoes.mp3");
 	}
 	else if(origemInstrucoes == "opcoes")
 	{
-		var textoInstrucoes = "Instruções: 1. Ouça a dica. 2. Ouça o que você descobriu da palavra até agora. 3. Saiba quantas vidas você ainda tem. 4. Relembre as letras que você já";
-		textoInstrucoes += " escolheu. 5. Saiba sua pontuação atual; Esc. Voltar para o jogo";
+		realizarFala(baseURL + "lerinstrucoesacessibilidade.mp3");
 	}
-	realizarLeitura(textoInstrucoes);
 
 	estado = "instrucoes"
 
