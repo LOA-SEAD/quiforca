@@ -37,7 +37,7 @@ function realizarFala(src){
 //MAPEAMENTO DO audioTelas COM CADA LETRA
 function realizarLeituraLetra(letra){
 
-    audio = new Audio();
+    //audio = new Audio();
     audio.src = baseURL + letra + ".mp3";
     console.log(audio.src)
 
