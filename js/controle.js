@@ -1420,6 +1420,7 @@ function criarCamadaAudio()
 	sliderLeituraTela.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderLeituraTela);
 	sliderLeituraTela.oninput = function(){
+		audioLeituraInicial.volume = this.value/10;
 		audioTelas.volume = this.value/10;
 		audioConfiguracoes.volume = this.value/10;
 	}
