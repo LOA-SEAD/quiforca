@@ -383,8 +383,7 @@ function criarCamadaVitoria()
 		audioVitP.currentTime = 0
 		audioVitP.volume = 1
 		audioVitP.play();*/
-		var texto = "Você acertou, a palavra é: " + jogo.palavraSorteada;
-		realizarLeitura(texto);
+		leituraInicial(baseURL + "vitoriaFrase.mp3");
 	}, 3800);
 
 	var audio = document.createElement("AUDIO");
@@ -626,7 +625,7 @@ function criarCamadaDerrota()
 	}, 7300);*/
 
 	derrota1 = setTimeout(function(){
-		realizarLeitura("Você errou. A palavra correta é: " + jogo.palavraSorteada + ". Pontuação final: "+pontuacao())
+		leituraInicial(baseURL + "derrotaFrase.mp3");
 	}, 3000);
 
 	/*var aux
@@ -1233,6 +1232,14 @@ function inicializaFocusFala(){
 	}
 	else if(estado == "opcoes"){
 		realizarFala(baseURL + "continuar.mp3");
+	}
+	else if(estado == "derrota"){
+		var txt = jogo.palavraSorteada + "; Pontuação final: " + jogo.pontos;
+		realizarLeitura(txt);
+	}
+	else if(estado == "vitoria"){
+		var txt = jogo.palavraSorteada;
+		realizarLeitura(txt);
 	}
 }
 
