@@ -1352,8 +1352,6 @@ function criarCamadaAudio()
 	audioTxt.innerHTML = "Configurações de áudio";
 	divAudio.appendChild(audioTxt);
 
-	var valor = document.createElement("demo");
-
 	//Div com as barras de audio
 	var caixaBarras = document.createElement("div");
 	caixaBarras.setAttribute("id", "caixaBarrasAudio");
@@ -1433,7 +1431,7 @@ function criarCamadaAudio()
 	})
 
 	$("#camadaAudio").keyup(function(e){
-		if(e.charCode == 27 || e.which == 27 || e.keyCode == 27)
+		if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
 		{
 			destruirCamadaAudio();
 			criarCamadaOpcoes();
