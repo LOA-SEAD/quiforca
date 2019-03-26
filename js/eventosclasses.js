@@ -156,7 +156,7 @@ document.body.onkeyup = function(e)
 			}
 			else if(palavraAtual(counter) == 0)
 			{
-				realizarLeitura("Espaço");
+				realizarLeituraLetra("espaco");
 				counter++;
 			}
 			else if(palavraAtual(counter) == 1)
@@ -167,16 +167,9 @@ document.body.onkeyup = function(e)
 			}
 			else
 			{
-				//console.log(palavraAtual(counter));
-				//realizarLeituraLetra(palavraAtual(counter));
+				realizarLeituraLetra(palavraAtual(counter));
 				counter++;
 			}
-			/*else
-			{
-				somLetra2[counter].currentTime = 0;
-				somLetra2[counter].play();
-				counter++;
-			}*/
 		}
 	}
 
