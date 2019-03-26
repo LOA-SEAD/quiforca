@@ -90,12 +90,12 @@ body
 }
 
 #divAudio{
-	width: 400px;
-	height: 495px;
-	background-color: white;
+	width: 430px;
+	height: 530px;
+	background-color: #fcf394;
 	position: relative;
-	border: solid;
-	border-radius: .5rem;
+	-webkit-border-bottom-left-radius: 3rem 15rem;
+	-webkit-border-bottom-right-radius: 7rem 3rem;
 }
 
 .slider {
