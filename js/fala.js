@@ -17,9 +17,9 @@ function leituraInicial(src){
     })*/
     audioLeituraInicial.currentTime = 0;
     audioLeituraInicial.play();
-    audioLeituraInicial.onended = function(){
+    /*audioLeituraInicial.onended = function(){
         inicializaFocusFala();
-    }
+    }*/
 }
 
 
@@ -30,6 +30,8 @@ function realizarFala(src){
     audioTelas.addEventListener('ended', function(){
         delete(audioTelas);
     })*/
+    /*audioLeituraInicial.currentTime = 0;
+    audioLeituraInicial.pause();*/
     audioTelas.setAttribute("src", src);
     audioTelas.currentTime = 0;
     audioTelas.play();}
@@ -38,13 +40,13 @@ function realizarFala(src){
 function realizarLeituraLetra(letra){
 
     //audio = new Audio();
-    audio.src = baseURL + letra + ".mp3";
-    console.log(audio.src)
+    //audioTelas.src = baseURL + letra + ".mp3";
+    audioTelas.setAttribute("src", baseURL + letra + ".mp3");
 
-    audioTelas.addEventListener('ended', function(){
+    /*audioTelas.addEventListener('ended', function(){
         delete(audioTelas);
-    })
-
+    })*/
+    audioTelas.currentTime = 0;
     audioTelas.play();
 }
 

@@ -1396,7 +1396,6 @@ function criarCamadaAudio()
 	//Atualiza volume dos efeitos
 	sliderEfeitos.oninput = function(){
 		//document.getElementById("teclaIndisponivel").volume = this.value/10;
-		//----------------------------------------- FALAR NIVEL DO VOLUME --------------------------------------
 		audio2.volume = this.value/10;
 		audio3.volume = this.value/10;
 		audioTeclas.volume = this.value/10;
@@ -1420,6 +1419,7 @@ function criarCamadaAudio()
 	sliderLeituraTela.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderLeituraTela);
 	sliderLeituraTela.oninput = function(){
+		//----------------------------------------- FALAR NIVEL DO VOLUME --------------------------------------
 		audioLeituraInicial.volume = this.value/10;
 		audioTelas.volume = this.value/10;
 		audioConfiguracoes.volume = this.value/10;
