@@ -1,5 +1,5 @@
 var letraRepetida;
-var audio
+var audio;
 
 //Preenche a camada de jogo
 function iniciar()
@@ -266,7 +266,7 @@ function verificarErro(_letra)
 	{
 		if(letraRepetida){
 			audio = document.createElement("AUDIO");
-			audio.setAttribute("src", "audio/tecla_indisponível2.ogg")
+			audio.setAttribute("src", "audio/tecla_indisponível2.ogg");
 		}
 		else
 		{

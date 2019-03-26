@@ -10,7 +10,8 @@
 var baseURL = "audio/audioGravado/";
 var background = document.createElement("AUDIO");
 background.setAttribute("src", "audio/background.mp3");
-background.volume = 1
+//background.volume = 1;
+background.volume = 0;
 var audioTeclas = document.createElement("AUDIO");
 audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
 audioTeclas.volume = 1;
@@ -1370,11 +1371,10 @@ function criarCamadaAudio()
 	sliderMusicaFundo.setAttribute("tabIndex", -1);
 	sliderMusicaFundo.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderMusicaFundo);
-	/*valor.innerHTML = sliderMusicaFundo.value;
+	//Atualiza volume da musica de fundo
 	sliderMusicaFundo.oninput = function(){
-		valor.innerHTML = this.value;
-	}*/
-	caixaBarras.appendChild(valor);
+		background.volume = this.value/10;
+	}
 
 	var Efeitos = document.createElement("p");
 	Efeitos.setAttribute("id", "Efeitos");
@@ -1391,7 +1391,13 @@ function criarCamadaAudio()
 	sliderEfeitos.setAttribute("tabIndex", -1);
 	sliderEfeitos.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderEfeitos);
-	caixaBarras.appendChild(sliderEfeitos);
+	//Atualiza volume dos efeitos
+	sliderEfeitos.oninput = function(){
+		//document.getElementById("teclaIndisponivel").volume = this.value/10;
+		audio.volume = this.value/10;
+		audioTeclas.volume = this.value/10;
+	}
+
 
 	var LeituraTela = document.createElement("p");
 	LeituraTela.setAttribute("id", "LeituraTela");
@@ -1437,12 +1443,12 @@ function enterMusicaFundo(){
 	else if(!transicaoBarra){
 		document.getElementById("sliderMusicaFundo").focus()
 		transicaoBarra = true
-		$("#camadaAudio").keyup(function(e){
+		/*$("#camadaAudio").keyup(function(e){
 			if(e.charCode == 39 || e.which == 39 || e.keyCode == 39 || e.charCode == 37 || e.which == 37 || e.keyCode == 37 || e.charCode == 38 || e.which == 38 || e.keyCode == 38 || e.charCode == 40 || e.which == 40 || e.keyCode == 40)
 			{
 				background.volume = sliderMusicaFundo.value/10
 			}
-		})
+		})*/
 	}
 }
 
@@ -1455,13 +1461,13 @@ function enterEfeitos(){
 	else if(!transicaoBarra){
 		document.getElementById("sliderEfeitos").focus();
 		transicaoBarra = true;
-		$("#camadaAudio").keyup(function(e){
+		/*$("#camadaAudio").keyup(function(e){
 			if(e.charCode == 39 || e.which == 39 || e.keyCode == 39 || e.charCode == 37 || e.which == 37 || e.keyCode == 37 || e.charCode == 38 || e.which == 38 || e.keyCode == 38 || e.charCode == 40 || e.which == 40 || e.keyCode == 40)
 			{
 				audio.volume = sliderMusicaFundo.value/10
 				audioTeclas.volume = sliderMusicaFundo.value/10
 			}
-		})
+		})*/
 	}
 }
 
