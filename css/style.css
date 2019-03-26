@@ -90,12 +90,36 @@ body
 }
 
 #divAudio{
-	width: 400px;
-	height: 495px;
-	background-color: white;
+	width: 430px;
+	height: 530px;
+	background-color: #fcf394;
 	position: relative;
-	border: solid;
-	border-radius: .5rem;
+	-webkit-border-bottom-left-radius: 3rem 15rem;
+	-webkit-border-bottom-right-radius: 7rem 3rem;
+}
+
+#divAudio::before, #divAudio::after{
+	content: '';
+    z-index: -1;
+    position: absolute;
+    bottom: 23px;
+    left: 26px;
+    width: 30%;
+    top: 85%;
+    max-width: 300px;
+    background: #777;
+    box-shadow: 0px 27px 30px #777;
+    transform: rotate(-9deg);
+}
+
+#divAudio::after{
+	-webkit-transform: rotate(8deg);
+	-moz-transform: rotate(8deg);
+	-o-transform: rotate(8deg);
+	-ms-transform: rotate(8deg);
+	transform: rotate(-5deg);
+	right: 10px;
+	left: auto;
 }
 
 .slider {

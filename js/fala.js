@@ -39,6 +39,7 @@ function realizarLeituraLetra(letra){
 
     audio = new Audio();
     audio.src = baseURL + letra + ".mp3";
+    console.log(audio.src)
 
     audioTelas.addEventListener('ended', function(){
         delete(audioTelas);
