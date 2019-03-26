@@ -31,6 +31,8 @@ var sairInstrucoes = false;
 
 function criarCamadaMenu()
 {	
+	paraFala()
+
 	origemInstrucoes = "menu";
 	pulouMenu = false;
 	estado = "menu";
@@ -185,6 +187,8 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
+	paraFala()
+
 	if(!origemMenu){
 		background.currentTime = 0
 	}
@@ -213,6 +217,7 @@ audioCreditos.currentTime = 0
 
 function criarCamadaCreditos()
 {
+	paraFala()
 	
 	realizarFala(baseURL + "creditosCompleto.mp3");
 	/*audioCreditos.currentTime = 0
@@ -370,6 +375,7 @@ var audioVitP = document.createElement("AUDIO");
 vitoria2 = false
 function criarCamadaVitoria()
 {
+	paraFala()
 	estado = "vitoria";
 	opcao = 0;
 	pulouVitoria = false;
@@ -490,6 +496,7 @@ function destruirCamadaVitoria()
 
 function criarCamadaFimdeJogo()
 {
+	paraFala()
 	estado = "fimdeJogo";
 	//var audio = document.createElement("AUDIO");
 	audio3.setAttribute("src", "audio/vitoria1.ogg");
@@ -607,6 +614,7 @@ var derrota10 = false
 
 function criarCamadaDerrota()
 {
+	paraFala()
 	estado = "derrota";
 	opcao = 0;
 	pulouDerrota = false;
