@@ -283,25 +283,26 @@ function verificarErro(_letra)
 		jogo.erros++;
 		atualizaNumChances();
 		mudarPersonagem();
-		audio = document.createElement("AUDIO");
+		audio2 = document.createElement("AUDIO");
 		switch(jogo.erros)
 		{
 			case 1:
-				audio.setAttribute("src", "audio/enforcamento1.ogg");
+				audio2.setAttribute("src", "audio/enforcamento1.ogg");
 				break;
 			case 2:
-				audio.setAttribute("src", "audio/enforcamento3.ogg");
+				audio2.setAttribute("src", "audio/enforcamento3.ogg");
 				break;
 			case 3:
-				audio.setAttribute("src", "audio/enforcamento7.ogg");
+				audio2.setAttribute("src", "audio/enforcamento7.ogg");
 				break;
 			case 4:
-				audio.setAttribute("src", "audio/enforcamento8.ogg");
+				audio2.setAttribute("src", "audio/enforcamento8.ogg");
 		}
 		setTimeout(function(){
-			audio.currentTime = 0
-			audio.play();
-		}, 300);
+			audio2.currentTime = 0
+			audio2.play();
+			console.log("a")
+		}, 300)
 	}
 
 	realizarLeituraLetra(_letra);

@@ -168,7 +168,7 @@ document.body.onkeyup = function(e)
 			else
 			{
 				//console.log(palavraAtual(counter));
-				realizarLeituraLetra(palavraAtual(counter));
+				//realizarLeituraLetra(palavraAtual(counter));
 				counter++;
 			}
 			/*else
