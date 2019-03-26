@@ -265,17 +265,17 @@ function verificarErro(_letra)
 	if(!deuErro)
 	{
 		if(letraRepetida){
-			audio = document.createElement("AUDIO");
-			audio.setAttribute("src", "audio/tecla_indisponível2.ogg")
+			audio2 = document.createElement("AUDIO");
+			audio2.setAttribute("src", "audio/tecla_indisponível2.ogg")
 		}
 		else
 		{
-			audio = document.createElement("AUDIO");
-			audio.setAttribute("src", "audio/acerta_letra1.ogg");
+			audio2 = document.createElement("AUDIO");
+			audio2.setAttribute("src", "audio/acerta_letra1.ogg");
 		}
 		setTimeout(function(){
-			audio.currentTime = 0
-			audio.play()
+			audio2.currentTime = 0
+			audio2.play()
 		}, 300);
 	}
 	if(deuErro)
