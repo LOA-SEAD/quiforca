@@ -32,13 +32,8 @@ var sairInstrucoes = false;
 
 function criarCamadaMenu()
 {	
-<<<<<<< HEAD
-	
-	paraFala();
-=======
 	paraFala()
 	origemAudio = "menu"
->>>>>>> 2863be1741d498db3826260e42976f90fb99f4e1
 	origemInstrucoes = "menu";
 	pulouMenu = false;
 	estado = "menu";
@@ -219,12 +214,9 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
-<<<<<<< HEAD
-=======
 	origemAudio = "jogo"
 
 	paraFala()
->>>>>>> 2863be1741d498db3826260e42976f90fb99f4e1
 
 	if(!origemMenu){
 		background.currentTime = 0
