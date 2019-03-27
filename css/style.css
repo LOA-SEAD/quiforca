@@ -137,21 +137,33 @@ body
 }
 
 .slider::-webkit-slider-thumb {
+	border-width: 5px;
+	border-color: #101010;
 	-webkit-appearance: none;
 	appearance: none;
 	width: 25px;
 	height: 25px;
 	border-radius: 50%; 
-	background: #101010;
+	background: #d3d3d3;
 	cursor: pointer;
 }
   
 .slider::-moz-range-thumb {
+	border-width: 5px;
+	border-color: #101010;
 	width: 25px;
 	height: 25px;
 	border-radius: 50%;
-	background: #101010;
+	background: #d3d3d3;
 	cursor: pointer;
+}
+
+.slider:focus::-webkit-slider-thumb{
+	background: #101010;
+}
+
+.slider:focus::-moz-range-thumb{
+	background: #101010;
 }
 
 .slider::-moz-range-progress{
