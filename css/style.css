@@ -87,6 +87,7 @@ body
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	z-index: 2;
 }
 
 #divAudio{
@@ -429,6 +430,20 @@ p
 	outline: none;
 }
 
+#btnOpcoes
+{
+	width: 137px;
+	height: 65px;
+	background-image: url("../imgs/opmenuinicial.png");
+	margin: 1.5rem;
+}
+
+#btnOpcoes:hover, #btnOpcoes:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
 
 #btnRanking
 {
@@ -631,6 +646,10 @@ p
 	outline: none;
 }
 
+.textoAudio:focus{
+	text-decoration: underline;
+}
+
 /*#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
     background-image: none;
 	width: 117px;
@@ -658,6 +677,21 @@ p
 #opcaoMenu{
 	width: 137px;
 	background-image: url("../imgs/menu4.png");
+}
+
+#audioVoltar{
+	height: 65px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-top: 1rem;
+	width: 117px;
+	background-image: url("../imgs/btnVoltar2.png");
+}
+
+#audioVoltar:focus{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
 }
 
 /*#opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{

@@ -26,13 +26,19 @@ var pulouVitoria;
 var audio3 = document.createElement("AUDIO");
 audio3.volume = 1;
 var origemInstrucoes;
+var origemAudio
 
 var sairInstrucoes = false;
 
 function criarCamadaMenu()
 {	
+<<<<<<< HEAD
 	
 	paraFala();
+=======
+	paraFala()
+	origemAudio = "menu"
+>>>>>>> 2863be1741d498db3826260e42976f90fb99f4e1
 	origemInstrucoes = "menu";
 	pulouMenu = false;
 	estado = "menu";
@@ -115,10 +121,30 @@ function criarCamadaMenu()
 		opcao = 2;
 		clearTimeout(delayInicializaFocus);
 	}
+
+	//Cria botao de opções na caixa de botoes
+	var botaoOpcoes = document.createElement("div");
+	botaoOpcoes.setAttribute("id" , "btnOpcoes");
+	botaoOpcoes.setAttribute("tabIndex" , "-1");
+	botaoOpcoes.setAttribute("class" , "botao");
+	caixaBotoes.appendChild(botaoOpcoes);
+
+
+	botaoOpcoes.onclick = function()
+	{
+		console.log("foi")
+		ativarBotaoOpcoes();
+	}
+	botaoOpcoes.onmouseenter = function()
+	{
+		console.log("fo2")
+		botaoOpcoes.focus();
+		opcao = 3;
+		clearTimeout(delayInicializaFocus);
+	}
 	
 	inicializaFalaInicial();
 	inicializaFocus();
-
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
@@ -146,6 +172,12 @@ function ativarBotaoCreditos()
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaMenu();
 	criarCamadaCreditos();
+}
+
+function ativarBotaoOpcoes()
+{
+	clearTimeout(delayInicializaFocus);
+	criarCamadaAudio();
 }
 
 function ativarBotaoReiniciar()
@@ -187,6 +219,12 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
+<<<<<<< HEAD
+=======
+	origemAudio = "jogo"
+
+	paraFala()
+>>>>>>> 2863be1741d498db3826260e42976f90fb99f4e1
 
 	if(!origemMenu){
 		background.currentTime = 0
@@ -1118,6 +1156,10 @@ function selecionaOpcao(e)
 				case 3:
 					if(estado == "opcoes")
 						ativarOpcaoMenu();
+					else if(estado == "audio")
+						ativarAudioVoltar();
+					else if(estado == "menu")
+						ativarBotaoOpcoes();
 			}	
 		break;
 		case 37: //ArrowLeft
@@ -1132,7 +1174,7 @@ function selecionaOpcao(e)
 		case 39: //ArrowRight
 			paraFala();
 			if(estado == "menu"){
-				if(opcao < 2){
+				if(opcao < 3){
 					tocaAudio();
 					opcao++;
 					setaFoco();
@@ -1153,7 +1195,7 @@ function selecionaOpcao(e)
 				}
 			}
 			else if(estado == "audio"){
-				if(opcao < 2 && !transicaoBarra){
+				if(opcao < 3 && !transicaoBarra){
 					tocaAudio();
 					opcao++;
 					setaFoco();
@@ -1171,7 +1213,7 @@ function selecionaOpcao(e)
 				}
 			}
 			else if(estado == "audio"){
-				if(opcao < 2 && !transicaoBarra){
+				if(opcao < 3 && !transicaoBarra){
 					tocaAudio();
 					opcao++;
 					setaFoco();
@@ -1248,9 +1290,7 @@ function inicializaFocus(){
 	}
 	else if(estado == "audio"){
 		document.getElementById("MusicaFundo").focus();
-		audioConfiguracoes.setAttribute("src", "audio/audioGravado/musicaFundo.mp3");
-		audioConfiguracoes.currentTime = 0;
-		audioConfiguracoes.play();
+		leituraInicial(baseURL + "audio.mp3")
 	}
 }
 
@@ -1286,6 +1326,10 @@ function setaFoco(){
 			}
 			else if(opcao == 2){
 				document.getElementById("btnCreditos").focus();
+				realizarFala(baseURL + "creditos.mp3");
+			}
+			else if(opcao == 3){
+				document.getElementById("btnOpcoes").focus();
 				realizarFala(baseURL + "creditos.mp3");
 			}
 		break;
@@ -1346,6 +1390,12 @@ function setaFoco(){
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();
 			}
+			else if(opcao == 3){
+				document.getElementById("audioVoltar").focus();
+				audioConfiguracoes.setAttribute("src", "audio/audioGravado/voltar.mp3");
+				audioConfiguracoes.currentTime = 0;
+				audioConfiguracoes.play();
+			}
 		break;
 	}
 }
@@ -1393,9 +1443,13 @@ function criarCamadaAudio()
 
 	var MusicaFundo = document.createElement("p");
 	MusicaFundo.setAttribute("id", "MusicaFundo");
+	MusicaFundo.setAttribute("class", "textoAudio");
 	MusicaFundo.setAttribute("tabIndex", -1);
 	MusicaFundo.innerHTML = "Música de fundo";
 	caixaBarras.appendChild(MusicaFundo);
+	MusicaFundo.onclick = function(){
+		opcao = 0;
+	}
 
 	var sliderMusicaFundo = document.createElement("input");
 	sliderMusicaFundo.setAttribute("type", "range");
@@ -1414,9 +1468,13 @@ function criarCamadaAudio()
 
 	var Efeitos = document.createElement("p");
 	Efeitos.setAttribute("id", "Efeitos");
+	Efeitos.setAttribute("class", "textoAudio");
 	Efeitos.setAttribute("tabIndex", -1);
 	Efeitos.innerHTML = "Efeitos sonoros";
 	caixaBarras.appendChild(Efeitos);
+	Efeitos.onclick = function(){
+		opcao = 1;
+	}
 
 	var sliderEfeitos = document.createElement("input");
 	sliderEfeitos.setAttribute("type", "range");
@@ -1439,9 +1497,13 @@ function criarCamadaAudio()
 
 	var LeituraTela = document.createElement("p");
 	LeituraTela.setAttribute("id", "LeituraTela");
+	LeituraTela.setAttribute("class", "textoAudio");
 	LeituraTela.setAttribute("tabIndex", -1);
 	LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
 	caixaBarras.appendChild(LeituraTela);
+	LeituraTela.onclick = function(){
+		opcao = 2;
+	}
 
 	var sliderLeituraTela = document.createElement("input");
 	sliderLeituraTela.setAttribute("type", "range");
@@ -1459,6 +1521,29 @@ function criarCamadaAudio()
 		audioConfiguracoes.volume = this.value/10;
 	}
 
+	var quebraLinha = document.createElement("br");
+	divAudio.appendChild(quebraLinha);
+
+	//Cria div caixa de botoes
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoesAudio");
+	divAudio.appendChild(caixaBotoes);
+
+	//btnVoltar
+	var audioVoltar = document.createElement("div");
+	audioVoltar.setAttribute("id", "audioVoltar");
+	audioVoltar.setAttribute("tabIndex", -1);
+	caixaBotoes.appendChild(audioVoltar);
+
+	//btnContinuar
+	audioVoltar.onclick = function(){
+		ativarAudioVoltar();
+	}
+	audioVoltar.onmouseenter = function(){
+		opcao = 3;
+		audioVoltar.focus();
+	}
+
 	inicializaFocus();
 
 	$("#camadaAudio").keydown(function (e){
@@ -1469,13 +1554,24 @@ function criarCamadaAudio()
 		if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
 		{
 			destruirCamadaAudio();
-			criarCamadaOpcoes();
+			if (origemAudio == "jogo")
+			{
+				criarCamadaOpcoes();
+			}
 		}
 	})
 }
 
 function destruirCamadaAudio(){
 	$("#camadaAudio").remove();
+}
+
+function ativarAudioVoltar(){
+	destruirCamadaAudio();
+	if (origemAudio == "jogo")
+	{
+		criarCamadaOpcoes();
+	}
 }
 
 function enterMusicaFundo(){
