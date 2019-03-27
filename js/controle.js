@@ -26,13 +26,14 @@ var pulouVitoria;
 var audio3 = document.createElement("AUDIO");
 audio3.volume = 1;
 var origemInstrucoes;
+var origemAudio
 
 var sairInstrucoes = false;
 
 function criarCamadaMenu()
 {	
 	paraFala()
-
+	origemAudio = "menu"
 	origemInstrucoes = "menu";
 	pulouMenu = false;
 	estado = "menu";
@@ -126,10 +127,12 @@ function criarCamadaMenu()
 
 	botaoOpcoes.onclick = function()
 	{
+		console.log("foi")
 		ativarBotaoOpcoes();
 	}
 	botaoOpcoes.onmouseenter = function()
 	{
+		console.log("fo2")
 		botaoOpcoes.focus();
 		opcao = 3;
 		clearTimeout(delayInicializaFocus);
@@ -169,7 +172,7 @@ function ativarBotaoCreditos()
 function ativarBotaoOpcoes()
 {
 	clearTimeout(delayInicializaFocus);
-	criarCamadaOpcoes();
+	criarCamadaAudio();
 }
 
 function ativarBotaoReiniciar()
@@ -211,6 +214,8 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
+	origemAudio = "jogo"
+
 	paraFala()
 
 	if(!origemMenu){
@@ -1145,6 +1150,8 @@ function selecionaOpcao(e)
 				case 3:
 					if(estado == "opcoes")
 						ativarOpcaoMenu();
+					else if(estado == "menu")
+						ativarBotaoOpcoes();
 			}	
 		break;
 		case 37: //ArrowLeft
@@ -1498,13 +1505,25 @@ function criarCamadaAudio()
 		selecionaOpcao(e);	
 	})
 
-	$("#camadaAudio").keyup(function(e){
-		if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
-		{
-			destruirCamadaAudio();
-			criarCamadaOpcoes();
-		}
-	})
+	if (origemAudio == "menu")
+	{
+		$("#camadaAudio").keyup(function(e){
+			if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
+			{
+				destruirCamadaAudio();
+			}
+		})
+	}
+	else if (origemAudio == "jogo")
+	{
+		$("#camadaAudio").keyup(function(e){
+			if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
+			{
+				destruirCamadaAudio();
+				criarCamadaOpcoes();
+			}
+		})
+	}
 }
 
 function destruirCamadaAudio(){
