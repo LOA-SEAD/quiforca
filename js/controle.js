@@ -1159,7 +1159,7 @@ function selecionaOpcao(e)
 		case 39: //ArrowRight
 			paraFala();
 			if(estado == "menu"){
-				if(opcao < 2){
+				if(opcao < 3){
 					tocaAudio();
 					opcao++;
 					setaFoco();
