@@ -1515,7 +1515,7 @@ function criarCamadaAudio()
 	caixaBotoes.setAttribute("id", "caixaBotoesAudio");
 	divAudio.appendChild(caixaBotoes);
 
-	//btnContinuar
+	//btnVoltar
 	var audioVoltar = document.createElement("div");
 	audioVoltar.setAttribute("id", "audioVoltar");
 	audioVoltar.setAttribute("tabIndex", -1);
@@ -1563,7 +1563,10 @@ function destruirCamadaAudio(){
 
 function ativarAudioVoltar(){
 	destruirCamadaAudio();
-	criarCamadaOpcoes();
+	if (origemAudio == "jogo")
+	{
+		criarCamadaOpcoes();
+	}
 }
 
 function enterMusicaFundo(){
