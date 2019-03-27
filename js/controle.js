@@ -10,7 +10,7 @@
 var baseURL = "audio/audioGravado/";
 var background = document.createElement("AUDIO");
 background.setAttribute("src", "audio/background.mp3");
-background.volume = 1;
+background.volume = 0.5;
 var audioTeclas = document.createElement("AUDIO");
 audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
 audioTeclas.volume = 1;
@@ -367,17 +367,23 @@ var audioVit = document.createElement("AUDIO");
 audioVit.setAttribute("src", "audio/frasevitoria.mp3");
 
 var audioVitP = document.createElement("AUDIO");
-vitoria2 = false
+vitoria1 = false;
+vitoria2 = false;
+vitoria3 = false;
 function criarCamadaVitoria()
 {
 	estado = "vitoria";
 	opcao = 0;
 	pulouVitoria = false;
-	/*vitoria1 = setTimeout(function(){
-		audioVit.currentTime = 0
-		audioVit.volume = 1
-		audioVit.play();
-	}, 3000);*/
+
+	//var audio = document.createElement("AUDIO");
+	audio3.setAttribute("src", "audio/vitoria2.ogg");
+	//var audio = document.getElementById("vitoria"); 
+	audio3.currentTime = 0
+	vitoria1 = setTimeout(function(){
+		audio3.play();
+	}, 500);
+
 	vitoria2 = setTimeout(function(){
 		/*var txt = "audio/" + numeroSorteado() + ".mp3"
 		audioVitP.setAttribute("src", txt);
@@ -387,13 +393,9 @@ function criarCamadaVitoria()
 		leituraInicial(baseURL + "vitoriaFrase.mp3");
 	}, 3800);
 
-	//var audio = document.createElement("AUDIO");
-	audio3.setAttribute("src", "audio/vitoria2.ogg");
-	//var audio = document.getElementById("vitoria"); 
-	audio3.currentTime = 0
-	setTimeout(function(){
-		audio3.play();
-	}, 500);
+	vitoria3 = setTimeout(function(){
+		realizarLeitura(jogo.palavraSorteada);
+	}, 6100);
 
 	var fase;
 	var faseId;
@@ -462,7 +464,10 @@ function criarCamadaVitoria()
 	inicializaFocus();
 
 	$("#camadaVitoria").keydown(function (e){
-		selecionaOpcao(e);	
+		selecionaOpcao(e);
+		clearTimeout(vitoria1);
+		clearTimeout(vitoria2);	
+		clearTimeout(vitoria3);
 	})
 }
 
@@ -488,16 +493,38 @@ function destruirCamadaVitoria()
 	$("#camadaVitoria").remove();
 }
 
+vitoria4 = false;
 function criarCamadaFimdeJogo()
 {
 	estado = "fimdeJogo";
+
 	//var audio = document.createElement("AUDIO");
-	audio3.setAttribute("src", "audio/vitoria1.ogg");
+	audio3.setAttribute("src", "audio/vitoria2.ogg");
 	//var audio = document.getElementById("vitoria"); 
-	audio3.currentTime = 0;
-	setTimeout(function(){
+	audio3.currentTime = 0
+	vitoria1 = setTimeout(function(){
 		audio3.play();
 	}, 500);
+
+	vitoria2 = setTimeout(function(){
+		/*var txt = "audio/" + numeroSorteado() + ".mp3"
+		audioVitP.setAttribute("src", txt);
+		audioVitP.currentTime = 0
+		audioVitP.volume = 1
+		audioVitP.play();*/
+		leituraInicial(baseURL + "vitoriaFrase.mp3");
+	}, 3800);
+
+	vitoria3 = setTimeout(function(){
+		realizarLeitura(jogo.palavraSorteada);
+	}, 6100);
+
+	vitoria4 = setTimeout(function(){
+		audio3.setAttribute("src", "audio/audioGravado/pontuacaoFinal.mp3");
+		audio3.currentTime = 0;
+		audio3.play();
+	}, 8000)
+
 
 	var fase;
 	var faseId;
@@ -560,6 +587,10 @@ function criarCamadaFimdeJogo()
 
 	document.onkeydown = function(e)
 	{
+		clearInterval(vitoria1);
+		clearInterval(vitoria2);
+		clearInterval(vitoria3);
+		clearInterval(vitoria4);
 		e = window.event||e;
 		var setas = e.which || e.keyCode || e.charCode;
 		if((setas == 37 || setas == 39) && estado == "fimdeJogo")

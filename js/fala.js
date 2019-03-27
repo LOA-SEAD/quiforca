@@ -52,4 +52,5 @@ function realizarLeituraLetra(letra){
 
 function paraFala(){
     audioTelas.pause();
+    audioLeituraInicial.pause();
 }
