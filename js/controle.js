@@ -217,7 +217,7 @@ audioCreditos.currentTime = 0
 
 function criarCamadaCreditos()
 {
-	paraFala()
+	paraFala();
 	
 	realizarFala(baseURL + "creditosCompleto.mp3");
 	/*audioCreditos.currentTime = 0
