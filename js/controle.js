@@ -1507,6 +1507,9 @@ function criarCamadaAudio()
 		audioConfiguracoes.volume = this.value/10;
 	}
 
+	var quebraLinha = document.createElement("br");
+	divAudio.appendChild(quebraLinha);
+
 	//Cria div caixa de botoes
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoesAudio");
