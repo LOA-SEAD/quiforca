@@ -1240,9 +1240,9 @@ function tocaAudio() {
 
 function AudioBotoes(nomeAudio)
 {
-	var audio = document.createElement("AUDIO");
-	audio.setAttribute("src", nomeAudio);
-	audio.play();
+	var audio0 = document.createElement("AUDIO");
+	audio0.setAttribute("src", nomeAudio);
+	audio0.play();
 }
 
 /*
@@ -1501,7 +1501,7 @@ function criarCamadaAudio()
 	sliderLeituraTela.setAttribute("type", "range");
 	sliderLeituraTela.setAttribute("min", "0");
 	sliderLeituraTela.setAttribute("max", "10");
-	sliderLeituraTela.setAttribute("value", audioTelas.volume*10);
+	sliderLeituraTela.setAttribute("value", audio.volume*10);
 	sliderLeituraTela.setAttribute("id", "sliderLeituraTela");
 	sliderLeituraTela.setAttribute("tabIndex", -1);
 	sliderLeituraTela.setAttribute("class", "slider");
@@ -1509,7 +1509,7 @@ function criarCamadaAudio()
 	sliderLeituraTela.oninput = function(){
 		//----------------------------------------- FALAR NIVEL DO VOLUME --------------------------------------
 		audioLeituraInicial.volume = this.value/10;
-		audioTelas.volume = this.value/10;
+		audio.volume = this.value/10;
 		audioConfiguracoes.volume = this.value/10;
 	}
 

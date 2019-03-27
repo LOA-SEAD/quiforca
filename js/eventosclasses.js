@@ -416,9 +416,9 @@ document.body.onkeyup = function(e)
 
 function track(source)
 {
-	var audio = document.createElement("AUDIO");
-	audio.setAttribute("src", source);
-	return audio;
+	var audio0 = document.createElement("AUDIO");
+	audio0.setAttribute("src", source);
+	return audio0;
 }
 
 function leituraDica()

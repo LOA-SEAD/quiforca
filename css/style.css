@@ -137,8 +137,6 @@ body
 }
 
 .slider::-webkit-slider-thumb {
-	border-width: 5px;
-	border-color: #101010;
 	-webkit-appearance: none;
 	appearance: none;
 	width: 25px;
