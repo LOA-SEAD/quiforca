@@ -1,31 +1,41 @@
 //var audioTelas = new Audio();
-var audioTelas = new Audio();
-var audioLeituraInicial = new Audio();
+var audio;
 
 
 //LEITURA INICIAL: UTILIZADA QUANDO HOUVER UMA SEQUENCIA COM FOCO
 function leituraInicial(src){
-    audioTelas.src = src;
-    audioTelas.addEventListener('ended', function(){
+    audio = new Audio(src);
+    audio.addEventListener('ended', function(){
         inicializaFocusFala();
+        delete(audio);
     })
-    audioTelas.play();
+    audio.play();
 }
 
 
 //REALIZAR FALA: LEITURA PADRAO
 function realizarFala(src){
-    audioLeituraInicial.src = src;
-    audioLeituraInicial.play();
+    audio = new Audio(src);
+    audio.addEventListener('ended', function(){
+       delete(audio);
+    })
+    audio.play();
 }
 
 //MAPEAMENTO DO audioTelas COM CADA LETRA
 function realizarLeituraLetra(letra){
-    audioTelas.src = baseURL + letra + ".mp3";
-    audioTelas.play();
+    audio = new Audio(baseURL + letra + ".mp3");
+    audio.addEventListener('ended', function(){
+        delete(audio);
+     })
+    audio.play();
 }
 
 function paraFala(){
-    audioTelas.pause();
-    audioLeituraInicial.pause();
+   if(audio == null){
+       return false;
+   }
+   else{
+       audio.pause();
+   }
 }
