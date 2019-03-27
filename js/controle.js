@@ -1121,6 +1121,8 @@ function selecionaOpcao(e)
 				case 3:
 					if(estado == "opcoes")
 						ativarOpcaoMenu();
+					else if(estado == "audio")
+						ativarAudioVoltar();
 			}	
 		break;
 		case 37: //ArrowLeft
@@ -1158,7 +1160,7 @@ function selecionaOpcao(e)
 				}
 			}
 			else if(estado == "audio"){
-				if(opcao < 2 && !transicaoBarra){
+				if(opcao < 3 && !transicaoBarra){
 					tocaAudio();
 					opcao++;
 					setaFoco();
@@ -1176,7 +1178,7 @@ function selecionaOpcao(e)
 				}
 			}
 			else if(estado == "audio"){
-				if(opcao < 2 && !transicaoBarra){
+				if(opcao < 3 && !transicaoBarra){
 					tocaAudio();
 					opcao++;
 					setaFoco();
@@ -1351,6 +1353,12 @@ function setaFoco(){
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();
 			}
+			else if(opcao == 3){
+				document.getElementById("audioVoltar").focus();
+				audioConfiguracoes.setAttribute("src", "audio/audioGravado/voltar.mp3");
+				audioConfiguracoes.currentTime = 0;
+				audioConfiguracoes.play();
+			}
 		break;
 	}
 }
@@ -1464,6 +1472,26 @@ function criarCamadaAudio()
 		audioConfiguracoes.volume = this.value/10;
 	}
 
+	//Cria div caixa de botoes
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoesAudio");
+	divAudio.appendChild(caixaBotoes);
+
+	//btnContinuar
+	var audioVoltar = document.createElement("div");
+	audioVoltar.setAttribute("id", "audioVoltar");
+	audioVoltar.setAttribute("tabIndex", -1);
+	caixaBotoes.appendChild(audioVoltar);
+
+	//btnContinuar
+	audioVoltar.onclick = function(){
+		ativarAudioVoltar();
+	}
+	audioVoltar.onmouseenter = function(){
+		opcao = 3;
+		audioVoltar.focus();
+	}
+
 	inicializaFocus();
 
 	$("#camadaAudio").keydown(function (e){
@@ -1481,6 +1509,11 @@ function criarCamadaAudio()
 
 function destruirCamadaAudio(){
 	$("#camadaAudio").remove();
+}
+
+function ativarAudioVoltar(){
+	destruirCamadaAudio();
+	criarCamadaOpcoes();
 }
 
 function enterMusicaFundo(){

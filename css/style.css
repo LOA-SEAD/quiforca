@@ -660,6 +660,21 @@ p
 	background-image: url("../imgs/menu4.png");
 }
 
+#audioVoltar{
+	height: 65px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-top: 1rem;
+	width: 117px;
+	background-image: url("../imgs/btnVoltar2.png");
+}
+
+#audioVoltar:focus{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
 /*#opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
 	transform: scale(1.1);
 	cursor: pointer;
