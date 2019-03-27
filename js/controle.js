@@ -1286,9 +1286,7 @@ function inicializaFocus(){
 	}
 	else if(estado == "audio"){
 		document.getElementById("MusicaFundo").focus();
-		audioConfiguracoes.setAttribute("src", "audio/audioGravado/musicaFundo.mp3");
-		audioConfiguracoes.currentTime = 0;
-		audioConfiguracoes.play();
+		leituraInicial(baseURL + "audio.mp3")
 	}
 }
 
@@ -1441,9 +1439,13 @@ function criarCamadaAudio()
 
 	var MusicaFundo = document.createElement("p");
 	MusicaFundo.setAttribute("id", "MusicaFundo");
+	MusicaFundo.setAttribute("class", "textoAudio");
 	MusicaFundo.setAttribute("tabIndex", -1);
 	MusicaFundo.innerHTML = "Música de fundo";
 	caixaBarras.appendChild(MusicaFundo);
+	MusicaFundo.onclick = function(){
+		opcao = 0;
+	}
 
 	var sliderMusicaFundo = document.createElement("input");
 	sliderMusicaFundo.setAttribute("type", "range");
@@ -1462,9 +1464,13 @@ function criarCamadaAudio()
 
 	var Efeitos = document.createElement("p");
 	Efeitos.setAttribute("id", "Efeitos");
+	Efeitos.setAttribute("class", "textoAudio");
 	Efeitos.setAttribute("tabIndex", -1);
 	Efeitos.innerHTML = "Efeitos sonoros";
 	caixaBarras.appendChild(Efeitos);
+	Efeitos.onclick = function(){
+		opcao = 1;
+	}
 
 	var sliderEfeitos = document.createElement("input");
 	sliderEfeitos.setAttribute("type", "range");
@@ -1487,9 +1493,13 @@ function criarCamadaAudio()
 
 	var LeituraTela = document.createElement("p");
 	LeituraTela.setAttribute("id", "LeituraTela");
+	LeituraTela.setAttribute("class", "textoAudio");
 	LeituraTela.setAttribute("tabIndex", -1);
 	LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
 	caixaBarras.appendChild(LeituraTela);
+	LeituraTela.onclick = function(){
+		opcao = 2;
+	}
 
 	var sliderLeituraTela = document.createElement("input");
 	sliderLeituraTela.setAttribute("type", "range");

@@ -645,6 +645,10 @@ p
 	outline: none;
 }
 
+.textoAudio:focus{
+	text-decoration: underline;
+}
+
 /*#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
     background-image: none;
 	width: 117px;
