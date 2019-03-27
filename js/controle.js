@@ -1525,7 +1525,7 @@ function criarCamadaAudio()
 	caixaBotoes.setAttribute("id", "caixaBotoesAudio");
 	divAudio.appendChild(caixaBotoes);
 
-	//btnContinuar
+	//btnVoltar
 	var audioVoltar = document.createElement("div");
 	audioVoltar.setAttribute("id", "audioVoltar");
 	audioVoltar.setAttribute("tabIndex", -1);
@@ -1546,25 +1546,16 @@ function criarCamadaAudio()
 		selecionaOpcao(e);	
 	})
 
-	if (origemAudio == "menu")
-	{
-		$("#camadaAudio").keyup(function(e){
-			if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
+	$("#camadaAudio").keyup(function(e){
+		if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
+		{
+			destruirCamadaAudio();
+			if (origemAudio == "jogo")
 			{
-				destruirCamadaAudio();
-			}
-		})
-	}
-	else if (origemAudio == "jogo")
-	{
-		$("#camadaAudio").keyup(function(e){
-			if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
-			{
-				destruirCamadaAudio();
 				criarCamadaOpcoes();
 			}
-		})
-	}
+		}
+	})
 }
 
 function destruirCamadaAudio(){
@@ -1573,7 +1564,10 @@ function destruirCamadaAudio(){
 
 function ativarAudioVoltar(){
 	destruirCamadaAudio();
-	criarCamadaOpcoes();
+	if (origemAudio == "jogo")
+	{
+		criarCamadaOpcoes();
+	}
 }
 
 function enterMusicaFundo(){
