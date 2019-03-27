@@ -246,8 +246,8 @@ audioCreditos.currentTime = 0
 
 function criarCamadaCreditos()
 {
-	paraFala()
-	
+
+	paraFala();
 	realizarFala(baseURL + "creditosCompleto.mp3");
 	/*audioCreditos.currentTime = 0
 	audioCreditos.play();*/
@@ -406,7 +406,7 @@ vitoria2 = false;
 vitoria3 = false;
 function criarCamadaVitoria()
 {
-	paraFala()
+	paraFala();
 	estado = "vitoria";
 	opcao = 0;
 	pulouVitoria = false;
@@ -427,10 +427,6 @@ function criarCamadaVitoria()
 		audioVitP.play();*/
 		leituraInicial(baseURL + "vitoriaFrase.mp3");
 	}, 3800);
-
-	vitoria3 = setTimeout(function(){
-		realizarLeitura(jogo.palavraSorteada);
-	}, 6100);
 
 	var fase;
 	var faseId;
@@ -531,7 +527,7 @@ function destruirCamadaVitoria()
 vitoria4 = false;
 function criarCamadaFimdeJogo()
 {
-	paraFala()
+	
 	estado = "fimdeJogo";
 
 	//var audio = document.createElement("AUDIO");
@@ -674,7 +670,7 @@ var derrota10 = false
 
 function criarCamadaDerrota()
 {
-	paraFala()
+	paraFala();
 	estado = "derrota";
 	opcao = 0;
 	pulouDerrota = false;
@@ -994,6 +990,8 @@ function destruirCamadaRanking()
 
 function criarCamadaInstrucoes()
 {
+	paraFala();
+
 	if(origemInstrucoes == "menu")
 	{
 		realizarFala(baseURL + "lerinstrucoes.mp3");
@@ -1177,8 +1175,6 @@ function selecionaOpcao(e)
 			else if(estado == "derrota" || estado == "vitoria"){
 				if(opcao < 1){
 					tocaAudio();
-					realizarLeitura("Menu");
-					//AudioBotoes("audio/menu.mp3");
 					opcao++;
 					setaFoco();
 				}
@@ -1332,21 +1328,21 @@ function setaFoco(){
 		case "vitoria":
 			if(opcao == 0){
 				document.getElementById("btnProxPalavra").focus();
-				realizarLeitura("Continuar");
+				realizarFala(baseURL + "continuar.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("btnMenu3").focus();
-				realizarLeitura("Sair");
+				realizarFala(baseURL + "desistir.mp3");
 			}
 		break;
 		case "derrota":
 			if(opcao == 0){
 				document.getElementById("btnReiniciar").focus();
-				realizarLeitura("Reiniciar");
+				realizarFala(baseURL + "reiniciar.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("btnMenu3").focus();
-				realizarLeitura("Menu");
+				realizarFala(baseURL + "desistir.mp3");
 			}
 		break;
 		case "opcoes":

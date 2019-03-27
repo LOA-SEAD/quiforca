@@ -478,7 +478,7 @@ function leituraDica()
 var volumeDef = 1
 function realizarLeitura(texto)
 {
-	window.speechSynthesis.cancel();
+	console.log('ola');
 	var voices = window.speechSynthesis.getVoices();
 	var msg = new SpeechSynthesisUtterance(texto);
 	msg.volume = volumeDef; // 0 to 1
