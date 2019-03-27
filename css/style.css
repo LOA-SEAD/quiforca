@@ -429,6 +429,20 @@ p
 	outline: none;
 }
 
+#btnOpcoes
+{
+	width: 137px;
+	height: 65px;
+	background-image: url("../imgs/opmenuinicial.png");
+	margin: 1.5rem;
+}
+
+#btnOpcoes:hover, #btnOpcoes:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
 
 #btnRanking
 {

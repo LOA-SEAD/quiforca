@@ -26,13 +26,14 @@ var pulouVitoria;
 var audio3 = document.createElement("AUDIO");
 audio3.volume = 1;
 var origemInstrucoes;
+var origemAudio
 
 var sairInstrucoes = false;
 
 function criarCamadaMenu()
 {	
 	paraFala()
-
+	origemAudio = "menu"
 	origemInstrucoes = "menu";
 	pulouMenu = false;
 	estado = "menu";
@@ -115,10 +116,30 @@ function criarCamadaMenu()
 		opcao = 2;
 		clearTimeout(delayInicializaFocus);
 	}
+
+	//Cria botao de opções na caixa de botoes
+	var botaoOpcoes = document.createElement("div");
+	botaoOpcoes.setAttribute("id" , "btnOpcoes");
+	botaoOpcoes.setAttribute("tabIndex" , "-1");
+	botaoOpcoes.setAttribute("class" , "botao");
+	caixaBotoes.appendChild(botaoOpcoes);
+
+
+	botaoOpcoes.onclick = function()
+	{
+		console.log("foi")
+		ativarBotaoOpcoes();
+	}
+	botaoOpcoes.onmouseenter = function()
+	{
+		console.log("fo2")
+		botaoOpcoes.focus();
+		opcao = 3;
+		clearTimeout(delayInicializaFocus);
+	}
 	
 	inicializaFalaInicial();
 	inicializaFocus();
-
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
@@ -146,6 +167,12 @@ function ativarBotaoCreditos()
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaMenu();
 	criarCamadaCreditos();
+}
+
+function ativarBotaoOpcoes()
+{
+	clearTimeout(delayInicializaFocus);
+	criarCamadaAudio();
 }
 
 function ativarBotaoReiniciar()
@@ -187,6 +214,8 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
+	origemAudio = "jogo"
+
 	paraFala()
 
 	if(!origemMenu){
@@ -1123,6 +1152,8 @@ function selecionaOpcao(e)
 						ativarOpcaoMenu();
 					else if(estado == "audio")
 						ativarAudioVoltar();
+					else if(estado == "menu")
+						ativarBotaoOpcoes();
 			}	
 		break;
 		case 37: //ArrowLeft
@@ -1137,7 +1168,7 @@ function selecionaOpcao(e)
 		case 39: //ArrowRight
 			paraFala();
 			if(estado == "menu"){
-				if(opcao < 2){
+				if(opcao < 3){
 					tocaAudio();
 					opcao++;
 					setaFoco();
@@ -1293,6 +1324,10 @@ function setaFoco(){
 			}
 			else if(opcao == 2){
 				document.getElementById("btnCreditos").focus();
+				realizarFala(baseURL + "creditos.mp3");
+			}
+			else if(opcao == 3){
+				document.getElementById("btnOpcoes").focus();
 				realizarFala(baseURL + "creditos.mp3");
 			}
 		break;
@@ -1498,13 +1533,25 @@ function criarCamadaAudio()
 		selecionaOpcao(e);	
 	})
 
-	$("#camadaAudio").keyup(function(e){
-		if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
-		{
-			destruirCamadaAudio();
-			criarCamadaOpcoes();
-		}
-	})
+	if (origemAudio == "menu")
+	{
+		$("#camadaAudio").keyup(function(e){
+			if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
+			{
+				destruirCamadaAudio();
+			}
+		})
+	}
+	else if (origemAudio == "jogo")
+	{
+		$("#camadaAudio").keyup(function(e){
+			if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
+			{
+				destruirCamadaAudio();
+				criarCamadaOpcoes();
+			}
+		})
+	}
 }
 
 function destruirCamadaAudio(){
