@@ -115,10 +115,28 @@ function criarCamadaMenu()
 		opcao = 2;
 		clearTimeout(delayInicializaFocus);
 	}
+
+	//Cria botao de opções na caixa de botoes
+	var botaoOpcoes = document.createElement("div");
+	botaoOpcoes.setAttribute("id" , "btnOpcoes");
+	botaoOpcoes.setAttribute("tabIndex" , "-1");
+	botaoOpcoes.setAttribute("class" , "botao");
+	caixaBotoes.appendChild(botaoOpcoes);
+
+
+	botaoOpcoes.onclick = function()
+	{
+		ativarBotaoOpcoes();
+	}
+	botaoOpcoes.onmouseenter = function()
+	{
+		botaoOpcoes.focus();
+		opcao = 3;
+		clearTimeout(delayInicializaFocus);
+	}
 	
 	inicializaFalaInicial();
 	inicializaFocus();
-
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
@@ -146,6 +164,12 @@ function ativarBotaoCreditos()
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaMenu();
 	criarCamadaCreditos();
+}
+
+function ativarBotaoOpcoes()
+{
+	clearTimeout(delayInicializaFocus);
+	criarCamadaOpcoes();
 }
 
 function ativarBotaoReiniciar()
@@ -1260,6 +1284,10 @@ function setaFoco(){
 			}
 			else if(opcao == 2){
 				document.getElementById("btnCreditos").focus();
+				realizarFala(baseURL + "creditos.mp3");
+			}
+			else if(opcao == 3){
+				document.getElementById("btnOpcoes").focus();
 				realizarFala(baseURL + "creditos.mp3");
 			}
 		break;
