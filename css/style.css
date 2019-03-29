@@ -455,6 +455,21 @@ p
 	outline: none;
 }
 
+#btnAudio
+{
+	width: 137px;
+	height: 65px;
+	background-image: url("../imgs/menu3.png");
+	margin: 1.5rem;
+}
+
+#btnAudio:hover, #btnAudio:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
 #btnRanking
 {
 	width: 117px;
