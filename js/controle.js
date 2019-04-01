@@ -1303,7 +1303,7 @@ function inicializaFocusFala(){
 	}
 	else if(estado == "vitoria"){
 		var txt = jogo.palavraSorteada;
-		realizarLeitura(txt);
+		realizarLeituraInicial(txt);
 	}
 }
 

@@ -509,8 +509,7 @@ function realizarLeituraInicial(texto)
 			}
 		}
 		else if(estado == "vitoria"){
-			leituraInicial(baseURL + "pontuacaoFinal.mp3");
-			
+			realizarFala(baseURL + "continuar.mp3");
 		}
 	})
 }
