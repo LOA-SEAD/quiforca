@@ -1302,6 +1302,9 @@ function inicializaFocusFala(){
 		var txt = jogo.palavraSorteada;
 		realizarLeituraInicial(txt);
 	}
+	else if(estado == "audio"){
+		realizarFala(baseURL + "musicaFundo.mp3");
+	}
 }
 
 function setaFoco(){
