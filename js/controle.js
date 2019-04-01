@@ -28,7 +28,7 @@ audio3.volume = 1;
 var origemInstrucoes;
 var origemAudio
 var sairInstrucoes = false;
-var frase = 1;
+var frase;
 
 function criarCamadaMenu()
 {	
@@ -212,8 +212,8 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
-	origemAudio = "jogo"
-
+	origemAudio = "jogo";
+	frase = 1;
 	paraFala()
 
 	if(!origemMenu){
@@ -433,9 +433,6 @@ function criarCamadaVitoria()
 	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
 
-	var imgLogo = document.createElement("div");
-	imgLogo.setAttribute("id", "imgLogoVit");
-	el.appendChild(imgLogo);
 
 	/*if((jogo.bdTamanho) == 0) {
 		$('<p>').attr('id', 'pontosNaTela')
@@ -456,8 +453,8 @@ function criarCamadaVitoria()
 	jogo.botoesVitoria = document.createElement("div");
 	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
 	
-	$("#camadaVitoria").append(jogo.palavraNaTela);
 	$("#camadaVitoria").append(jogo.imgBonecoVitoria);
+	$("#camadaVitoria").append(jogo.palavraNaTela);
 	$("#camadaVitoria").append(jogo.botoesVitoria);
 
 	$("<button>").attr("id", "btnProxPalavra").click(
