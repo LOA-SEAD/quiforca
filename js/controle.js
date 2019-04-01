@@ -27,8 +27,8 @@ var audio3 = document.createElement("AUDIO");
 audio3.volume = 1;
 var origemInstrucoes;
 var origemAudio
-
 var sairInstrucoes = false;
+var frase = 1;
 
 function criarCamadaMenu()
 {	
@@ -1286,16 +1286,20 @@ function inicializaFocus(){
 
 function inicializaFocusFala(){
 	if(estado == "menu"){
-		if(!pulouMenu){
-			realizarFala(baseURL + "instrucoes.mp3");
-		}
+		realizarFala(baseURL + "instrucoes.mp3");
 	}
 	else if(estado == "opcoes"){
 		realizarFala(baseURL + "continuar.mp3");
 	}
 	else if(estado == "derrota"){
-		var txt = jogo.palavraSorteada + "; Pontuação final: " + jogo.pontos;
-		realizarLeitura(txt);
+		if(frase == 1){
+			var txt = jogo.palavraSorteada;
+			realizarLeituraInicial(txt);
+		}
+		else if(frase == 2){
+			var txt = jogo.pontos + "pontos";
+			realizarLeituraInicial(txt);
+		}
 	}
 	else if(estado == "vitoria"){
 		var txt = jogo.palavraSorteada;

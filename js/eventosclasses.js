@@ -478,7 +478,6 @@ function leituraDica()
 var volumeDef = 1
 function realizarLeitura(texto)
 {
-	console.log('ola');
 	var voices = window.speechSynthesis.getVoices();
 	var msg = new SpeechSynthesisUtterance(texto);
 	msg.volume = volumeDef; // 0 to 1
@@ -486,6 +485,34 @@ function realizarLeitura(texto)
 	msg.lang = "pt-BR";
 	msg.voice = voices[0];
 	window.speechSynthesis.speak(msg);
+}
+
+function realizarLeituraInicial(texto)
+{
+	var voices = window.speechSynthesis.getVoices();
+	var msg = new SpeechSynthesisUtterance(texto);
+	msg.volume = volumeDef; // 0 to 1
+	msg.rate = 1.3; // 0.1 to 10
+	msg.lang = "pt-BR";
+	msg.voice = voices[0];
+	window.speechSynthesis.speak(msg);
+
+	msg.addEventListener("end", function(){
+		if(estado == "derrota"){
+			if(frase == 1){
+				leituraInicial(baseURL + "pontuacaoFinal.mp3");
+				frase = 2;
+			}
+			else if(frase == 2){
+				realizarFala(baseURL + "reiniciar.mp3");
+				frase = 1;
+			}
+		}
+		else if(estado == "vitoria"){
+			leituraInicial(baseURL + "pontuacaoFinal.mp3");
+			
+		}
+	})
 }
 
 function pararLeitura()
