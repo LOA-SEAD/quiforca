@@ -1,6 +1,7 @@
 //var audioTelas = new Audio();
 var audio = document.createElement("audio");
 var audioinicial = document.createElement("audio");
+var audioEnter = document.createElement("audio");
 
 
 //LEITURA INICIAL: UTILIZADA QUANDO HOUVER UMA SEQUENCIA COM FOCO
@@ -29,11 +30,17 @@ function realizarFala(src){
        delete(audio);
     })
     audio.play();*/
-
     audioinicial.pause();
     audio.setAttribute("src", src);
     audio.currentTime = 0;
     audio.play();
+    if(estado == "audio"){
+        audio.onended = function(){
+            audioEnter.setAttribute("src", baseURL + "entrarEnter.mp3");
+            audioEnter.currentTime = 0;
+            audioEnter.play();
+        }
+    }
 }
 
 //MAPEAMENTO DO audioTelas COM CADA LETRA
