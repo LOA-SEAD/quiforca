@@ -1513,6 +1513,7 @@ function criarCamadaAudio()
 	caixaBarras.appendChild(sliderLeituraTela);
 	sliderLeituraTela.oninput = function(){
 		//----------------------------------------- FALAR NIVEL DO VOLUME --------------------------------------
+		tocaAudio();
 		audioinicial.volume = this.value/10;
 		audio.volume = this.value/10;
 		audioConfiguracoes.volume = this.value/10;
