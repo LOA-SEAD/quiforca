@@ -168,6 +168,10 @@ body
 	background-color: #101010;
 }
 
+.slider::-webkit-progress-bar{
+	background-color: #101010;
+}
+
 #camadaVitoria
 {
 	text-align: center;
