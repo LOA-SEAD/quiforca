@@ -1408,6 +1408,7 @@ function paraDeFalar(){
 var transicaoBarra = false;
 var audioConfiguracoes = document.createElement("AUDIO");
 audioConfiguracoes.volume = 1;
+var volumeSinth = 1;
 
 function criarCamadaAudio()
 {
@@ -1515,6 +1516,8 @@ function criarCamadaAudio()
 		audioinicial.volume = this.value/10;
 		audio.volume = this.value/10;
 		audioConfiguracoes.volume = this.value/10;
+		msg.volume = this.value/10;
+		volumeSinth = this.value/10;
 	}
 
 	var quebraLinha = document.createElement("br");
