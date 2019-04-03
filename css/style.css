@@ -49,7 +49,11 @@ body
 #divOpcoes{
 	width: 430px;
 	height: 530px;
-	background-color: #fcf394;;
+	background: #c2ecfc;
+	background: -moz-linear-gradient(top, #c2ecfc 0%, #92dcf9 100%);
+	background: -webkit-linear-gradient(top, #c2ecfc 0%,#92dcf9 100%);
+	background: linear-gradient(to bottom, #c2ecfc 0%,#92dcf9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );
 	position: relative;
 	-webkit-border-bottom-left-radius: 3rem 15rem;
 	-webkit-border-bottom-right-radius: 7rem 3rem;
@@ -93,7 +97,11 @@ body
 #divAudio{
 	width: 430px;
 	height: 530px;
-	background-color: #fcf394;
+	background: #c2ecfc;
+	background: -moz-linear-gradient(top, #c2ecfc 0%, #92dcf9 100%);
+	background: -webkit-linear-gradient(top, #c2ecfc 0%,#92dcf9 100%);
+	background: linear-gradient(to bottom, #c2ecfc 0%,#92dcf9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );
 	position: relative;
 	-webkit-border-bottom-left-radius: 3rem 15rem;
 	-webkit-border-bottom-right-radius: 7rem 3rem;
@@ -127,32 +135,32 @@ body
 	-webkit-appearance: none;
 	width: 80%;
 	height: 15px;
-	border-radius: 5px;  
-	background: #d3d3d3;
+	border-radius: 5px;
+	background: #ffffff;
 	outline: none;
 	opacity: 0.7;
 	-webkit-transition: .2s;
 	transition: opacity .2s;
-	margin: 0 auto
+	margin: 0 auto;
+	border: solid;
+	border-width: 2px;
 }
 
 .slider::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	appearance: none;
-	width: 25px;
+	border-width: 5px;
+	border-color: #101010;
+	width: 10px;
 	height: 25px;
-	border-radius: 50%; 
-	background: #d3d3d3;
+	background: #fff;
 	cursor: pointer;
 }
   
 .slider::-moz-range-thumb {
 	border-width: 5px;
 	border-color: #101010;
-	width: 25px;
+	width: 10px;
 	height: 25px;
-	border-radius: 50%;
-	background: #d3d3d3;
+	background: #fff;
 	cursor: pointer;
 }
 
@@ -166,10 +174,12 @@ body
 
 .slider::-moz-range-progress{
 	background-color: #101010;
+	height: 15px;
 }
 
 .slider::-webkit-progress-bar{
 	background-color: #101010;
+	height: 15px;
 }
 
 #camadaVitoria
