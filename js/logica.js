@@ -4,6 +4,9 @@ var audio2 = document.createElement("AUDIO");
 audio2.volume = 1;
 audio2.setAttribute("id", "audioEfeitos");
 
+var audioErro = document.createElement("AUDIO");
+audioErro.setAttribute("id", "audioVidas");
+
 //Preenche a camada de jogo
 function iniciar()
 {
@@ -198,6 +201,8 @@ function verificarErro(_letra)
 {
 	var deuErro = true;
 	letraRepetida = false;
+	audio2.pause();
+	audioErro.pause();
 
 	for(var i = 0; i < jogo.letrasTentadas.length; i++)
 	{
@@ -291,21 +296,31 @@ function verificarErro(_letra)
 		{
 			case 1:
 				audio2.setAttribute("src", "audio/enforcamento1.ogg");
+				audioErro.setAttribute("src", "audio/audioGravado/4vidas.mp3");
 				break;
 			case 2:
 				audio2.setAttribute("src", "audio/enforcamento3.ogg");
+				audioErro.setAttribute("src", "audio/audioGravado/3vidas.mp3");
 				break;
 			case 3:
 				audio2.setAttribute("src", "audio/enforcamento7.ogg");
+				audioErro.setAttribute("src", "audio/audioGravado/2vidas.mp3");
 				break;
 			case 4:
 				audio2.setAttribute("src", "audio/enforcamento8.ogg");
+				audioErro.setAttribute("src", "audio/audioGravado/1vida.mp3");
 		}
 		setTimeout(function(){
 			audio2.currentTime = 0
 			audio2.play();
 			console.log("a")
 		}, 300)
+	}
+	audio2.onended = function(){
+		if(deuErro && jogo.erros < 5){
+			audioErro.currentTime = 0;
+			audioErro.play();
+		}
 	}
 
 	realizarLeituraLetra(_letra);

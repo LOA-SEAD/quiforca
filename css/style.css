@@ -746,14 +746,14 @@ p
 
 @media screen and (max-width: 1336px){
 	#ColLeftJogo{
-		max-width: 225px
+		max-width: 275px
 	}
 	#ColRightJogo{
 		max-width: 550px
 	}
 }
 
-@media screen and (max-width: 980px){
+@media screen and (max-width: 1045px){
 	#ColLeftJogo{
 		max-width: 300px;
 		float: none;

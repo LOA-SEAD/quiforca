@@ -1,9 +1,10 @@
 //var audioTelas = new Audio();
 var audio = document.createElement("audio");
 var audioinicial = document.createElement("audio");
+audioinicial.setAttribute("id", "AudioInicial");
 var audioEnter = document.createElement("audio");
 
-
+var context = new AudioContext();
 //LEITURA INICIAL: UTILIZADA QUANDO HOUVER UMA SEQUENCIA COM FOCO
 function leituraInicial(src){
     /*audio = new Audio(src);
@@ -34,8 +35,8 @@ function realizarFala(src){
     audio.setAttribute("src", src);
     audio.currentTime = 0;
     audio.play();
-    if(estado == "audio"){
-        audio.onended = function(){
+    audio.onended = function(){
+        if(estado == "audio"){
             audioEnter.setAttribute("src", baseURL + "entrarEnter.mp3");
             audioEnter.currentTime = 0;
             audioEnter.play();

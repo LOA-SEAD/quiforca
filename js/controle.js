@@ -1526,6 +1526,7 @@ function criarCamadaAudio()
 		msg.volume = this.value/10;
 		volumeSinth = this.value/10;
 		audioEnter.volume = this.value/10;
+		audioErro.volume = this.value/10;
 	}
 
 	var quebraLinha = document.createElement("br");
