@@ -108,14 +108,15 @@ function iniciar()
 	caixaBotoes.setAttribute("id", "caixaBotoes");
 	caixaBotoes.setAttribute("class", "clearfix");
 	$("#camadaJogo").append(caixaBotoes);
-	jogo.botaoVoltar = document.createElement("div");
-	jogo.botaoVoltar.setAttribute("id" , "btnMenu");
-	jogo.botaoVoltar.setAttribute("role" , "button");
-	jogo.botaoVoltar.setAttribute("class", "botao");
-	jogo.botaoVoltar.onclick = function() {
+	jogo.botaoOpcoes = document.createElement("div");
+	jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
+	jogo.botaoOpcoes.setAttribute("role" , "button");
+	jogo.botaoOpcoes.setAttribute("class", "botao");
+	jogo.botaoOpcoes.onclick = function() {
+		stopTudo();
 		criarCamadaOpcoes();
 	}
-	caixaBotoes.append(jogo.botaoVoltar);
+	caixaBotoes.append(jogo.botaoOpcoes);
 	//$("#camadaJogo").append(jogo.botaoVoltar);
 	inicializaFocus();
 	update();
@@ -621,3 +622,4 @@ function pontuacao()
 {
 	return jogo.pontos;
 }
+

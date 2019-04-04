@@ -30,6 +30,7 @@ function Botao(_letra, _linha)
 	{
 		if((jogo.emTransicao == false) && (fimDeJogo() == -1))
 		{
+			stopTudo();
 			verificarErro(_letra);
 			colocarLetraEmLetrasTentadas(_letra);	
 		}			
@@ -364,55 +365,38 @@ document.body.onkeyup = function(e)
 	{
 		stopTudo()
 	}
+}
 
-	function stopAtalho1()
-	{
-		window.speechSynthesis.cancel();
+function stopAtalho1()
+{
+	window.speechSynthesis.cancel();
+}
 
-		/*audioAtalho1.pause();
-		audioAtalho1.currentTime = 0;
+function stopAtalho2()
+{
+	clearInterval(delayAtalho2);
+}
 
-		if(tamanhoPalavraSemEspaco() > 20 && dezena%10!=0){
-			dezenaLer.pause();
-			dezenaLer.currentTime = 0;
-			letraE.pause();
-			letraE.currentTime = 0;
-		}
-		unidadeLer.pause();
-		unidadeLer.currentTime = 0;
-		qLetras.pause();
-		qLetras.currentTime = 0;
+function stopAtalho3()
+{
+	audioAtalho3.pause();
+	audioAtalho3.currentTime = 0;
+}
 
-		clearTimeout(delayAtalho1);*/
-	}
-	function stopAtalho2()
-	{
-		clearInterval(delayAtalho2);
-	}
-	function stopAtalho3()
-	{
-		audioAtalho3.pause();
-		audioAtalho3.currentTime = 0;
-	}
-	function stopAtalho4()
-	{
-		audioAtalho4.pause();
-		audioAtalho4.currentTime = 0
-		clearTimeout(delayAtalho4);
-		clearInterval(delayLetraAtalho4);
-	}
-	function stopAtalho5()
-	{
-		
-	}
-	function stopTudo()
-	{
-		stopAtalho1()
-		stopAtalho2()
-		stopAtalho3()
-		stopAtalho4()
-		stopAtalho5()
-	}
+function stopAtalho4()
+{
+	audioAtalho4.pause();
+	audioAtalho4.currentTime = 0
+	clearTimeout(delayAtalho4);
+	clearInterval(delayLetraAtalho4);
+}
+
+function stopTudo()
+{
+	stopAtalho1();
+	stopAtalho2();
+	stopAtalho3();
+	stopAtalho4();
 }
 
 function track(source)

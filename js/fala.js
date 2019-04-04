@@ -59,10 +59,11 @@ function realizarLeituraLetra(letra){
 }
 
 function paraFala(){
-   if(audio == null){
+   if(audio == null || audioinicial == null){
        return false;
    }
    else{
        audio.pause();
+       audioinicial.pause();
    }
 }

@@ -212,9 +212,9 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
+	paraFala();
 	origemAudio = "jogo";
 	frase = 1;
-	paraFala()
 
 	if(!origemMenu){
 		background.currentTime = 0
