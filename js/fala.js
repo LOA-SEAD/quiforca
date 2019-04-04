@@ -7,13 +7,6 @@ var audioEnter = document.createElement("audio");
 var context = new AudioContext();
 //LEITURA INICIAL: UTILIZADA QUANDO HOUVER UMA SEQUENCIA COM FOCO
 function leituraInicial(src){
-    /*audio = new Audio(src);
-    audio.addEventListener('ended', function(){
-        inicializaFocusFala();
-        delete(audio);
-    })
-    audio.play();*/
-
     audio.pause();
     audioinicial.setAttribute("src", src);
     audioinicial.currentTime = 0;
@@ -26,11 +19,6 @@ function leituraInicial(src){
 
 //REALIZAR FALA: LEITURA PADRAO
 function realizarFala(src){
-    /*audio = new Audio(src);
-    audio.addEventListener('ended', function(){
-       delete(audio);
-    })
-    audio.play();*/
     audioinicial.pause();
     audio.setAttribute("src", src);
     audio.currentTime = 0;
@@ -46,12 +34,6 @@ function realizarFala(src){
 
 //MAPEAMENTO DO audioTelas COM CADA LETRA
 function realizarLeituraLetra(letra){
-    /*audio = new Audio(baseURL + letra + ".mp3");
-    audio.addEventListener('ended', function(){
-        delete(audio);
-     })
-    audio.play();*/
-
     audioinicial.pause();
     audio.setAttribute("src", baseURL + letra + ".mp3");
     audio.currentTime = 0;

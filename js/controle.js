@@ -1065,6 +1065,7 @@ function criarCamadaInstrucoes()
 		{
 			destruirCamadaInstrucoes();
 			estado = "jogando";
+			paraFala();
 			$("#camadaJogo").toggle();
 			setTimeout(update, 50);
 		}
@@ -1089,6 +1090,7 @@ function criarCamadaInstrucoes()
 			{
 				sairInstrucoes = true;
 				estado = "jogando";
+				paraFala();
 				$("#camadaJogo").toggle();
 			}
 		}
