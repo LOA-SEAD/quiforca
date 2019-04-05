@@ -1092,6 +1092,7 @@ function criarCamadaInstrucoes()
 				estado = "jogando";
 				paraFala();
 				$("#camadaJogo").toggle();
+			
 			}
 		}
 	}
@@ -1279,7 +1280,7 @@ function inicializaFocus(){
 	}
 	else if(estado == "audio"){
 		document.getElementById("MusicaFundo").focus();
-		leituraInicial(baseURL + "audio.mp3")
+		leituraInicial(baseURL + "entrarEnter.mp3")
 	}
 }
 
@@ -1422,7 +1423,6 @@ function criarCamadaAudio()
 {
 	opcao = 0;
 	transicaoBarra = false;
-
 	estado = "audio";
 
 	var el = document.createElement("div");

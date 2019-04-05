@@ -23,13 +23,6 @@ function realizarFala(src){
     audio.setAttribute("src", src);
     audio.currentTime = 0;
     audio.play();
-    audio.onended = function(){
-        if(estado == "audio"){
-            audioEnter.setAttribute("src", baseURL + "entrarEnter.mp3");
-            audioEnter.currentTime = 0;
-            audioEnter.play();
-        }
-    }
 }
 
 //MAPEAMENTO DO audioTelas COM CADA LETRA
