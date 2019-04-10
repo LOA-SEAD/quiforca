@@ -29,8 +29,8 @@ body
 	min-width: 600px;
 	background-image: url("../imgs/novafolha.png");
 	background-size: cover;
-	margin: 10px 70px 0px 70px;
-	display: flex;
+	/*margin: 10px 70px 0px 70px;*/
+	/*display: flex;*/
 	align-items: center;
 	justify-content: center;
 }
@@ -393,13 +393,17 @@ p
 /*Parte dos botoes fora do jogo*/
 .botao
 {
+	/*display: block;*/
 	display: inline-block;
+	/*margin: 0 auto*/
 	margin: 1rem;
 }
 
 #caixaBotoes
 {
 	text-align: center;
+
+	display: inline-grid;
 }
 
 #caixaBotoesOpcao{
@@ -408,10 +412,10 @@ p
 
 #btnJogar
 {
-	width: 137px;
-	height: 65px;
-	background-image: url("../imgs/btnJogar.png");
-	margin: 1.5rem;
+	background: cornflowerblue;
+	width: 650px;;
+	height: 85px;
+	
 }
 
 #btnJogar:hover, #btnJogar:focus
@@ -423,10 +427,9 @@ p
 
 #btnInstrucoes
 {
-	width: 137px;
-	height: 65px;
-	background-image: url("../imgs/btnInstrucoes.png");
-	margin: 1.5rem;
+	background: cornflowerblue;
+	width: 650px;;
+	height: 85px;
 }
 
 #btnInstrucoes:hover, #btnInstrucoes:focus
@@ -439,10 +442,10 @@ p
 
 #btnCreditos
 {
-	width: 137px;
-	height: 65px;
-	background-image: url("../imgs/btnCreditos.png");
-	margin: 1.5rem;
+	background: cornflowerblue;
+	width: 650px;;
+	height: 85px;
+	
 }
 
 #btnCreditos:hover, #btnCreditos:focus
@@ -469,10 +472,9 @@ p
 
 #btnAudio
 {
-	width: 137px;
-	height: 65px;
-	background-image: url("../imgs/menu3.png");
-	margin: 1.5rem;
+	background: cornflowerblue;
+	width: 650px;
+	height: 85px;
 }
 
 #btnAudio:hover, #btnAudio:focus
@@ -768,7 +770,7 @@ p
 	}
 
 	#imgMenu{
-		width: 100%;
+		width: 80%;
 	}
 
 	#dicaNaTela{

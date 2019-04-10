@@ -61,7 +61,6 @@ var audioAtalho3 = document.createElement("AUDIO");
 var audioAtalho4 = document.createElement("AUDIO");
 var audioAtalho5 = document.createElement("AUDIO");
 var centenaLer = document.createElement("AUDIO");
-
 var stopAtalhos;
 
 document.body.onkeyup = function(e)
