@@ -303,25 +303,13 @@ function criarCamadaCreditos()
 	var para = document.createElement("p");
 	para.innerHTML = "Murilo Dell Agnolo Garcia";
 	colLeft.appendChild(para);
-	var para = document.createElement("p");
-	para.innerHTML = "Luiz Valério Neto";
-	colLeft.appendChild(para);
-	var para = document.createElement("p");
-	para.innerHTML = "Henrique Souza Barros";
-	colLeft.appendChild(para);
 
 	var colRight = document.createElement("div");
 	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
 	equipe.appendChild(colRight);
 
 	var para = document.createElement("p");
-	para.innerHTML = "Rafaela Ferraz Majaron";
-	colRight.appendChild(para);
-	var para = document.createElement("p");
-	para.innerHTML = "Diana Gomes Ragnole Silva";
-	colRight.appendChild(para);
-	var para = document.createElement("p");
-	para.innerHTML = "Kátia Carnier";
+	para.innerHTML = "Luiz Valério Neto";
 	colRight.appendChild(para);
 	var para = document.createElement("p");
 	para.innerHTML = "Catarine Santana Ohnuma";
