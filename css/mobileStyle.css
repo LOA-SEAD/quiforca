@@ -1,0 +1,786 @@
+/*Parte das camadas*/
+
+html, body
+{
+	height: 99%;
+	width: 100%;
+	margin: 0;	
+}
+
+body
+{
+	background-image: url("../imgs/madeira.png");
+	background-repeat:repeat;
+}
+
+#btn-mute
+{
+	position:absolute;
+	left: 49px;
+	top: 32px;
+	width:24px;
+	height:24px;
+	cursor: pointer;
+}
+
+#palco
+{
+    min-height: 100%;
+    width: 100%;
+	background-image: url("../imgs/novafolha.png");
+    background-size: cover;
+    display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#camadaOpcoes{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 0;
+}
+
+#divOpcoes{
+	width: 430px;
+	height: 530px;
+	background: #c2ecfc;
+	background: -moz-linear-gradient(top, #c2ecfc 0%, #92dcf9 100%);
+	background: -webkit-linear-gradient(top, #c2ecfc 0%,#92dcf9 100%);
+	background: linear-gradient(to bottom, #c2ecfc 0%,#92dcf9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );
+	position: relative;
+	-webkit-border-bottom-left-radius: 3rem 15rem;
+	-webkit-border-bottom-right-radius: 7rem 3rem;
+}
+
+#divOpcoes::before, #divOpcoes::after{
+	content: '';
+    z-index: -1;
+    position: absolute;
+    bottom: 23px;
+    left: 26px;
+    width: 30%;
+    top: 85%;
+    max-width: 300px;
+    background: #777;
+    box-shadow: 0px 27px 30px #777;
+    transform: rotate(-9deg);
+}
+
+#divOpcoes::after{
+	-webkit-transform: rotate(8deg);
+	-moz-transform: rotate(8deg);
+	-o-transform: rotate(8deg);
+	-ms-transform: rotate(8deg);
+	transform: rotate(-5deg);
+	right: 10px;
+	left: auto;
+}
+
+#camadaAudio{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2;
+}
+
+#divAudio{
+	width: 430px;
+	height: 530px;
+	background: #c2ecfc;
+	background: -moz-linear-gradient(top, #c2ecfc 0%, #92dcf9 100%);
+	background: -webkit-linear-gradient(top, #c2ecfc 0%,#92dcf9 100%);
+	background: linear-gradient(to bottom, #c2ecfc 0%,#92dcf9 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );
+	position: relative;
+	-webkit-border-bottom-left-radius: 3rem 15rem;
+	-webkit-border-bottom-right-radius: 7rem 3rem;
+}
+
+#divAudio::before, #divAudio::after{
+	content: '';
+    z-index: -1;
+    position: absolute;
+    bottom: 23px;
+    left: 26px;
+    width: 30%;
+    top: 85%;
+    max-width: 300px;
+    background: #777;
+    box-shadow: 0px 27px 30px #777;
+    transform: rotate(-9deg);
+}
+
+#divAudio::after{
+	-webkit-transform: rotate(8deg);
+	-moz-transform: rotate(8deg);
+	-o-transform: rotate(8deg);
+	-ms-transform: rotate(8deg);
+	transform: rotate(-5deg);
+	right: 10px;
+	left: auto;
+}
+
+.slider {
+	-webkit-appearance: none;
+	width: 80%;
+	height: 15px;
+	border-radius: 5px;
+	background: #ffffff;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+	margin: 0 auto;
+	border: solid;
+	border-width: 2px;
+}
+
+.slider::-webkit-slider-thumb {
+	border-width: 5px;
+	border-color: #101010;
+	width: 10px;
+	height: 25px;
+	background: #fff;
+	cursor: pointer;
+}
+  
+.slider::-moz-range-thumb {
+	border-width: 5px;
+	border-color: #101010;
+	width: 10px;
+	height: 25px;
+	background: #fff;
+	cursor: pointer;
+}
+
+.slider:focus::-webkit-slider-thumb{
+	background: #101010;
+}
+
+.slider:focus::-moz-range-thumb{
+	background: #101010;
+}
+
+.slider::-moz-range-progress{
+	background-color: #101010;
+	height: 15px;
+}
+
+.slider::-webkit-progress-bar{
+	background-color: #101010;
+	height: 15px;
+}
+
+#camadaVitoria
+{
+	text-align: center;
+	width: 100%;
+}
+
+#camadaFimdeJogo
+{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+#camadaDerrota{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+#camadaMenu
+{
+	width: 100%;	
+	text-align: center;
+}
+
+#camadaMenu:focus{
+	outline: none;
+}
+
+#imgMenu
+{
+	height: auto;
+	width: 65%;
+}
+
+#imgLogo
+{
+	background-image: url("../imgs/logoforca.png");
+	height: 139px;
+	width: 180px;
+	float: left;
+	margin-left: 5.75rem;
+	margin-top: 3rem;
+}
+
+#imgLogoInstrucoes
+{
+	background-image: url("../imgs/logoforca.png");
+	height: 139px;
+	width: 180px;
+	float: left;
+	margin-left: 6rem;
+	margin-top: 1.3rem;
+}
+
+#imgLogoVit
+{
+	background-image: url("../imgs/logovitoria.png");
+	height: 139px;
+	width: 180px;
+	float: left;
+	margin-top: 1.3rem;
+}
+
+#palavraCertaNaTela
+{
+	text-align: center;
+}
+
+#instrucoesText
+{
+	margin-top: 10rem;
+	margin-left: 5rem;
+	margin-right: 5rem;
+}
+
+#camadaJogo
+{
+	padding: 0px 2rem 0 2rem;
+}
+
+#camadaCreditos
+{
+	position: relative;
+	max-width: 600px;
+	/*height: 500px;
+	left: 10%;
+	top: 50%;
+	margin-left: -250px;	
+	margin-top: -250px;*/
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	/*align-items: center;*/
+	width: 100%;
+}
+
+/*Parte das coisas escritas na tela*/
+#palavraNaTela
+{
+	width: 100%;
+	text-align: center;
+	margin: 0;
+	
+}
+
+#dicaNaTela
+{
+	text-align: center;
+	padding: 0 2rem 0 2rem;
+}
+
+#contribuicaoNaTela
+{	
+	font-size: 15px;
+	
+}
+
+#pontosNaTela
+{
+	text-align: right;
+}
+
+/*Parte dos botoes no jogo*/
+#botoes
+{
+	min-width: 400px;
+	display: inline-block;
+}
+
+.botaoJogo
+{
+	display: inline;
+	width: 50px;
+	height: 50px;
+	margin: 1.5px;
+	float: left;
+	background-image: url(../imgs/botaoTeclado.png);
+	cursor: pointer;	
+}
+
+.botaoJogoPressionado
+{
+	display: inline;
+	width: 50px;
+	height: 50px;
+	margin: 1.5px;
+	float: left;
+	background-image: url(../imgs/botaoTecladoPressionado.png);
+	cursor: pointer;	
+}
+
+.botaoJogo:hover
+{
+	transform: scale(1.1);
+}
+
+.linha
+{
+	text-align: center;
+	
+}
+
+#linha2
+{
+	margin-left: 1rem;
+}
+
+#linha3
+{
+	margin-left: 2rem;
+}
+
+.letraTeclado
+{
+	margin-top: 10px;
+}
+
+
+
+/*Parte das fontes*/
+@font-face
+ {
+    font-family: "Fonte";
+    src: url(../fonte/Teclado.ttf) format("truetype");
+}
+
+h1
+{
+	font-family:"Fonte","Tahoma";
+	font-size: 50px;
+	text-align: center
+}
+
+h3
+{
+	font-family:"Fonte","Tahoma";
+	text-align: center
+}
+
+p
+{ 
+    font-family:"Fonte","Tahoma";
+	font-size: 30px;
+}
+
+/*Parte dos botoes fora do jogo*/
+.botao
+{
+	display: inline-block;
+	margin: 1rem;
+}
+
+#caixaBotoes
+{
+    display: inline-grid;
+    width: 100%;
+}
+
+#caixaBotoes > * {
+    width: 90%;
+    height: 75px;
+    background: #d7d7d7;
+    margin: .5rem auto;
+    border: 2px solid;
+    line-height: 75px;
+    font-size: 26px;
+    font-family: "Fonte","Tahoma";
+}
+
+#caixaBotoesOpcao{
+	margin-top: 4rem;
+}
+
+
+#btnJogar:hover, #btnJogar:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnJogar::before{
+    content: 'JOGAR';
+}
+
+
+
+#btnInstrucoes:hover, #btnInstrucoes:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnInstrucoes::before{
+    content: 'INSTRUÇÕES';
+}
+
+
+#btnCreditos:hover, #btnCreditos:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnCreditos::before{
+    content: 'CRÉDITOS';
+}
+
+#btnOpcoes
+{
+    width: 100%;
+    height: 75px;
+    background: black;
+}
+
+#btnOpcoes:hover, #btnOpcoes:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnAudio:hover, #btnAudio:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnAudio::before{
+    content: 'ÁUDIO';
+}
+
+#btnRanking
+{
+	width: 117px;
+	height: 65px;
+	background-image: url("../imgs/btnRanking.png")
+}
+
+#btnVoltar
+{
+	width: 115px;
+	height: 65px;
+	margin-top: 1rem;
+	margin-left: 1rem;
+	background-image:url("../imgs/btnVoltar.png");
+}
+
+#botoesFimDeJogo
+{
+	display: inline-block;
+}
+
+#btnReiniciar
+{
+	margin: 1rem;
+	width: 116px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/btnRecomecar.png");
+}
+
+#btnMenu
+{
+	margin: 1rem;
+	width: 116px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/btnVoltar.png");
+}
+
+#btnMenu:hover, #btnMenu:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnMenu2
+{
+	margin: 1rem;
+	width: 116px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/btnVoltar2.png");
+}
+
+#btnMenu2:hover, #btnMenu2:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnMenu3
+{
+	margin: 1rem;
+	width: 137px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/menu4.png");
+}
+
+#btnMenu3:hover, #btnMenu3:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+
+#btnProxPalavra
+{
+	margin: 1rem;
+	width: 137px;
+	height: 65px;
+	border: none;
+	background-image: url("../imgs/menu2.png");
+}
+
+#btnReiniciar:hover, #btnReiniciar:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+#btnProxPalavra:hover, #btnProxPalavra:focus
+{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+/*Parte do personagem do jogo*/
+.personagem
+{
+	width: 317px;
+	height: 312px;
+	background: url(../imgs/personagem.png);
+	background-position: 0px 0px;
+}
+
+#personagem
+{
+	float: left;
+	margin-left: -5rem;
+}
+
+#personagemAnt
+{
+	z-index: 10;
+	display: none;
+}
+
+#imgBonecoDerrota
+{
+	width: 25%;
+	height: auto;
+}
+
+#imgBonecoVitoria
+{
+	width: 40%;
+	height: auto;
+	margin: 2rem;
+}
+
+#palavraCerta
+{
+	position: absolute;
+	top: 55%;
+	left: 60%;
+	width: 50px;
+	height: 50px;
+	background: url(../imgs/palavraCerta.png);
+}
+
+.hidden-for-sighted-users
+{
+    position: absolute !important;
+	clip: rect(1px 1px 1px 1px);
+	clip: rect(1px, 1px, 1px, 1px);
+	padding: 0 !important;
+	border: 0 !important;
+	height: 1px !important;
+	width: 1px !important;
+	overflow: hidden;
+}
+
+#row
+{	
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center
+}
+
+#ColLeftJogo
+{
+	position: relative;
+	max-width: 300px;
+	float: left;
+	display: block;
+}
+
+#ColRightJogo
+{
+	position: relative;
+	max-width: 800px;
+	float: right;
+	display: block;
+}
+
+.clearfix::before, .clearfix::after{
+	display: table;
+	content: '';
+	clear: both;
+}
+
+.botaoOpcoes{
+	height: 65px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-top: 1rem;
+}
+
+.botaoOpcoes:focus{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+.textoAudio:focus{
+	text-decoration: underline;
+}
+
+/*#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
+    background-image: none;
+	width: 117px;
+	height: 65px;
+	margin: 0 auto;
+	margin-top: 1rem;
+	background-image: url("../imgs/btnContinuar.png");
+}*/
+
+#opcaoContinuar{
+	width: 137px;
+	background-image: url("../imgs/menu2.png");
+}
+
+#opcaoAudio{
+	width: 137px;
+	background-image: url("../imgs/menu3.png");
+}
+
+#opcaoInstrucoes{
+	width: 137px;
+	background-image: url("../imgs/menu1.png");
+}	
+
+#opcaoMenu{
+	width: 137px;
+	background-image: url("../imgs/menu4.png");
+}
+
+#audioVoltar{
+	height: 65px;
+	margin: 0 auto;
+	margin-top: 0px;
+	margin-top: 1rem;
+	width: 117px;
+	background-image: url("../imgs/btnVoltar2.png");
+}
+
+#audioVoltar:focus{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
+/*#opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}*/
+
+/*
+
+@media screen and (max-width: 1100px) {
+	#row{
+		flex-direction: column;
+	}
+  }
+
+@media screen and (max-width: 1336px){
+	#ColLeftJogo{
+		max-width: 275px
+	}
+	#ColRightJogo{
+		max-width: 550px
+	}
+}
+*/
+/*
+@media screen and (max-width: 1045px){
+	#ColLeftJogo{
+		max-width: 300px;
+		float: none;
+		margin: 0 auto;
+		display: block;
+	}
+	#ColRightJogo{
+		max-width: 550px;
+		float: none;
+		margin: 0 auto;
+		display: block;
+	}
+
+	#imgMenu{
+		width: 100%;
+	}
+
+	#dicaNaTela{
+		width: 100%;
+		text-align: center;
+	}
+
+	#imgBonecoDerrota{
+		width: 55%;
+	}
+
+	#imgBonecoVitoria{
+		width: 80%;
+	}
+}
+*/
