@@ -29,6 +29,27 @@ function iniciar()
 	jogo.linha = document.createElement("div");
 	jogo.linha.setAttribute("id", "row");
 	jogo.linha.setAttribute("style", "margin-top: 4rem")
+
+	var header = document.createElement("div");
+	header.setAttribute("id", "topJogo");
+
+	//Pontos -- NA TELA
+	jogo.pontosTela = document.createElement("p");
+	jogo.pontosTela.setAttribute("id", "pontosTela");
+	jogo.pontosTela.innerHTML = "Pontos: " + Math.round(jogo.pontos);
+	
+	
+	jogo.botaoOpcoes = document.createElement("div");
+	jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
+	jogo.botaoOpcoes.setAttribute("role" , "button");
+	jogo.botaoOpcoes.setAttribute("class", "botao");
+	jogo.botaoOpcoes.onclick = function() {
+		stopTudo();
+		criarCamadaOpcoes();
+	}
+	$("#camadaJogo").append(header);
+	header.append(jogo.botaoOpcoes);
+	header.append(jogo.pontosTela);
 	
 	var colleft = document.createElement("div");
 	colleft.setAttribute("id", "ColLeftJogo");
@@ -51,13 +72,7 @@ function iniciar()
 	jogo.falador.setAttribute("role", "log");
 	jogo.falador.setAttribute("style", "display: none;");
 	//$("#camadaJogo").append(jogo.falador);
-	colright.append(jogo.falador)
-
-	//Pontos -- NA TELA
-	$('<p>').attr('id', 'pontosNaTela')
-		.html('Pontos: ' + Math.round(jogo.pontos))
-		//.appendTo($('#camadaJogo'));
-		.appendTo($('#ColRightJogo'));
+	//colright.append(jogo.falador)
 
 	//Dica
 	jogo.dicaNaTela = document.createElement("div");
@@ -103,21 +118,6 @@ function iniciar()
 	colocarPersonagem(); // -- NA TELA
 	colocarTecladoNaTela(); // -- NA TELA
 
-
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	caixaBotoes.setAttribute("class", "clearfix");
-	$("#camadaJogo").append(caixaBotoes);
-	jogo.botaoOpcoes = document.createElement("div");
-	jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
-	jogo.botaoOpcoes.setAttribute("role" , "button");
-	jogo.botaoOpcoes.setAttribute("class", "botao");
-	jogo.botaoOpcoes.onclick = function() {
-		stopTudo();
-		criarCamadaOpcoes();
-	}
-	caixaBotoes.append(jogo.botaoOpcoes);
-	//$("#camadaJogo").append(jogo.botaoVoltar);
 	inicializaFocus();
 	update();
 }

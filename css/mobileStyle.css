@@ -261,8 +261,17 @@ body
 
 #camadaJogo
 {
-	padding: 0px 2rem 0 2rem;
+	/*padding: 0px 2rem 0 2rem;*/
 }
+
+#topJogo{
+	width: 100%;
+}
+
+#pontosTela{
+	float: right;
+}
+
 
 #camadaCreditos
 {
@@ -292,7 +301,6 @@ body
 #dicaNaTela
 {
 	text-align: center;
-	padding: 0 2rem 0 2rem;
 }
 
 #contribuicaoNaTela
@@ -316,11 +324,11 @@ body
 .botaoJogo
 {
 	display: inline;
-	width: 50px;
-	height: 50px;
+	width: 65px;
+	height: 100px;
 	margin: 1.5px;
 	float: left;
-	background-image: url(../imgs/botaoTeclado.png);
+	background: black;
 	cursor: pointer;	
 }
 
@@ -647,10 +655,8 @@ p
 
 #ColLeftJogo
 {
-	position: relative;
 	max-width: 300px;
-	float: left;
-	display: block;
+	margin: 0 auto;
 }
 
 #ColRightJogo

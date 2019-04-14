@@ -265,6 +265,16 @@ body
 	padding: 0px 2rem 0 2rem;
 }
 
+#topJogo{
+	width: 100%;
+}
+
+#pontosTela{
+	float: right;
+}
+
+
+
 #camadaCreditos
 {
 	position: relative;
