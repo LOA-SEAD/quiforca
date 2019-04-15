@@ -256,8 +256,6 @@ function criarCamadaCreditos()
 	$("#palco").append(el);
 
 	var para = $('<br>').appendTo(el);
-	var para = $('<br>').appendTo(el);
-	var para = $('<br>').appendTo(el);
 
 	var para = document.createElement("h1");
 	para.innerHTML = "Créditos";

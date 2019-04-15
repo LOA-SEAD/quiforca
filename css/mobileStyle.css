@@ -220,7 +220,7 @@ body
 #imgMenu
 {
 	height: auto;
-	width: 100%;
+	width: 95%;
 }
 
 #imgLogo
@@ -271,8 +271,6 @@ body
 
 #camadaCreditos
 {
-	position: relative;
-	max-width: 600px;
 	height: 100%;
 	text-align: center;
 	display: flex;
