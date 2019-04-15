@@ -273,16 +273,23 @@ body
 {
 	position: relative;
 	max-width: 600px;
-	/*height: 500px;
-	left: 10%;
-	top: 50%;
-	margin-left: -250px;	
-	margin-top: -250px;*/
+	height: 100%;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	/*align-items: center;*/
 	width: 100%;
+}
+
+#linhaNomesLeft{
+	width: 250px; 
+	float: left;  
+	text-align: right;
+}
+
+#linhaNomesRight{
+	width: 250px;
+	float: right; 
+	text-align: left;
 }
 
 /*Parte das coisas escritas na tela*/
@@ -744,36 +751,12 @@ p
 	}
 }
 */
-/*
-@media screen and (max-width: 1045px){
-	#ColLeftJogo{
-		max-width: 300px;
-		float: none;
-		margin: 0 auto;
-		display: block;
-	}
-	#ColRightJogo{
-		max-width: 550px;
-		float: none;
-		margin: 0 auto;
-		display: block;
-	}
 
-	#imgMenu{
-		width: 100%;
-	}
-
-	#dicaNaTela{
+/*Quebra para textos nos créditos*/
+@media screen and (max-width: 555px){
+	#linhaNomesLeft, #linhaNomesRight{
 		width: 100%;
 		text-align: center;
-	}
-
-	#imgBonecoDerrota{
-		width: 55%;
-	}
-
-	#imgBonecoVitoria{
-		width: 80%;
+		float: unset;
 	}
 }
-*/

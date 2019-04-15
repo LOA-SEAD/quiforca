@@ -271,7 +271,7 @@ function criarCamadaCreditos()
 	el.appendChild(coord);
 
 	var colLeft = document.createElement("div");
-	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
+	colLeft.setAttribute("id", "linhaNomesLeft");
 	coord.appendChild(colLeft);
 
 	var para = document.createElement("p");
@@ -279,7 +279,7 @@ function criarCamadaCreditos()
 	colLeft.appendChild(para);
 
 	var colRight = document.createElement("div");
-	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
+	colRight.setAttribute("id", "linhaNomesRight");
 	coord.appendChild(colRight);
 
 	var para = document.createElement("p");
@@ -294,7 +294,7 @@ function criarCamadaCreditos()
 	el.appendChild(equipe);
 
 	var colLeft = document.createElement("div");
-	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
+	colLeft.setAttribute("id", "linhaNomesLeft");
 	equipe.appendChild(colLeft);
 
 	var para = document.createElement("p");
@@ -305,7 +305,7 @@ function criarCamadaCreditos()
 	colLeft.appendChild(para);
 
 	var colRight = document.createElement("div");
-	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
+	colRight.setAttribute("id", "linhaNomesRight");
 	equipe.appendChild(colRight);
 
 	var para = document.createElement("p");
@@ -323,7 +323,7 @@ function criarCamadaCreditos()
 	el.appendChild(acessibilidade);
 
 	var colLeft = document.createElement("div");
-	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
+	colLeft.setAttribute("id", "linhaNomesLeft");
 	acessibilidade.appendChild(colLeft);
 
 	var para = document.createElement("p");
@@ -334,7 +334,7 @@ function criarCamadaCreditos()
 	colLeft.appendChild(para);
 
 	var colRight = document.createElement("div");
-	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
+	colRight.setAttribute("id", "linhaNomesRight");
 	acessibilidade.appendChild(colRight);
 
 	var para = document.createElement("p");
