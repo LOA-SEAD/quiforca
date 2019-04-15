@@ -228,14 +228,11 @@ body
 	display: none;
 }
 
-#imgLogoInstrucoes
-{
-	background-image: url("../imgs/logoforca.png");
-	height: 139px;
-	width: 180px;
-	float: left;
-	margin-left: 6rem;
-	margin-top: 1.3rem;
+#camadaInstrucoes{
+	text-align: center;
+	padding: 1em;
+	height: 100%;
+	width: 100%;
 }
 
 #imgLogoVit
@@ -250,13 +247,6 @@ body
 #palavraCertaNaTela
 {
 	text-align: center;
-}
-
-#instrucoesText
-{
-	margin-top: 10rem;
-	margin-left: 5rem;
-	margin-right: 5rem;
 }
 
 #camadaJogo
