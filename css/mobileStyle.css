@@ -268,6 +268,7 @@ body
 #pontosTela{
 	float: right;
 	margin: .5em;
+	font-size: calc(16px + 1vw);	
 }
 
 
@@ -299,6 +300,7 @@ body
 #dicaNaTela
 {
 	text-align: center;
+	font-size: calc(16px + 1vw);	
 }
 
 #contribuicaoNaTela
@@ -315,13 +317,16 @@ body
 /*Parte dos botoes no jogo*/
 #botoes
 {
+	width: 100%;
+	justify-content: center;
+	display: grid;
 }
 
 .botaoJogo
 {
 	display: inline;
-	width: 10vw;
-	height: 10vw;
+	width: 9vw;
+	height: 9vw;
 	margin: 1px;
 	float: left;
 	background-image: url(../imgs/botaoTeclado.png);
@@ -332,8 +337,8 @@ body
 .botaoJogoPressionado
 {
 	display: inline;
-	width: 10vw;
-	height: 10vw;
+	width: 9vw;
+	height: 9vw;
 	margin: 1px;
 	float: left;
 	background-image: url(../imgs/botaoTecladoPressionado.png);
@@ -364,7 +369,8 @@ body
 
 .letraTeclado
 {
-	margin: 0.3em;
+	margin: 0;
+	line-height: 9vw;
 }
 
 
@@ -392,7 +398,6 @@ h3
 p
 { 
     font-family:"Fonte","Tahoma";
-	font-size: calc(1em + 1vw);	
 }
 
 /*Parte dos botoes fora do jogo*/
@@ -594,7 +599,7 @@ p
 
 #personagem
 {
-	margin: 0 auto;
+	margin: 5px auto;
 }
 
 #personagemAnt
