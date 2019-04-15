@@ -11,8 +11,8 @@ html, body
 
 body
 {
-	background-image: url("../imgs/madeira.png");
-	background-repeat:repeat;
+	background-image: url("../imgs/novafolha.png");
+    background-size: cover;
 }
 
 #btn-mute
@@ -27,10 +27,9 @@ body
 
 #palco
 {
-    min-height: 100%;
+	min-height: 100%;
+	height: 100%;
     width: 100%;
-	background-image: url("../imgs/novafolha.png");
-    background-size: cover;
     display: flex;
 	align-items: center;
 	justify-content: center;
@@ -206,7 +205,11 @@ body
 
 #camadaMenu
 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	width: 100%;	
+	height: 100%;
 	text-align: center;
 }
 
@@ -217,7 +220,7 @@ body
 #imgMenu
 {
 	height: auto;
-	width: 80%;
+	width: 100%;
 }
 
 #imgLogo
@@ -258,7 +261,11 @@ body
 
 #camadaJogo
 {
-	/*padding: 0px 2rem 0 2rem;*/
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
 #topJogo{
