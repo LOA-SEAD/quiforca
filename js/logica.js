@@ -1,4 +1,4 @@
-var letraRepetida;
+﻿var letraRepetida;
 var audio;
 var audio2 = document.createElement("AUDIO");
 audio2.volume = 1;
@@ -28,7 +28,7 @@ function iniciar()
 
 	jogo.linha = document.createElement("div");
 	jogo.linha.setAttribute("id", "row");
-	jogo.linha.setAttribute("style", "margin-top: 4rem")
+	//jogo.linha.setAttribute("style", "margin-top: 4rem")
 
 	var header = document.createElement("div");
 	header.setAttribute("id", "topJogo");
