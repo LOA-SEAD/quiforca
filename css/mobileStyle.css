@@ -428,7 +428,8 @@ p
     background: #d7d7d7;
     margin: .05em auto;
     border: 2px solid;
-    line-height: 13vw;
+	line-height: 13vw;
+	font-size: calc(1.2em + 1vw);	
 }
 
 #caixaBotoesOpcao{
