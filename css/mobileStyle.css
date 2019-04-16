@@ -423,10 +423,10 @@ p
 }
 
 #caixaBotoes > * {
-    width: 90vw;
+    width: 95vw;
     height: 13vw;
     background: #d7d7d7;
-    margin: .2em auto;
+    margin: .05em auto;
     border: 2px solid;
     line-height: 13vw;
 }
@@ -434,42 +434,18 @@ p
 #caixaBotoesOpcao{
 	margin-top: 4rem;
 }
-
-
-#btnJogar:hover, #btnJogar:focus
-{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
-}
-
 #btnJogar::before{
     content: 'JOGAR';
 }
-
-
-
-#btnInstrucoes:hover, #btnInstrucoes:focus
-{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
-}
-
 #btnInstrucoes::before{
     content: 'INSTRUÇÕES';
 }
-
-
-#btnCreditos:hover, #btnCreditos:focus
-{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
-}
-
 #btnCreditos::before{
     content: 'CRÉDITOS';
+}
+
+#btnAudio::before{
+    content: 'ÁUDIO';
 }
 
 #btnOpcoes
@@ -484,17 +460,6 @@ p
 	transform: scale(1.1);
 	cursor: pointer;
 	outline: none;
-}
-
-#btnAudio:hover, #btnAudio:focus
-{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
-}
-
-#btnAudio::before{
-    content: 'ÁUDIO';
 }
 
 #btnRanking
