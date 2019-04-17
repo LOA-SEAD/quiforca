@@ -326,7 +326,6 @@ function verificarErro(_letra)
 		setTimeout(function(){
 			audio2.currentTime = 0
 			audio2.play();
-			console.log("a")
 		}, 300)
 	}
 	audio2.onended = function(){
