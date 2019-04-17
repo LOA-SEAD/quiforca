@@ -1792,3 +1792,99 @@ jogo.palco = new Palco();
 jogo.palco.criar();
 iniciarNovoJogo();
 criarCamadaMenu();
+
+function criarCamadaAtalhos()
+{	
+
+	var caixaAtalhos = document.createElement("div");
+	caixaAtalhos.setAttribute("id", "caixaAtalhos");
+	el.appendChild(caixaAtalhos);
+
+	var botaoAtalho1 = document.createElement("div");
+	botaoAtalho1.setAttribute("id", "btnInstrucoes");
+	botaoAtalho1.setAttribute("tabIndex" , "-1");
+	botaoAtalho1.setAttribute("class" , "botao");
+	caixaAtalhos.appendChild(botaoAtalho1);
+
+	botaoAtalho1.onclick = function()
+	{
+		ativarbotaoAtalho1();
+	}
+
+	var botaoAtalho2 = document.createElement("div");
+	botaoAtalho2.setAttribute("id", "btnInstrucoes");
+	botaoAtalho2.setAttribute("tabIndex" , "-1");
+	botaoAtalho2.setAttribute("class" , "botao");
+	caixaAtalhos.appendChild(botaoAtalho2);
+
+	botaoAtalho2.onclick = function()
+	{
+		ativarbotaoAtalho2();
+	}
+
+	var botaoAtalho3 = document.createElement("div");
+	botaoAtalho3.setAttribute("id", "btnInstrucoes");
+	botaoAtalho3.setAttribute("tabIndex" , "-1");
+	botaoAtalho3.setAttribute("class" , "botao");
+	caixaAtalhos.appendChild(botaoAtalho3);
+
+	botaoAtalho3.onclick = function()
+	{
+		ativarbotaoAtalho3();
+	}
+
+	var botaoAtalho4 = document.createElement("div");
+	botaoAtalho4.setAttribute("id", "btnInstrucoes");
+	botaoAtalho4.setAttribute("tabIndex" , "-1");
+	botaoAtalho4.setAttribute("class" , "botao");
+	caixaAtalhos.appendChild(botaoAtalho4);
+
+	botaoAtalho4.onclick = function()
+	{
+		ativarbotaoAtalho4();
+	}
+
+	var botaoAtalho5 = document.createElement("div");
+	botaoAtalho5.setAttribute("id", "btnInstrucoes");
+	botaoAtalho5.setAttribute("tabIndex" , "-1");
+	botaoAtalho5.setAttribute("class" , "botao");
+	caixaAtalhos.appendChild(botaoAtalho5);
+
+	botaoAtalho5.onclick = function()
+	{
+		ativarbotaoAtalho5();
+	}
+
+	/*paraFala()
+	origemAudio = "menu"
+	origemInstrucoes = "menu";
+	pulouMenu = false;
+	estado = "menu";
+	opcao = 0;
+
+
+	if(origemDerrota){
+		background.currentTime = 0
+	}
+	origemDerrota = 0
+	background.play()
+
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaMenu");
+	el.setAttribute("tabIndex", "0");
+	$("#palco").append(el);
+
+	inicializaFalaInicial();
+	inicializaFocus();
+
+	$("#camadaMenu").keydown(function (e){
+		selecionaOpcao(e);	
+	})
+
+	origemMenu = 1*/
+}
+
+function destruirCamadaAtalhos()
+{
+	$("#camadaAtalhos").remove();
+}
