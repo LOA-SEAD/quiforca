@@ -1691,7 +1691,7 @@ function criarCamadaOpcoes(){
 	divOpcoes.setAttribute("tabIndex", 0)
 	el.appendChild(divOpcoes);
 
-	var opcoesTxt = document.createElement("p");
+	var opcoesTxt = document.createElement("h1");
 	opcoesTxt.setAttribute("id", "opcoesTxt");
 	opcoesTxt.innerHTML = "Opções";
 	divOpcoes.appendChild(opcoesTxt);

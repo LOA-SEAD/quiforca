@@ -40,47 +40,8 @@ body
 	height: 100%;
 	text-align: center;
 	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	z-index: 0;
-}
-
-#divOpcoes{
-	width: 430px;
-	height: 530px;
-	background: #c2ecfc;
-	background: -moz-linear-gradient(top, #c2ecfc 0%, #92dcf9 100%);
-	background: -webkit-linear-gradient(top, #c2ecfc 0%,#92dcf9 100%);
-	background: linear-gradient(to bottom, #c2ecfc 0%,#92dcf9 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );
-	position: relative;
-	-webkit-border-bottom-left-radius: 3rem 15rem;
-	-webkit-border-bottom-right-radius: 7rem 3rem;
-}
-
-#divOpcoes::before, #divOpcoes::after{
-	content: '';
-    z-index: -1;
-    position: absolute;
-    bottom: 23px;
-    left: 26px;
-    width: 30%;
-    top: 85%;
-    max-width: 300px;
-    background: #777;
-    box-shadow: 0px 27px 30px #777;
-    transform: rotate(-9deg);
-}
-
-#divOpcoes::after{
-	-webkit-transform: rotate(8deg);
-	-moz-transform: rotate(8deg);
-	-o-transform: rotate(8deg);
-	-ms-transform: rotate(8deg);
-	transform: rotate(-5deg);
-	right: 10px;
-	left: auto;
+	background: url("../imgs/novafolha.png");
+	background-size: cover;
 }
 
 #camadaAudio{
@@ -423,7 +384,7 @@ p
     width: 95vw;
     height: 20vw;
     background: #d7d7d7;
-    margin: .05em auto;
+    margin: .1em auto;
     border: 2px solid;
 	line-height: 20vw;
 	font-size: calc(1.5em + 1vw);
@@ -432,6 +393,29 @@ p
 #caixaBotoesOpcao{
 	margin-top: 4rem;
 }
+
+#caixaBotoesOpcao > *{
+	width: 95vw;
+	height: 20vw;
+	background: #d7d7d7;
+    margin: .05em auto;
+    border: 2px solid;
+	line-height: 20vw;
+	font-size: calc(1.5em + 1vw);
+}
+
+#opcaoContinuar::before{
+	content: 'Continuar';
+}
+
+#opcaoAudio::before{
+	content: 'Áudio';
+}
+
+#opcaoMenu::before{
+	content: 'Menu';
+}
+
 #btnJogar::before{
     content: 'Jogar';
 }
@@ -669,16 +653,11 @@ p
 }
 
 .botaoOpcoes{
-	height: 65px;
-	margin: 0 auto;
-	margin-top: 0px;
-	margin-top: 1rem;
+	
 }
 
 .botaoOpcoes:focus{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
+
 }
 
 .textoAudio:focus{
@@ -694,24 +673,8 @@ p
 	background-image: url("../imgs/btnContinuar.png");
 }*/
 
-#opcaoContinuar{
-	width: 137px;
-	background-image: url("../imgs/menu2.png");
-}
-
-#opcaoAudio{
-	width: 137px;
-	background-image: url("../imgs/menu3.png");
-}
-
 #opcaoInstrucoes{
-	width: 137px;
-	background-image: url("../imgs/menu1.png");
-}	
-
-#opcaoMenu{
-	width: 137px;
-	background-image: url("../imgs/menu4.png");
+	display: none;
 }
 
 #audioVoltar{
