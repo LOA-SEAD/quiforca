@@ -185,7 +185,10 @@ body
 }
 
 #camadaAtalhos{
+	width: 100%;
+	height: 100%;
 	text-align: center;
+	position: absolute;
 }
 
 #camadaAtalhos:focus{
@@ -303,8 +306,8 @@ body
 .botaoJogo
 {
 	display: inline;
-	width: 9vw;
-	height: 9vw;
+	width: 9.5vw;
+	height: 9.5vw;
 	margin: 1px;
 	float: left;
 	background-image: url(../imgs/botaoTeclado.png);
@@ -324,10 +327,10 @@ body
 	cursor: pointer;	
 }
 
-.botaoJogo:hover
+/*.botaoJogo:hover
 {
 	transform: scale(1.1);
-}
+}*/
 
 .linha
 {
@@ -337,12 +340,14 @@ body
 
 #linha2
 {
-	margin-left: 1rem;
+	margin-left: 0.8rem;
+	margin-top: 0.35rem;
 }
 
 #linha3
 {
-	margin-left: 2rem;
+	margin-left: 2.2rem;
+	margin-top: 0.35rem;
 }
 
 .letraTeclado
@@ -389,7 +394,7 @@ p
 }
 
 #caixaBotoes > * {
-    width: 95vw;
+    width: 99vw;
     height: 20vw;
     background: #d7d7d7;
     margin: .1em auto;
@@ -403,7 +408,7 @@ p
 }
 
 #caixaBotoesOpcao > *{
-	width: 95vw;
+	width: 99vw;
 	height: 20vw;
 	background: #d7d7d7;
     margin: .05em auto;
@@ -442,11 +447,15 @@ p
 	content: 'VOLTAR';
 }
 
+#caixaBotoesAtalhos{
+	margin-top: 4rem;
+}
+
 #caixaBotoesAtalhos > * {
-    width: 95vw;
+    width: 99vw;
     height: 20vw;
     background: #d7d7d7;
-    margin: .05em auto;
+	margin: .05em auto;
     border: 2px solid;
 	line-height: 20vw;
 	font-size: calc(5.2vw);
@@ -540,8 +549,14 @@ p
 	width: 45%;
 	height: 15vw;
 	background: #d7d7d7;
+	line-height: 15vw;
+	text-align: center;
 	border: 2px solid;
 	float: left;
+}
+
+#btnMenu::before{
+	content: 'OPÇÕES';
 }
 
 /*#btnMenu:hover, #btnMenu:focus
@@ -558,7 +573,13 @@ p
 	height: 15vw;
 	background: #d7d7d7;
 	border: 2px solid;
+	line-height: 15vw;
+	text-align: center;
 	float: right;
+}
+
+#btnAtalhos::before{
+	content: 'ATALHOS';
 }
 
 #btnMenu2
