@@ -513,25 +513,29 @@ p
 
 #btnMenu
 {
-	margin: .5em;
-	width: 50%;
+	margin: .1em;
+	width: 45%;
 	height: 15vw;
-	background: black;
+	background: #d7d7d7;
+	border: 2px solid;
+	float: left;
 }
 
-#btnMenu:hover, #btnMenu:focus
+/*#btnMenu:hover, #btnMenu:focus
 {
 	transform: scale(1.1);
 	cursor: pointer;
 	outline: none;
-}
+}*/
 
 #btnAtalhos
 {
-	margin: .5em;
-	width: 15vw;
+	margin: .1em;
+	width: 45%;
 	height: 15vw;
-	background: black;
+	background: #d7d7d7;
+	border: 2px solid;
+	float: right;
 }
 
 #btnMenu2
