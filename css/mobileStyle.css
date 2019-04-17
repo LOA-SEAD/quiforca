@@ -308,7 +308,7 @@ body
 #dicaNaTela
 {
 	text-align: center;
-	font-size: calc(16px + 1vw);	
+	font-size: calc(1em + 1vw);	
 }
 
 #contribuicaoNaTela
@@ -649,10 +649,17 @@ p
 #ColLeftJogo
 {
 	width: 100%;
+	display: none;
 }
 
 #ColRightJogo
 {
+	width: 100%;
+	height: 65vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .clearfix::before, .clearfix::after{
