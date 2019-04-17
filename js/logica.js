@@ -49,6 +49,18 @@ function iniciar()
 	}
 	$("#camadaJogo").append(header);
 	header.append(jogo.botaoOpcoes);
+
+	jogo.botaoAtalhos = document.createElement("div");
+	jogo.botaoAtalhos.setAttribute("id", "btnMenu");
+	jogo.botaoAtalhos.setAttribute("role", "button");
+	jogo.botaoAtalhos.setAttribute("class", "botao");
+	jogo.botaoAtalhos.onclick = function(){
+
+	}
+	$("camadaJogo").append(header);
+	header.append(jogo.botaoAtalhos);
+
+
 	header.append(jogo.pontosTela);
 	
 	var colleft = document.createElement("div");

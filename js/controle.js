@@ -346,9 +346,8 @@ function criarCamadaCreditos()
 	caixaBotoes.setAttribute("id", "caixaBotoes");
 	el.appendChild(caixaBotoes);
 
-
 	var botaoMenu = document.createElement("div");
-	botaoMenu.setAttribute("id" , "btnMenu2");
+	botaoMenu.setAttribute("id" , "btnVoltar2");
 	botaoMenu.setAttribute("tabIndex" , "-1");
 	botaoMenu.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoMenu);
@@ -1038,7 +1037,7 @@ function criarCamadaInstrucoes()
 	el.appendChild(caixaBotoes);
 
 	var botaoMenu = document.createElement("div");
-	botaoMenu.setAttribute("id" , "btnMenu2");
+	botaoMenu.setAttribute("id" , "btnVoltar2");
 	botaoMenu.setAttribute("tabIndex" , "-1");
 	botaoMenu.setAttribute("class" , "botao");
 	caixaBotoes.append(botaoMenu);
@@ -1787,7 +1786,7 @@ function ativarOpcaoMenu(){
 }
 
 
-
+window.scrollTo(0,1);
 jogo.palco = new Palco();
 jogo.palco.criar();
 iniciarNovoJogo();

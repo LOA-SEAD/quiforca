@@ -449,6 +449,10 @@ p
     content: 'ÁUDIO';
 }
 
+#btnVoltar2::before{
+	content: 'VOLTAR';
+}
+
 #btnOpcoes
 {
     width: 100%;
@@ -513,7 +517,7 @@ p
 #btnMenu
 {
 	margin: .5em;
-	width: 15vw;
+	width: 50%;
 	height: 15vw;
 	background: black;
 }
