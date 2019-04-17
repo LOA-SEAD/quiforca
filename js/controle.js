@@ -1483,6 +1483,18 @@ function criarCamadaAtalhos()
 		$("#camadaJogo").toggle();
 		setTimeout(update, 50);
 	}
+
+	voltar = document.createElement("div");
+	voltar.setAttribute("id", "btnVoltar2");
+	voltar.setAttribute("tabInder", "-1");
+	voltar.setAttribute("class", "botao");
+	caixaBotoes.appendChild(voltar);
+	voltar.onclick = function(){
+		estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);
+	}
 }
 
 function ouvirAtalho1(){
