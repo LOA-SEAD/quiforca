@@ -223,6 +223,14 @@ body
 	outline: none;
 }
 
+#camadaAtalhos{
+	text-align: center;
+}
+
+#camadaAtalhos:focus{
+	outline: none;
+}
+
 #imgMenu
 {
 	height: auto;
