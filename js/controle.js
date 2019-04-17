@@ -1405,6 +1405,10 @@ function paraDeFalar(){
 
 function criarCamadaAtalhos()
 {	
+	estado = "atalho";
+	$("#camadaJogo").toggle();
+	setTimeout(update, 50);
+
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaAtalhos");
 	el.setAttribute("tabIndex", 0);
@@ -1412,20 +1416,205 @@ function criarCamadaAtalhos()
 	el.focus();
 
 	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes")
+	caixaBotoes.setAttribute("id", "caixaBotoesAtalhos")
 	el.appendChild(caixaBotoes);
 
 	atalho1 = document.createElement("div");
-	atalho1.setAttribute("id", "btnJogar");
+	atalho1.setAttribute("id", "btnAtalho1");
 	atalho1.setAttribute("tabIndex", "-1");
 	atalho1.setAttribute("class", "botao");
 	caixaBotoes.appendChild(atalho1);
+	atalho1.onclick = function(){
+		ouvirAtalho1();
+		estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);
+	}
 
-	var botaoJogar = document.createElement("div");
-	botaoJogar.setAttribute("id" , "btnJogar");
-	botaoJogar.setAttribute("tabIndex" , "-1");
-	botaoJogar.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoJogar);
+	atalho2 = document.createElement("div");
+	atalho2.setAttribute("id", "btnAtalho2");
+	atalho2.setAttribute("tabIndex", "-1");
+	atalho2.setAttribute("class", "botao");
+	caixaBotoes.appendChild(atalho2);
+	atalho2.onclick = function(){
+		ouvirAtalho2();
+		estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);
+	}
+
+	atalho3 = document.createElement("div");
+	atalho3.setAttribute("id", "btnAtalho3");
+	atalho3.setAttribute("tabIndex", "-1");
+	atalho3.setAttribute("class", "botao");
+	caixaBotoes.appendChild(atalho3);
+	atalho3.onclick = function(){
+		ouvirAtalho3();
+		estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);
+	}
+
+	atalho4 = document.createElement("div");
+	atalho4.setAttribute("id", "btnAtalho4");
+	atalho4.setAttribute("tabIndex", "-1");
+	atalho4.setAttribute("class", "botao");
+	caixaBotoes.appendChild(atalho4);
+	atalho4.onclick = function(){
+		ouvirAtalho4();
+		estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);
+	}
+
+	atalho5 = document.createElement("div");
+	atalho5.setAttribute("id", "btnAtalho5");
+	atalho5.setAttribute("tabIndex", "-1");
+	atalho5.setAttribute("class", "botao");
+	caixaBotoes.appendChild(atalho5);
+	atalho5.onclick = function(){
+		ouvirAtalho5();
+		estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);
+	}
+
+	voltar = document.createElement("div");
+	voltar.setAttribute("id", "btnVoltar2");
+	voltar.setAttribute("tabInder", "-1");
+	voltar.setAttribute("class", "botao");
+	caixaBotoes.appendChild(voltar);
+	voltar.onclick = function(){
+		estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);
+	}
+}
+
+function ouvirAtalho1(){
+	stopTudo();
+	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
+	realizarLeitura(texto);
+}
+
+function ouvirAtalho2(){
+	var counter;
+	audioAtalho2.setAttribute("src", "audio/letra1.mp3");
+	//stopTudo();
+	//paraFala();
+	counter = 0;
+	delayAtalho2 = setInterval(palavra, 700);
+	function palavra()
+	{
+		if(counter >= tamanhoPalavraAtual())
+		{
+			clearInterval(delayAtalho2);
+		}
+		else if(palavraAtual(counter) == 0)
+		{
+			realizarLeituraLetra("espaco");
+			counter++;
+		}
+		else if(palavraAtual(counter) == 1)
+		{
+			audioAtalho2.currentTime = 0;
+			audioAtalho2.play();
+			audioAtalho2.volume = volumeSinth;
+			counter++;
+		}
+		else
+		{
+			realizarLeituraLetra(palavraAtual(counter));
+			counter++;
+		}
+	}
+}
+
+function ouvirAtalho3(){
+	stopTudo();
+	paraFala();
+	/*nomeAtalho3 = "audio/vidas" + numeroDeChances() + ".mp3";
+	audioAtalho3.setAttribute("src", nomeAtalho3);
+	audioAtalho3.currentTime = 0;
+	audioAtalho3.play();*/
+	switch(numeroDeChances())
+	{
+		case 1:
+			realizarFala(baseURL + "1vida.mp3");
+			break;
+		case 2:
+			realizarFala(baseURL + "2vidas.mp3");
+			break;
+		case 3:
+			realizarFala(baseURL + "3vidas.mp3");
+			break;
+		case 4:
+			realizarFala(baseURL + "4vidas.mp3");
+			break;
+		case 5:
+			realizarFala(baseURL + "5vidas.mp3");
+			break;
+	}
+}
+
+function ouvirAtalho4(){
+	audioAtalho4.setAttribute("src", "audio/atalho4.mp3");
+	var nomeAtalho4;
+	var somLetra4 = [];
+	stopTudo()
+	clearTimeout(delayAtalho4);
+	clearInterval(delayLetraAtalho4);
+
+	counter = 0;
+	realizarFala(baseURL + "letrasEscolhidas.mp3");
+	//audioAtalho4.currentTime = 0;
+	//audioAtalho4.play();
+	for(var i = 1; i < tamanhoLetrasTentadas(); i++)
+	{
+		if(retornaLetrasTentadas(i))
+		{
+			nomeAtalho4 = baseURL + retornaLetrasTentadas(i) + ".mp3";
+			somLetra4.push(track(nomeAtalho4));
+		}
+	}
+	counter = 0;
+	delayAtalho4 = setTimeout(function(){
+		delayLetraAtalho4 = setInterval(letras, 600);
+		function letras()
+		{
+			if(counter > tamanhoLetrasTentadas())
+			{
+				clearInterval(delayAtalho4);
+			}
+			else
+			{
+				somLetra4[counter].currentTime = 0;
+				somLetra4[counter].play();
+				counter++;
+			}
+		}
+	}, 2000);
+}
+
+function ouvirAtalho5(){
+	audioAtalho5.setAttribute("src", "audio/pontos.mp3");
+	stopTudo();
+	paraFala();
+	if(pontuacao() == 1)
+	{
+		realizarLeitura("Um ponto");
+	}
+	else
+	{
+		realizarLeitura(pontuacao() + " pontos.");
+		//window.speechSynthesis.
+	}
 }
 
 function destruirCamadaAtalhos()

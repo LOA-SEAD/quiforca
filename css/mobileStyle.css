@@ -184,6 +184,14 @@ body
 	outline: none;
 }
 
+#camadaAtalhos{
+	text-align: center;
+}
+
+#camadaAtalhos:focus{
+	outline: none;
+}
+
 #imgMenu
 {
 	height: auto;
@@ -432,6 +440,37 @@ p
 
 #btnVoltar2::before{
 	content: 'VOLTAR';
+}
+
+#caixaBotoesAtalhos > * {
+    width: 95vw;
+    height: 20vw;
+    background: #d7d7d7;
+    margin: .05em auto;
+    border: 2px solid;
+	line-height: 20vw;
+	font-size: calc(5.2vw);
+}
+
+
+#btnAtalho1::before{
+	content: 'OUÇA A DICA';
+}
+
+#btnAtalho2::before{
+	content: 'ESTADO ATUAL DA PALAVRA';
+}
+
+#btnAtalho3::before{
+	content: 'NÚMERO DE VIDAS';
+}
+
+#btnAtalho4::before{
+	content: 'LETRAS QUE JÁ FORAM ESCOLHIDAS';
+}
+
+#btnAtalho5::before{
+	content: 'PONTUAÇÃO';
 }
 
 #btnOpcoes
