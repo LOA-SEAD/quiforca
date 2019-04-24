@@ -48,13 +48,13 @@ function criarCamadaMenu()
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
-	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
 
 
 	var imgMenu = document.createElement("img");
 	imgMenu.setAttribute("id", "imgMenu");
 	imgMenu.setAttribute("src", "imgs/desenhotelainicial.png")
+	imgMenu.setAttribute("alt", "Imagem forca");
 	el.appendChild(imgMenu);
 
 
@@ -65,7 +65,6 @@ function criarCamadaMenu()
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
 	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
-	botaoInstrucoes.setAttribute("tabIndex" , "-1");
 	botaoInstrucoes.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoInstrucoes);
 	
@@ -82,7 +81,6 @@ function criarCamadaMenu()
 
 	var botaoJogar = document.createElement("div");
 	botaoJogar.setAttribute("id" , "btnJogar");
-	botaoJogar.setAttribute("tabIndex" , "-1");
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
@@ -101,7 +99,6 @@ function criarCamadaMenu()
 	//Cria botao de créditos na caixa de botoes
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
-	botaoCreditos.setAttribute("tabIndex" , "-1");
 	botaoCreditos.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoCreditos);
 
@@ -120,7 +117,6 @@ function criarCamadaMenu()
 	//Cria botao de opções na caixa de botoes
 	var botaoAudio = document.createElement("div");
 	botaoAudio.setAttribute("id" , "btnAudio");
-	botaoAudio.setAttribute("tabIndex" , "-1");
 	botaoAudio.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoAudio);
 
@@ -136,8 +132,8 @@ function criarCamadaMenu()
 		clearTimeout(delayInicializaFocus);
 	}
 	
-	inicializaFalaInicial();
-	inicializaFocus();
+	//inicializaFalaInicial(); (ajustar dps)
+	//inicializaFocus(); (creio q n existira nessa versão)
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
@@ -972,25 +968,11 @@ function criarCamadaInstrucoes()
 {
 	paraFala();
 
-	if(origemInstrucoes == "menu")
-	{
-		realizarFala(baseURL + "lerinstrucoes.mp3");
-	}
-	else if(origemInstrucoes == "opcoes")
-	{
-		realizarFala(baseURL + "lerinstrucoesacessibilidade.mp3");
-	}
-
 	estado = "instrucoes"
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaInstrucoes");
-	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
-
-	var imgLogo = document.createElement("div");
-	imgLogo.setAttribute("id", "imgLogoInstrucoes");
-	el.appendChild(imgLogo);
 
 	//criação camada de instruções
 	//$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
@@ -999,35 +981,12 @@ function criarCamadaInstrucoes()
 	jogo.instrucoes = document.createElement("p")
 	jogo.instrucoes.setAttribute("id", "instrucoesText")
 	jogo.instrucoes.innerHTML = "<h1>Instruções</h1>";
-	if(origemInstrucoes == "menu")
-	{
 	jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
 	 "Cada letra que você acerta é colocada na palavra. <br>"+
 	 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
 	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
 	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>";
-	}
-	else
-	{
-		jogo.instrucoes.innerHTML += 
-		"<h3>Atalhos sonoros durante o jogo:</h3><br>"+
-	 	"Para usá-los, pressione os números no seu teclado alfanumérico.<br>1 - Ouça a dica<br>"+
-		"2 - Ouça o que você descobriu da palavra até agora<br>"+
-		"3 - Saiba quantas vidas você ainda tem<br>"+
-		"4 - Relembre as letras que você já escolheu<br>"+
-		"5 - Saiba sua pontuação atual<br>";
-	}
-	
-	if(origemInstrucoes == "menu")
-	{
-		//jogo.instrucoes.innerHTML += 
-		//"Esc - Pausar o jogo e acessar as configurações<br><br>";
-	}
-	else if(origemInstrucoes == "opcoes")
-	{
-		jogo.instrucoes.innerHTML += "Esc - Voltar para o jogo<br>";
-	}
-	 
+
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
@@ -1038,7 +997,6 @@ function criarCamadaInstrucoes()
 
 	var botaoMenu = document.createElement("div");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.setAttribute("tabIndex" , "-1");
 	botaoMenu.setAttribute("class" , "botao");
 	caixaBotoes.append(botaoMenu);
 
