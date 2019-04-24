@@ -56,6 +56,18 @@ body
 	background-size: cover;
 }
 
+#camadaControleAudio{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 2;
+	background-size: cover;
+}
+
 #divAudio{
 	/*width: 430px;
 	height: 530px;*/
@@ -66,6 +78,15 @@ body
 	background: -webkit-linear-gradient(top, #c2ecfc 0%,#92dcf9 100%);
 	background: linear-gradient(to bottom, #c2ecfc 0%,#92dcf9 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );*/
+	background: url("../imgs/novafolha.png");
+	position: relative;
+	-webkit-border-bottom-left-radius: 3rem 15rem;
+	-webkit-border-bottom-right-radius: 7rem 3rem;
+}
+
+#divControle{
+	width: 100%;
+	height: 100%;
 	background: url("../imgs/novafolha.png");
 	position: relative;
 	-webkit-border-bottom-left-radius: 3rem 15rem;
@@ -113,19 +134,19 @@ body
 }
 
 .slider::-webkit-slider-thumb {
-	border-width: 5px;
+	border-width: 20px;
 	border-color: #101010;
-	width: 10px;
-	height: 25px;
+	width: 40px;
+	height: 40px;
 	background: #fff;
 	cursor: pointer;
 }
   
 .slider::-moz-range-thumb {
-	border-width: 5px;
+	border-width: 15px;
 	border-color: #101010;
-	width: 10px;
-	height: 25px;
+	width: 40px;
+	height: 40px;
 	background: #fff;
 	cursor: pointer;
 }
@@ -140,7 +161,7 @@ body
 
 .slider::-moz-range-progress{
 	background-color: #101010;
-	height: 15px;
+	height: 40px;
 }
 
 .slider::-webkit-progress-bar{
@@ -752,9 +773,9 @@ p
 
 }
 
-.textoAudio:focus{
+/*.textoAudio:focus{
 	text-decoration: underline;
-}
+}*/
 
 /*#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
     background-image: none;

@@ -1589,6 +1589,7 @@ function destruirCamadaAtalhos()
 var transicaoBarra = false;
 var audioConfiguracoes = document.createElement("AUDIO");
 audioConfiguracoes.volume = 1;
+var controle = 0;
 var volumeSinth = 1;
 
 function criarCamadaAudio()
@@ -1634,10 +1635,12 @@ function criarCamadaAudio()
 	//MusicaFundo.innerHTML = "Música de fundo";
 	caixaBarras.appendChild(MusicaFundo);
 	MusicaFundo.onclick = function(){
+		controle = 1;
+		criarCamadaControleAudio();
 		opcao = 0;
 	}
 
-	var sliderMusicaFundo = document.createElement("input");
+	/*var sliderMusicaFundo = document.createElement("input");
 	sliderMusicaFundo.setAttribute("type", "range");
 	sliderMusicaFundo.setAttribute("min", "0");
 	sliderMusicaFundo.setAttribute("max", "10");
@@ -1650,7 +1653,7 @@ function criarCamadaAudio()
 	sliderMusicaFundo.oninput = function(){
 		tocaAudio();
 		background.volume = this.value/10;
-	}
+	}*/
 
 	var Efeitos = document.createElement("div");
 	Efeitos.setAttribute("id", "Efeitos");
@@ -1659,10 +1662,12 @@ function criarCamadaAudio()
 	//Efeitos.innerHTML = "Efeitos sonoros";
 	caixaBarras.appendChild(Efeitos);
 	Efeitos.onclick = function(){
+		controle = 2;
+		criarCamadaControleAudio();
 		opcao = 1;
 	}
 
-	var sliderEfeitos = document.createElement("input");
+	/*var sliderEfeitos = document.createElement("input");
 	sliderEfeitos.setAttribute("type", "range");
 	sliderEfeitos.setAttribute("min", "0");
 	sliderEfeitos.setAttribute("max", "10");
@@ -1678,7 +1683,7 @@ function criarCamadaAudio()
 		audio3.volume = this.value/10;
 		audioTeclas.volume = this.value/10;
 		tocaAudio();
-	}
+	}*/
 
 
 	var LeituraTela = document.createElement("div");
@@ -1688,10 +1693,12 @@ function criarCamadaAudio()
 	//LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
 	caixaBarras.appendChild(LeituraTela);
 	LeituraTela.onclick = function(){
+		controle = 3;
+		criarCamadaControleAudio();
 		opcao = 2;
 	}
 
-	var sliderLeituraTela = document.createElement("input");
+	/*var sliderLeituraTela = document.createElement("input");
 	sliderLeituraTela.setAttribute("type", "range");
 	sliderLeituraTela.setAttribute("min", "0");
 	sliderLeituraTela.setAttribute("max", "10");
@@ -1710,10 +1717,10 @@ function criarCamadaAudio()
 		volumeSinth = this.value/10;
 		audioEnter.volume = this.value/10;
 		audioErro.volume = this.value/10;
-	}
+	}*/
 
-	var quebraLinha = document.createElement("br");
-	divAudio.appendChild(quebraLinha);
+	//var quebraLinha = document.createElement("br");
+	//divAudio.appendChild(quebraLinha);
 
 	//Cria div caixa de botoes
 	var caixaBotoes = document.createElement("div");
@@ -1760,20 +1767,95 @@ function criarCamadaAudio()
 	})
 }
 
-function controleMusicaFundo(){
-
-}
-
-function controleEfeitos(){
-
-}
-
-function controleLeituraTela(){
-	
-}
-
 function destruirCamadaAudio(){
 	$("#camadaAudio").remove();
+}
+
+function criarCamadaControleAudio(){
+	estado = "controle";
+	
+	var volumeInicial = 10;
+
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaControleAudio");
+	el.setAttribute("tabIndex", 0);
+	$("#palco").append(el);
+	el.focus();
+
+	var divControle = document.createElement("div");
+	divControle.setAttribute("id", "divControle");
+	divControle.setAttribute("tabIndex", 0);
+	el.appendChild(divControle);
+
+	var controleTxt = document.createElement("p");
+	controleTxt.setAttribute("id", "controleTxt");
+	switch(controle){
+		case 1:
+			volumeInicial = background.volume*10;
+			controleTxt.innerHTML = "Música de fundo";
+			break;
+		case 2:
+			volumeInicial = audioTeclas.volume*10;
+			controleTxt.innerHTML = "Efeitos";
+			break;
+		case 3:
+			volumeInicial = audio.volume*10;
+			controleTxt.innerHTML = "Leitura de tela e acessibilidade";
+			break;
+	}
+	divControle.appendChild(controleTxt);
+
+	//Div com as barras de audio
+	var caixaBarras = document.createElement("div");
+	caixaBarras.setAttribute("id", "caixaBarrasAudio");
+	divControle.appendChild(caixaBarras);
+
+	var slider = document.createElement("input");
+	slider.setAttribute("type", "range");
+	slider.setAttribute("min", "0");
+	slider.setAttribute("max", "10");
+	slider.setAttribute("value", volumeInicial);
+	slider.setAttribute("id", "slider");
+	slider.setAttribute("tabIndex", -1);
+	slider.setAttribute("class", "slider");
+	caixaBarras.appendChild(slider);
+	//Atualiza volume da musica de fundo
+	slider.oninput = function(){
+		tocaAudio();
+		switch(controle){
+			case 1:
+				background.volume = this.value/10;
+				break;
+			case 2:
+				audio2.volume = this.value/10;
+				audio3.volume = this.value/10;
+				audioTeclas.volume = this.value/10;
+				break;
+			case 3:
+				audioinicial.volume = this.value/10;
+				audio.volume = this.value/10;
+				audioConfiguracoes.volume = this.value/10;
+				msg.volume = this.value/10;
+				volumeSinth = this.value/10;
+				audioEnter.volume = this.value/10;
+				audioErro.volume = this.value/10;
+				break;
+		}
+	}
+	
+	//btnVoltar
+	var audioVoltar = document.createElement("div");
+	audioVoltar.setAttribute("id", "audioVoltar");
+	audioVoltar.setAttribute("tabIndex", -1);
+	audioVoltar.onclick = function(){
+		destruirCamadaControleAudio();
+	}
+	caixaBarras.appendChild(audioVoltar);
+
+}
+
+function destruirCamadaControleAudio(){
+	$("#camadaControleAudio").remove();
 }
 
 function ativarAudioVoltar(){
