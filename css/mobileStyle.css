@@ -99,6 +99,7 @@ body
 .slider {
 	-webkit-appearance: none;
 	width: 80%;
+	/*FAZER UM TAMANHO RESPONSIVAMENTE GRANDE --------------------------------------------------------------------------------------------------------------- */
 	height: 15px;
 	border-radius: 5px;
 	background: #ffffff;
@@ -407,8 +408,23 @@ p
 	font-size: calc(1.5em + 1vw);
 }
 
+#caixaBarrasAudio{
+	/*margin-top: 4rem;*/
+}
+
+#caixaBarrasAudio > *{
+	width: 99vw;
+    height: 20vw;
+    background: #d7d7d7;
+    margin: .1em auto;
+    border: 2px solid;
+	line-height: 20vw;
+	/*font-size: calc(1.5em + 1vw);*/
+	font-size: 6.5vw;
+}
+
 #caixaBotoesOpcao{
-	margin-top: 4rem;
+	/*margin-top: 4rem;*/
 }
 
 #caixaBotoesOpcao > *{
@@ -467,23 +483,35 @@ p
 
 
 #btnAtalho1::before{
-	content: 'OUÇA A DICA';
+	content: 'Ouça a dica';
 }
 
 #btnAtalho2::before{
-	content: 'ESTADO ATUAL DA PALAVRA';
+	content: 'Estado atual da palavra';
 }
 
 #btnAtalho3::before{
-	content: 'NÚMERO DE VIDAS';
+	content: 'Número de vidas';
 }
 
 #btnAtalho4::before{
-	content: 'LETRAS QUE JÁ FORAM ESCOLHIDAS';
+	content: 'Letras que já foram escolhidas';
 }
 
 #btnAtalho5::before{
-	content: 'PONTUAÇÃO';
+	content: 'Pontuação';
+}
+
+#MusicaFundo::before{
+	content: 'Música de Fundo';
+}
+
+#Efeitos::before{
+	content: 'Efeitos';
+}
+
+#LeituraTela::before{
+	content: 'Leitura de tela e acessibilidade'
 }
 
 #btnOpcoes
@@ -742,19 +770,30 @@ p
 }
 
 #audioVoltar{
-	height: 65px;
+	/*height: 65px;
 	margin: 0 auto;
 	margin-top: 0px;
 	margin-top: 1rem;
 	width: 117px;
-	background-image: url("../imgs/btnVoltar2.png");
+	background-image: url("../imgs/btnVoltar2.png");*/
+	width: 99vw;
+    height: 20vw;
+    background: #d7d7d7;
+    margin: .1em auto;
+    border: 2px solid;
+	line-height: 20vw;
+	font-size: calc(1.5em + 1vw);
 }
 
-#audioVoltar:focus{
+#audioVoltar::before{
+	content: 'VOLTAR';
+}
+
+/*#audioVoltar:focus{
 	transform: scale(1.1);
 	cursor: pointer;
 	outline: none;
-}
+}*/
 
 /*#opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
 	transform: scale(1.1);

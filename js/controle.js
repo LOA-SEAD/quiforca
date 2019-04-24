@@ -1660,11 +1660,20 @@ function criarCamadaAudio()
 	caixaBarras.setAttribute("id", "caixaBarrasAudio");
 	divAudio.appendChild(caixaBarras);
 
-	var MusicaFundo = document.createElement("p");
+	/*var MusicaFundo = document.createElement("p");
 	MusicaFundo.setAttribute("id", "MusicaFundo");
 	MusicaFundo.setAttribute("class", "textoAudio");
 	MusicaFundo.setAttribute("tabIndex", -1);
 	MusicaFundo.innerHTML = "Música de fundo";
+	caixaBarras.appendChild(MusicaFundo);
+	MusicaFundo.onclick = function(){
+		opcao = 0;
+	}*/
+	var MusicaFundo = document.createElement("div");
+	MusicaFundo.setAttribute("id", "MusicaFundo");
+	MusicaFundo.setAttribute("class", "botao");
+	MusicaFundo.setAttribute("tabIndex", -1);
+	//MusicaFundo.innerHTML = "Música de fundo";
 	caixaBarras.appendChild(MusicaFundo);
 	MusicaFundo.onclick = function(){
 		opcao = 0;
@@ -1685,11 +1694,11 @@ function criarCamadaAudio()
 		background.volume = this.value/10;
 	}
 
-	var Efeitos = document.createElement("p");
+	var Efeitos = document.createElement("div");
 	Efeitos.setAttribute("id", "Efeitos");
 	Efeitos.setAttribute("class", "textoAudio");
 	Efeitos.setAttribute("tabIndex", -1);
-	Efeitos.innerHTML = "Efeitos sonoros";
+	//Efeitos.innerHTML = "Efeitos sonoros";
 	caixaBarras.appendChild(Efeitos);
 	Efeitos.onclick = function(){
 		opcao = 1;
@@ -1714,11 +1723,11 @@ function criarCamadaAudio()
 	}
 
 
-	var LeituraTela = document.createElement("p");
+	var LeituraTela = document.createElement("div");
 	LeituraTela.setAttribute("id", "LeituraTela");
 	LeituraTela.setAttribute("class", "textoAudio");
 	LeituraTela.setAttribute("tabIndex", -1);
-	LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
+	//LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
 	caixaBarras.appendChild(LeituraTela);
 	LeituraTela.onclick = function(){
 		opcao = 2;
