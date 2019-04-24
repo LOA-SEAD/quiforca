@@ -54,6 +54,7 @@ function criarCamadaMenu()
 	var imgMenu = document.createElement("img");
 	imgMenu.setAttribute("id", "imgMenu");
 	imgMenu.setAttribute("src", "imgs/desenhotelainicial.png")
+	imgMeny.setAttribute("alt", "Imagem forca");
 	el.appendChild(imgMenu);
 
 
