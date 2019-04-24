@@ -48,7 +48,6 @@ function criarCamadaMenu()
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
-	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
 
 
@@ -65,7 +64,6 @@ function criarCamadaMenu()
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
 	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
-	botaoInstrucoes.setAttribute("tabIndex" , "-1");
 	botaoInstrucoes.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoInstrucoes);
 	
@@ -82,7 +80,6 @@ function criarCamadaMenu()
 
 	var botaoJogar = document.createElement("div");
 	botaoJogar.setAttribute("id" , "btnJogar");
-	botaoJogar.setAttribute("tabIndex" , "-1");
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
@@ -101,7 +98,6 @@ function criarCamadaMenu()
 	//Cria botao de créditos na caixa de botoes
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
-	botaoCreditos.setAttribute("tabIndex" , "-1");
 	botaoCreditos.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoCreditos);
 
@@ -120,7 +116,6 @@ function criarCamadaMenu()
 	//Cria botao de opções na caixa de botoes
 	var botaoAudio = document.createElement("div");
 	botaoAudio.setAttribute("id" , "btnAudio");
-	botaoAudio.setAttribute("tabIndex" , "-1");
 	botaoAudio.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoAudio);
 
@@ -136,8 +131,8 @@ function criarCamadaMenu()
 		clearTimeout(delayInicializaFocus);
 	}
 	
-	inicializaFalaInicial();
-	inicializaFocus();
+	//inicializaFalaInicial(); (ajustar dps)
+	//inicializaFocus(); (creio q n existira nessa versão)
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
