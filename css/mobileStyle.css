@@ -311,8 +311,8 @@ body
 .botaoJogo
 {
 	display: inline;
-	width: 9.5vw;
-	height: 9.5vw;
+	width: 9vw;
+	height: 9vw;
 	margin: 1px;
 	float: left;
 	background-image: url(../imgs/botaoTeclado.png);

@@ -1802,6 +1802,18 @@ function criarCamadaAudio()
 	})
 }
 
+function controleMusicaFundo(){
+
+}
+
+function controleEfeitos(){
+
+}
+
+function controleLeituraTela(){
+	
+}
+
 function destruirCamadaAudio(){
 	$("#camadaAudio").remove();
 }
