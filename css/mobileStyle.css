@@ -464,7 +464,7 @@ p
 }
 
 #btnVoltar2::before{
-	content: 'VOLTAR';
+	content: 'Voltar';
 }
 
 #caixaBotoesAtalhos{
@@ -478,16 +478,16 @@ p
 	margin: .05em auto;
     border: 2px solid;
 	line-height: 20vw;
-	font-size: calc(5.2vw);
+	font-size: calc(7.2vw);
 }
 
 
 #btnAtalho1::before{
-	content: 'Ouça a dica';
+	content: 'Dica';
 }
 
 #btnAtalho2::before{
-	content: 'Estado atual da palavra';
+	content: 'Como está a palavra';
 }
 
 #btnAtalho3::before{
@@ -495,11 +495,11 @@ p
 }
 
 #btnAtalho4::before{
-	content: 'Letras que já foram escolhidas';
+	content: 'Letras que você já escolheu';
 }
 
 #btnAtalho5::before{
-	content: 'Pontuação';
+	content: 'Número de pontos';
 }
 
 #MusicaFundo::before{
@@ -588,7 +588,7 @@ p
 }
 
 #btnMenu::before{
-	content: 'OPÇÕES';
+	content: 'Opções';
 }
 
 /*#btnMenu:hover, #btnMenu:focus
@@ -611,7 +611,7 @@ p
 }
 
 #btnAtalhos::before{
-	content: 'ATALHOS';
+	content: 'Atalhos';
 }
 
 #btnMenu2
