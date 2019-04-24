@@ -53,22 +53,26 @@ body
 	align-items: center;
 	justify-content: center;
 	z-index: 2;
+	background-size: cover;
 }
 
 #divAudio{
-	width: 430px;
-	height: 530px;
-	background: #c2ecfc;
+	/*width: 430px;
+	height: 530px;*/
+	width: 100%;
+	height: 100%;
+	/*background: #c2ecfc;
 	background: -moz-linear-gradient(top, #c2ecfc 0%, #92dcf9 100%);
 	background: -webkit-linear-gradient(top, #c2ecfc 0%,#92dcf9 100%);
 	background: linear-gradient(to bottom, #c2ecfc 0%,#92dcf9 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );*/
+	background: url("../imgs/novafolha.png");
 	position: relative;
 	-webkit-border-bottom-left-radius: 3rem 15rem;
 	-webkit-border-bottom-right-radius: 7rem 3rem;
 }
 
-#divAudio::before, #divAudio::after{
+/*#divAudio::before, #divAudio::after{
 	content: '';
     z-index: -1;
     position: absolute;
@@ -80,7 +84,7 @@ body
     background: #777;
     box-shadow: 0px 27px 30px #777;
     transform: rotate(-9deg);
-}
+}*/
 
 #divAudio::after{
 	-webkit-transform: rotate(8deg);

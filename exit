@@ -1,0 +1,45 @@
+[1mdiff --git a/css/mobileStyle.css b/css/mobileStyle.css[m
+[1mindex a4f073e..c9540f5 100644[m
+[1m--- a/css/mobileStyle.css[m
+[1m+++ b/css/mobileStyle.css[m
+[36m@@ -53,22 +53,26 @@[m [mbody[m
+ 	align-items: center;[m
+ 	justify-content: center;[m
+ 	z-index: 2;[m
+[32m+[m	[32mbackground-size: cover;[m
+ }[m
+ [m
+ #divAudio{[m
+[31m-	width: 430px;[m
+[31m-	height: 530px;[m
+[31m-	background: #c2ecfc;[m
+[32m+[m	[32m/*width: 430px;[m
+[32m+[m	[32mheight: 530px;*/[m
+[32m+[m	[32mwidth: 100%;[m
+[32m+[m	[32mheight: 100%;[m
+[32m+[m	[32m/*background: #c2ecfc;[m
+ 	background: -moz-linear-gradient(top, #c2ecfc 0%, #92dcf9 100%);[m
+ 	background: -webkit-linear-gradient(top, #c2ecfc 0%,#92dcf9 100%);[m
+ 	background: linear-gradient(to bottom, #c2ecfc 0%,#92dcf9 100%);[m
+[31m-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );[m
+[32m+[m	[32mfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );*/[m
+[32m+[m	[32mbackground: url("../imgs/novafolha.png");[m
+ 	position: relative;[m
+ 	-webkit-border-bottom-left-radius: 3rem 15rem;[m
+ 	-webkit-border-bottom-right-radius: 7rem 3rem;[m
+ }[m
+ [m
+[31m-#divAudio::before, #divAudio::after{[m
+[32m+[m[32m/*#divAudio::before, #divAudio::after{[m
+ 	content: '';[m
+     z-index: -1;[m
+     position: absolute;[m
+[36m@@ -80,7 +84,7 @@[m [mbody[m
+     background: #777;[m
+     box-shadow: 0px 27px 30px #777;[m
+     transform: rotate(-9deg);[m
+[31m-}[m
+[32m+[m[32m}*/[m
+ [m
+ #divAudio::after{[m
+ 	-webkit-transform: rotate(8deg);[m
