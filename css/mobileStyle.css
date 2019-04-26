@@ -311,8 +311,8 @@ body
 .botaoJogo
 {
 	display: inline;
-	width: 9.5vw;
-	height: 9.5vw;
+	width: 9.3vw;
+	height: 9.3vw;
 	margin: 1px;
 	float: left;
 	background-image: url(../imgs/botaoTeclado.png);
@@ -323,8 +323,8 @@ body
 .botaoJogoPressionado
 {
 	display: inline;
-	width: 9vw;
-	height: 9vw;
+	width: 9.3vw;
+	height: 9.3vw;
 	margin: 1px;
 	float: left;
 	background-image: url(../imgs/botaoTecladoPressionado.png);
@@ -340,7 +340,6 @@ body
 .linha
 {
 	text-align: center;
-	
 }
 
 #linha2
