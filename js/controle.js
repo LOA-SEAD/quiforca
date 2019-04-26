@@ -48,13 +48,13 @@ function criarCamadaMenu()
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
-	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
 
 
 	var imgMenu = document.createElement("img");
 	imgMenu.setAttribute("id", "imgMenu");
 	imgMenu.setAttribute("src", "imgs/desenhotelainicial.png")
+	imgMenu.setAttribute("alt", "Imagem forca");
 	el.appendChild(imgMenu);
 
 
@@ -65,7 +65,6 @@ function criarCamadaMenu()
 	//Cria botao de instruções e adiciona a caixa de botões
 	var botaoInstrucoes = document.createElement("div");
 	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
-	botaoInstrucoes.setAttribute("tabIndex" , "-1");
 	botaoInstrucoes.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoInstrucoes);
 	
@@ -82,7 +81,6 @@ function criarCamadaMenu()
 
 	var botaoJogar = document.createElement("div");
 	botaoJogar.setAttribute("id" , "btnJogar");
-	botaoJogar.setAttribute("tabIndex" , "-1");
 	botaoJogar.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoJogar);
 
@@ -101,7 +99,6 @@ function criarCamadaMenu()
 	//Cria botao de créditos na caixa de botoes
 	var botaoCreditos = document.createElement("div");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
-	botaoCreditos.setAttribute("tabIndex" , "-1");
 	botaoCreditos.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoCreditos);
 
@@ -120,7 +117,6 @@ function criarCamadaMenu()
 	//Cria botao de opções na caixa de botoes
 	var botaoAudio = document.createElement("div");
 	botaoAudio.setAttribute("id" , "btnAudio");
-	botaoAudio.setAttribute("tabIndex" , "-1");
 	botaoAudio.setAttribute("class" , "botao");
 	caixaBotoes.appendChild(botaoAudio);
 
@@ -136,8 +132,8 @@ function criarCamadaMenu()
 		clearTimeout(delayInicializaFocus);
 	}
 	
-	inicializaFalaInicial();
-	inicializaFocus();
+	//inicializaFalaInicial(); (ajustar dps)
+	//inicializaFocus(); (creio q n existira nessa versão)
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
@@ -972,25 +968,11 @@ function criarCamadaInstrucoes()
 {
 	paraFala();
 
-	if(origemInstrucoes == "menu")
-	{
-		realizarFala(baseURL + "lerinstrucoes.mp3");
-	}
-	else if(origemInstrucoes == "opcoes")
-	{
-		realizarFala(baseURL + "lerinstrucoesacessibilidade.mp3");
-	}
-
 	estado = "instrucoes"
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaInstrucoes");
-	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
-
-	var imgLogo = document.createElement("div");
-	imgLogo.setAttribute("id", "imgLogoInstrucoes");
-	el.appendChild(imgLogo);
 
 	//criação camada de instruções
 	//$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
@@ -999,35 +981,12 @@ function criarCamadaInstrucoes()
 	jogo.instrucoes = document.createElement("p")
 	jogo.instrucoes.setAttribute("id", "instrucoesText")
 	jogo.instrucoes.innerHTML = "<h1>Instruções</h1>";
-	if(origemInstrucoes == "menu")
-	{
 	jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
 	 "Cada letra que você acerta é colocada na palavra. <br>"+
 	 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
 	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
 	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>";
-	}
-	else
-	{
-		jogo.instrucoes.innerHTML += 
-		"<h3>Atalhos sonoros durante o jogo:</h3><br>"+
-	 	"Para usá-los, pressione os números no seu teclado alfanumérico.<br>1 - Ouça a dica<br>"+
-		"2 - Ouça o que você descobriu da palavra até agora<br>"+
-		"3 - Saiba quantas vidas você ainda tem<br>"+
-		"4 - Relembre as letras que você já escolheu<br>"+
-		"5 - Saiba sua pontuação atual<br>";
-	}
-	
-	if(origemInstrucoes == "menu")
-	{
-		//jogo.instrucoes.innerHTML += 
-		//"Esc - Pausar o jogo e acessar as configurações<br><br>";
-	}
-	else if(origemInstrucoes == "opcoes")
-	{
-		jogo.instrucoes.innerHTML += "Esc - Voltar para o jogo<br>";
-	}
-	 
+
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
@@ -1038,7 +997,6 @@ function criarCamadaInstrucoes()
 
 	var botaoMenu = document.createElement("div");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.setAttribute("tabIndex" , "-1");
 	botaoMenu.setAttribute("class" , "botao");
 	caixaBotoes.append(botaoMenu);
 
@@ -1631,6 +1589,7 @@ function destruirCamadaAtalhos()
 var transicaoBarra = false;
 var audioConfiguracoes = document.createElement("AUDIO");
 audioConfiguracoes.volume = 1;
+var controle = 0;
 var volumeSinth = 1;
 
 function criarCamadaAudio()
@@ -1676,10 +1635,12 @@ function criarCamadaAudio()
 	//MusicaFundo.innerHTML = "Música de fundo";
 	caixaBarras.appendChild(MusicaFundo);
 	MusicaFundo.onclick = function(){
+		controle = 1;
+		criarCamadaControleAudio();
 		opcao = 0;
 	}
 
-	var sliderMusicaFundo = document.createElement("input");
+	/*var sliderMusicaFundo = document.createElement("input");
 	sliderMusicaFundo.setAttribute("type", "range");
 	sliderMusicaFundo.setAttribute("min", "0");
 	sliderMusicaFundo.setAttribute("max", "10");
@@ -1692,7 +1653,7 @@ function criarCamadaAudio()
 	sliderMusicaFundo.oninput = function(){
 		tocaAudio();
 		background.volume = this.value/10;
-	}
+	}*/
 
 	var Efeitos = document.createElement("div");
 	Efeitos.setAttribute("id", "Efeitos");
@@ -1701,10 +1662,12 @@ function criarCamadaAudio()
 	//Efeitos.innerHTML = "Efeitos sonoros";
 	caixaBarras.appendChild(Efeitos);
 	Efeitos.onclick = function(){
+		controle = 2;
+		criarCamadaControleAudio();
 		opcao = 1;
 	}
 
-	var sliderEfeitos = document.createElement("input");
+	/*var sliderEfeitos = document.createElement("input");
 	sliderEfeitos.setAttribute("type", "range");
 	sliderEfeitos.setAttribute("min", "0");
 	sliderEfeitos.setAttribute("max", "10");
@@ -1720,7 +1683,7 @@ function criarCamadaAudio()
 		audio3.volume = this.value/10;
 		audioTeclas.volume = this.value/10;
 		tocaAudio();
-	}
+	}*/
 
 
 	var LeituraTela = document.createElement("div");
@@ -1730,10 +1693,12 @@ function criarCamadaAudio()
 	//LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
 	caixaBarras.appendChild(LeituraTela);
 	LeituraTela.onclick = function(){
+		controle = 3;
+		criarCamadaControleAudio();
 		opcao = 2;
 	}
 
-	var sliderLeituraTela = document.createElement("input");
+	/*var sliderLeituraTela = document.createElement("input");
 	sliderLeituraTela.setAttribute("type", "range");
 	sliderLeituraTela.setAttribute("min", "0");
 	sliderLeituraTela.setAttribute("max", "10");
@@ -1752,10 +1717,10 @@ function criarCamadaAudio()
 		volumeSinth = this.value/10;
 		audioEnter.volume = this.value/10;
 		audioErro.volume = this.value/10;
-	}
+	}*/
 
-	var quebraLinha = document.createElement("br");
-	divAudio.appendChild(quebraLinha);
+	//var quebraLinha = document.createElement("br");
+	//divAudio.appendChild(quebraLinha);
 
 	//Cria div caixa de botoes
 	var caixaBotoes = document.createElement("div");
@@ -1804,6 +1769,93 @@ function criarCamadaAudio()
 
 function destruirCamadaAudio(){
 	$("#camadaAudio").remove();
+}
+
+function criarCamadaControleAudio(){
+	estado = "controle";
+	
+	var volumeInicial = 10;
+
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaControleAudio");
+	el.setAttribute("tabIndex", 0);
+	$("#palco").append(el);
+	el.focus();
+
+	var divControle = document.createElement("div");
+	divControle.setAttribute("id", "divControle");
+	divControle.setAttribute("tabIndex", 0);
+	el.appendChild(divControle);
+
+	var controleTxt = document.createElement("p");
+	controleTxt.setAttribute("id", "controleTxt");
+	switch(controle){
+		case 1:
+			volumeInicial = background.volume*10;
+			controleTxt.innerHTML = "Música de fundo";
+			break;
+		case 2:
+			volumeInicial = audioTeclas.volume*10;
+			controleTxt.innerHTML = "Efeitos";
+			break;
+		case 3:
+			volumeInicial = audio.volume*10;
+			controleTxt.innerHTML = "Leitura de tela e acessibilidade";
+			break;
+	}
+	divControle.appendChild(controleTxt);
+
+	//Div com as barras de audio
+	var caixaBarras = document.createElement("div");
+	caixaBarras.setAttribute("id", "caixaBarrasAudio");
+	divControle.appendChild(caixaBarras);
+
+	var slider = document.createElement("input");
+	slider.setAttribute("type", "range");
+	slider.setAttribute("min", "0");
+	slider.setAttribute("max", "10");
+	slider.setAttribute("value", volumeInicial);
+	slider.setAttribute("id", "slider");
+	slider.setAttribute("tabIndex", -1);
+	slider.setAttribute("class", "slider");
+	caixaBarras.appendChild(slider);
+	//Atualiza volume da musica de fundo
+	slider.oninput = function(){
+		tocaAudio();
+		switch(controle){
+			case 1:
+				background.volume = this.value/10;
+				break;
+			case 2:
+				audio2.volume = this.value/10;
+				audio3.volume = this.value/10;
+				audioTeclas.volume = this.value/10;
+				break;
+			case 3:
+				audioinicial.volume = this.value/10;
+				audio.volume = this.value/10;
+				audioConfiguracoes.volume = this.value/10;
+				msg.volume = this.value/10;
+				volumeSinth = this.value/10;
+				audioEnter.volume = this.value/10;
+				audioErro.volume = this.value/10;
+				break;
+		}
+	}
+	
+	//btnVoltar
+	var audioVoltar = document.createElement("div");
+	audioVoltar.setAttribute("id", "audioVoltar");
+	audioVoltar.setAttribute("tabIndex", -1);
+	audioVoltar.onclick = function(){
+		destruirCamadaControleAudio();
+	}
+	caixaBarras.appendChild(audioVoltar);
+
+}
+
+function destruirCamadaControleAudio(){
+	$("#camadaControleAudio").remove();
 }
 
 function ativarAudioVoltar(){
