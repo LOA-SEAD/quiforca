@@ -540,18 +540,18 @@ function criarCamadaFimdeJogo()
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
-	jogo.palavraNaTela.setAttribute("tabIndex", "2");
-	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2><h3>Pontuação final: "+jogo.pontos + "</h3> A palavra é " + jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2><h3>Pontuação final: " + jogo.pontos + "</h3>";''
 
-	jogo.imgBonecoVitoria = document.createElement("div");
+	jogo.imgBonecoVitoria = document.createElement("img");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
+	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem parabens.png");
 
 	jogo.botoesVitoria = document.createElement("div");
 	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
 
-	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
+	
 	$("#camadaFimdeJogo").append(jogo.imgBonecoVitoria);
+	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
 	$("#camadaFimdeJogo").append(jogo.botoesVitoria);
 
 	/*jogo.fimdeJogo = document.createElement("p");
@@ -561,7 +561,7 @@ function criarCamadaFimdeJogo()
 	jogo.fimdeJogo.innerHTML = "Tela de Fim de Jogo"
 	$("#camadaFimdeJogo").append(jogo.fimdeJogo);*/
 
-	$("<button>").attr("id", "btnProxPalavra").click(
+	$("<button>").attr("id", "btnMenu3").click(
 		function(){
 			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 			destruirCamadaFimdeJogo();
