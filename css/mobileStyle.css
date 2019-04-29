@@ -584,12 +584,14 @@ p
 }
 
 #botoesTelaVitoria > *{
-	width: 90vw;
-	height: 13vw;
+	width: 99vw;
+	height: 20vw;
 	background: #d7d7d7;
-	margin: .2em auto;
+	margin: .1em auto;
 	border: 2px solid;
-	line-height: 13vw;
+	line-height: 20vw;
+	font-family: "Fonte","Tahoma";
+	font-size: calc(1.5em + 1vw);
 }
 
 #btnReiniciar::before
@@ -660,15 +662,7 @@ p
 
 #btnProxPalavra::before
 {
-	content: "CONTINUAR";
-}
-
-
-#btnProxPalavra:hover, #btnProxPalavra:focus
-{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
+	content: "Continuar";
 }
 
 /*Parte do personagem do jogo*/
