@@ -305,6 +305,7 @@ function verificarErro(_letra)
 		jogo.erros++;
 		atualizaNumChances();
 		mudarPersonagem();
+		mostrarPersonagem();
 		//audio2 = document.createElement("AUDIO");
 		switch(jogo.erros)
 		{
@@ -501,6 +502,14 @@ function mudarPersonagem()
 	$('#personagem').attr('style', 'background-position: -' + jogo.erros*317 + 'px 0px;').fadeOut(0,00001, function() {});
 	$('#personagem').fadeIn(500, function() {});
 	$('#personagemAnt').fadeOut(1000, function() {$(this).css("z-index", "10"); jogo.emTransicao = false;});
+}
+
+function mostrarPersonagem(){
+	$("#ColLeftJogo").attr("style", "display: unset;");
+
+	setTimeout(function(){
+		$("#ColLeftJogo").attr("style", "display: none;");
+	}, 1500);
 }
 
 function iniciarNovoJogo()

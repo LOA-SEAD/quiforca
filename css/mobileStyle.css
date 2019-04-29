@@ -669,19 +669,31 @@ p
 .personagem
 {
 	width: 317px;
-	height: 140px;
+	height: 312px;
 	background: url(../imgs/personagem.png);
 	background-position: 0px 0px;
 }
 
 #personagem
 {
-	margin: 5px auto;
+	margin: 0 auto;
 }
 
 #personagemAnt
 {
 	z-index: 10;
+	display: none;
+}
+
+/*--------parte animação boneco---------*/
+
+#ColLeftJogo
+{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-image: url("../imgs/novafolha.png");
+    background-size: cover;
 	display: none;
 }
 
@@ -720,16 +732,7 @@ p
 	overflow: hidden;
 }
 
-#row
-{	
 
-}
-
-#ColLeftJogo
-{
-	width: 100%;
-	display: none;
-}
 
 #ColRightJogo
 {
