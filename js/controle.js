@@ -669,104 +669,6 @@ function criarCamadaDerrota()
 		leituraInicial(baseURL + "derrotaFrase.mp3");
 	}, 3000);
 
-	/*var aux
-	var centena
-	
-	derrota4 = setTimeout(function(){
-		if(pontuacao() <= 20 || (pontuacao() % 10 == 0 && pontuacao() < 100) || (pontuacao() % 100 == 0 && pontuacao() > 100) || pontuacao() == 1000){
-			unidade = "audio/p" + pontuacao() + ".mp3"
-			unidadeLer.setAttribute("src", unidade)
-			unidadeLer.currentTime = 0
-			unidadeLer.play()
-		}
-		else if(pontuacao() <= 99)
-		{
-			unidade = pontuacao()%10
-			dezena = pontuacao() - unidade
-
-			aux = "audio/p" + dezena + ".mp3"
-			dezenaLer.setAttribute("src", aux)
-			dezenaLer.currentTime = 0
-			dezenaLer.play()
-
-			derrota5 = setTimeout(function(){
-				letraE.setAttribute("src", "audio/letraE.mp3")
-				letraE.currentTime = 0;
-				letraE.play();
-			}, 600)
-
-			derrota6 = setTimeout(function(){
-				aux = "audio/p" + unidade + ".mp3"
-				unidadeLer.setAttribute("src", aux)
-				unidadeLer.currentTime = 0;
-				unidadeLer.play();
-			}, 800)
-		}
-		else if(pontuacao() == 100){
-			unidadeLer.setAttribute("src", "audio/pcem.mp3")
-			unidadeLer.currentTime = 0
-			unidadeLer.play()
-		}
-		else
-		{
-			unidade = pontuacao()%10
-			dezena = pontuacao()%100 - unidade
-			centena = pontuacao() - unidade - dezena
-
-			aux = "audio/p" + centena + ".mp3"
-			centenaLer.setAttribute("src", aux)
-			centenaLer.currentTime = 0
-			centenaLer.play()
-
-			var aux2 = pontuacao() - centena
-			if(aux2 >= 20)
-			{
-				if(dezena != 0){
-					derrota7 = setTimeout(function(){
-						letraE.setAttribute("src", "audio/letraE.mp3")
-						letraE.currentTime = 0;
-						letraE.play();
-					}, 600)
-				}
-
-				derrota8 = setTimeout(function(){
-					aux = "audio/p" + dezena + ".mp3"
-					dezenaLer.setAttribute("src", aux)
-					dezenaLer.currentTime = 0
-					dezenaLer.play()
-				}, 800)
-
-				if(unidade != 0){
-					derrota9 = setTimeout(function(){
-						letraE.setAttribute("src", "audio/letraE.mp3")
-						letraE.currentTime = 0;
-						letraE.play();
-					}, 1200)
-
-					derrota10 = setTimeout(function(){
-						aux = "audio/p" + unidade + ".mp3"
-						unidadeLer.setAttribute("src", aux)
-						unidadeLer.currentTime = 0;
-						unidadeLer.play();
-					}, 1500)
-				}
-			}
-			else
-			{
-				derrota7 = setTimeout(function(){
-					letraE.setAttribute("src", "audio/letraE.mp3")
-					letraE.currentTime = 0;
-					letraE.play();
-				}, 600)
-				derrota8 = setTimeout(function(){
-					aux = "audio/p" + aux2 + ".mp3"
-					unidadeLer.setAttribute("src", aux)
-					unidadeLer.currentTime = 0;
-					unidadeLer.play();
-				}, 800)
-			}
-		}
-	}, 8300)*/
 
 	//var audio = document.createElement("AUDIO");
 	audio3.setAttribute("src", "audio/derrota1.ogg");
@@ -782,17 +684,16 @@ function criarCamadaDerrota()
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaDerrota");
-	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
 
 		
 	jogo.imgBoneco = document.createElement("img");
 	jogo.imgBoneco.setAttribute("id", "imgBonecoDerrota");
 	jogo.imgBoneco.setAttribute("src", "imgs/bonecoDerrota.png");
+	jogo.imgBoneco.setAttribute("alt", "Imagem derrota");
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
-	jogo.palavraNaTela.setAttribute("role", "textbox");
 	jogo.palavraNaTela.innerHTML = "<h2> Você errou :( </h2> A palavra correta é " + jogo.palavraSorteada;
 	
 	jogo.botoes = document.createElement("div");
