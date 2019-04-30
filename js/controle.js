@@ -234,17 +234,11 @@ function destruirCamadaJogo()
 	background.pause()
 }
 
-var audioCreditos = document.createElement("AUDIO");
-audioCreditos.setAttribute("src", "audio/creditostxt.mp3");
-audioCreditos.currentTime = 0
-
 function criarCamadaCreditos()
 {
 
 	paraFala();
-	realizarFala(baseURL + "creditosCompleto.mp3");
-	/*audioCreditos.currentTime = 0
-	audioCreditos.play();*/
+	
 	estado = "creditos";
 
 	var el = document.createElement("div");

@@ -422,7 +422,7 @@ p
     width: 99vw;
     height: 20vw;
     background: #d7d7d7;
-    margin: .1em auto;
+    margin: 0 auto;
     border: 2px solid;
 	line-height: 20vw;
 	font-size: calc(1.5em + 1vw);
