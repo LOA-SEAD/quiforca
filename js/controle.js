@@ -877,7 +877,7 @@ function criarCamadaInstrucoes()
 	 "Cada letra que você acerta é colocada na palavra. <br>"+
 	 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
 	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
-	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>";
+	 "<br>Caso precise acessar as opções ou os atalhos sonoros, pode fazê-lo clicando nos botões na parte superior da tela, durante o jogo.<br><br>";
 
 
 	//inserindo instrucoes a camada de instruções
@@ -907,32 +907,6 @@ function criarCamadaInstrucoes()
 			paraFala();
 			$("#camadaJogo").toggle();
 			setTimeout(update, 50);
-		}
-	}
-
-	/*botaoMenu.onmouseenter = function()
-	{
-		realizarLeitura("Menu");
-		//AudioBotoes("audio/menu.mp3");
-	}*/
-	document.onkeydown = function(e)
-	{
-		e = window.event||e;
-		if((e.which == 27 || e.keyCode == 27 || e.charCode == 24) && estado == "instrucoes")
-		{
-			destruirCamadaInstrucoes();
-			if(origemInstrucoes == "menu")
-			{
-				criarCamadaMenu();
-			}
-			else if(origemInstrucoes == "opcoes")
-			{
-				sairInstrucoes = true;
-				estado = "jogando";
-				paraFala();
-				$("#camadaJogo").toggle();
-			
-			}
 		}
 	}
 }
