@@ -90,7 +90,7 @@ function iniciar()
 	//Dica
 	jogo.dicaNaTela = document.createElement("div");
 	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
-	jogo.dicaNaTela.setAttribute("role" , "button");
+	//jogo.dicaNaTela.setAttribute("role" , "button");
 	jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
 	//Exibe dica da palavra + número de letras que ela contém -- NA TELA
 	var p = document.createElement("p");

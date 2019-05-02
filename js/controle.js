@@ -1081,7 +1081,7 @@ function inicializaFocus(){
 		document.getElementById("btnProxPalavra").focus();
 	}
 	else if(estado == "jogando"){
-		document.getElementById("palavraNaTela").focus();
+		document.getElementById("dicaNaTela").focus();
 	}
 	else if(estado == "fimdeJogo"){
 		document.getElementById("camadaFimdeJogo").focus();
@@ -1661,7 +1661,7 @@ function criarCamadaControleAudio(){
 			controleTxt.innerHTML = "Música de fundo";
 			break;
 		case 2:
-			volumeInicial = audioTeclas.volume*10;
+			volumeInicial = audio2.volume*10;
 			controleTxt.innerHTML = "Efeitos";
 			break;
 		case 3:
@@ -1688,6 +1688,7 @@ function criarCamadaControleAudio(){
 	//Atualiza volume da musica de fundo
 	slider.oninput = function(){
 		tocaAudio();
+		audioTeclas.volume = this.value/10;
 		switch(controle){
 			case 1:
 				background.volume = this.value/10;
@@ -1695,7 +1696,6 @@ function criarCamadaControleAudio(){
 			case 2:
 				audio2.volume = this.value/10;
 				audio3.volume = this.value/10;
-				audioTeclas.volume = this.value/10;
 				break;
 			case 3:
 				audioinicial.volume = this.value/10;

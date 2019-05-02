@@ -80,8 +80,8 @@ body
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );*/
 	background: url("../imgs/novafolha.png");
 	position: relative;
-	-webkit-border-bottom-left-radius: 3rem 15rem;
-	-webkit-border-bottom-right-radius: 7rem 3rem;
+	/*-webkit-border-bottom-left-radius: 3rem 15rem;
+	-webkit-border-bottom-right-radius: 7rem 3rem;*/
 }
 
 #divControle{
@@ -89,8 +89,8 @@ body
 	height: 100%;
 	background: url("../imgs/novafolha.png");
 	position: relative;
-	-webkit-border-bottom-left-radius: 3rem 15rem;
-	-webkit-border-bottom-right-radius: 7rem 3rem;
+	/*-webkit-border-bottom-left-radius: 3rem 15rem;
+	-webkit-border-bottom-right-radius: 7rem 3rem;*/
 }
 
 /*#divAudio::before, #divAudio::after{
@@ -107,7 +107,7 @@ body
     transform: rotate(-9deg);
 }*/
 
-#divAudio::after{
+/*#divAudio::after{
 	-webkit-transform: rotate(8deg);
 	-moz-transform: rotate(8deg);
 	-o-transform: rotate(8deg);
@@ -115,7 +115,7 @@ body
 	transform: rotate(-5deg);
 	right: 10px;
 	left: auto;
-}
+}*/
 
 .slider {
 	-webkit-appearance: none;
@@ -499,11 +499,11 @@ p
 
 #caixaBotoesAtalhos > * {
     width: 99vw;
-    height: 20vw;
+    height: 15vw;
     background: #d7d7d7;
-	margin: .05em auto;
+	margin: 0 auto;
     border: 2px solid;
-	line-height: 20vw;
+	line-height: 15vw;
 	font-size: calc(7.2vw);
 }
 
@@ -607,8 +607,8 @@ p
 
 #btnMenu
 {
-	margin: .1em;
-	width: 45%;
+	margin: 0 auto;
+	width: 47vw;
 	height: 15vw;
 	background: #d7d7d7;
 	line-height: 15vw;
@@ -630,8 +630,8 @@ p
 
 #btnAtalhos
 {
-	margin: .1em;
-	width: 45%;
+	margin: 0 auto;
+	width: 47vw;
 	height: 15vw;
 	background: #d7d7d7;
 	border: 2px solid;
@@ -791,14 +791,14 @@ p
 	width: 99vw;
     height: 20vw;
     background: #d7d7d7;
-    margin: .1em auto;
+    margin: 0 auto;
     border: 2px solid;
 	line-height: 20vw;
 	font-size: calc(1.5em + 1vw);
 }
 
 #audioVoltar::before{
-	content: 'VOLTAR';
+	content: 'Voltar';
 }
 
 /*#audioVoltar:focus{
