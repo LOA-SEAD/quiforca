@@ -63,9 +63,9 @@ function criarCamadaMenu()
 	el.appendChild(caixaBotoes);
 
 	//Cria botao de instruções e adiciona a caixa de botões
-	var botaoInstrucoes = document.createElement("div");
+	var botaoInstrucoes = document.createElement("button");
 	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
-	botaoInstrucoes.setAttribute("class" , "botao");
+	botaoInstrucoes.innerText = "Instruções";
 	caixaBotoes.appendChild(botaoInstrucoes);
 	
 	botaoInstrucoes.onclick = function()
@@ -79,9 +79,9 @@ function criarCamadaMenu()
 		clearTimeout(delayInicializaFocus);
 	}
 
-	var botaoJogar = document.createElement("div");
+	var botaoJogar = document.createElement("button");
 	botaoJogar.setAttribute("id" , "btnJogar");
-	botaoJogar.setAttribute("class" , "botao");
+	botaoJogar.innerText = "Jogar";
 	caixaBotoes.appendChild(botaoJogar);
 
 
@@ -97,9 +97,9 @@ function criarCamadaMenu()
 	}
 
 	//Cria botao de créditos na caixa de botoes
-	var botaoCreditos = document.createElement("div");
+	var botaoCreditos = document.createElement("button");
 	botaoCreditos.setAttribute("id" , "btnCreditos");
-	botaoCreditos.setAttribute("class" , "botao");
+	botaoCreditos.innerText = "Créditos";
 	caixaBotoes.appendChild(botaoCreditos);
 
 
@@ -115,9 +115,9 @@ function criarCamadaMenu()
 	}
 
 	//Cria botao de opções na caixa de botoes
-	var botaoAudio = document.createElement("div");
+	var botaoAudio = document.createElement("button");
 	botaoAudio.setAttribute("id" , "btnAudio");
-	botaoAudio.setAttribute("class" , "botao");
+	botaoAudio.innerText = "Áudio";
 	caixaBotoes.appendChild(botaoAudio);
 
 
