@@ -28,8 +28,8 @@ body
 #palco
 {
 	min-height: 100%;
-	height: 100%;
-    width: 100%;
+	height: 100vh;
+    width: 100vw;
     display: flex;
 	align-items: center;
 	justify-content: center;
@@ -199,10 +199,11 @@ body
 
 #camadaMenu
 {
-	display: flex;
-	flex-direction: column;
-	width: 100%;	
-	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+  	grid-template-rows: repeat(2, 1fr);
+	width: 100vw;	
+	height: 100vh;
 	text-align: center;
 }
 
@@ -414,19 +415,19 @@ p
 
 #caixaBotoes
 {
-    display: flow-root;
-	width: 100%;
+    display: grid;
+	width: 100vw;
+	grid-template-columns: repeat(1,1fr);
+	grid-template-rows: repeat(4,1fr);
 }
 
 #caixaBotoes > * {
     width: 99vw;
-    height: 20vw;
     background: #d7d7d7;
-	/*margin: .1em auto;*/
-	margin: 0 auto;
+    margin: 0 auto;
     border: 2px solid;
-	line-height: 20vw;
 	font-size: calc(1.5em + 1vw);
+	font-family: "Fonte","Tahoma";
 }
 
 #caixaBarrasAudio{
@@ -460,6 +461,22 @@ p
 	font-size: calc(1.5em + 1vw);
 }
 
+#btnInstrucoes{
+	grid-row: 1;
+}
+
+#btnJogar{
+	grid-row: 2;
+}
+
+#btnCreditos{
+	grid-row: 3;
+}
+
+#btnAudio{
+	grid-row: 4;
+}
+
 #opcaoContinuar::before{
 	content: 'Continuar';
 }
@@ -470,20 +487,6 @@ p
 
 #opcaoMenu::before{
 	content: 'Menu';
-}
-
-#btnJogar::before{
-    content: 'Jogar';
-}
-#btnInstrucoes::before{
-    content: 'Instruções';
-}
-#btnCreditos::before{
-    content: 'Créditos';
-}
-
-#btnAudio::before{
-    content: 'Áudio';
 }
 
 #btnVoltar2::before{
