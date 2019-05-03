@@ -61,8 +61,23 @@ function iniciar()
 	$("camadaJogo").append(header);
 	header.append(jogo.botaoAtalhos);
 
+	jogo.vidas1 = document.createElement("div");
+	jogo.vidas1.setAttribute("id", "vidas");
+	header.append(jogo.vidas1);
+	jogo.vidas2 = document.createElement("div");
+	jogo.vidas2.setAttribute("id", "vidas");
+	header.append(jogo.vidas2);
+	jogo.vidas3 = document.createElement("div");
+	jogo.vidas3.setAttribute("id", "vidas");
+	header.append(jogo.vidas3);
+	jogo.vidas4 = document.createElement("div");
+	jogo.vidas4.setAttribute("id", "vidas");
+	header.append(jogo.vidas4);
+	jogo.vidas5 = document.createElement("div");
+	jogo.vidas5.setAttribute("id", "vidas");
+	header.append(jogo.vidas5);
 
-	header.append(jogo.pontosTela);
+	//header.append(jogo.pontosTela);
 	
 	var colleft = document.createElement("div");
 	colleft.setAttribute("id", "ColLeftJogo");
@@ -210,10 +225,11 @@ function fimDeJogo()
 	}
 }
 
+var deuErro
 //Funcao que recebe uma letra e verifica se numero de erros deve subir
 function verificarErro(_letra)
 {
-	var deuErro = true;
+	deuErro = true;
 	letraRepetida = false;
 	audio2.pause();
 	audioErro.pause();
@@ -475,6 +491,10 @@ function atualizarPalavra()
 		}
 		jogo.palavraNaTela.innerHTML += " ";
 
+	}
+
+	if(deuErro){
+		//jogos.vidas5.setAttribute('display', 'none');
 	}
 }
 
