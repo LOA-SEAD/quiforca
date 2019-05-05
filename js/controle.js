@@ -1238,9 +1238,13 @@ function criarCamadaAtalhos()
 	$("#palco").append(el);
 	el.focus();
 
+	var topo = document.createElement("div");
+	topo.setAttribute("id", "topoAtalhos");
+	el.appendChild(topo);
+
 	var para = document.createElement("h1");
 	para.innerHTML = "Atalhos";
-	el.appendChild(para);
+	topo.appendChild(para);
 
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoesAtalhos")
