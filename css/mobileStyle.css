@@ -177,8 +177,11 @@ body
 }
 
 #camadaAtalhos{
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-template-rows: repeat(2, 1fr);
 	text-align: center;
 	position: absolute;
 }
@@ -461,11 +464,11 @@ p
 }
 
 #caixaBotoesAtalhos{
-	margin-top: 4rem;
+	
 }
 
 #caixaBotoesAtalhos > * {
-    width: 99vw;
+    width: 98vw;
     height: 15vw;
     background: #d7d7d7;
 	margin: 0 auto;

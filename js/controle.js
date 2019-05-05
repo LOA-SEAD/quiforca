@@ -1235,11 +1235,8 @@ function criarCamadaAtalhos()
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaAtalhos");
-	el.setAttribute("tabIndex", 0);
 	$("#palco").append(el);
 	el.focus();
-
-	var para = $('<br>').appendTo(el);
 
 	var para = document.createElement("h1");
 	para.innerHTML = "Atalhos";
@@ -1251,7 +1248,6 @@ function criarCamadaAtalhos()
 
 	atalho1 = document.createElement("div");
 	atalho1.setAttribute("id", "btnAtalho1");
-	atalho1.setAttribute("tabIndex", "-1");
 	atalho1.setAttribute("class", "botao");
 	caixaBotoes.appendChild(atalho1);
 	atalho1.onclick = function(){
@@ -1264,7 +1260,6 @@ function criarCamadaAtalhos()
 
 	atalho2 = document.createElement("div");
 	atalho2.setAttribute("id", "btnAtalho2");
-	atalho2.setAttribute("tabIndex", "-1");
 	atalho2.setAttribute("class", "botao");
 	caixaBotoes.appendChild(atalho2);
 	atalho2.onclick = function(){
@@ -1277,7 +1272,6 @@ function criarCamadaAtalhos()
 
 	atalho3 = document.createElement("div");
 	atalho3.setAttribute("id", "btnAtalho3");
-	atalho3.setAttribute("tabIndex", "-1");
 	atalho3.setAttribute("class", "botao");
 	caixaBotoes.appendChild(atalho3);
 	atalho3.onclick = function(){
@@ -1290,7 +1284,6 @@ function criarCamadaAtalhos()
 
 	atalho4 = document.createElement("div");
 	atalho4.setAttribute("id", "btnAtalho4");
-	atalho4.setAttribute("tabIndex", "-1");
 	atalho4.setAttribute("class", "botao");
 	caixaBotoes.appendChild(atalho4);
 	atalho4.onclick = function(){
@@ -1303,7 +1296,6 @@ function criarCamadaAtalhos()
 
 	atalho5 = document.createElement("div");
 	atalho5.setAttribute("id", "btnAtalho5");
-	atalho5.setAttribute("tabIndex", "-1");
 	atalho5.setAttribute("class", "botao");
 	caixaBotoes.appendChild(atalho5);
 	atalho5.onclick = function(){
@@ -1316,7 +1308,6 @@ function criarCamadaAtalhos()
 
 	voltar = document.createElement("div");
 	voltar.setAttribute("id", "btnVoltar2");
-	voltar.setAttribute("tabInder", "-1");
 	voltar.setAttribute("class", "botao");
 	caixaBotoes.appendChild(voltar);
 	voltar.onclick = function(){
