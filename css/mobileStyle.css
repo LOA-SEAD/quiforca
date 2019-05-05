@@ -464,38 +464,16 @@ p
 }
 
 #caixaBotoesAtalhos{
-	
+	display: grid;
 }
 
 #caixaBotoesAtalhos > * {
-    width: 98vw;
-    height: 15vw;
+    width: 100vw;
     background: #d7d7d7;
 	margin: 0 auto;
     border: 2px solid;
-	line-height: 15vw;
 	font-size: calc(7.2vw);
-}
-
-
-#btnAtalho1::before{
-	content: 'Dica';
-}
-
-#btnAtalho2::before{
-	content: 'Como está a palavra';
-}
-
-#btnAtalho3::before{
-	content: 'Número de vidas';
-}
-
-#btnAtalho4::before{
-	content: 'Letras que você já escolheu';
-}
-
-#btnAtalho5::before{
-	content: 'Número de pontos';
+	font-family: "Fonte","Tahoma";
 }
 
 #MusicaFundo::before{

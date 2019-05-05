@@ -1246,9 +1246,9 @@ function criarCamadaAtalhos()
 	caixaBotoes.setAttribute("id", "caixaBotoesAtalhos")
 	el.appendChild(caixaBotoes);
 
-	atalho1 = document.createElement("div");
+	atalho1 = document.createElement("button");
 	atalho1.setAttribute("id", "btnAtalho1");
-	atalho1.setAttribute("class", "botao");
+	atalho1.innerText = "Dica";
 	caixaBotoes.appendChild(atalho1);
 	atalho1.onclick = function(){
 		ouvirAtalho1();
@@ -1258,9 +1258,9 @@ function criarCamadaAtalhos()
 		setTimeout(update, 50);
 	}
 
-	atalho2 = document.createElement("div");
+	atalho2 = document.createElement("button");
 	atalho2.setAttribute("id", "btnAtalho2");
-	atalho2.setAttribute("class", "botao");
+	atalho2.innerText = "Como está a palavra";
 	caixaBotoes.appendChild(atalho2);
 	atalho2.onclick = function(){
 		ouvirAtalho2();
@@ -1270,9 +1270,9 @@ function criarCamadaAtalhos()
 		setTimeout(update, 50);
 	}
 
-	atalho3 = document.createElement("div");
+	atalho3 = document.createElement("button");
 	atalho3.setAttribute("id", "btnAtalho3");
-	atalho3.setAttribute("class", "botao");
+	atalho3.innerText = "Número de vidas";
 	caixaBotoes.appendChild(atalho3);
 	atalho3.onclick = function(){
 		ouvirAtalho3();
@@ -1282,9 +1282,9 @@ function criarCamadaAtalhos()
 		setTimeout(update, 50);
 	}
 
-	atalho4 = document.createElement("div");
+	atalho4 = document.createElement("button");
 	atalho4.setAttribute("id", "btnAtalho4");
-	atalho4.setAttribute("class", "botao");
+	atalho4.innerText = "Letras que você já escolheu";
 	caixaBotoes.appendChild(atalho4);
 	atalho4.onclick = function(){
 		ouvirAtalho4();
@@ -1294,9 +1294,8 @@ function criarCamadaAtalhos()
 		setTimeout(update, 50);
 	}
 
-	voltar = document.createElement("div");
+	voltar = document.createElement("button");
 	voltar.setAttribute("id", "btnVoltar2");
-	voltar.setAttribute("class", "botao");
 	caixaBotoes.appendChild(voltar);
 	voltar.onclick = function(){
 		estado = "jogando";
