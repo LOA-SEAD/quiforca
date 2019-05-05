@@ -36,12 +36,20 @@ body
 }
 
 #camadaOpcoes{
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	text-align: center;
 	position: absolute;
 	background: url("../imgs/novafolha.png");
 	background-size: cover;
+}
+
+#divOpcoes{
+	width: 100vw;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-template-rows: repeat(3, 1fr);
 }
 
 #camadaAudio{
@@ -417,7 +425,7 @@ p
 }
 
 #caixaBotoesOpcao{
-	/*margin-top: 4rem;*/
+	grid-row: 3/3;
 }
 
 #caixaBotoesOpcao > *{

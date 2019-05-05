@@ -1779,7 +1779,6 @@ function criarCamadaOpcoes(){
 	//Cria div camada opcoes
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaOpcoes");
-	el.setAttribute("tabIndex", 0);
 	$("#palco").append(el);
 	el.focus();
 	/*Opcoes : ->Continuar
@@ -1809,25 +1808,21 @@ function criarCamadaOpcoes(){
 	var opcoesContinuar = document.createElement("div");
 	opcoesContinuar.setAttribute("id", "opcaoContinuar");
 	opcoesContinuar.setAttribute("class", "botaoOpcoes");
-	opcoesContinuar.setAttribute("tabIndex", -1);
 
 	//btnAudio
 	var opcoesAudio = document.createElement("div");
 	opcoesAudio.setAttribute("id", "opcaoAudio");
 	opcoesAudio.setAttribute("class", "botaoOpcoes");
-	opcoesAudio.setAttribute("tabIndex", -1);
 
 	//btnIntrucoes
 	var opcoesInstrucoes = document.createElement("div");
 	opcoesInstrucoes.setAttribute("id", "opcaoInstrucoes");
 	opcoesInstrucoes.setAttribute("class", "botaoOpcoes");
-	opcoesInstrucoes.setAttribute("tabIndex", -1);
 
 	//btnMenu
 	var opcoesMenu = document.createElement("div");
 	opcoesMenu.setAttribute("id", "opcaoMenu");
 	opcoesMenu.setAttribute("class", "botaoOpcoes");
-	opcoesMenu.setAttribute("tabIndex", -1);
 
 	//adicionando botões a caixa de botoes
 	caixaBotoes.appendChild(opcoesContinuar);
