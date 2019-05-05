@@ -1294,18 +1294,6 @@ function criarCamadaAtalhos()
 		setTimeout(update, 50);
 	}
 
-	atalho5 = document.createElement("div");
-	atalho5.setAttribute("id", "btnAtalho5");
-	atalho5.setAttribute("class", "botao");
-	caixaBotoes.appendChild(atalho5);
-	atalho5.onclick = function(){
-		ouvirAtalho5();
-		estado = "jogando";
-		destruirCamadaAtalhos();
-		$("#camadaJogo").toggle();
-		setTimeout(update, 50);
-	}
-
 	voltar = document.createElement("div");
 	voltar.setAttribute("id", "btnVoltar2");
 	voltar.setAttribute("class", "botao");
