@@ -45,6 +45,7 @@ function iniciar()
 	jogo.botaoOpcoes.setAttribute("class", "botao");
 	jogo.botaoOpcoes.onclick = function() {
 		stopTudo();
+		$("#camadaJogo").toggle();
 		criarCamadaOpcoes();
 	}
 	$("#camadaJogo").append(header);

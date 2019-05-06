@@ -400,10 +400,10 @@ p
 }
 
 #caixaBotoes > * {
-    width: 99vw;
-    background: #d7d7d7;
+    width: 100vw;
+    background: #e7e7e7;
     margin: 0 auto;
-    border: 2px solid;
+    box-shadow: inset 0px -1px #504e4a;
 	font-size: calc(1.5em + 1vw);
 	font-family: "Fonte","Tahoma";
 }
@@ -426,17 +426,18 @@ p
 
 #caixaBotoesOpcao{
 	grid-row: 3/3;
+	display: grid;
+	grid-template-columns: repeat(1, 1fr);
+	grid-template-rows: repeat(3, 1fr);
 }
 
 #caixaBotoesOpcao > *{
-	width: 99vw;
-	height: 20vw;
-	background: #d7d7d7;
-	/*margin: .05em auto;*/
-	margin: 0 auto;
-    border: 2px solid;
-	line-height: 20vw;
+	width: 100vw;
+    background: #e7e7e7;
+    margin: 0 auto;
+    box-shadow: inset 0px -1px #504e4a;
 	font-size: calc(1.5em + 1vw);
+	font-family: "Fonte","Tahoma";
 }
 
 #btnInstrucoes{
@@ -453,18 +454,6 @@ p
 
 #btnAudio{
 	grid-row: 4;
-}
-
-#opcaoContinuar::before{
-	content: 'Continuar';
-}
-
-#opcaoAudio::before{
-	content: 'Áudio';
-}
-
-#opcaoMenu::before{
-	content: 'Menu';
 }
 
 #btnVoltar2::before{

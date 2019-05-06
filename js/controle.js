@@ -1791,7 +1791,6 @@ function criarCamadaOpcoes(){
 
 	var divOpcoes = document.createElement("div");
 	divOpcoes.setAttribute("id", "divOpcoes");
-	divOpcoes.setAttribute("tabIndex", 0)
 	el.appendChild(divOpcoes);
 
 	var opcoesTxt = document.createElement("h1");
@@ -1805,22 +1804,26 @@ function criarCamadaOpcoes(){
 	divOpcoes.appendChild(caixaBotoes);
 
 	//btnContinuar
-	var opcoesContinuar = document.createElement("div");
+	var opcoesContinuar = document.createElement("button");
+	opcoesContinuar.innerText = "Continuar";
 	opcoesContinuar.setAttribute("id", "opcaoContinuar");
 	opcoesContinuar.setAttribute("class", "botaoOpcoes");
 
 	//btnAudio
-	var opcoesAudio = document.createElement("div");
+	var opcoesAudio = document.createElement("button");
+	opcoesAudio.innerText = "Áudio";
 	opcoesAudio.setAttribute("id", "opcaoAudio");
 	opcoesAudio.setAttribute("class", "botaoOpcoes");
 
 	//btnIntrucoes
-	var opcoesInstrucoes = document.createElement("div");
+	var opcoesInstrucoes = document.createElement("button");
+	opcoesInstrucoes.innerText = "Instruções";
 	opcoesInstrucoes.setAttribute("id", "opcaoInstrucoes");
 	opcoesInstrucoes.setAttribute("class", "botaoOpcoes");
 
 	//btnMenu
-	var opcoesMenu = document.createElement("div");
+	var opcoesMenu = document.createElement("button");
+	opcoesMenu.innerText = "Menu";
 	opcoesMenu.setAttribute("id", "opcaoMenu");
 	opcoesMenu.setAttribute("class", "botaoOpcoes");
 
@@ -1834,7 +1837,9 @@ function criarCamadaOpcoes(){
 
 	//btnContinuar
 	opcoesContinuar.onclick = function(){
+		$("#camadaJogo").toggle();
 		ativarOpcaoContinuar();
+		
 	}
 	opcoesContinuar.onmouseenter = function(){
 		opcoesContinuar.focus();
