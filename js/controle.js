@@ -883,14 +883,10 @@ function criarCamadaInstrucoes()
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
 
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	el.appendChild(caixaBotoes);
-
-	var botaoMenu = document.createElement("div");
+	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.setAttribute("class" , "botao");
-	caixaBotoes.append(botaoMenu);
+	botaoMenu.innerText = "Menu";
+	el.append(botaoMenu);
 
 
 	botaoMenu.onclick = function()

@@ -211,9 +211,8 @@ body
 
 #camadaInstrucoes{
 	text-align: center;
-	padding: 1em;
-	height: 100%;
-	width: 100%;
+	height: 100vh;
+	width: 100vw;
 }
 
 #imgLogoVit
@@ -299,6 +298,9 @@ body
 	text-align: right;
 }
 
+#instrucoesText{
+	padding: 0 1em;
+}
 /*Parte dos botoes no jogo*/
 #botoes
 {
@@ -477,8 +479,13 @@ p
 	grid-row: 4;
 }
 
-#btnVoltar2::before{
-	content: 'Voltar';
+#btnVoltar2{
+	width: 100vw;
+	height: 25vw;
+    background: #e7e7e7;
+    box-shadow: inset 0px -1px #504e4a;
+	font-size: calc(1.5em + 1vw);
+	font-family: "Fonte","Tahoma";
 }
 
 #caixaBotoesAtalhos{
