@@ -38,29 +38,36 @@ function iniciar()
 	jogo.pontosTela.setAttribute("id", "pontosTela");
 	jogo.pontosTela.innerHTML = "Pontos: " + Math.round(jogo.pontos);
 	
+	//Cria grupo de botões
+	jogo.btnGrupo = document.createElement("div");
+	jogo.btnGrupo.setAttribute("id", "btnGrupo");
 	
-	jogo.botaoOpcoes = document.createElement("div");
+	jogo.botaoOpcoes = document.createElement("button");
 	jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
-	jogo.botaoOpcoes.setAttribute("role" , "button");
+	jogo.botaoOpcoes.innerText = "Menu";
 	jogo.botaoOpcoes.setAttribute("class", "botao");
 	jogo.botaoOpcoes.onclick = function() {
 		stopTudo();
 		$("#camadaJogo").toggle();
 		criarCamadaOpcoes();
 	}
+	//Insere grupo de botões no header, e o header na camada Jogo
 	$("#camadaJogo").append(header);
-	header.append(jogo.botaoOpcoes);
+	header.append(jogo.btnGrupo);
+	
 
-	jogo.botaoAtalhos = document.createElement("div");
+	jogo.botaoAtalhos = document.createElement("button");
 	jogo.botaoAtalhos.setAttribute("id", "btnAtalhos");
-	jogo.botaoAtalhos.setAttribute("role", "button");
+	jogo.botaoAtalhos.innerText = "Atalhos";
 	jogo.botaoAtalhos.setAttribute("class", "botao");
 	jogo.botaoAtalhos.onclick = function(){
 		stopTudo();
 		criarCamadaAtalhos();
 	}
-	$("camadaJogo").append(header);
-	header.append(jogo.botaoAtalhos);
+
+	//Adiciona ao grupo de botões os botões de opções e atalhos
+	jogo.btnGrupo.append(jogo.botaoOpcoes);
+	jogo.btnGrupo.append(jogo.botaoAtalhos);
 
 	jogo.vidas1 = document.createElement("div");
 	jogo.vidas1.setAttribute("id", "vidas");

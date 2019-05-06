@@ -308,6 +308,27 @@ body
 
 }
 
+#btnGrupo{
+	width: 100%;
+	box-shadow: 0 2px 7px 0px rgba(29, 29, 29, 0.64);
+}
+
+#btnGrupo > *{
+	width: 50%;
+	height: 15vw;
+	background: #e7e7e7;
+	text-align: center;
+	font-size: calc(1em + 1vw);
+	font-family: "Fonte","Tahoma";
+	border: 0;
+}
+
+#btnMenu{
+	border-right-width: 1px;
+	border-right-style: double;
+}
+
+
 .botaoJogo
 {
 	display: inline;
@@ -551,21 +572,6 @@ p
 	content: "Reiniciar"
 }
 
-#btnMenu
-{
-	margin: 0 auto;
-	width: 47vw;
-	height: 15vw;
-	background: #d7d7d7;
-	line-height: 15vw;
-	text-align: center;
-	border: 2px solid;
-	float: left;
-}
-
-#btnMenu::before{
-	content: 'Opções';
-}
 
 /*#btnMenu:hover, #btnMenu:focus
 {
@@ -574,21 +580,7 @@ p
 	outline: none;
 }*/
 
-#btnAtalhos
-{
-	margin: 0 auto;
-	width: 47vw;
-	height: 15vw;
-	background: #d7d7d7;
-	border: 2px solid;
-	line-height: 15vw;
-	text-align: center;
-	float: right;
-}
 
-#btnAtalhos::before{
-	content: 'Atalhos';
-}
 
 #btnMenu2
 {
