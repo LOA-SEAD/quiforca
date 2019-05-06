@@ -332,15 +332,11 @@ function criarCamadaCreditos()
 	para.innerHTML = "Rogério Augusto Bordini";
 	colRight.appendChild(para);
 
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	el.appendChild(caixaBotoes);
 
-	var botaoMenu = document.createElement("div");
+	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.setAttribute("tabIndex" , "-1");
-	botaoMenu.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoMenu);
+	botaoMenu.innerText = "Menu";
+	el.appendChild(botaoMenu);
 
 	botaoMenu.onmousedown = function()
 	{

@@ -253,11 +253,11 @@ body
 
 #camadaCreditos
 {
-	height: 100%;
 	text-align: center;
-	display: flex;
+	display: grid;
 	flex-direction: column;
-	width: 100%;
+	width: 100vw;
+	height: 100vh;
 }
 
 #linhaNomesLeft{
