@@ -1291,7 +1291,8 @@ function criarCamadaAtalhos()
 	}
 
 	voltar = document.createElement("button");
-	voltar.setAttribute("id", "btnVoltar2");
+	voltar.setAttribute("id", "btnVoltar3");
+	voltar.innerText = "Voltar";
 	caixaBotoes.appendChild(voltar);
 	voltar.onclick = function(){
 		estado = "jogando";
