@@ -546,21 +546,20 @@ p
 
 #botoesFimDeJogo
 {
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	align-items: center;
+	display: grid;
+	width: 100vw;
+	grid-template-columns: repeat(1,1fr);
+	grid-template-rows: repeat(2,1fr);
 }
 
 #botoesFimDeJogo > *{
-	width: 99vw;
-	height: 20vw;
-	background: #d7d7d7;
-	margin: .1em auto;
-	border: 2px solid;
-	line-height: 20vw;
-	font-family: "Fonte","Tahoma";
+	width: 100vw;
+	height: 18vw;
+    background: #e7e7e7;
+    margin: 0 auto;
+    box-shadow: inset 0px -1px #504e4a;
 	font-size: calc(1.5em + 1vw);
+	font-family: "Fonte","Tahoma";
 }
 
 #botoesTelaVitoria > *{
