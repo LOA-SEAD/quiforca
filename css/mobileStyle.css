@@ -523,7 +523,8 @@ p
 
 #caixaBotoesAtalhos{
 	display: grid;
-	grid-row: 2/4;
+	/*grid-row: 2/4;*/
+	grid-auto-rows: 20vw;
 }
 
 #caixaBotoesAtalhos > * {
