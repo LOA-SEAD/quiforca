@@ -1469,11 +1469,10 @@ function criarCamadaAudio()
 	MusicaFundo.onclick = function(){
 		opcao = 0;
 	}*/
-	var MusicaFundo = document.createElement("div");
+
+	var MusicaFundo = document.createElement("button");
 	MusicaFundo.setAttribute("id", "MusicaFundo");
-	MusicaFundo.setAttribute("class", "botao");
-	MusicaFundo.setAttribute("tabIndex", -1);
-	//MusicaFundo.innerHTML = "Música de fundo";
+	MusicaFundo.innerHTML = "Música de fundo";
 	caixaBarras.appendChild(MusicaFundo);
 	MusicaFundo.onclick = function(){
 		controle = 1;
@@ -1496,11 +1495,9 @@ function criarCamadaAudio()
 		background.volume = this.value/10;
 	}*/
 
-	var Efeitos = document.createElement("div");
+	var Efeitos = document.createElement("button");
 	Efeitos.setAttribute("id", "Efeitos");
-	Efeitos.setAttribute("class", "textoAudio");
-	Efeitos.setAttribute("tabIndex", -1);
-	//Efeitos.innerHTML = "Efeitos sonoros";
+	Efeitos.innerHTML = "Efeitos";
 	caixaBarras.appendChild(Efeitos);
 	Efeitos.onclick = function(){
 		controle = 2;
@@ -1526,12 +1523,9 @@ function criarCamadaAudio()
 		tocaAudio();
 	}*/
 
-
-	var LeituraTela = document.createElement("div");
+	var LeituraTela = document.createElement("button");
 	LeituraTela.setAttribute("id", "LeituraTela");
-	LeituraTela.setAttribute("class", "textoAudio");
-	LeituraTela.setAttribute("tabIndex", -1);
-	//LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
+	LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
 	caixaBarras.appendChild(LeituraTela);
 	LeituraTela.onclick = function(){
 		controle = 3;
@@ -1563,16 +1557,11 @@ function criarCamadaAudio()
 	//var quebraLinha = document.createElement("br");
 	//divAudio.appendChild(quebraLinha);
 
-	//Cria div caixa de botoes
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoesAudio");
-	divAudio.appendChild(caixaBotoes);
-
 	//btnVoltar
-	var audioVoltar = document.createElement("div");
+	var audioVoltar = document.createElement("button");
 	audioVoltar.setAttribute("id", "audioVoltar");
-	audioVoltar.setAttribute("tabIndex", -1);
-	caixaBotoes.appendChild(audioVoltar);
+	audioVoltar.innerHTML = "Voltar";
+	caixaBarras.appendChild(audioVoltar);
 
 	//btnContinuar
 	audioVoltar.onclick = function(){
@@ -1685,9 +1674,9 @@ function criarCamadaControleAudio(){
 	}
 	
 	//btnVoltar
-	var audioVoltar = document.createElement("div");
+	var audioVoltar = document.createElement("button");
 	audioVoltar.setAttribute("id", "audioVoltar");
-	audioVoltar.setAttribute("tabIndex", -1);
+	audioVoltar.innerHTML = "Voltar";
 	audioVoltar.onclick = function(){
 		destruirCamadaControleAudio();
 	}
