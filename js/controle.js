@@ -1242,18 +1242,6 @@ function criarCamadaAtalhos()
 	caixaBotoes.setAttribute("id", "caixaBotoesAtalhos")
 	el.appendChild(caixaBotoes);
 
-	atalho1 = document.createElement("button");
-	atalho1.setAttribute("id", "btnAtalho1");
-	atalho1.innerText = "Dica";
-	caixaBotoes.appendChild(atalho1);
-	atalho1.onclick = function(){
-		ouvirAtalho1();
-		estado = "jogando";
-		destruirCamadaAtalhos();
-		$("#camadaJogo").toggle();
-		setTimeout(update, 50);
-	}
-
 	atalho2 = document.createElement("button");
 	atalho2.setAttribute("id", "btnAtalho2");
 	atalho2.innerText = "Como está a palavra";

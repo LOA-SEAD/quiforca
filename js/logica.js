@@ -89,10 +89,9 @@ function iniciar()
 	jogo.vidas5.setAttribute("id", "vidas");
 	boxVidas.append(jogo.vidas5);
 
-	var colleft = document.createElement("div");
-	colleft.setAttribute("id", "ColLeftJogo");
-	colleft.setAttribute("class", "clearfix");
-	$("#camadaJogo").append(colleft);
+	var bonecoForca = document.createElement("div");
+	bonecoForca.setAttribute("id", "bonecoForca");
+	$("#camadaJogo").append(bonecoForca);
 
 	var colright = document.createElement("div");
 	colright.setAttribute("id", "ColRightJogo");
@@ -102,7 +101,7 @@ function iniciar()
 	//Logo FORCA -- NA TELA
 	var imgLogo = document.createElement("div");
 	imgLogo.setAttribute("id", "imgLogo");
-	colleft.append(imgLogo);
+	bonecoForca.append(imgLogo);
 	
 	jogo.falador = document.createElement("div");
 	jogo.falador.setAttribute("id", "falador");
@@ -515,12 +514,12 @@ function colocarPersonagem()
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
-	$("#ColLeftJogo").append(jogo.personagem);
+	$("#bonecoForca").append(jogo.personagem);
 
 	jogo.personagemAnt = document.createElement("div");
 	jogo.personagemAnt.setAttribute("id", "personagemAnt");
 	jogo.personagemAnt.setAttribute("class", "personagem");
-	$("#ColLeftJogo").append(jogo.personagemAnt);
+	$("#bonecoForca").append(jogo.personagemAnt);
 }
 
 function mudarPersonagem()
@@ -533,11 +532,15 @@ function mudarPersonagem()
 }
 
 function mostrarPersonagem(){
-	$("#ColLeftJogo").attr("style", "display: unset;");
+	$("#topJogo").toggle();
+	$("#ColRightJogo").toggle();
+	$("#bonecoForca").attr("style", "display: unset;");
 
 	setTimeout(function(){
-		$("#ColLeftJogo").attr("style", "display: none;");
-	}, 1500);
+		$("#topJogo").toggle();
+		$("#ColRightJogo").toggle();
+		$("#bonecoForca").attr("style", "display: none;");
+	}, 1000);
 }
 
 function iniciarNovoJogo()
