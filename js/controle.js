@@ -247,6 +247,17 @@ function criarCamadaCreditos()
 
 	var para = $('<br>').appendTo(el);
 
+	var botaoMenu = document.createElement("button");
+	botaoMenu.setAttribute("id" , "btnVoltar2");
+	botaoMenu.innerText = "Menu";
+	el.appendChild(botaoMenu);
+
+	botaoMenu.onmousedown = function()
+	{
+		destruirCamadaCreditos();
+		criarCamadaMenu();
+	}
+
 	var para = document.createElement("h1");
 	para.innerHTML = "Créditos";
 	el.appendChild(para);
@@ -332,17 +343,6 @@ function criarCamadaCreditos()
 	para.innerHTML = "Rogério Augusto Bordini";
 	colRight.appendChild(para);
 
-
-	var botaoMenu = document.createElement("button");
-	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.innerText = "Menu";
-	el.appendChild(botaoMenu);
-
-	botaoMenu.onmousedown = function()
-	{
-		destruirCamadaCreditos();
-		criarCamadaMenu();
-	}
 	/*botaoMenu.onmouseenter = function()
 	{
 		realizarLeitura("Menu");
@@ -862,6 +862,11 @@ function criarCamadaInstrucoes()
 	el.setAttribute("id", "camadaInstrucoes");
 	$("#palco").append(el);
 
+	var botaoMenu = document.createElement("button");
+	botaoMenu.setAttribute("id" , "btnVoltar2");
+	botaoMenu.innerText = "Menu";
+	el.append(botaoMenu);
+
 	//criação camada de instruções
 	//$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
 
@@ -878,11 +883,6 @@ function criarCamadaInstrucoes()
 
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
-
-	var botaoMenu = document.createElement("button");
-	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.innerText = "Menu";
-	el.append(botaoMenu);
 
 
 	botaoMenu.onclick = function()
