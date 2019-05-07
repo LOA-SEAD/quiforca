@@ -322,24 +322,27 @@ function verificarErro(_letra)
 		atualizaNumChances();
 		mudarPersonagem();
 		mostrarPersonagem();
-		//audio2 = document.createElement("AUDIO");
 		switch(jogo.erros)
 		{
 			case 1:
 				audio2.setAttribute("src", "audio/enforcamento1.ogg");
 				audioErro.setAttribute("src", "audio/audioGravado/4vidas.mp3");
+				jogo.vidas5.remove();
 				break;
 			case 2:
 				audio2.setAttribute("src", "audio/enforcamento3.ogg");
 				audioErro.setAttribute("src", "audio/audioGravado/3vidas.mp3");
+				jogo.vidas4.remove();
 				break;
 			case 3:
 				audio2.setAttribute("src", "audio/enforcamento7.ogg");
 				audioErro.setAttribute("src", "audio/audioGravado/2vidas.mp3");
+				jogo.vidas3.remove();
 				break;
 			case 4:
 				audio2.setAttribute("src", "audio/enforcamento8.ogg");
 				audioErro.setAttribute("src", "audio/audioGravado/1vida.mp3");
+				jogo.vidas2.remove();
 		}
 		setTimeout(function(){
 			audio2.currentTime = 0
@@ -490,11 +493,6 @@ function atualizarPalavra()
 			jogo.palavraNaTela.innerHTML += "_";
 		}
 		jogo.palavraNaTela.innerHTML += " ";
-
-	}
-
-	if(deuErro){
-		//jogos.vidas5.setAttribute('display', 'none');
 	}
 }
 
