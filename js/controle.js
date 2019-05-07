@@ -1423,6 +1423,7 @@ var volumeSinth = 1;
 
 function criarCamadaAudio()
 {
+	$("#camadaMenu").toggle();
 	opcao = 0;
 	transicaoBarra = false;
 	estado = "audio";
@@ -1438,7 +1439,7 @@ function criarCamadaAudio()
 	divAudio.setAttribute("tabIndex", 0);
 	el.appendChild(divAudio);
 
-	var audioTxt = document.createElement("p");
+	var audioTxt = document.createElement("h1");
 	audioTxt.setAttribute("id", "audioTxt");
 	audioTxt.innerHTML = "Configurações de áudio";
 	divAudio.appendChild(audioTxt);
@@ -1586,10 +1587,12 @@ function criarCamadaAudio()
 }
 
 function destruirCamadaAudio(){
+	$("#camadaMenu").toggle();
 	$("#camadaAudio").remove();
 }
 
 function criarCamadaControleAudio(){
+	$("#camadaAudio").toggle();
 	estado = "controle";
 	
 	var volumeInicial = 10;
@@ -1605,7 +1608,7 @@ function criarCamadaControleAudio(){
 	divControle.setAttribute("tabIndex", 0);
 	el.appendChild(divControle);
 
-	var controleTxt = document.createElement("p");
+	var controleTxt = document.createElement("h1");
 	controleTxt.setAttribute("id", "controleTxt");
 	switch(controle){
 		case 1:
@@ -1673,6 +1676,7 @@ function criarCamadaControleAudio(){
 }
 
 function destruirCamadaControleAudio(){
+	$("#camadaAudio").toggle();
 	$("#camadaControleAudio").remove();
 }
 
