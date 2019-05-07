@@ -332,15 +332,11 @@ function criarCamadaCreditos()
 	para.innerHTML = "Rogério Augusto Bordini";
 	colRight.appendChild(para);
 
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	el.appendChild(caixaBotoes);
 
-	var botaoMenu = document.createElement("div");
+	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.setAttribute("tabIndex" , "-1");
-	botaoMenu.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoMenu);
+	botaoMenu.innerText = "Menu";
+	el.appendChild(botaoMenu);
 
 	botaoMenu.onmousedown = function()
 	{
@@ -883,14 +879,10 @@ function criarCamadaInstrucoes()
 	//inserindo instrucoes a camada de instruções
 	$('#camadaInstrucoes').append(jogo.instrucoes);	
 
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	el.appendChild(caixaBotoes);
-
-	var botaoMenu = document.createElement("div");
+	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.setAttribute("class" , "botao");
-	caixaBotoes.append(botaoMenu);
+	botaoMenu.innerText = "Menu";
+	el.append(botaoMenu);
 
 
 	botaoMenu.onclick = function()
@@ -1235,24 +1227,24 @@ function criarCamadaAtalhos()
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaAtalhos");
-	el.setAttribute("tabIndex", 0);
 	$("#palco").append(el);
 	el.focus();
 
-	var para = $('<br>').appendTo(el);
+	var topo = document.createElement("div");
+	topo.setAttribute("id", "topoAtalhos");
+	el.appendChild(topo);
 
 	var para = document.createElement("h1");
 	para.innerHTML = "Atalhos";
-	el.appendChild(para);
+	topo.appendChild(para);
 
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoesAtalhos")
 	el.appendChild(caixaBotoes);
 
-	atalho1 = document.createElement("div");
+	atalho1 = document.createElement("button");
 	atalho1.setAttribute("id", "btnAtalho1");
-	atalho1.setAttribute("tabIndex", "-1");
-	atalho1.setAttribute("class", "botao");
+	atalho1.innerText = "Dica";
 	caixaBotoes.appendChild(atalho1);
 	atalho1.onclick = function(){
 		ouvirAtalho1();
@@ -1262,10 +1254,9 @@ function criarCamadaAtalhos()
 		setTimeout(update, 50);
 	}
 
-	atalho2 = document.createElement("div");
+	atalho2 = document.createElement("button");
 	atalho2.setAttribute("id", "btnAtalho2");
-	atalho2.setAttribute("tabIndex", "-1");
-	atalho2.setAttribute("class", "botao");
+	atalho2.innerText = "Como está a palavra";
 	caixaBotoes.appendChild(atalho2);
 	atalho2.onclick = function(){
 		ouvirAtalho2();
@@ -1275,10 +1266,9 @@ function criarCamadaAtalhos()
 		setTimeout(update, 50);
 	}
 
-	atalho3 = document.createElement("div");
+	atalho3 = document.createElement("button");
 	atalho3.setAttribute("id", "btnAtalho3");
-	atalho3.setAttribute("tabIndex", "-1");
-	atalho3.setAttribute("class", "botao");
+	atalho3.innerText = "Número de vidas";
 	caixaBotoes.appendChild(atalho3);
 	atalho3.onclick = function(){
 		ouvirAtalho3();
@@ -1288,10 +1278,9 @@ function criarCamadaAtalhos()
 		setTimeout(update, 50);
 	}
 
-	atalho4 = document.createElement("div");
+	atalho4 = document.createElement("button");
 	atalho4.setAttribute("id", "btnAtalho4");
-	atalho4.setAttribute("tabIndex", "-1");
-	atalho4.setAttribute("class", "botao");
+	atalho4.innerText = "Letras que você já escolheu";
 	caixaBotoes.appendChild(atalho4);
 	atalho4.onclick = function(){
 		ouvirAtalho4();
@@ -1301,23 +1290,9 @@ function criarCamadaAtalhos()
 		setTimeout(update, 50);
 	}
 
-	atalho5 = document.createElement("div");
-	atalho5.setAttribute("id", "btnAtalho5");
-	atalho5.setAttribute("tabIndex", "-1");
-	atalho5.setAttribute("class", "botao");
-	caixaBotoes.appendChild(atalho5);
-	atalho5.onclick = function(){
-		ouvirAtalho5();
-		estado = "jogando";
-		destruirCamadaAtalhos();
-		$("#camadaJogo").toggle();
-		setTimeout(update, 50);
-	}
-
-	voltar = document.createElement("div");
-	voltar.setAttribute("id", "btnVoltar2");
-	voltar.setAttribute("tabInder", "-1");
-	voltar.setAttribute("class", "botao");
+	voltar = document.createElement("button");
+	voltar.setAttribute("id", "btnVoltar3");
+	voltar.innerText = "Voltar";
 	caixaBotoes.appendChild(voltar);
 	voltar.onclick = function(){
 		estado = "jogando";
@@ -1730,7 +1705,6 @@ function criarCamadaOpcoes(){
 	//Cria div camada opcoes
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaOpcoes");
-	el.setAttribute("tabIndex", 0);
 	$("#palco").append(el);
 	el.focus();
 	/*Opcoes : ->Continuar
@@ -1743,7 +1717,6 @@ function criarCamadaOpcoes(){
 
 	var divOpcoes = document.createElement("div");
 	divOpcoes.setAttribute("id", "divOpcoes");
-	divOpcoes.setAttribute("tabIndex", 0)
 	el.appendChild(divOpcoes);
 
 	var opcoesTxt = document.createElement("h1");
@@ -1757,28 +1730,28 @@ function criarCamadaOpcoes(){
 	divOpcoes.appendChild(caixaBotoes);
 
 	//btnContinuar
-	var opcoesContinuar = document.createElement("div");
+	var opcoesContinuar = document.createElement("button");
+	opcoesContinuar.innerText = "Continuar";
 	opcoesContinuar.setAttribute("id", "opcaoContinuar");
 	opcoesContinuar.setAttribute("class", "botaoOpcoes");
-	opcoesContinuar.setAttribute("tabIndex", -1);
 
 	//btnAudio
-	var opcoesAudio = document.createElement("div");
+	var opcoesAudio = document.createElement("button");
+	opcoesAudio.innerText = "Áudio";
 	opcoesAudio.setAttribute("id", "opcaoAudio");
 	opcoesAudio.setAttribute("class", "botaoOpcoes");
-	opcoesAudio.setAttribute("tabIndex", -1);
 
 	//btnIntrucoes
-	var opcoesInstrucoes = document.createElement("div");
+	var opcoesInstrucoes = document.createElement("button");
+	opcoesInstrucoes.innerText = "Instruções";
 	opcoesInstrucoes.setAttribute("id", "opcaoInstrucoes");
 	opcoesInstrucoes.setAttribute("class", "botaoOpcoes");
-	opcoesInstrucoes.setAttribute("tabIndex", -1);
 
 	//btnMenu
-	var opcoesMenu = document.createElement("div");
+	var opcoesMenu = document.createElement("button");
+	opcoesMenu.innerText = "Menu";
 	opcoesMenu.setAttribute("id", "opcaoMenu");
 	opcoesMenu.setAttribute("class", "botaoOpcoes");
-	opcoesMenu.setAttribute("tabIndex", -1);
 
 	//adicionando botões a caixa de botoes
 	caixaBotoes.appendChild(opcoesContinuar);
@@ -1790,7 +1763,9 @@ function criarCamadaOpcoes(){
 
 	//btnContinuar
 	opcoesContinuar.onclick = function(){
+		$("#camadaJogo").toggle();
 		ativarOpcaoContinuar();
+		
 	}
 	opcoesContinuar.onmouseenter = function(){
 		opcoesContinuar.focus();
