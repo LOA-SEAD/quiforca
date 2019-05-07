@@ -785,11 +785,20 @@ p
 	}
 }
 
+#boxVidas
+{
+	margin-top: 1.3rem;
+	justify-content: center;
+	flex-direction: row;
+	display: flex;
+}
+
 #vidas
 {
 	background-image: url("../imgs/vida.png");
-	width: 14.5vw;
-	height: 13.3vw;
+	width: 11.6vw;
+	height: 10.64vw;
 	float: left;
-	margin-top: 1.3rem;
+	background-size: cover;
+	margin: 0.1rem;
 }

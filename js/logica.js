@@ -69,24 +69,26 @@ function iniciar()
 	jogo.btnGrupo.append(jogo.botaoOpcoes);
 	jogo.btnGrupo.append(jogo.botaoAtalhos);
 
+	jogo.boxVidas = document.createElement("div");
+	jogo.boxVidas.setAttribute("id", "boxVidas");
+	header.append(jogo.boxVidas);
+
 	jogo.vidas1 = document.createElement("div");
 	jogo.vidas1.setAttribute("id", "vidas");
-	header.append(jogo.vidas1);
+	boxVidas.append(jogo.vidas1);
 	jogo.vidas2 = document.createElement("div");
 	jogo.vidas2.setAttribute("id", "vidas");
-	header.append(jogo.vidas2);
+	boxVidas.append(jogo.vidas2);
 	jogo.vidas3 = document.createElement("div");
 	jogo.vidas3.setAttribute("id", "vidas");
-	header.append(jogo.vidas3);
+	boxVidas.append(jogo.vidas3);
 	jogo.vidas4 = document.createElement("div");
 	jogo.vidas4.setAttribute("id", "vidas");
-	header.append(jogo.vidas4);
+	boxVidas.append(jogo.vidas4);
 	jogo.vidas5 = document.createElement("div");
 	jogo.vidas5.setAttribute("id", "vidas");
-	header.append(jogo.vidas5);
+	boxVidas.append(jogo.vidas5);
 
-	//header.append(jogo.pontosTela);
-	
 	var colleft = document.createElement("div");
 	colleft.setAttribute("id", "ColLeftJogo");
 	colleft.setAttribute("class", "clearfix");
