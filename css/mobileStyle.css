@@ -378,11 +378,6 @@ body
 	cursor: pointer;	
 }
 
-/*.botaoJogo:hover
-{
-	transform: scale(1.1);
-}*/
-
 .linha
 {
 	text-align: center;
@@ -463,13 +458,6 @@ p
 }
 
 #caixaBarrasAudio > *{
-	/*width: 99vw;
-    height: 20vw;
-    background: #d7d7d7;
-	margin: 0 auto;
-    border: 2px solid;
-	line-height: 20vw;
-	font-size: 6.5vw;*/
 	width: 100vw;
 	height: 18vw;
     background: #e7e7e7;
@@ -619,16 +607,6 @@ p
 	content: "Reiniciar"
 }
 
-
-/*#btnMenu:hover, #btnMenu:focus
-{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
-}*/
-
-
-
 #btnMenu2
 {
 	margin: 1rem;
@@ -741,19 +719,6 @@ p
 
 }
 
-/*.textoAudio:focus{
-	text-decoration: underline;
-}*/
-
-/*#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
-    background-image: none;
-	width: 117px;
-	height: 65px;
-	margin: 0 auto;
-	margin-top: 1rem;
-	background-image: url("../imgs/btnContinuar.png");
-}*/
-
 #opcaoInstrucoes{
 	display: none;
 }
@@ -761,36 +726,6 @@ p
 #audioVoltar::before{
 	grid: 4;
 }
-
-/*#audioVoltar:focus{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
-}*/
-
-/*#opcaoContinuar:focus, #opcaoAudio:focus, #opcaoInstrucoes:focus, #opcaoMenu:focus{
-	transform: scale(1.1);
-	cursor: pointer;
-	outline: none;
-}*/
-
-/*
-
-@media screen and (max-width: 1100px) {
-	#row{
-		flex-direction: column;
-	}
-  }
-
-@media screen and (max-width: 1336px){
-	#ColLeftJogo{
-		max-width: 275px
-	}
-	#ColRightJogo{
-		max-width: 550px
-	}
-}
-*/
 
 /*Quebra para textos nos créditos*/
 @media screen and (max-width: 555px){
