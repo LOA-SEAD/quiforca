@@ -1200,9 +1200,9 @@ function setaFoco(){
 			}
 			else if(opcao == 3){
 				document.getElementById("audioVoltar").focus();
-				audioConfiguracoes.setAttribute("src", "audio/audioGravado/voltar.mp3");
+				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/voltar.mp3");
 				audioConfiguracoes.currentTime = 0;
-				audioConfiguracoes.play();
+				audioConfiguracoes.play();*/
 			}
 		break;
 	}
