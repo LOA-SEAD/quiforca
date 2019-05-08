@@ -28,7 +28,6 @@ function iniciar()
 
 	jogo.linha = document.createElement("div");
 	jogo.linha.setAttribute("id", "row");
-	//jogo.linha.setAttribute("style", "margin-top: 4rem")
 
 	var header = document.createElement("div");
 	header.setAttribute("id", "topJogo");
@@ -44,7 +43,7 @@ function iniciar()
 	
 	jogo.botaoOpcoes = document.createElement("button");
 	jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
-	jogo.botaoOpcoes.innerText = "Menu";
+	jogo.botaoOpcoes.innerText = "Opções";
 	jogo.botaoOpcoes.setAttribute("class", "botao");
 	jogo.botaoOpcoes.onclick = function() {
 		stopTudo();
@@ -108,14 +107,12 @@ function iniciar()
 	jogo.falador.setAttribute("aria-live", "polite");
 	jogo.falador.setAttribute("role", "log");
 	jogo.falador.setAttribute("style", "display: none;");
-	//$("#camadaJogo").append(jogo.falador);
-	//colright.append(jogo.falador)
 
 	//Dica
 	jogo.dicaNaTela = document.createElement("div");
 	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
-	//jogo.dicaNaTela.setAttribute("role" , "button");
 	jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
+
 	//Exibe dica da palavra + número de letras que ela contém -- NA TELA
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
@@ -123,7 +120,6 @@ function iniciar()
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
 	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
 	jogo.dicaNaTela.appendChild(p);
-	//$("#camadaJogo").append(jogo.dicaNaTela);
 	colright.append(jogo.dicaNaTela);
 
 	//Exibe a palavra na tela
@@ -137,7 +133,6 @@ function iniciar()
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "0");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	//$("#camadaJogo").append(jogo.palavraNaTela);
 	colright.append(jogo.palavraNaTela);
 
 	jogo.erros = 0;
