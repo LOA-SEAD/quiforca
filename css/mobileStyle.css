@@ -283,6 +283,10 @@ body
 	width: 100vw;
 }
 
+#topInstrucoes{
+	width: 100vw;
+}
+
 #pontosTela{
 	float: right;
 	margin: .5em;
