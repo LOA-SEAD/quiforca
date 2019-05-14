@@ -880,12 +880,16 @@ function criarCamadaInstrucoes()
 	botaoOuvir.innerHTML = "Ouvir";
 	btnGrupo.append(botaoOuvir);
 	
+	//div contendo o conteúdo das instruções
+	jogo.instrucoes = document.createElement("div");
+	jogo.instrucoes.setAttribute("id", "conteudoInst");
+
 
 	//conteúdo instruções
-	jogo.instrucoes = document.createElement("p")
-	jogo.instrucoes.setAttribute("id", "instrucoesText")
-	jogo.instrucoes.innerHTML = "<h1>Instruções</h1>";
-	jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. "+
+	jogo.instrucoes.conteudo = document.createElement("p")
+	jogo.instrucoes.conteudo.setAttribute("id", "instrucoesText")
+	jogo.instrucoes.conteudo.innerHTML = "<h1>Instruções</h1>";
+	jogo.instrucoes.conteudo.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. "+
 	 "Cada letra que você acerta é colocada na palavra. "+
 	 "A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. "+
 	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. "+
@@ -893,7 +897,8 @@ function criarCamadaInstrucoes()
 
 
 	//inserindo instrucoes a camada de instruções
-	$('#camadaInstrucoes').append(jogo.instrucoes);	
+	$('#camadaInstrucoes').append(jogo.instrucoes);
+	$("#conteudoInst").append(jogo.instrucoes.conteudo);	
 
 
 	botaoMenu.onclick = function()

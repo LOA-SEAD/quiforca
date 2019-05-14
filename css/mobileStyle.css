@@ -285,6 +285,11 @@ body
 
 #topInstrucoes{
 	width: 100vw;
+	position: fixed;
+}
+
+#conteudoInst{
+	padding-top: 15vw;
 }
 
 #pontosTela{
