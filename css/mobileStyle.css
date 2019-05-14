@@ -667,12 +667,12 @@ p
 /*--------parte animação boneco---------*/
 
 #bonecoForca
-{
-	width: 100vw;
-	height: 100vh;
-	align-self: center;
-	position: absolute;
+{	
+	width: 100%;
 	display: none;
+	position: absolute;
+	align-self: center;
+	text-align: center;
 }
 
 #imgBoneco{
