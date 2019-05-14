@@ -388,14 +388,14 @@ function criarCamadaVitoria()
 		audio3.play();
 	}, 500);
 
-	vitoria2 = setTimeout(function(){
-		/*var txt = "audio/" + numeroSorteado() + ".mp3"
-		audioVitP.setAttribute("src", txt);
-		audioVitP.currentTime = 0
-		audioVitP.volume = 1
-		audioVitP.play();*/
+	/*vitoria2 = setTimeout(function(){
+		//var txt = "audio/" + numeroSorteado() + ".mp3"
+		//audioVitP.setAttribute("src", txt);
+		//audioVitP.currentTime = 0
+		//audioVitP.volume = 1
+		//audioVitP.play();
 		leituraInicial(baseURL + "vitoriaFrase.mp3");
-	}, 3800);
+	}, 3800);*/
 
 	var fase;
 	var faseId;
@@ -501,24 +501,24 @@ function criarCamadaFimdeJogo()
 		audio3.play();
 	}, 500);
 
-	vitoria2 = setTimeout(function(){
-		/*var txt = "audio/" + numeroSorteado() + ".mp3"
-		audioVitP.setAttribute("src", txt);
-		audioVitP.currentTime = 0
-		audioVitP.volume = 1
-		audioVitP.play();*/
+	/*vitoria2 = setTimeout(function(){
+		//var txt = "audio/" + numeroSorteado() + ".mp3"
+		//audioVitP.setAttribute("src", txt);
+		//audioVitP.currentTime = 0
+		//audioVitP.volume = 1
+		//audioVitP.play();
 		leituraInicial(baseURL + "vitoriaFrase.mp3");
-	}, 3800);
+	}, 3800);*/
 
-	vitoria3 = setTimeout(function(){
+	/*vitoria3 = setTimeout(function(){
 		realizarLeitura(jogo.palavraSorteada);
-	}, 6100);
+	}, 6100);*/
 
-	vitoria4 = setTimeout(function(){
+	/*vitoria4 = setTimeout(function(){
 		audio3.setAttribute("src", "audio/audioGravado/pontuacaoFinal.mp3");
 		audio3.currentTime = 0;
 		audio3.play();
-	}, 8000)
+	}, 8000)*/
 
 
 	var fase;
@@ -652,9 +652,9 @@ function criarCamadaDerrota()
 		pontfinal.play()
 	}, 7300);*/
 
-	derrota1 = setTimeout(function(){
+	/*derrota1 = setTimeout(function(){
 		leituraInicial(baseURL + "derrotaFrase.mp3");
-	}, 3000);
+	}, 3000);*/
 
 
 	//var audio = document.createElement("AUDIO");
@@ -874,33 +874,6 @@ function criarCamadaInstrucoes()
 	botaoMenu.setAttribute("id" , "btnMenu");
 	botaoMenu.innerText = "Menu";
 	btnGrupo.append(botaoMenu);
-
-	var botaoOuvir = document.createElement("button");
-	botaoOuvir.setAttribute("id", "btnOuvir");
-	botaoOuvir.innerHTML = "Ouvir";
-	btnGrupo.append(botaoOuvir);
-	
-	//div contendo o conteúdo das instruções
-	jogo.instrucoes = document.createElement("div");
-	jogo.instrucoes.setAttribute("id", "conteudoInst");
-
-
-	//conteúdo instruções
-	jogo.instrucoes.conteudo = document.createElement("p")
-	jogo.instrucoes.conteudo.setAttribute("id", "instrucoesText")
-	jogo.instrucoes.conteudo.innerHTML = "<h1>Instruções</h1>";
-	jogo.instrucoes.conteudo.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. "+
-	 "Cada letra que você acerta é colocada na palavra. "+
-	 "A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. "+
-	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. "+
-	 "Caso precise acessar as opções ou os atalhos sonoros, pode fazê-lo clicando nos botões na parte superior da tela, durante o jogo.<br><br>";
-
-
-	//inserindo instrucoes a camada de instruções
-	$('#camadaInstrucoes').append(jogo.instrucoes);
-	$("#conteudoInst").append(jogo.instrucoes.conteudo);	
-
-
 	botaoMenu.onclick = function()
 	{
 		if(origemInstrucoes == "menu")
@@ -917,6 +890,31 @@ function criarCamadaInstrucoes()
 			setTimeout(update, 50);
 		}
 	}
+
+	var botaoOuvir = document.createElement("button");
+	botaoOuvir.setAttribute("id", "btnOuvir");
+	botaoOuvir.innerHTML = "Ouvir";
+	btnGrupo.append(botaoOuvir);
+	botaoOuvir.onclick = function()
+	{
+		
+	}
+	
+
+	//conteúdo instruções
+	jogo.instrucoes = document.createElement("p");
+	jogo.instrucoes.setAttribute("id", "instrucoesText")
+	jogo.instrucoes.innerHTML = "<h1>Instruções</h1>";
+	jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. "+
+	 "Cada letra que você acerta é colocada na palavra. "+
+	 "A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. "+
+	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. "+
+	 "Durante o jogo, você poderá acessar o menu de opções para ler as instruções e configurar o áudio através do botão Opções no canto superior esquerdo da tela " +
+	 "e também poderá acessar informações sobre o status do jogo por meio do botão Status no canto superior direito da tela.";
+
+
+	//inserindo instrucoes a camada de instruções
+	$('#camadaInstrucoes').append(jogo.instrucoes);	
 }
 
 function destruirCamadaInstrucoes()
@@ -1078,22 +1076,22 @@ var delayInicializaFocus
 function inicializaFocus(){
 	if(estado == "menu"){
 		document.getElementById("camadaMenu").focus();
-		document.getElementById("btnInstrucoes").focus();
+		//document.getElementById("btnInstrucoes").focus();
 	}
 	else if(estado == "derrota"){
 		document.getElementById("camadaDerrota").focus();
-		document.getElementById("btnReiniciar").focus();
+		//document.getElementById("btnReiniciar").focus();
 	}
 	else if(estado == "vitoria"){
 		document.getElementById("camadaVitoria").focus();
-		document.getElementById("btnProxPalavra").focus();
+		//document.getElementById("btnProxPalavra").focus();
 	}
 	else if(estado == "jogando"){
 		document.getElementById("dicaNaTela").focus();
 	}
 	else if(estado == "fimdeJogo"){
 		document.getElementById("camadaFimdeJogo").focus();
-		document.getElementById("btnMenu").focus();
+		//document.getElementById("btnMenu").focus();
 	}
 	else if(estado == "opcoes"){
 		document.getElementById("opcaoContinuar").focus();
@@ -1251,7 +1249,7 @@ function criarCamadaAtalhos()
 	el.appendChild(topo);
 
 	var para = document.createElement("h1");
-	para.innerHTML = "Status";
+	para.innerHTML = "Atalhos";
 	topo.appendChild(para);
 
 	var caixaBotoes = document.createElement("div");
