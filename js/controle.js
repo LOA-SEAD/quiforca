@@ -245,12 +245,27 @@ function criarCamadaCreditos()
 	el.setAttribute("id", "camadaCreditos");
 	$("#palco").append(el);
 
-	var para = $('<br>').appendTo(el);
+	//div contendo conteúdo do topo da página
+	var topo = document.createElement("div");
+	topo.setAttribute("id", "topoPag");
+
+
+	//grupo de botões superiores tela créditos
+	var btnGrupo = document.createElement("div");
+	btnGrupo.setAttribute("id", "btnGrupo");
 
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
 	botaoMenu.innerText = "Menu";
-	el.appendChild(botaoMenu);
+	btnGrupo.append(botaoMenu);
+
+	var botaoOuvir = document.createElement("button");
+	botaoOuvir.setAttribute("id", "btnOuvir");
+	botaoOuvir.innerHTML = "Ouvir";
+	btnGrupo.append(botaoOuvir);
+
+	el.appendChild(topo);
+	topo.appendChild(btnGrupo);
 
 	botaoMenu.onmousedown = function()
 	{
@@ -258,16 +273,20 @@ function criarCamadaCreditos()
 		criarCamadaMenu();
 	}
 
+	//div contendo conteudo da página
+	var conteudo = document.createElement("div");
+	conteudo.setAttribute("id", "conteudo")
+
 	var para = document.createElement("h1");
 	para.innerHTML = "Créditos";
-	el.appendChild(para);
+	conteudo.appendChild(para);
 
 	var para = document.createElement("h1");
 	para.innerHTML = "Coordenação";
-	el.appendChild(para);
+	conteudo.appendChild(para);
 
 	var coord = document.createElement("div");
-	el.appendChild(coord);
+	conteudo.appendChild(coord);
 
 	var colLeft = document.createElement("div");
 	colLeft.setAttribute("id", "linhaNomesLeft");
@@ -287,10 +306,10 @@ function criarCamadaCreditos()
 
 	var para = document.createElement("h1");
 	para.innerHTML = "Equipe";
-	el.appendChild(para);
+	conteudo.appendChild(para);
 
 	var equipe = document.createElement("div");
-	el.appendChild(equipe);
+	conteudo.appendChild(equipe);
 
 	var colLeft = document.createElement("div");
 	colLeft.setAttribute("id", "linhaNomesLeft");
@@ -316,10 +335,10 @@ function criarCamadaCreditos()
 
 	var para = document.createElement("h1");
 	para.innerHTML = "Acessibilidade";
-	el.appendChild(para);
+	conteudo.appendChild(para);
 
 	var acessibilidade = document.createElement("div");
-	el.appendChild(acessibilidade);
+	conteudo.appendChild(acessibilidade);
 
 	var colLeft = document.createElement("div");
 	colLeft.setAttribute("id", "linhaNomesLeft");
@@ -342,6 +361,8 @@ function criarCamadaCreditos()
 	var para = document.createElement("p");
 	para.innerHTML = "Rogério Augusto Bordini";
 	colRight.appendChild(para);
+
+	el.appendChild(conteudo);
 
 	/*botaoMenu.onmouseenter = function()
 	{

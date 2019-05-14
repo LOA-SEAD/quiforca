@@ -283,12 +283,12 @@ body
 	width: 100vw;
 }
 
-#topInstrucoes{
+#topInstrucoes, #topoPag{
 	width: 100vw;
 	position: fixed;
 }
 
-#conteudoInst{
+#conteudoInst, #conteudo{
 	padding-top: 15vw;
 }
 
@@ -373,7 +373,7 @@ body
 	border: 0;
 }
 
-#btnMenu{
+#btnMenu, #btnVoltar2{
 	border-right-width: 1px;
 	border-right-style: double;
 }
@@ -523,15 +523,6 @@ p
 
 #btnAudio{
 	grid-row: 4;
-}
-
-#btnVoltar2{
-	width: 100vw;
-	height: 25vw;
-    background: #e7e7e7;
-    box-shadow: inset 0px -1px #504e4a;
-	font-size: calc(1.5em + 1vw);
-	font-family: "Fonte","Tahoma";
 }
 
 #caixaBotoesAtalhos{
