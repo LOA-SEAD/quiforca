@@ -862,13 +862,24 @@ function criarCamadaInstrucoes()
 	el.setAttribute("id", "camadaInstrucoes");
 	$("#palco").append(el);
 
-	var botaoMenu = document.createElement("button");
-	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.innerText = "Menu";
-	el.append(botaoMenu);
+	var header = document.createElement("div");
+	header.setAttribute("id", "topInstrucoes");
+	el.append(header);
 
-	//criação camada de instruções
-	//$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
+	var btnGrupo = document.createElement("div");
+	btnGrupo.setAttribute("id", "btnGrupo");
+	header.append(btnGrupo);
+
+	var botaoMenu = document.createElement("button");
+	botaoMenu.setAttribute("id" , "btnMenu");
+	botaoMenu.innerText = "Menu";
+	btnGrupo.append(botaoMenu);
+
+	var botaoOuvir = document.createElement("button");
+	botaoOuvir.setAttribute("id", "btnOuvir");
+	botaoOuvir.innerHTML = "Ouvir";
+	btnGrupo.append(botaoOuvir);
+	
 
 	//conteúdo instruções
 	jogo.instrucoes = document.createElement("p")
