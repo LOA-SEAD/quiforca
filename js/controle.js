@@ -1461,16 +1461,6 @@ function criarCamadaAudio()
 	caixaBarras.setAttribute("id", "caixaBarrasAudio");
 	divAudio.appendChild(caixaBarras);
 
-	/*var MusicaFundo = document.createElement("p");
-	MusicaFundo.setAttribute("id", "MusicaFundo");
-	MusicaFundo.setAttribute("class", "textoAudio");
-	MusicaFundo.setAttribute("tabIndex", -1);
-	MusicaFundo.innerHTML = "Música de fundo";
-	caixaBarras.appendChild(MusicaFundo);
-	MusicaFundo.onclick = function(){
-		opcao = 0;
-	}*/
-
 	var MusicaFundo = document.createElement("button");
 	MusicaFundo.setAttribute("id", "MusicaFundo");
 	MusicaFundo.innerHTML = "Música de fundo";
@@ -1480,21 +1470,6 @@ function criarCamadaAudio()
 		criarCamadaControleAudio();
 		opcao = 0;
 	}
-
-	/*var sliderMusicaFundo = document.createElement("input");
-	sliderMusicaFundo.setAttribute("type", "range");
-	sliderMusicaFundo.setAttribute("min", "0");
-	sliderMusicaFundo.setAttribute("max", "10");
-	sliderMusicaFundo.setAttribute("value", background.volume*10);
-	sliderMusicaFundo.setAttribute("id", "sliderMusicaFundo");
-	sliderMusicaFundo.setAttribute("tabIndex", -1);
-	sliderMusicaFundo.setAttribute("class", "slider");
-	caixaBarras.appendChild(sliderMusicaFundo);
-	//Atualiza volume da musica de fundo
-	sliderMusicaFundo.oninput = function(){
-		tocaAudio();
-		background.volume = this.value/10;
-	}*/
 
 	var Efeitos = document.createElement("button");
 	Efeitos.setAttribute("id", "Efeitos");
@@ -1506,24 +1481,6 @@ function criarCamadaAudio()
 		opcao = 1;
 	}
 
-	/*var sliderEfeitos = document.createElement("input");
-	sliderEfeitos.setAttribute("type", "range");
-	sliderEfeitos.setAttribute("min", "0");
-	sliderEfeitos.setAttribute("max", "10");
-	sliderEfeitos.setAttribute("value", audioTeclas.volume*10);
-	sliderEfeitos.setAttribute("id", "sliderEfeitos");
-	sliderEfeitos.setAttribute("tabIndex", -1);
-	sliderEfeitos.setAttribute("class", "slider");
-	caixaBarras.appendChild(sliderEfeitos);
-	//Atualiza volume dos efeitos
-	sliderEfeitos.oninput = function(){
-		//document.getElementById("teclaIndisponivel").volume = this.value/10;
-		audio2.volume = this.value/10;
-		audio3.volume = this.value/10;
-		audioTeclas.volume = this.value/10;
-		tocaAudio();
-	}*/
-
 	var LeituraTela = document.createElement("button");
 	LeituraTela.setAttribute("id", "LeituraTela");
 	LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
@@ -1533,27 +1490,6 @@ function criarCamadaAudio()
 		criarCamadaControleAudio();
 		opcao = 2;
 	}
-
-	/*var sliderLeituraTela = document.createElement("input");
-	sliderLeituraTela.setAttribute("type", "range");
-	sliderLeituraTela.setAttribute("min", "0");
-	sliderLeituraTela.setAttribute("max", "10");
-	sliderLeituraTela.setAttribute("value", audio.volume*10);
-	sliderLeituraTela.setAttribute("id", "sliderLeituraTela");
-	sliderLeituraTela.setAttribute("tabIndex", -1);
-	sliderLeituraTela.setAttribute("class", "slider");
-	caixaBarras.appendChild(sliderLeituraTela);
-	sliderLeituraTela.oninput = function(){
-		//----------------------------------------- FALAR NIVEL DO VOLUME --------------------------------------
-		tocaAudio();
-		audioinicial.volume = this.value/10;
-		audio.volume = this.value/10;
-		audioConfiguracoes.volume = this.value/10;
-		msg.volume = this.value/10;
-		volumeSinth = this.value/10;
-		audioEnter.volume = this.value/10;
-		audioErro.volume = this.value/10;
-	}*/
 
 	//var quebraLinha = document.createElement("br");
 	//divAudio.appendChild(quebraLinha);

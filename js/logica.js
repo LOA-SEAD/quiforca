@@ -43,12 +43,12 @@ function iniciar()
 	
 	jogo.botaoOpcoes = document.createElement("button");
 	jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
-	jogo.botaoOpcoes.innerText = "Opções";
+	jogo.botaoOpcoes.innerText = "Áudio";
 	jogo.botaoOpcoes.setAttribute("class", "botao");
 	jogo.botaoOpcoes.onclick = function() {
 		stopTudo();
 		$("#camadaJogo").toggle();
-		criarCamadaOpcoes();
+		criarCamadaAudio();
 	}
 	//Insere grupo de botões no header, e o header na camada Jogo
 	$("#camadaJogo").append(header);
