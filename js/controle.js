@@ -1235,7 +1235,7 @@ function criarCamadaAtalhos()
 	el.appendChild(topo);
 
 	var para = document.createElement("h1");
-	para.innerHTML = "Atalhos";
+	para.innerHTML = "Status";
 	topo.appendChild(para);
 
 	var caixaBotoes = document.createElement("div");

@@ -57,7 +57,7 @@ function iniciar()
 
 	jogo.botaoAtalhos = document.createElement("button");
 	jogo.botaoAtalhos.setAttribute("id", "btnAtalhos");
-	jogo.botaoAtalhos.innerText = "Atalhos";
+	jogo.botaoAtalhos.innerText = "Status";
 	jogo.botaoAtalhos.setAttribute("class", "botao");
 	jogo.botaoAtalhos.onclick = function(){
 		stopTudo();
@@ -128,10 +128,14 @@ function iniciar()
 	{
 		jogo.aux += jogo.palavraSorteada[i] + " ";
 	}
+
+	/*jogo.palavraNaTelaDiv = document.createElement("div");
+	jogo.palavraNaTelaDiv.setAttribute("id", "palavraNaTelaDiv");
+	jogo.palavraNaTelaDiv.setAttribute*/
+
 	//Essa é a variavel que deve ser exibida na tela -- NA TELA
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
-	jogo.palavraNaTela.setAttribute("tabIndex", "0");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
 	colright.append(jogo.palavraNaTela);
 
