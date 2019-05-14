@@ -224,8 +224,8 @@ function criarCamadaJogo()
 
 	iniciar();
 	//leituraDica();
-	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
-	realizarLeitura(texto);
+	//var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
+	//realizarLeitura(texto);
 }
 
 function destruirCamadaJogo()
@@ -1081,11 +1081,11 @@ function inicializaFocus(){
 	}
 	else if(estado == "opcoes"){
 		document.getElementById("opcaoContinuar").focus();
-		leituraInicial(baseURL + "configuracoes.mp3");
+		//leituraInicial(baseURL + "configuracoes.mp3");
 	}
 	else if(estado == "audio"){
 		document.getElementById("MusicaFundo").focus();
-		leituraInicial(baseURL + "entrarEnter.mp3")
+		//leituraInicial(baseURL + "entrarEnter.mp3")
 	}
 }
 
@@ -1127,73 +1127,73 @@ function setaFoco(){
 			}
 			else if(opcao == 1){
 				document.getElementById("btnJogar").focus();
-				realizarFala(baseURL + "jogar.mp3");
+				//realizarFala(baseURL + "jogar.mp3");
 			}
 			else if(opcao == 2){
 				document.getElementById("btnCreditos").focus();
-				realizarFala(baseURL + "creditos.mp3");
+				//realizarFala(baseURL + "creditos.mp3");
 			}
 			else if(opcao == 3){
 				document.getElementById("btnAudio").focus();
-				realizarFala(baseURL + "audio.mp3");
+				//realizarFala(baseURL + "audio.mp3");
 			}
 		break;
 		case "vitoria":
 			if(opcao == 0){
 				document.getElementById("btnProxPalavra").focus();
-				realizarFala(baseURL + "continuar.mp3");
+				//realizarFala(baseURL + "continuar.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("btnMenu3").focus();
-				realizarFala(baseURL + "desistir.mp3");
+				//realizarFala(baseURL + "desistir.mp3");
 			}
 		break;
 		case "derrota":
 			if(opcao == 0){
 				document.getElementById("btnReiniciar").focus();
-				realizarFala(baseURL + "reiniciar.mp3");
+				//realizarFala(baseURL + "reiniciar.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("btnMenu3").focus();
-				realizarFala(baseURL + "desistir.mp3");
+				//realizarFala(baseURL + "desistir.mp3");
 			}
 		break;
 		case "opcoes":
 			if(opcao == 0){
 				document.getElementById("opcaoContinuar").focus();
-				realizarFala(baseURL + "continuar.mp3");
+				//realizarFala(baseURL + "continuar.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("opcaoAudio").focus();
-				realizarFala(baseURL + "audio.mp3");
+				//realizarFala(baseURL + "audio.mp3");
 			}
 			else if(opcao == 2){
 				document.getElementById("opcaoInstrucoes").focus();
-				realizarFala(baseURL + "instrucoesAcessibilidade.mp3");
+				//realizarFala(baseURL + "instrucoesAcessibilidade.mp3");
 			}
 			else if(opcao == 3){
 				document.getElementById("opcaoMenu").focus();
-				realizarFala(baseURL + "desistir.mp3");
+				//realizarFala(baseURL + "desistir.mp3");
 			}
 		break;
 		case "audio":
 			if(opcao == 0){
 				document.getElementById("MusicaFundo").focus();
-				realizarFala(baseURL + "musicaFundo.mp3");
+				//realizarFala(baseURL + "musicaFundo.mp3");
 				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/musicaFundo.mp3");
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();*/
 			}
 			else if(opcao == 1){
 				document.getElementById("Efeitos").focus();
-				realizarFala(baseURL + "Efeitos.mp3");
+				//realizarFala(baseURL + "Efeitos.mp3");
 				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/Efeitos.mp3");
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();*/
 			}
 			else if(opcao == 2){
 				document.getElementById("LeituraTela").focus();
-				realizarFala(baseURL + "leituraTela.mp3");
+				//realizarFala(baseURL + "leituraTela.mp3");
 				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/leituraTela.mp3");
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();*/
