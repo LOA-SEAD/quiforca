@@ -668,10 +668,17 @@ p
 
 #bonecoForca
 {
-	width: 100%;
+	width: 100vw;
+	height: 100vh;
 	align-self: center;
 	position: absolute;
 	display: none;
+}
+
+#imgBoneco{
+	width: 100%;
+	height: auto;
+	margin-top: 10%;
 }
 
 #imgBonecoDerrota
