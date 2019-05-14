@@ -308,16 +308,10 @@ body
 	height: 100vh;
 }
 
-#linhaNomesLeft{
-	width: 250px; 
-	float: left;  
-	text-align: right;
-}
-
-#linhaNomesRight{
-	width: 250px;
-	float: right; 
-	text-align: left;
+#linhaNomesLeft, #linhaNomesRight{
+	width: 100%;
+	text-align: center;
+	float: unset;
 }
 
 /*Parte das coisas escritas na tela*/
@@ -743,14 +737,6 @@ p
 	grid: 4;
 }
 
-/*Quebra para textos nos créditos*/
-@media screen and (max-width: 555px){
-	#linhaNomesLeft, #linhaNomesRight{
-		width: 100%;
-		text-align: center;
-		float: unset;
-	}
-}
 
 #boxVidas
 {
