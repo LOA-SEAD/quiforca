@@ -283,12 +283,12 @@ body
 	width: 100vw;
 }
 
-#topInstrucoes{
+#topInstrucoes, #topoPag{
 	width: 100vw;
 	position: fixed;
 }
 
-#conteudoInst{
+#conteudoInst, #conteudo{
 	padding-top: 15vw;
 }
 
@@ -308,16 +308,10 @@ body
 	height: 100vh;
 }
 
-#linhaNomesLeft{
-	width: 250px; 
-	float: left;  
-	text-align: right;
-}
-
-#linhaNomesRight{
-	width: 250px;
-	float: right; 
-	text-align: left;
+#linhaNomesLeft, #linhaNomesRight{
+	width: 100%;
+	text-align: center;
+	float: unset;
 }
 
 /*Parte das coisas escritas na tela*/
@@ -373,7 +367,7 @@ body
 	border: 0;
 }
 
-#btnMenu{
+#btnMenu, #btnVoltar2{
 	border-right-width: 1px;
 	border-right-style: double;
 }
@@ -525,15 +519,6 @@ p
 	grid-row: 4;
 }
 
-#btnVoltar2{
-	width: 100vw;
-	height: 25vw;
-    background: #e7e7e7;
-    box-shadow: inset 0px -1px #504e4a;
-	font-size: calc(1.5em + 1vw);
-	font-family: "Fonte","Tahoma";
-}
-
 #caixaBotoesAtalhos{
 	display: grid;
 	/*grid-row: 2/4;*/
@@ -683,10 +668,17 @@ p
 
 #bonecoForca
 {
-	width: 100%;
+	width: 100vw;
+	height: 100vh;
 	align-self: center;
 	position: absolute;
 	display: none;
+}
+
+#imgBoneco{
+	width: 100%;
+	height: auto;
+	margin-top: 10%;
 }
 
 #imgBonecoDerrota
@@ -752,14 +744,6 @@ p
 	grid: 4;
 }
 
-/*Quebra para textos nos créditos*/
-@media screen and (max-width: 555px){
-	#linhaNomesLeft, #linhaNomesRight{
-		width: 100%;
-		text-align: center;
-		float: unset;
-	}
-}
 
 #boxVidas
 {
