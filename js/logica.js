@@ -553,7 +553,7 @@ function mudarPersonagem()
 function mostrarPersonagem(){
 	$("#topJogo").toggle();
 	$("#ColRightJogo").toggle();
-	$("#bonecoForca").attr("style", "display: unset;");
+	$("#bonecoForca").attr("style", "display: flex;");
 
 	setTimeout(function(){
 		$("#topJogo").toggle();
