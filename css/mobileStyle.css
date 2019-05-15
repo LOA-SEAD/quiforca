@@ -476,11 +476,31 @@ p
 	/*margin-top: 4rem;*/
 	display: grid;
 	width: 100vw;
+	/*grid-template-columns: repeat(1,1fr);
+	grid-template-rows: repeat(2,1fr);*/
+	grid-auto-rows: 20vw;
+}
+
+#caixaBarrasAudio > *{
+	width: 100vw;
+	/*height: 18vw;*/
+    background: #e7e7e7;
+    margin: 0 auto;
+    box-shadow: inset 0px -1px #504e4a;
+	font-size: 6.5vw;
+	font-family: "Fonte","Tahoma";
+	line-height: 18vw;
+}
+
+#caixaBarrasSlider{
+	/*margin-top: 4rem;*/
+	display: grid;
+	width: 100vw;
 	grid-template-columns: repeat(1,1fr);
 	grid-template-rows: repeat(2,1fr);
 }
 
-#caixaBarrasAudio > *{
+#caixaBarrasSlider > *{
 	width: 100vw;
 	height: 18vw;
     background: #e7e7e7;
@@ -494,13 +514,14 @@ p
 #caixaBotoesOpcao{
 	grid-row: 2/3;
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	grid-template-rows: repeat(4, 1fr);
+	/*grid-template-columns: repeat(1, 1fr);
+	grid-template-rows: repeat(4, 1fr);*/
+	grid-auto-rows: 20vw;
 }
 
 #caixaBotoesOpcao > *{
 	width: 100vw;
-	height: 18vw;
+	/*height: 18vw;*/
     background: #e7e7e7;
     margin: 0 auto;
     box-shadow: inset 0px -1px #504e4a;
