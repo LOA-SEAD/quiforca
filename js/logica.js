@@ -7,6 +7,9 @@ audio2.setAttribute("id", "audioEfeitos");
 var audioErro = document.createElement("AUDIO");
 audioErro.setAttribute("id", "audioVidas");
 
+//img inicial do boneco
+var urlImgBoneco = "imgs/personagem0.png";
+
 //Preenche a camada de jogo
 function iniciar()
 {
@@ -510,24 +513,41 @@ function atualizaNumChances(){
 
 function colocarPersonagem()
 {
-	jogo.personagem = document.createElement("div");
-	jogo.personagem.setAttribute("id", "personagem");
-	jogo.personagem.setAttribute("class", "personagem");
-	$("#bonecoForca").append(jogo.personagem);
+	jogo.imgBoneco = document.createElement("img");
+	jogo.imgBoneco.setAttribute("id", "imgBoneco");
+	jogo.imgBoneco.setAttribute("src", urlImgBoneco);
+	$("#bonecoForca").append(jogo.imgBoneco);
+}
 
-	jogo.personagemAnt = document.createElement("div");
-	jogo.personagemAnt.setAttribute("id", "personagemAnt");
-	jogo.personagemAnt.setAttribute("class", "personagem");
-	$("#bonecoForca").append(jogo.personagemAnt);
+function removerPersonagem(){
+	$("#imgBoneco").remove();
 }
 
 function mudarPersonagem()
 {
-	jogo.emTransicao = true;
-	$('#personagemAnt').fadeIn(1, function() {}).attr('style', 'background-position: -' + (jogo.erros-1)*317 + 'px 0px;').css("z-index", 12);
-	$('#personagem').attr('style', 'background-position: -' + jogo.erros*317 + 'px 0px;').fadeOut(0,00001, function() {});
-	$('#personagem').fadeIn(500, function() {});
-	$('#personagemAnt').fadeOut(1000, function() {$(this).css("z-index", "10"); jogo.emTransicao = false;});
+	switch(jogo.numChances){
+		case 5:
+			urlImgBoneco = "imgs/personagem0.png";
+		break;
+
+		case 4:
+			urlImgBoneco = "imgs/personagem1.png";
+		break;
+
+		case 3:
+			urlImgBoneco = "imgs/personagem2.png";
+		break;
+
+		case 2:
+			urlImgBoneco = "imgs/personagem3.png";
+		break;
+
+		case 1:
+			urlImgBoneco = "imgs/personagem4.png";
+		break;
+	}
+	removerPersonagem();
+	colocarPersonagem();
 }
 
 function mostrarPersonagem(){

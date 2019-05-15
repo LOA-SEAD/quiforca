@@ -283,8 +283,13 @@ body
 	width: 100vw;
 }
 
-#topInstrucoes{
+#topInstrucoes, #topoPag{
 	width: 100vw;
+	position: fixed;
+}
+
+#conteudoInst, #conteudo{
+	padding-top: 15vw;
 }
 
 #pontosTela{
@@ -303,16 +308,10 @@ body
 	height: 100vh;
 }
 
-#linhaNomesLeft{
-	width: 250px; 
-	float: left;  
-	text-align: right;
-}
-
-#linhaNomesRight{
-	width: 250px;
-	float: right; 
-	text-align: left;
+#linhaNomesLeft, #linhaNomesRight{
+	width: 100%;
+	text-align: center;
+	float: unset;
 }
 
 /*Parte das coisas escritas na tela*/
@@ -342,7 +341,7 @@ body
 }
 
 #instrucoesText{
-	padding: 0 1em;
+	padding: 15vw 1em;
 }
 /*Parte dos botoes no jogo*/
 #botoes
@@ -368,9 +367,13 @@ body
 	border: 0;
 }
 
-#btnMenu{
+#btnMenu, #btnVoltar2{
 	border-right-width: 1px;
 	border-right-style: double;
+}
+
+#btnSairInstrucoes{
+	width: 100%;
 }
 
 
@@ -473,11 +476,31 @@ p
 	/*margin-top: 4rem;*/
 	display: grid;
 	width: 100vw;
+	/*grid-template-columns: repeat(1,1fr);
+	grid-template-rows: repeat(2,1fr);*/
+	grid-auto-rows: 20vw;
+}
+
+#caixaBarrasAudio > *{
+	width: 100vw;
+	/*height: 18vw;*/
+    background: #e7e7e7;
+    margin: 0 auto;
+    box-shadow: inset 0px -1px #504e4a;
+	font-size: 6.5vw;
+	font-family: "Fonte","Tahoma";
+	line-height: 18vw;
+}
+
+#caixaBarrasSlider{
+	/*margin-top: 4rem;*/
+	display: grid;
+	width: 100vw;
 	grid-template-columns: repeat(1,1fr);
 	grid-template-rows: repeat(2,1fr);
 }
 
-#caixaBarrasAudio > *{
+#caixaBarrasSlider > *{
 	width: 100vw;
 	height: 18vw;
     background: #e7e7e7;
@@ -491,12 +514,14 @@ p
 #caixaBotoesOpcao{
 	grid-row: 2/3;
 	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	grid-template-rows: repeat(3, 1fr);
+	/*grid-template-columns: repeat(1, 1fr);
+	grid-template-rows: repeat(4, 1fr);*/
+	grid-auto-rows: 20vw;
 }
 
 #caixaBotoesOpcao > *{
 	width: 100vw;
+	/*height: 18vw;*/
     background: #e7e7e7;
     margin: 0 auto;
     box-shadow: inset 0px -1px #504e4a;
@@ -518,15 +543,6 @@ p
 
 #btnAudio{
 	grid-row: 4;
-}
-
-#btnVoltar2{
-	width: 100vw;
-	height: 25vw;
-    background: #e7e7e7;
-    box-shadow: inset 0px -1px #504e4a;
-	font-size: calc(1.5em + 1vw);
-	font-family: "Fonte","Tahoma";
 }
 
 #caixaBotoesAtalhos{
@@ -677,11 +693,18 @@ p
 /*--------parte animação boneco---------*/
 
 #bonecoForca
-{
+{	
 	width: 100%;
-	align-self: center;
-	position: absolute;
 	display: none;
+	position: absolute;
+	align-self: center;
+	text-align: center;
+}
+
+#imgBoneco{
+	width: 100%;
+	height: auto;
+	margin-top: 10%;
 }
 
 #imgBonecoDerrota
@@ -731,30 +754,10 @@ p
 	align-items: center;
 }
 
-.botaoOpcoes{
-	
-}
-
-.botaoOpcoes:focus{
-
-}
-
-#opcaoInstrucoes{
-	display: none;
-}
-
 #audioVoltar::before{
 	grid: 4;
 }
 
-/*Quebra para textos nos créditos*/
-@media screen and (max-width: 555px){
-	#linhaNomesLeft, #linhaNomesRight{
-		width: 100%;
-		text-align: center;
-		float: unset;
-	}
-}
 
 #boxVidas
 {
