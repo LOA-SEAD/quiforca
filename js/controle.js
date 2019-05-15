@@ -1683,7 +1683,7 @@ function criarCamadaControleAudio(){
 
 	//Div com as barras de audio
 	var caixaBarras = document.createElement("div");
-	caixaBarras.setAttribute("id", "caixaBarrasAudio");
+	caixaBarras.setAttribute("id", "caixaBarrasSlider");
 	divControle.appendChild(caixaBarras);
 
 	var slider = document.createElement("input");
