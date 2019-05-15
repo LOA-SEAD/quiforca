@@ -171,6 +171,7 @@ function ativarBotaoAudio()
 
 function ativarBotaoReiniciar()
 {
+	paraFala();
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaDerrota();
 	destruirCamadaJogo();
@@ -182,6 +183,7 @@ function ativarBotaoReiniciar()
 
 function ativarBotaoSair()
 {
+	paraFala();
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaVitoria();
 	destruirCamadaDerrota();
@@ -194,6 +196,7 @@ function ativarBotaoSair()
 
 function ativarProxPalavra()
 {
+	paraFala();
 	clearTimeout(delayInicializaFocus);
 	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	destruirCamadaVitoria();
@@ -892,8 +895,13 @@ function criarCamadaInstrucoes()
 	header.append(btnGrupo);
 
 	var botaoMenu = document.createElement("button");
-	botaoMenu.setAttribute("id" , "btnMenu");
-	botaoMenu.innerText = "Menu";
+	botaoMenu.setAttribute("id" , "btnSairInstrucoes");
+	if(origemInstrucoes == "menu"){
+		botaoMenu.innerHTML = "Menu";
+	}
+	else if(origemInstrucoes == "opcoes"){
+		botaoMenu.innerHTML = "Voltar para o jogo";
+	}
 	btnGrupo.append(botaoMenu);
 	botaoMenu.onclick = function()
 	{
@@ -912,14 +920,14 @@ function criarCamadaInstrucoes()
 		}
 	}
 
-	var botaoOuvir = document.createElement("button");
+	/*var botaoOuvir = document.createElement("button");
 	botaoOuvir.setAttribute("id", "btnOuvir");
 	botaoOuvir.innerHTML = "Ouvir";
 	btnGrupo.append(botaoOuvir);
 	botaoOuvir.onclick = function()
 	{
 		
-	}
+	}*/
 	
 
 	//conteúdo instruções
@@ -1844,7 +1852,7 @@ function criarCamadaOpcoes(){
 
 	//btnMenu
 	var opcoesMenu = document.createElement("button");
-	opcoesMenu.innerText = "Menu";
+	opcoesMenu.innerText = "Desistir";
 	opcoesMenu.setAttribute("id", "opcaoMenu");
 	opcoesMenu.setAttribute("class", "botaoOpcoes");
 
@@ -1929,9 +1937,9 @@ function ativarOpcaoAudio(){
 
 function ativarOpcaoInstrucoes(){
 	destruirCamadaOpcoes();
-	$("#camadaJogo").toggle();
-	criarCamadaInstrucoes();
 	estado = "instrucoes";
+	//$("#camadaJogo").toggle();
+	criarCamadaInstrucoes();
 }
 
 function ativarOpcaoMenu(){

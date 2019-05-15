@@ -372,6 +372,10 @@ body
 	border-right-style: double;
 }
 
+#btnSairInstrucoes{
+	width: 100%;
+}
+
 
 .botaoJogo
 {
@@ -491,11 +495,12 @@ p
 	grid-row: 2/3;
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
-	grid-template-rows: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
 }
 
 #caixaBotoesOpcao > *{
 	width: 100vw;
+	height: 18vw;
     background: #e7e7e7;
     margin: 0 auto;
     box-shadow: inset 0px -1px #504e4a;
@@ -726,18 +731,6 @@ p
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-}
-
-.botaoOpcoes{
-	
-}
-
-.botaoOpcoes:focus{
-
-}
-
-#opcaoInstrucoes{
-	display: none;
 }
 
 #audioVoltar::before{
