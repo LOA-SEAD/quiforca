@@ -50,6 +50,7 @@ var delayAtalho1;
 var delayAtalho2;
 var delayAtalho4;
 var delayLetraAtalho4;
+var atalho2;
 
 var audioAtalho1 = document.createElement("AUDIO");
 var dezenaLer = document.createElement("AUDIO")

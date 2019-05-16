@@ -1291,10 +1291,10 @@ function criarCamadaAtalhos()
 	caixaBotoes.appendChild(atalho1);
 	atalho1.onclick = function(){
 		ouvirAtalho1();
-		estado = "jogando";
+		/*estado = "jogando";
 		destruirCamadaAtalhos();
 		$("#camadaJogo").toggle();
-		setTimeout(update, 50);
+		setTimeout(update, 50);*/
 	}
 
 	atalho2 = document.createElement("button");
@@ -1303,10 +1303,10 @@ function criarCamadaAtalhos()
 	caixaBotoes.appendChild(atalho2);
 	atalho2.onclick = function(){
 		ouvirAtalho2();
-		estado = "jogando";
+		/*estado = "jogando";
 		destruirCamadaAtalhos();
 		$("#camadaJogo").toggle();
-		setTimeout(update, 50);
+		setTimeout(update, 50);*/
 	}
 
 	atalho3 = document.createElement("button");
@@ -1315,10 +1315,10 @@ function criarCamadaAtalhos()
 	caixaBotoes.appendChild(atalho3);
 	atalho3.onclick = function(){
 		ouvirAtalho3();
-		estado = "jogando";
+		/*estado = "jogando";
 		destruirCamadaAtalhos();
 		$("#camadaJogo").toggle();
-		setTimeout(update, 50);
+		setTimeout(update, 50);*/
 	}
 
 	atalho4 = document.createElement("button");
@@ -1327,10 +1327,10 @@ function criarCamadaAtalhos()
 	caixaBotoes.appendChild(atalho4);
 	atalho4.onclick = function(){
 		ouvirAtalho4();
-		estado = "jogando";
+		/*estado = "jogando";
 		destruirCamadaAtalhos();
 		$("#camadaJogo").toggle();
-		setTimeout(update, 50);
+		setTimeout(update, 50);*/
 	}
 
 	voltar = document.createElement("button");

@@ -209,6 +209,7 @@ function fimDeJogo()
 	}
 	if(!continua)
 	{
+		clearTimeout(atalho2);
 		if(jogo.bdTamanho != 0)
 		{
 			//ainda tem palavras
@@ -321,6 +322,9 @@ function verificarErro(_letra)
 		{
 			//audio2 = document.createElement("AUDIO");
 			audio2.setAttribute("src", "audio/acerta_letra1.ogg");
+			atalho2 = setTimeout(function(){
+				ouvirAtalho2();
+			}, 600);
 		}
 		setTimeout(function(){
 			audio2.currentTime = 0
