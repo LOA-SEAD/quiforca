@@ -28,7 +28,6 @@ audio3.volume = 1;
 var origemInstrucoes;
 var origemAudio
 var sairInstrucoes = false;
-var frase;
 
 function criarCamadaMenu()
 {	
@@ -213,7 +212,6 @@ function criarCamadaJogo()
 {
 	paraFala();
 	origemAudio = "jogo";
-	frase = 1;
 
 	if(!origemMenu){
 		background.currentTime = 0
@@ -412,14 +410,14 @@ function criarCamadaVitoria()
 		audio3.play();
 	}, 500);
 
-	/*vitoria2 = setTimeout(function(){
+	vitoria2 = setTimeout(function(){
 		//var txt = "audio/" + numeroSorteado() + ".mp3"
 		//audioVitP.setAttribute("src", txt);
 		//audioVitP.currentTime = 0
 		//audioVitP.volume = 1
 		//audioVitP.play();
 		leituraInicial(baseURL + "vitoriaFrase.mp3");
-	}, 3800);*/
+	}, 3800);
 
 	var fase;
 	var faseId;
@@ -676,9 +674,9 @@ function criarCamadaDerrota()
 		pontfinal.play()
 	}, 7300);*/
 
-	/*derrota1 = setTimeout(function(){
+	derrota1 = setTimeout(function(){
 		leituraInicial(baseURL + "derrotaFrase.mp3");
-	}, 3000);*/
+	}, 3000);
 
 
 	//var audio = document.createElement("AUDIO");
@@ -1140,18 +1138,12 @@ function inicializaFocusFala(){
 		realizarFala(baseURL + "continuar.mp3");
 	}
 	else if(estado == "derrota"){
-		if(frase == 1){
-			var txt = jogo.palavraSorteada;
-			realizarLeituraInicial(txt);
-		}
-		else if(frase == 2){
-			var txt = jogo.pontos + "pontos";
-			realizarLeituraInicial(txt);
-		}
+		var txt = jogo.pontos + "pontos";
+		realizarLeitura(txt);
 	}
 	else if(estado == "vitoria"){
 		var txt = jogo.palavraSorteada;
-		realizarLeituraInicial(txt);
+		realizarLeitura(txt);
 	}
 	else if(estado == "audio"){
 		realizarFala(baseURL + "musicaFundo.mp3");
