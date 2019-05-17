@@ -1338,6 +1338,9 @@ function criarCamadaAtalhos()
 	voltar.innerText = "Voltar";
 	caixaBotoes.appendChild(voltar);
 	voltar.onclick = function(){
+		stopTudo();
+		paraFala();
+
 		estado = "jogando";
 		destruirCamadaAtalhos();
 		$("#camadaJogo").toggle();
@@ -1347,15 +1350,19 @@ function criarCamadaAtalhos()
 
 function ouvirAtalho1(){
 	stopTudo();
+	paraFala();
+
 	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
 	realizarLeitura(texto);
 }
 
 function ouvirAtalho2(){
+
+	stopTudo();
+	paraFala();
+
 	var counter;
 	audioAtalho2.setAttribute("src", "audio/letra1.mp3");
-	//stopTudo();
-	//paraFala();
 	counter = 0;
 	delayAtalho2 = setInterval(palavra, 700);
 	function palavra()
@@ -1412,10 +1419,13 @@ function ouvirAtalho3(){
 }
 
 function ouvirAtalho4(){
+	stopTudo();
+	paraFala();
+
+
 	audioAtalho4.setAttribute("src", "audio/atalho4.mp3");
 	var nomeAtalho4;
 	var somLetra4 = [];
-	stopTudo()
 	clearTimeout(delayAtalho4);
 	clearInterval(delayLetraAtalho4);
 
@@ -1451,9 +1461,10 @@ function ouvirAtalho4(){
 }
 
 function ouvirAtalho5(){
-	audioAtalho5.setAttribute("src", "audio/pontos.mp3");
 	stopTudo();
 	paraFala();
+
+	audioAtalho5.setAttribute("src", "audio/pontos.mp3");
 	if(pontuacao() == 1)
 	{
 		realizarLeitura("Um ponto");
