@@ -705,7 +705,7 @@ function criarCamadaDerrota()
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
-	jogo.palavraNaTela.innerHTML = "<h2> Você errou :( </h2> A palavra correta é " + jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Você errou :( </h2>";
 	
 	jogo.botoes = document.createElement("div");
 	jogo.botoes.setAttribute("id", "botoesFimDeJogo");
