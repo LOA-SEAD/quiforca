@@ -411,11 +411,6 @@ function criarCamadaVitoria()
 	}, 500);
 
 	vitoria2 = setTimeout(function(){
-		//var txt = "audio/" + numeroSorteado() + ".mp3"
-		//audioVitP.setAttribute("src", txt);
-		//audioVitP.currentTime = 0
-		//audioVitP.volume = 1
-		//audioVitP.play();
 		leituraInicial(baseURL + "vitoriaFrase.mp3");
 	}, 3800);
 
