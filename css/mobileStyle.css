@@ -460,7 +460,7 @@ p
 
 #caixaBotoes > * {
     width: 100vw;
-    background: #ff3535;
+    background: #e7e7e7;
     margin: 0 auto;
     box-shadow: inset 0px -1px #504e4a;
 	font-size: calc(1.5em + 1vw);
