@@ -33,8 +33,6 @@ body
 }
 
 #camadaOpcoes{
-	width: 100vw;
-	height: calc(var(--vh, 1vh) * 100);
 	text-align: center;
 	background: url("../imgs/novafolha.png");
 	background-size: cover;
@@ -42,7 +40,7 @@ body
 
 #divOpcoes{
 	width: 100vw;
-	height: 100vh;
+	height: calc(var(--vh, 1vh) * 100);
 	display: grid;
 	grid-template-columns: repeat(1, 1fr);
 	grid-template-rows: repeat(3, 1fr);
