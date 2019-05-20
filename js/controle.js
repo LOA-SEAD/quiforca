@@ -1661,7 +1661,7 @@ function criarCamadaControleAudio(){
 	divControle.setAttribute("tabIndex", 0);
 	el.appendChild(divControle);
 
-	var controleTxt = document.createElement("h1");
+	var controleTxt = document.createElement("h2");
 	controleTxt.setAttribute("id", "controleTxt");
 	switch(controle){
 		case 1:
@@ -1674,7 +1674,7 @@ function criarCamadaControleAudio(){
 			break;
 		case 3:
 			volumeInicial = audio.volume*10;
-			controleTxt.innerHTML = "Leitura de tela e acessibilidade";
+			controleTxt.innerHTML = "Acessibilidade";
 			break;
 	}
 	divControle.appendChild(controleTxt);
@@ -1690,7 +1690,6 @@ function criarCamadaControleAudio(){
 	slider.setAttribute("max", "10");
 	slider.setAttribute("value", volumeInicial);
 	slider.setAttribute("id", "slider");
-	slider.setAttribute("tabIndex", -1);
 	slider.setAttribute("class", "slider");
 	caixaBarras.appendChild(slider);
 	//Atualiza volume da musica de fundo
@@ -1719,12 +1718,12 @@ function criarCamadaControleAudio(){
 	
 	//btnVoltar
 	var audioVoltar = document.createElement("button");
-	audioVoltar.setAttribute("id", "audioVoltar");
+	audioVoltar.setAttribute("id", "btnVoltarAudio");
 	audioVoltar.innerHTML = "Voltar";
 	audioVoltar.onclick = function(){
 		destruirCamadaControleAudio();
 	}
-	caixaBarras.appendChild(audioVoltar);
+	divControle.appendChild(audioVoltar);
 
 }
 
