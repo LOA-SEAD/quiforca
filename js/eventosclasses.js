@@ -1,3 +1,19 @@
+
+
+
+//Script para ajustar os elementos na tela desconsiderando address bar dos navegadores mobile
+// We listen to the resize event
+window.addEventListener('resize', () => {
+	// We execute the same script as before
+	let vh = window.innerHeight * 0.01;
+	document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 //Classe palco
 function Palco()
 {
@@ -6,19 +22,6 @@ function Palco()
 	{
 		//Cria a variavel palco que irá conter todas as camadas
 		var palco = document.createElement("div");
-
-		
-		// We listen to the resize event
-		window.addEventListener('resize', () => {
-			// We execute the same script as before
-			let vh = window.innerHeight * 0.01;
-			document.documentElement.style.setProperty('--vh', `${vh}px`);
-		});
-
-		// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-		let vh = window.innerHeight * 0.01;
-		// Then we set the value in the --vh custom property to the root of the document
-		document.documentElement.style.setProperty('--vh', `${vh}px`);
 
 		//Coloca a id no palco
 		palco.setAttribute("id", "palco");
