@@ -13,8 +13,6 @@ var urlImgBoneco = "imgs/personagem0.png";
 //Preenche a camada de jogo
 function iniciar()
 {
-	//Seta opcao para -1
-	opcao = -1;
 	//Seta estado do jogo
 	estado = "jogando";
 	//Seta número de chances do jogador
@@ -104,12 +102,6 @@ function iniciar()
 	var imgLogo = document.createElement("div");
 	imgLogo.setAttribute("id", "imgLogo");
 	bonecoForca.append(imgLogo);
-	
-	jogo.falador = document.createElement("div");
-	jogo.falador.setAttribute("id", "falador");
-	jogo.falador.setAttribute("aria-live", "polite");
-	jogo.falador.setAttribute("role", "log");
-	jogo.falador.setAttribute("style", "display: none;");
 
 	//Dica
 	jogo.dicaNaTela = document.createElement("div");
@@ -132,10 +124,6 @@ function iniciar()
 		jogo.aux += jogo.palavraSorteada[i] + " ";
 	}
 
-	/*jogo.palavraNaTelaDiv = document.createElement("div");
-	jogo.palavraNaTelaDiv.setAttribute("id", "palavraNaTelaDiv");
-	jogo.palavraNaTelaDiv.setAttribute*/
-
 	//Essa é a variavel que deve ser exibida na tela -- NA TELA
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
@@ -157,7 +145,6 @@ function iniciar()
 	colocarPersonagem(); // -- NA TELA
 	colocarTecladoNaTela(); // -- NA TELA
 
-	inicializaFocus();
 	update();
 }
 
@@ -168,7 +155,7 @@ function update()
 		switch(fimDeJogo())
 		{
 			case -1: //Continua o jogo normal
-				setTimeout(update, 50);
+				setTimeout(update, 100);
 				break;
 			case 0: //Fim de jogo: Jogador perdeu
 				jogo.palavraNaTela.innerHTML = jogo.palavraSorteada;
@@ -245,6 +232,8 @@ function verificarErro(_letra)
 	letraRepetida = false;
 	audio2.pause();
 	audioErro.pause();
+
+	realizarLeituraLetra(_letra);
 
 	for(var i = 0; i < jogo.letrasTentadas.length; i++)
 	{
@@ -370,8 +359,6 @@ function verificarErro(_letra)
 			audioErro.play();
 		}
 	}
-
-	realizarLeituraLetra(_letra);
 }
 
 //Coloca os botoes do teclado na tela

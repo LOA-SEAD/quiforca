@@ -37,13 +37,7 @@ function criarCamadaMenu()
 	pulouMenu = false;
 	estado = "menu";
 	opcao = 0;
-
-
-	if(origemDerrota){
-		background.currentTime = 0
-	}
 	origemDerrota = 0
-	background.play()
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
@@ -71,12 +65,6 @@ function criarCamadaMenu()
 	{
 		ativarBotaoInstrucoes();
 	}
-	botaoInstrucoes.onmouseenter = function()
-	{
-		botaoInstrucoes.focus();
-		opcao = 0;
-		clearTimeout(delayInicializaFocus);
-	}
 
 	var botaoJogar = document.createElement("button");
 	botaoJogar.setAttribute("id" , "btnJogar");
@@ -87,12 +75,6 @@ function criarCamadaMenu()
 	botaoJogar.onclick = function()
 	{
 		ativarBotaoJogar();
-	}
-	botaoJogar.onmouseenter = function()
-	{
-		botaoJogar.focus();
-		opcao = 1;
-		clearTimeout(delayInicializaFocus);
 	}
 
 	//Cria botao de créditos na caixa de botoes
@@ -106,12 +88,6 @@ function criarCamadaMenu()
 	{
 		ativarBotaoCreditos();
 	}
-	botaoCreditos.onmouseenter = function()
-	{
-		botaoCreditos.focus();
-		opcao = 2;
-		clearTimeout(delayInicializaFocus);
-	}
 
 	//Cria botao de opções na caixa de botoes
 	var botaoAudio = document.createElement("button");
@@ -124,20 +100,8 @@ function criarCamadaMenu()
 	{
 		ativarBotaoAudio();
 	}
-	botaoAudio.onmouseenter = function()
-	{
-		botaoAudio.focus();
-		opcao = 3;
-		clearTimeout(delayInicializaFocus);
-	}
 	
 	//inicializaFalaInicial(); (ajustar dps)
-	//inicializaFocus(); (creio q n existira nessa versão)
-
-	$("#camadaMenu").keydown(function (e){
-		selecionaOpcao(e);	
-	})
-
 	origemMenu = 1
 }
 
@@ -213,20 +177,13 @@ function criarCamadaJogo()
 	paraFala();
 	origemAudio = "jogo";
 
-	if(!origemMenu){
-		background.currentTime = 0
-	}
-	origemMenu = 0
-	background.play()
-
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaJogo");
 	$("#palco").append(el);
 
 	iniciar();
-	//leituraDica();
-	//var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
-	//realizarLeitura(texto);
+	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
+	realizarLeitura(texto);
 }
 
 function destruirCamadaJogo()
@@ -654,20 +611,6 @@ function criarCamadaDerrota()
 	estado = "derrota";
 	opcao = 0;
 	pulouDerrota = false;
-	/*derrota1 = setTimeout(function(){
-		audioDer.currentTime = 0
-		audioDer.play()
-	}, 3000);
-	derrota2 = setTimeout(function(){
-		var txt = "audio/" + numeroSorteado() + ".mp3"
-		audioVitP.setAttribute("src", txt);
-		audioVitP.currentTime = 0
-		audioVitP.play();
-	}, 5300);
-	derrota3 = setTimeout(function(){
-		pontfinal.currentTime = 0
-		pontfinal.play()
-	}, 7300);*/
 
 	derrota1 = setTimeout(function(){
 		leituraInicial(baseURL + "derrotaFrase.mp3");
@@ -721,32 +664,14 @@ function criarCamadaDerrota()
 			ativarBotaoReiniciar();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
-	document.getElementById("btnReiniciar").onmouseenter = function()
-	{
-		document.getElementById("btnReiniciar").focus();
-		opcao = 0;
-		clearTimeout(delayInicializaFocus);
-	}
 
 	$("<button>").attr("id", "btnMenu3").click(
 		function(){
 			ativarBotaoSair();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
-	document.getElementById("btnMenu3").onmouseenter = function()
-	{
-		document.getElementById("btnMenu3").focus();
-		opcao = 1;
-		clearTimeout(delayInicializaFocus);
-	}
 
-	document.addEventListener("keyup", derrotaMenu);
-
-	inicializaFocus();
-
-	$("#camadaDerrota").keydown(function (e){
-		selecionaOpcao(e);	
-	})
+	//inicializaFocus();
 }
 
 function derrotaMenu(e){
@@ -764,10 +689,7 @@ function derrotaMenu(e){
 function destruirCamadaDerrota()
 {
 	clearTimeout(derrota1)
-
 	pararLeitura()
-
-	document.removeEventListener("keyup", derrotaMenu);
 	$("#camadaDerrota").remove();
 }
 
