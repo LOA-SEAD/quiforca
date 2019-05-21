@@ -352,7 +352,7 @@ function criarCamadaVitoria()
 	pulouVitoria = false;
 
 	//var audio = document.createElement("AUDIO");
-	audio3.setAttribute("src", "audio/vitoria2.ogg");
+	audio3.setAttribute("src", "audio/vitoria2.mp3");
 	//var audio = document.getElementById("vitoria"); 
 	audio3.currentTime = 0
 	vitoria1 = setTimeout(function(){
@@ -426,7 +426,7 @@ function criarCamadaFimdeJogo()
 	estado = "fimdeJogo";
 
 	//var audio = document.createElement("AUDIO");
-	audio3.setAttribute("src", "audio/vitoria2.ogg");
+	audio3.setAttribute("src", "audio/vitoria2.mp3");
 	//var audio = document.getElementById("vitoria"); 
 	audio3.currentTime = 0
 	vitoria1 = setTimeout(function(){
@@ -546,7 +546,7 @@ function criarCamadaDerrota()
 
 
 	//var audio = document.createElement("AUDIO");
-	audio3.setAttribute("src", "audio/derrota1.ogg");
+	audio3.setAttribute("src", "audio/derrota1.mp3");
 	//var audio = document.getElementById("derrota"); 
 	setTimeout(function(){
 		audio3.play();

@@ -305,12 +305,12 @@ function verificarErro(_letra)
 	{
 		if(letraRepetida){
 			//audio2 = document.createElement("AUDIO");
-			audio2.setAttribute("src", "audio/tecla_indisponível2.ogg")
+			audio2.setAttribute("src", "audio/tecla_indisponível2.mp3")
 		}
 		else
 		{
 			//audio2 = document.createElement("AUDIO");
-			audio2.setAttribute("src", "audio/acerta_letra1.ogg");
+			audio2.setAttribute("src", "audio/acerta_letra1.mp3");
 			atalho2 = setTimeout(function(){
 				ouvirAtalho2();
 			}, 600);
@@ -329,22 +329,22 @@ function verificarErro(_letra)
 		switch(jogo.erros)
 		{
 			case 1:
-				audio2.setAttribute("src", "audio/enforcamento1.ogg");
+				audio2.setAttribute("src", "audio/enforcamento1.mp3");
 				audioErro.setAttribute("src", "audio/audioGravado/4vidas.mp3");
 				jogo.vidas5.remove();
 				break;
 			case 2:
-				audio2.setAttribute("src", "audio/enforcamento3.ogg");
+				audio2.setAttribute("src", "audio/enforcamento3.mp3");
 				audioErro.setAttribute("src", "audio/audioGravado/3vidas.mp3");
 				jogo.vidas4.remove();
 				break;
 			case 3:
-				audio2.setAttribute("src", "audio/enforcamento7.ogg");
+				audio2.setAttribute("src", "audio/enforcamento7.mp3");
 				audioErro.setAttribute("src", "audio/audioGravado/2vidas.mp3");
 				jogo.vidas3.remove();
 				break;
 			case 4:
-				audio2.setAttribute("src", "audio/enforcamento8.ogg");
+				audio2.setAttribute("src", "audio/enforcamento8.mp3");
 				audioErro.setAttribute("src", "audio/audioGravado/1vida.mp3");
 				jogo.vidas2.remove();
 		}
