@@ -1,3 +1,19 @@
+
+
+
+//Script para ajustar os elementos na tela desconsiderando address bar dos navegadores mobile
+// We listen to the resize event
+window.addEventListener('resize', () => {
+	// We execute the same script as before
+	let vh = window.innerHeight * 0.01;
+	document.documentElement.style.setProperty('--vh', `${vh}px`);
+});
+
+// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
+let vh = window.innerHeight * 0.01;
+// Then we set the value in the --vh custom property to the root of the document
+document.documentElement.style.setProperty('--vh', `${vh}px`);
+
 //Classe palco
 function Palco()
 {
@@ -6,6 +22,7 @@ function Palco()
 	{
 		//Cria a variavel palco que irá conter todas as camadas
 		var palco = document.createElement("div");
+
 		//Coloca a id no palco
 		palco.setAttribute("id", "palco");
 		//Coloca palco como filho de body
@@ -30,6 +47,7 @@ function Botao(_letra, _linha)
 	{
 		if((jogo.emTransicao == false) && (fimDeJogo() == -1))
 		{
+			stopTudo();
 			verificarErro(_letra);
 			colocarLetraEmLetrasTentadas(_letra);	
 		}			
@@ -44,24 +62,74 @@ function Linha(_linha)
 	document.getElementById("botoes").appendChild(linha);
 }
 
-document.body.onkeyup = function(e)
+//Variáveis de delays
+var delayAtalho1;
+var delayAtalho2;
+var delayAtalho4;
+var delayLetraAtalho4;
+var atalho2;
+
+var audioAtalho1 = document.createElement("AUDIO");
+var dezenaLer = document.createElement("AUDIO")
+var unidadeLer = document.createElement("AUDIO");
+var letraE = document.createElement("AUDIO");
+var qLetras = document.createElement("AUDIO");
+var audioAtalho2 = document.createElement("AUDIO");
+var audioAtalho3 = document.createElement("AUDIO");
+var audioAtalho4 = document.createElement("AUDIO");
+var audioAtalho5 = document.createElement("AUDIO");
+var centenaLer = document.createElement("AUDIO");
+var stopAtalhos;
+
+function stopAtalho1()
 {
-	//Pega as teclas
-	var e = window.event||e;
-	var keyunicode = e.charcode || e.keyCode || e.which;
-	
-	if(keyunicode >= 65 && keyunicode <= 90)
-	{
-    	keyunicode +=32;
-	}
-	
-	//Se o codigo estiver dentro do alfabeto
-	if((keyunicode >= 97 && keyunicode <= 122) && (jogo.emTransicao == false) && (fimDeJogo() == -1))
-	{	
-		//Verifica se deu erro
-		verificarErro(String.fromCharCode(keyunicode-32));
-		//Coloca nas letras tentadas
-		colocarLetraEmLetrasTentadas(String.fromCharCode(keyunicode-32));
-	}	
-	
+	window.speechSynthesis.cancel();
+}
+
+function stopAtalho2()
+{
+	clearInterval(delayAtalho2);
+}
+
+function stopAtalho3()
+{
+	audioAtalho3.pause();
+	audioAtalho3.currentTime = 0;
+}
+
+function stopAtalho4()
+{
+	audioAtalho4.pause();
+	audioAtalho4.currentTime = 0
+}
+
+function stopTudo()
+{
+	stopAtalho1();
+	stopAtalho2();
+	stopAtalho3();
+	stopAtalho4();
+}
+
+function track(source)
+{
+	var audio0 = document.createElement("AUDIO");
+	audio0.setAttribute("src", source);
+	return audio0;
+}
+
+function realizarLeitura(texto)
+{
+	var voices = window.speechSynthesis.getVoices();
+	msg = new SpeechSynthesisUtterance(texto);
+	msg.volume = volumeSinth;
+	msg.rate = 1.3; // 0.1 to 10
+	msg.lang = "pt-BR";
+	msg.voice = voices[0];
+	window.speechSynthesis.speak(msg);
+}
+
+function pararLeitura()
+{
+	window.speechSynthesis.cancel()
 }
