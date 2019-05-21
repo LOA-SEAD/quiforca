@@ -1,4 +1,3 @@
-
 var ranking;
 
 var maquina = 'localhost';

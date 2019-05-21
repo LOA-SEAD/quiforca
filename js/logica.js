@@ -12,6 +12,9 @@ function iniciar()
 	jogo.botaoVoltar.setAttribute("role" , "button");
 	jogo.botaoVoltar.setAttribute("aria-label" , "Voltar");
 
+	jogo.linha = document.createElement("div");
+	jogo.linha.setAttribute("id", "row");
+
 	jogo.botaoVoltar.onclick = function() {
 		ativarBotaoVoltar();
 	}
@@ -23,7 +26,8 @@ function iniciar()
 		removerComandosEnterSpace();
 	}*/
 	
-	$("#camadaJogo").append(jogo.botaoVoltar);
+	
+	
 
 	jogo.falador = document.createElement("div");
 	jogo.falador.setAttribute("id", "falador");
@@ -88,8 +92,11 @@ function iniciar()
 	jogo.bdAux[jogo.bdTamanho] = jogo.bdAux[jogo.sorteio];
 	jogo.bdAux[jogo.sorteio] = ajuda;
 
-	colocarTecladoNaTela();
+	$("#camadaJogo").append(jogo.linha);
+	$("#camadaJogo").append(jogo.botaoVoltar);
 	colocarPersonagem();
+	colocarTecladoNaTela();
+	
 	update();
 }
 
@@ -235,11 +242,13 @@ function verificarErro(_letra)
 }
 
 //Coloca os botoes do teclado na tela
+
+
 function colocarTecladoNaTela()
 {
 	var botoes = document.createElement("div");
 	botoes.setAttribute("id", "botoes");
-	$("#camadaJogo").append(botoes);
+	$("#row").append(botoes);
 
 	var linha1 = new Linha(1);
 	var linha1 = new Linha(2);
@@ -376,13 +385,13 @@ function colocarPersonagem()
 	jogo.personagem = document.createElement("div");
 	jogo.personagem.setAttribute("id", "personagem");
 	jogo.personagem.setAttribute("class", "personagem");
-	$("#camadaJogo").append(jogo.personagem);
+	$("#row").append(jogo.personagem);
 
 
 	jogo.personagemAnt = document.createElement("div");
 	jogo.personagemAnt.setAttribute("id", "personagemAnt");
 	jogo.personagemAnt.setAttribute("class", "personagem");
-	$("#camadaJogo").append(jogo.personagemAnt);
+	$("#row").append(jogo.personagemAnt);
 }
 
 function mudarPersonagem()
