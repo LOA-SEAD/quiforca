@@ -227,8 +227,15 @@ function criarCamadaCreditos()
 
 	botaoMenu.onmousedown = function()
 	{
+		audio3.pause();
 		destruirCamadaCreditos();
 		criarCamadaMenu();
+	}
+
+	botaoOuvir.onmousedown = function(){
+		audio3.setAttribute("src", baseURL + "creditosCompleto.mp3");
+		audio3.currentTime = 0;
+		audio3.play();
 	}
 
 	//div contendo conteudo da página
@@ -321,16 +328,6 @@ function criarCamadaCreditos()
 	colRight.appendChild(para);
 
 	el.appendChild(conteudo);
-
-	document.onkeydown = function(e)
-	{
-		e = window.event||e;
-		if((e.which == 27 || e.keyCode == 27 || e.charCode == 24) && estado == "creditos")
-		{
-			destruirCamadaCreditos();
-			criarCamadaMenu();
-		}
-	}
 }
 
 function destruirCamadaCreditos()
