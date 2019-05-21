@@ -10,7 +10,7 @@
 var baseURL = "audio/audioGravado/";
 var background = document.createElement("AUDIO");
 background.setAttribute("src", "audio/background.mp3");
-background.volume = 0.2;
+background.volume = 0;
 var audioTeclas = document.createElement("AUDIO");
 audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
 audioTeclas.volume = 1;
@@ -38,6 +38,7 @@ function criarCamadaMenu()
 	estado = "menu";
 	opcao = 0;
 	origemDerrota = 0
+	background.play();
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
@@ -541,7 +542,7 @@ function criarCamadaDerrota()
 	pulouDerrota = false;
 
 	derrota1 = setTimeout(function(){
-		leituraInicial(baseURL + "derrotaFrase.mp3");
+		leituraInicial(baseURL + "derrotaFrase2.mp3");
 	}, 3000);
 
 
