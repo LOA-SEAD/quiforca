@@ -322,11 +322,6 @@ function criarCamadaCreditos()
 
 	el.appendChild(conteudo);
 
-	/*botaoMenu.onmouseenter = function()
-	{
-		realizarLeitura("Menu");
-		//AudioBotoes("audio/menu.mp3");
-	}*/
 	document.onkeydown = function(e)
 	{
 		e = window.event||e;
@@ -377,13 +372,6 @@ function criarCamadaVitoria()
 	el.setAttribute("id", "camadaVitoria");
 	$("#palco").append(el);
 
-
-	/*if((jogo.bdTamanho) == 0) {
-		$('<p>').attr('id', 'pontosNaTela')
-			.html('Pontos: ' + parseInt(jogo.pontos))
-			.appendTo($('#camadaVitoria'));
-	}*/
-
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraCertaNaTela");
 	jogo.palavraNaTela.innerHTML = "<h2> Você acertou! </h2> <br> A palavra correta é " + jogo.palavraSorteada;
@@ -404,39 +392,13 @@ function criarCamadaVitoria()
 			ativarProxPalavra();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
-	/*document.getElementById("btnProxPalavra").onfocus = function()
-	{
-		AudioBotoes("audio/proxima.mp3");
-	}*/
-	document.getElementById("btnProxPalavra").onmouseenter = function()
-	{
-		document.getElementById("btnProxPalavra").focus();
-		opcao = 0;
-		clearTimeout(delayInicializaFocus);
-	}
+
 
 	$("<button>").attr("id", "btnMenu3").click(
 		function(){
 			ativarBotaoSair();
 		}
 	).appendTo($("#botoesTelaVitoria"));
-	document.getElementById("btnMenu3").onmouseenter = function()
-	{
-		document.getElementById("btnMenu3").focus();
-		opcao = 1;
-		clearTimeout(delayInicializaFocus);
-	}
-
-	document.addEventListener("keyup", proximaFase);
-
-	inicializaFocus();
-
-	$("#camadaVitoria").keydown(function (e){
-		selecionaOpcao(e);
-		clearTimeout(vitoria1);
-		clearTimeout(vitoria2);	
-		clearTimeout(vitoria3);
-	})
 }
 
 function proximaFase(e)
@@ -464,7 +426,6 @@ function destruirCamadaVitoria()
 vitoria4 = false;
 function criarCamadaFimdeJogo()
 {
-	
 	estado = "fimdeJogo";
 
 	//var audio = document.createElement("AUDIO");
@@ -475,32 +436,9 @@ function criarCamadaFimdeJogo()
 		audio3.play();
 	}, 500);
 
-	/*vitoria2 = setTimeout(function(){
-		//var txt = "audio/" + numeroSorteado() + ".mp3"
-		//audioVitP.setAttribute("src", txt);
-		//audioVitP.currentTime = 0
-		//audioVitP.volume = 1
-		//audioVitP.play();
-		leituraInicial(baseURL + "vitoriaFrase.mp3");
-	}, 3800);*/
-
-	/*vitoria3 = setTimeout(function(){
-		realizarLeitura(jogo.palavraSorteada);
-	}, 6100);*/
-
-	/*vitoria4 = setTimeout(function(){
-		audio3.setAttribute("src", "audio/audioGravado/pontuacaoFinal.mp3");
-		audio3.currentTime = 0;
-		audio3.play();
-	}, 8000)*/
-
-
 	var fase;
 	var faseId;
 	var el = $('<div>').attr("id", "camadaFimdeJogo").appendTo($("#palco"));
-	/*$('<p>').attr('id', 'pontosNaTela')
-		.html('Pontos: ' + parseInt(jogo.pontos))
-		.appendTo($('#camadaFimdeJogo'));*/
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
@@ -517,13 +455,6 @@ function criarCamadaFimdeJogo()
 	$("#camadaFimdeJogo").append(jogo.imgBonecoVitoria);
 	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
 	$("#camadaFimdeJogo").append(jogo.botoesVitoria);
-
-	/*jogo.fimdeJogo = document.createElement("p");
-	jogo.fimdeJogo.setAttribute("id", "fimdeJogo");
-	jogo.fimdeJogo.setAttribute("tabIndex", "3");
-	jogo.fimdeJogo.setAttribute("role", "textbox");
-	jogo.fimdeJogo.innerHTML = "Tela de Fim de Jogo"
-	$("#camadaFimdeJogo").append(jogo.fimdeJogo);*/
 
 	$("<button>").attr("id", "btnMenu3").click(
 		function(){
@@ -867,133 +798,6 @@ function destruirCamadaInstrucoes()
 	$("#camadaInstrucoes").remove();
 }
 
-function selecionaOpcao(e)
-{
-	switch(e.keyCode){
-		case 13: //Enter
-			paraDeFalar();
-			switch(opcao){
-				case 0:
-					if(estado == "menu")
-						ativarBotaoInstrucoes();
-					else if(estado== "vitoria")
-						ativarProxPalavra();
-					else if(estado == "derrota")
-						ativarBotaoReiniciar();
-					else if(estado == "opcoes")
-						ativarOpcaoContinuar();
-					else if(estado == "audio")
-						enterMusicaFundo();
-				break;
-
-				case 1:
-					if(estado == "menu")
-						ativarBotaoJogar();
-					else if(estado == "vitoria" || estado == "derrota")
-						ativarBotaoSair();
-					else if(estado == "opcoes")
-						ativarOpcaoAudio();
-					else if(estado == "audio")
-						enterEfeitos();
-				break;
-
-				case 2:
-					if(estado == "menu")
-						ativarBotaoCreditos();
-					else if(estado == "opcoes")
-						ativarOpcaoInstrucoes();
-					else if(estado == "audio")
-						enterLeituraTela();
-				break;
-
-				case 3:
-					if(estado == "opcoes")
-						ativarOpcaoMenu();
-					else if(estado == "audio")
-						ativarAudioVoltar();
-					else if(estado == "menu")
-						ativarBotaoAudio();
-			}	
-		break;
-		case 37: //ArrowLeft
-			paraFala();
-			if(opcao > 0 && !transicaoBarra){
-				tocaAudio();
-				opcao--;
-				setaFoco();
-			}
-		break;
-
-		case 39: //ArrowRight
-			paraFala();
-			if(estado == "menu"){
-				if(opcao < 3){
-					tocaAudio();
-					opcao++;
-					setaFoco();
-				}
-			}
-			else if(estado == "derrota" || estado == "vitoria"){
-				if(opcao < 1){
-					tocaAudio();
-					opcao++;
-					setaFoco();
-				}
-			}
-			else if(estado == "opcoes"){
-				if(opcao < 3){
-					tocaAudio();
-					opcao++;
-					setaFoco();
-				}
-			}
-			else if(estado == "audio"){
-				if(opcao < 3 && !transicaoBarra){
-					tocaAudio();
-					opcao++;
-					setaFoco();
-				}
-			}
-		break;
-
-		case 40: //ArrowDown
-			if(estado == "opcoes")
-			{
-				if(opcao < 3){
-					tocaAudio();
-					opcao++;
-					setaFoco();
-				}
-			}
-			else if(estado == "audio"){
-				if(opcao < 3 && !transicaoBarra){
-					tocaAudio();
-					opcao++;
-					setaFoco();
-				}
-			}
-		break;
-
-		case 38: //ArrowUp
-			if(estado == "opcoes")
-			{
-				if(opcao > 0){
-					tocaAudio();
-					opcao--;
-					setaFoco();
-				}
-			}
-			else if(estado == "audio"){
-				if(opcao > 0 && !transicaoBarra){
-					tocaAudio();
-					opcao--;
-					setaFoco();
-				}
-			}
-		break;
-	}
-}
-
 function tocaAudio() {
 	audioTeclas.currentTime = 0;
 	audioTeclas.play();
@@ -1006,14 +810,6 @@ function AudioBotoes(nomeAudio)
 	audio0.play();
 }
 
-/*
-opcoes = 0 - instruções
-		1 - jogar
-		2 - creditos
-		3 - reiniciar
-		4 - sair
-		5 - prox palavra
-*/
 
 var delayInicializaFocus
 
@@ -1064,99 +860,6 @@ function inicializaFocusFala(){
 	}
 	else if(estado == "audio"){
 		realizarFala(baseURL + "musicaFundo.mp3");
-	}
-}
-
-function setaFoco(){
-	audioinicial.pause();
-	audio.pause();
-	audioEnter.pause();
-	switch(estado){
-		case "menu":
-			if(opcao == 0){
-				document.getElementById("btnInstrucoes").focus();
-				realizarFala(baseURL + "instrucoes.mp3");
-			}
-			else if(opcao == 1){
-				document.getElementById("btnJogar").focus();
-				//realizarFala(baseURL + "jogar.mp3");
-			}
-			else if(opcao == 2){
-				document.getElementById("btnCreditos").focus();
-				//realizarFala(baseURL + "creditos.mp3");
-			}
-			else if(opcao == 3){
-				document.getElementById("btnAudio").focus();
-				//realizarFala(baseURL + "audio.mp3");
-			}
-		break;
-		case "vitoria":
-			if(opcao == 0){
-				document.getElementById("btnProxPalavra").focus();
-				//realizarFala(baseURL + "continuar.mp3");
-			}
-			else if(opcao == 1){
-				document.getElementById("btnMenu3").focus();
-				//realizarFala(baseURL + "desistir.mp3");
-			}
-		break;
-		case "derrota":
-			if(opcao == 0){
-				document.getElementById("btnReiniciar").focus();
-				//realizarFala(baseURL + "reiniciar.mp3");
-			}
-			else if(opcao == 1){
-				document.getElementById("btnMenu3").focus();
-				//realizarFala(baseURL + "desistir.mp3");
-			}
-		break;
-		case "opcoes":
-			if(opcao == 0){
-				document.getElementById("opcaoContinuar").focus();
-				//realizarFala(baseURL + "continuar.mp3");
-			}
-			else if(opcao == 1){
-				document.getElementById("opcaoAudio").focus();
-				//realizarFala(baseURL + "audio.mp3");
-			}
-			else if(opcao == 2){
-				document.getElementById("opcaoInstrucoes").focus();
-				//realizarFala(baseURL + "instrucoesAcessibilidade.mp3");
-			}
-			else if(opcao == 3){
-				document.getElementById("opcaoMenu").focus();
-				//realizarFala(baseURL + "desistir.mp3");
-			}
-		break;
-		case "audio":
-			if(opcao == 0){
-				document.getElementById("MusicaFundo").focus();
-				//realizarFala(baseURL + "musicaFundo.mp3");
-				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/musicaFundo.mp3");
-				audioConfiguracoes.currentTime = 0;
-				audioConfiguracoes.play();*/
-			}
-			else if(opcao == 1){
-				document.getElementById("Efeitos").focus();
-				//realizarFala(baseURL + "Efeitos.mp3");
-				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/Efeitos.mp3");
-				audioConfiguracoes.currentTime = 0;
-				audioConfiguracoes.play();*/
-			}
-			else if(opcao == 2){
-				document.getElementById("LeituraTela").focus();
-				//realizarFala(baseURL + "leituraTela.mp3");
-				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/leituraTela.mp3");
-				audioConfiguracoes.currentTime = 0;
-				audioConfiguracoes.play();*/
-			}
-			else if(opcao == 3){
-				document.getElementById("audioVoltar").focus();
-				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/voltar.mp3");
-				audioConfiguracoes.currentTime = 0;
-				audioConfiguracoes.play();*/
-			}
-		break;
 	}
 }
 
