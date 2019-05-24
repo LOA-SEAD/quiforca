@@ -305,7 +305,7 @@ function verificarErro(_letra)
 	{
 		if(letraRepetida){
 			//audio2 = document.createElement("AUDIO");
-			audio2.setAttribute("src", "audio/tecla_indisponível2.mp3")
+			audio2.setAttribute("src", "audio/tecla_indisponivel2.mp3")
 		}
 		else
 		{
