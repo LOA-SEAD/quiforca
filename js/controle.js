@@ -377,7 +377,7 @@ function criarCamadaVitoria()
 
 	jogo.imgBonecoVitoria = document.createElement("img");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
-	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem parabens.png");
+	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem_parabens.png");
 
 	jogo.botoesVitoria = document.createElement("div");
 	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
@@ -445,7 +445,7 @@ function criarCamadaFimdeJogo()
 
 	jogo.imgBonecoVitoria = document.createElement("img");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
-	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem parabens.png");
+	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem_parabens.png");
 
 	jogo.botoesVitoria = document.createElement("div");
 	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
