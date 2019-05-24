@@ -53,7 +53,7 @@ function iniciar()
 	}
 	//Insere grupo de botões no header, e o header na camada Jogo
 	$("#camadaJogo").append(header);
-	header.append(jogo.btnGrupo);
+	header.appendChild(jogo.btnGrupo);
 	
 
 	jogo.botaoAtalhos = document.createElement("button");
@@ -66,28 +66,28 @@ function iniciar()
 	}
 
 	//Adiciona ao grupo de botões os botões de opções e atalhos
-	jogo.btnGrupo.append(jogo.botaoOpcoes);
-	jogo.btnGrupo.append(jogo.botaoAtalhos);
+	jogo.btnGrupo.appendChild(jogo.botaoOpcoes);
+	jogo.btnGrupo.appendChild(jogo.botaoAtalhos);
 
 	jogo.boxVidas = document.createElement("div");
 	jogo.boxVidas.setAttribute("id", "boxVidas");
-	header.append(jogo.boxVidas);
+	header.appendChild(jogo.boxVidas);
 
 	jogo.vidas1 = document.createElement("div");
 	jogo.vidas1.setAttribute("id", "vidas");
-	boxVidas.append(jogo.vidas1);
+	boxVidas.appendChild(jogo.vidas1);
 	jogo.vidas2 = document.createElement("div");
 	jogo.vidas2.setAttribute("id", "vidas");
-	boxVidas.append(jogo.vidas2);
+	boxVidas.appendChild(jogo.vidas2);
 	jogo.vidas3 = document.createElement("div");
 	jogo.vidas3.setAttribute("id", "vidas");
-	boxVidas.append(jogo.vidas3);
+	boxVidas.appendChild(jogo.vidas3);
 	jogo.vidas4 = document.createElement("div");
 	jogo.vidas4.setAttribute("id", "vidas");
-	boxVidas.append(jogo.vidas4);
+	boxVidas.appendChild(jogo.vidas4);
 	jogo.vidas5 = document.createElement("div");
 	jogo.vidas5.setAttribute("id", "vidas");
-	boxVidas.append(jogo.vidas5);
+	boxVidas.appendChild(jogo.vidas5);
 
 	var bonecoForca = document.createElement("div");
 	bonecoForca.setAttribute("id", "bonecoForca");
@@ -101,7 +101,7 @@ function iniciar()
 	//Logo FORCA -- NA TELA
 	var imgLogo = document.createElement("div");
 	imgLogo.setAttribute("id", "imgLogo");
-	bonecoForca.append(imgLogo);
+	bonecoForca.appendChild(imgLogo);
 
 	//Dica
 	jogo.dicaNaTela = document.createElement("div");
@@ -115,7 +115,7 @@ function iniciar()
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
 	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
 	jogo.dicaNaTela.appendChild(p);
-	colright.append(jogo.dicaNaTela);
+	colright.appendChild(jogo.dicaNaTela);
 
 	//Exibe a palavra na tela
 	jogo.aux = "";
@@ -128,7 +128,7 @@ function iniciar()
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	colright.append(jogo.palavraNaTela);
+	colright.appendChild(jogo.palavraNaTela);
 
 	jogo.erros = 0;
 	jogo.emTransicao = false;
@@ -141,7 +141,7 @@ function iniciar()
 
 
 	//$("#camadaJogo").append(jogo.linha); -- NA TELA
-	colright.append(jogo.linha);
+	colright.appendChild(jogo.linha);
 	colocarPersonagem(); // -- NA TELA
 	colocarTecladoNaTela(); // -- NA TELA
 

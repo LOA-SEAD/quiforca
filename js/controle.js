@@ -38,6 +38,7 @@ function criarCamadaMenu()
 	estado = "menu";
 	opcao = 0;
 	origemDerrota = 0
+	background.currentTime = 0;
 	background.play();
 
 	var el = document.createElement("div");
@@ -216,12 +217,12 @@ function criarCamadaCreditos()
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
 	botaoMenu.innerText = "Menu";
-	btnGrupo.append(botaoMenu);
+	btnGrupo.appendChild(botaoMenu);
 
 	var botaoOuvir = document.createElement("button");
 	botaoOuvir.setAttribute("id", "btnOuvir");
 	botaoOuvir.innerHTML = "Ouvir";
-	btnGrupo.append(botaoOuvir);
+	btnGrupo.appendChild(botaoOuvir);
 
 	el.appendChild(topo);
 	topo.appendChild(btnGrupo);
@@ -732,11 +733,11 @@ function criarCamadaInstrucoes()
 
 	var header = document.createElement("div");
 	header.setAttribute("id", "topInstrucoes");
-	el.append(header);
+	el.appendChild(header);
 
 	var btnGrupo = document.createElement("div");
 	btnGrupo.setAttribute("id", "btnGrupo");
-	header.append(btnGrupo);
+	header.appendChild(btnGrupo);
 
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnSairInstrucoes");
@@ -746,7 +747,7 @@ function criarCamadaInstrucoes()
 	else if(origemInstrucoes == "opcoes"){
 		botaoMenu.innerHTML = "Voltar para o jogo";
 	}
-	btnGrupo.append(botaoMenu);
+	btnGrupo.appendChild(botaoMenu);
 	botaoMenu.onclick = function()
 	{
 		if(origemInstrucoes == "menu")
