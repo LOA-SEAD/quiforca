@@ -742,10 +742,10 @@ function criarCamadaInstrucoes()
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnSairInstrucoes");
 	if(origemInstrucoes == "menu"){
-		botaoMenu.innerHTML = "Menu";
+		botaoMenu.innerHTML = "Voltar para menu";
 	}
 	else if(origemInstrucoes == "opcoes"){
-		botaoMenu.innerHTML = "Voltar para o jogo";
+		botaoMenu.innerHTML = "Voltar para jogo";
 	}
 	btnGrupo.appendChild(botaoMenu);
 	botaoMenu.onclick = function()
