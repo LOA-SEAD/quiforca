@@ -447,8 +447,7 @@ function criarCamadaFimdeJogo()
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
 	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem_parabens.png");
 
-	jogo.botoesVitoria = document.createElement("div");
-	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
+	
 
 	
 	$("#camadaFimdeJogo").append(jogo.imgBonecoVitoria);
@@ -463,7 +462,7 @@ function criarCamadaFimdeJogo()
 			criarCamadaMenu();
 			iniciarNovoJogo();	
 		}
-	).appendTo($("#botoesTelaVitoria"));
+	).appendTo($("#camadaFimdeJogo"));
 	/*document.getElementById("btnMenu").onmouseenter = function()
 	{
 		realizarLeitura("Menu");

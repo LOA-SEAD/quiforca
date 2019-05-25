@@ -195,10 +195,13 @@ input[type=range] {
 
 #camadaFimdeJogo
 {
+	text-align: center;
+	width: 100vw;
+	height: calc(var(--vh, 1vh) * 100);
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	width: 100%;
+	justify-content: space-between;
+	align-items: center
 }
 
 #camadaDerrota{
@@ -618,9 +621,9 @@ p
 #botoesTelaVitoria > *{
 	width: 100vw;
 	height: 18vw;
-    background: #e7e7e7;
-    margin: 0 auto;
-    box-shadow: inset 0px -1px #504e4a;
+	background: #e7e7e7;
+	margin: 0 auto;
+	box-shadow: inset 0px -1px #504e4a;
 	font-size: calc(1.5em + 1vw);
 	font-family: "Fonte","Tahoma";
 }
@@ -651,6 +654,15 @@ p
 	content: "Sair"
 }
 
+#btnMenu3{
+	width: 100vw;
+	height: 18vw;
+	background: #e7e7e7;
+	margin: 0 auto;
+	box-shadow: inset 0px -1px #504e4a;
+	font-size: calc(1.5em + 1vw);
+	font-family: "Fonte","Tahoma";
+}
 
 #btnProxPalavra::before
 {
