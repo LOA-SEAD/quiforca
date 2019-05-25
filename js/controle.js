@@ -435,6 +435,12 @@ function criarCamadaFimdeJogo()
 		audio3.play();
 	}, 500);
 
+	//Adiciona áudio fim de jogo após o feedback de acerto da última palavra
+	vitoria2 = setTimeout(function(){
+		leituraInicial(baseURL + "FimDeJogo.mp3");
+	}, 3800);
+
+
 	var fase;
 	var faseId;
 	var el = $('<div>').attr("id", "camadaFimdeJogo").appendTo($("#palco"));
@@ -577,7 +583,7 @@ function criarCamadaDerrota()
 
 	jogo.jogadorPontos = document.createElement("p");
 	jogo.jogadorPontos.setAttribute("id", "jogadorPontos");
-	jogo.jogadorPontos.innerHTML = "Pontuação final: " + parseInt(jogo.pontos);
+	jogo.jogadorPontos.innerHTML = "Pontuação final: " + parseInt(jogo.pontos) + " pontos.";
 
 
 	$("#camadaDerrota").append(jogo.imgBoneco);
@@ -841,7 +847,10 @@ function inicializaFocus(){
 	}
 }
 
+
+
 function inicializaFocusFala(){
+	var pts = jogo.pontos + " pontos";
 	if(estado == "menu"){
 		realizarFala(baseURL + "instrucoes.mp3");
 	}
@@ -849,8 +858,8 @@ function inicializaFocusFala(){
 		realizarFala(baseURL + "continuar.mp3");
 	}
 	else if(estado == "derrota"){
-		var txt = jogo.pontos + "pontos";
-		realizarLeitura(txt);
+		//Realiza leitura da pontuação final
+		realizarLeitura(pts);
 	}
 	else if(estado == "vitoria"){
 		var txt = jogo.palavraSorteada;
@@ -858,6 +867,10 @@ function inicializaFocusFala(){
 	}
 	else if(estado == "audio"){
 		realizarFala(baseURL + "musicaFundo.mp3");
+	}
+	else if(estado == "fimdeJogo"){
+		//Realiza leitura da pontuação final
+		realizarLeitura(pts);
 	}
 }
 
