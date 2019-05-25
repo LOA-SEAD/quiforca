@@ -149,9 +149,11 @@ function ativarBotaoReiniciar()
 function ativarBotaoSair()
 {
 	paraFala();
+	audio3.pause();
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaVitoria();
 	destruirCamadaDerrota();
+	destruirCamadaFimdeJogo();
 	destruirCamadaJogo();
 	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	//salvaPontuacao(jogo.nome, pontos);
@@ -462,11 +464,7 @@ function criarCamadaFimdeJogo()
 
 	$("<button>").attr("id", "btnMenu3").click(
 		function(){
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
-			destruirCamadaFimdeJogo();
-			//salvaPontuacao(jogo.nome, pontos);
-			criarCamadaMenu();
-			iniciarNovoJogo();	
+			ativarBotaoSair();	
 		}
 	).appendTo($("#camadaFimdeJogo"));
 
