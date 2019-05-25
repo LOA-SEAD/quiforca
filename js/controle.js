@@ -469,25 +469,6 @@ function criarCamadaFimdeJogo()
 			iniciarNovoJogo();	
 		}
 	).appendTo($("#camadaFimdeJogo"));
-	/*document.getElementById("btnMenu").onmouseenter = function()
-	{
-		realizarLeitura("Menu");
-		//AudioBotoes("audio/menu.mp3");
-	}*/
-
-	inicializaFocus();
-	/*$('<div>').css({
-		'position': 'absolute',
-		'width': '800px',
-		'height': '600px',
-		'background-image': 'url("imgs/vitoria.png")'})
-	.click(function(){
-			sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
-			destruirCamadaFimdeJogo();
-			criarCamadaMenu();
-			iniciarNovoJogo();
-	})
-	.appendTo(el);*/
 
 	document.onkeydown = function(e)
 	{
@@ -606,7 +587,6 @@ function criarCamadaDerrota()
 		}
 	).appendTo($("#botoesFimDeJogo"));
 
-	//inicializaFocus();
 }
 
 function derrotaMenu(e){
@@ -816,36 +796,6 @@ function AudioBotoes(nomeAudio)
 
 
 var delayInicializaFocus
-
-function inicializaFocus(){
-	if(estado == "menu"){
-		document.getElementById("camadaMenu").focus();
-		//document.getElementById("btnInstrucoes").focus();
-	}
-	else if(estado == "derrota"){
-		document.getElementById("camadaDerrota").focus();
-		//document.getElementById("btnReiniciar").focus();
-	}
-	else if(estado == "vitoria"){
-		document.getElementById("camadaVitoria").focus();
-		//document.getElementById("btnProxPalavra").focus();
-	}
-	else if(estado == "jogando"){
-		document.getElementById("dicaNaTela").focus();
-	}
-	else if(estado == "fimdeJogo"){
-		document.getElementById("camadaFimdeJogo").focus();
-		//document.getElementById("btnMenu").focus();
-	}
-	else if(estado == "opcoes"){
-		document.getElementById("opcaoContinuar").focus();
-		//leituraInicial(baseURL + "configuracoes.mp3");
-	}
-	else if(estado == "audio"){
-		document.getElementById("MusicaFundo").focus();
-		//leituraInicial(baseURL + "entrarEnter.mp3")
-	}
-}
 
 
 
@@ -1250,8 +1200,6 @@ function criarCamadaAudio()
 		audioVoltar.focus();
 	}
 
-	inicializaFocus();
-
 	$("#camadaAudio").keydown(function (e){
 		selecionaOpcao(e);	
 	})
@@ -1534,10 +1482,6 @@ function criarCamadaOpcoes(){
 		opcoesMenu.focus();
 		opcao = 3;
 	}
-
-
-	//Inicializa o foco da camada
-	inicializaFocus();
 
 	$("#camadaOpcoes").keydown(function (e){
 		selecionaOpcao(e);	
