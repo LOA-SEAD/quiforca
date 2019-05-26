@@ -289,10 +289,12 @@ input[type=range] {
 #topInstrucoes, #topoPag{
 	width: 100vw;
 	position: fixed;
+	bottom: 0;
 }
 
 #conteudoInst, #conteudo{
-	padding-top: 15vw;
+	/*padding-top: 15vw;*/
+	padding-bottom: 15vw;
 }
 
 #pontosTela{
@@ -344,7 +346,9 @@ input[type=range] {
 }
 
 #instrucoesText{
-	padding: 15vw 1em;
+	/*padding: 15vw 1em;*/
+	padding: 0 1em;
+	padding-bottom: 15vw;
 }
 /*Parte dos botoes no jogo*/
 #botoes

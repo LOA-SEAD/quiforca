@@ -151,6 +151,7 @@ function ativarBotaoSair()
 	paraFala();
 	audio3.pause();
 	clearTimeout(delayInicializaFocus);
+	clearTimeout(vitoria6);
 	destruirCamadaVitoria();
 	destruirCamadaDerrota();
 	destruirCamadaFimdeJogo();
@@ -165,6 +166,7 @@ function ativarProxPalavra()
 {
 	paraFala();
 	clearTimeout(delayInicializaFocus);
+	clearTimeout(vitoria6);
 	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	destruirCamadaVitoria();
 	criarCamadaJogo();
@@ -348,6 +350,7 @@ var audioVitP = document.createElement("AUDIO");
 vitoria1 = false;
 vitoria2 = false;
 vitoria3 = false;
+var vitoria6;
 function criarCamadaVitoria()
 {
 	paraFala();
@@ -364,8 +367,17 @@ function criarCamadaVitoria()
 	}, 500);
 
 	vitoria2 = setTimeout(function(){
-		leituraInicial(baseURL + "vitoriaFrase.mp3");
-	}, 3800);
+		audio.pause();
+		audioinicial.setAttribute("src", baseURL + "vitoriaFrase.mp3");
+		audioinicial.currentTime = 0;
+		audioinicial.play();
+		audioinicial.onended = function(){
+        realizarLeitura(jogo.palavraSorteada);
+	}}, 3800);
+	
+	vitoria6 = setTimeout(function(){
+		leituraInicial(baseURL + "pontuacao.mp3")
+	}, 10000);
 
 	var fase;
 	var faseId;
@@ -381,11 +393,16 @@ function criarCamadaVitoria()
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
 	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem_parabens.png");
 
+	jogo.jogadorPontos = document.createElement("p");
+	jogo.jogadorPontos.setAttribute("id", "jogadorPontos");
+	jogo.jogadorPontos.innerHTML = "Pontuação: " + parseInt(jogo.pontos) + " pontos.";
+
 	jogo.botoesVitoria = document.createElement("div");
 	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
 	
 	$("#camadaVitoria").append(jogo.imgBonecoVitoria);
 	$("#camadaVitoria").append(jogo.palavraNaTela);
+	$("#camadaVitoria").append(jogo.jogadorPontos);
 	$("#camadaVitoria").append(jogo.botoesVitoria);
 
 	$("<button>").attr("id", "btnProxPalavra").click(
@@ -439,7 +456,7 @@ function criarCamadaFimdeJogo()
 
 	//Adiciona áudio fim de jogo após o feedback de acerto da última palavra
 	vitoria2 = setTimeout(function(){
-		leituraInicial(baseURL + "FimDeJogo.mp3");
+		leituraInicial(baseURL + "FimDeJogo2.mp3");
 	}, 3800);
 
 
@@ -810,8 +827,7 @@ function inicializaFocusFala(){
 		realizarLeitura(pts);
 	}
 	else if(estado == "vitoria"){
-		var txt = jogo.palavraSorteada;
-		realizarLeitura(txt);
+		realizarLeitura(pts);
 	}
 	else if(estado == "audio"){
 		realizarFala(baseURL + "musicaFundo.mp3");
