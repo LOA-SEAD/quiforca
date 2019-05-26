@@ -218,7 +218,7 @@ function criarCamadaCreditos()
 
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.innerText = "Menu";
+	botaoMenu.innerText = "Voltar";
 	btnGrupo.appendChild(botaoMenu);
 
 	var botaoOuvir = document.createElement("button");
@@ -725,7 +725,7 @@ function criarCamadaInstrucoes()
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnSairInstrucoes");
 	if(origemInstrucoes == "menu"){
-		botaoMenu.innerHTML = "Voltar para menu";
+		botaoMenu.innerHTML = "Voltar";
 	}
 	else if(origemInstrucoes == "opcoes"){
 		botaoMenu.innerHTML = "Voltar para jogo";
