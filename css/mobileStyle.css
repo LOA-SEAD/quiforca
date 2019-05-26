@@ -15,6 +15,10 @@ body
     background-size: cover;
 }
 
+h2{
+	margin: 0;
+}
+
 #btn-mute
 {
 	position:absolute;
@@ -346,6 +350,7 @@ input[type=range] {
 #instrucoesText{
 	padding: 15vw 1em;
 }
+
 /*Parte dos botoes no jogo*/
 #botoes
 {

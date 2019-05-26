@@ -149,6 +149,7 @@ function ativarBotaoReiniciar()
 function ativarBotaoSair()
 {
 	paraFala();
+	pararLeitura();
 	audio3.pause();
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaVitoria();
@@ -164,6 +165,8 @@ function ativarBotaoSair()
 function ativarProxPalavra()
 {
 	paraFala();
+	pararLeitura();
+	audio3.pause();
 	clearTimeout(delayInicializaFocus);
 	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	destruirCamadaVitoria();
@@ -354,6 +357,7 @@ function criarCamadaVitoria()
 	estado = "vitoria";
 	opcao = 0;
 	pulouVitoria = false;
+	falaVitoria = 1;
 
 	//var audio = document.createElement("AUDIO");
 	audio3.setAttribute("src", "audio/vitoria2.mp3");
@@ -375,7 +379,8 @@ function criarCamadaVitoria()
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraCertaNaTela");
-	jogo.palavraNaTela.innerHTML = "<h2> Você acertou! </h2> <br> A palavra correta é " + jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Você acertou! </h2> <br> A palavra correta é " + jogo.palavraSorteada + 
+		"<p> pontuação: " + jogo.pontos + " pontos </p>";
 
 	jogo.imgBonecoVitoria = document.createElement("img");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
@@ -810,8 +815,15 @@ function inicializaFocusFala(){
 		realizarLeitura(pts);
 	}
 	else if(estado == "vitoria"){
-		var txt = jogo.palavraSorteada;
-		realizarLeitura(txt);
+		if(falaVitoria == 1){
+			var txt = jogo.palavraSorteada;
+			realizarLeitura(txt);
+			falaVitoria = 2;
+		}
+		else{
+			realizarLeitura(pts);
+			falaVitoria = 1;
+		}
 	}
 	else if(estado == "audio"){
 		realizarFala(baseURL + "musicaFundo.mp3");
