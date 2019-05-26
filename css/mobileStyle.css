@@ -374,7 +374,7 @@ input[type=range] {
 	height: 15vw;
 	background: #e7e7e7;
 	text-align: center;
-	font-size: calc(1em + 1vw);
+	font-size: calc(0.8em + 1vw);
 	font-family: "Fonte","Tahoma";
 	border: 0;
 }

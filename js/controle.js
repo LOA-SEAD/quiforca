@@ -223,12 +223,12 @@ function criarCamadaCreditos()
 
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
-	botaoMenu.innerText = "Voltar";
+	botaoMenu.innerText = "Voltar ao Menu";
 	btnGrupo.appendChild(botaoMenu);
 
 	var botaoOuvir = document.createElement("button");
 	botaoOuvir.setAttribute("id", "btnOuvir");
-	botaoOuvir.innerHTML = "Ouvir";
+	botaoOuvir.innerHTML = "Ouvir Créditos";
 	btnGrupo.appendChild(botaoOuvir);
 
 	el.appendChild(topo);
@@ -733,10 +733,10 @@ function criarCamadaInstrucoes()
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnSairInstrucoes");
 	if(origemInstrucoes == "menu"){
-		botaoMenu.innerHTML = "Voltar";
+		botaoMenu.innerHTML = "Voltar ao Menu";
 	}
 	else if(origemInstrucoes == "opcoes"){
-		botaoMenu.innerHTML = "Voltar para jogo";
+		botaoMenu.innerHTML = "Voltar ao jogo";
 	}
 	btnGrupo.appendChild(botaoMenu);
 	botaoMenu.onclick = function()
@@ -921,7 +921,7 @@ function criarCamadaAtalhos()
 
 	voltar = document.createElement("button");
 	voltar.setAttribute("id", "btnVoltar3");
-	voltar.innerText = "Voltar";
+	voltar.innerText = "Voltar ao Jogo";
 	caixaBotoes.appendChild(voltar);
 	voltar.onclick = function(){
 		stopTudo();
@@ -1201,7 +1201,12 @@ function criarCamadaAudio()
 	//btnVoltar
 	var audioVoltar = document.createElement("button");
 	audioVoltar.setAttribute("id", "audioVoltar");
-	audioVoltar.innerHTML = "Voltar";
+	if(origemAudio == "jogo"){
+		audioVoltar.innerHTML = "Voltar às Opções";
+	}
+	if(origemAudio == "menu"){
+		audioVoltar.innerHTML = "Voltar ao Menu";
+	}
 	caixaBarras.appendChild(audioVoltar);
 
 	//btnContinuar
@@ -1316,7 +1321,7 @@ function criarCamadaControleAudio(){
 	//btnVoltar
 	var audioVoltar = document.createElement("button");
 	audioVoltar.setAttribute("id", "btnVoltarAudio");
-	audioVoltar.innerHTML = "Voltar";
+	audioVoltar.innerHTML = "Voltar aos Áudios";
 	audioVoltar.onclick = function(){
 		destruirCamadaControleAudio();
 	}
