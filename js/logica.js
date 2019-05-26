@@ -1,4 +1,4 @@
-var letraRepetida;
+﻿var letraRepetida;
 var audio;
 var audio2 = document.createElement("AUDIO");
 audio2.volume = 1;
@@ -275,12 +275,15 @@ function verificarErro(_letra)
 	{
 		if(letraRepetida){
 			//audio2 = document.createElement("AUDIO");
-			audio2.setAttribute("src", "audio/tecla_indisponível2.ogg")
+			audio2.setAttribute("src", "audio/tecla_indisponivel2.mp3")
 		}
 		else
 		{
 			//audio2 = document.createElement("AUDIO");
-			audio2.setAttribute("src", "audio/acerta_letra1.ogg");
+			audio2.setAttribute("src", "audio/acerta_letra1.mp3");
+			atalho2 = setTimeout(function(){
+				ouvirAtalho2();
+			}, 600);
 		}
 		setTimeout(function(){
 			audio2.currentTime = 0

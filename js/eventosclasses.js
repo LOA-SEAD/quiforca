@@ -144,35 +144,7 @@ document.body.onkeyup = function(e)
 	//Lê o status da palavra
 	if(keyunicode == 50) //2
 	{
-		stopTudo();
-		paraFala();
-		
-		counter = 0;
-		delayAtalho2 = setInterval(palavra, 700);
-		function palavra()
-		{
-			if(counter >= tamanhoPalavraAtual())
-			{
-				clearInterval(delayAtalho2);
-			}
-			else if(palavraAtual(counter) == 0)
-			{
-				realizarLeituraLetra("espaco");
-				counter++;
-			}
-			else if(palavraAtual(counter) == 1)
-			{
-				audioAtalho2.currentTime = 0;
-				audioAtalho2.play();
-				audioAtalho2.volume = volumeSinth;
-				counter++;
-			}
-			else
-			{
-				realizarLeituraLetra(palavraAtual(counter));
-				counter++;
-			}
-		}
+		ouvirAtalho2();	
 	}
 
 	//Quantas vidas ainda tem
@@ -501,4 +473,39 @@ function realizarLeituraInicial(texto)
 function pararLeitura()
 {
 	window.speechSynthesis.cancel()
+}
+
+function ouvirAtalho2(){
+
+	stopTudo();
+	paraFala();
+
+	var counter;
+	audioAtalho2.setAttribute("src", "audio/letra1.mp3");
+	counter = 0;
+	delayAtalho2 = setInterval(palavra, 700);
+	function palavra()
+	{
+		if(counter >= tamanhoPalavraAtual())
+		{
+			clearInterval(delayAtalho2);
+		}
+		else if(palavraAtual(counter) == 0)
+		{
+			realizarLeituraLetra("espaco");
+			counter++;
+		}
+		else if(palavraAtual(counter) == 1)
+		{
+			audioAtalho2.currentTime = 0;
+			audioAtalho2.play();
+			audioAtalho2.volume = volumeSinth;
+			counter++;
+		}
+		else
+		{
+			realizarLeituraLetra(palavraAtual(counter));
+			counter++;
+		}
+	}
 }
