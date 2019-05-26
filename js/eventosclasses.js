@@ -127,9 +127,18 @@ function realizarLeitura(texto)
 	msg.lang = "pt-BR";
 	msg.voice = voices[0];
 	window.speechSynthesis.speak(msg);
+
+	if(estado == "vitoria"){
+		msg.addEventListener("end", function(){
+			if(falaVitoria == 2 && !pulouVitoria){
+				leituraInicial(baseURL + "pontuacao.mp3");				
+			}
+		})
+	}
 }
 
 function pararLeitura()
 {
-	window.speechSynthesis.cancel()
+	window.speechSynthesis.cancel();
+	pulouVitoria = true;
 }
