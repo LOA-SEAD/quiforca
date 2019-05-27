@@ -10,7 +10,7 @@
 var baseURL = "audio/audioGravado/";
 var background = document.createElement("AUDIO");
 background.setAttribute("src", "audio/background.mp3");
-background.volume = 0.2;
+background.volume = 0.1;
 var audioTeclas = document.createElement("AUDIO");
 audioTeclas.setAttribute("src", "audio/efeitoTeclas.wav");
 audioTeclas.volume = 1;
