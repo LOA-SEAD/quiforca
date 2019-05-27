@@ -290,14 +290,20 @@ input[type=range] {
 	width: 100vw;
 }
 
-#topInstrucoes, #topoPag{
-	width: 100vw;
+#btnVoltar2{
 	position: fixed;
 	bottom: 0;
+	width: 100vw;
+	height: 15vw;
+	background: #e7e7e7;
+	margin: 0 auto;
+	box-shadow: inset 0px -1px #504e4a;
+	font-size: calc(1em + 1vw);	
+	font-family: "Fonte","Tahoma";
 }
 
 #conteudoInst, #conteudo{
-	/*padding-top: 15vw;*/
+	padding-top: 15vw;
 	padding-bottom: 15vw;
 }
 
@@ -356,6 +362,30 @@ input[type=range] {
 }
 
 /*Parte dos botoes no jogo*/
+
+#btnOuvir, #btnVoltar2, #btnSairInstrucoes{
+	position: fixed;
+	left: 0;
+	width: 100vw;
+	height: 15vw;
+	background: #e7e7e7;
+	margin: 0 auto;
+	border-right-width: 0;
+	font-size: calc(1em + 1vw);	
+	font-family: "Fonte","Tahoma";
+}
+
+#btnOuvir{
+	top: 0;
+	box-shadow: 0px 2px 5px 0px #504e4a;
+}
+
+#btnVoltar2, #btnSairInstrucoes{
+	bottom: 0;
+	box-shadow: 0px -2px 5px 0px #504e4a;
+	border-bottom-width: 0;
+}
+
 #botoes
 {
 	width: 100%;
@@ -379,14 +409,12 @@ input[type=range] {
 	border: 0;
 }
 
-#btnMenu, #btnVoltar2{
+#btnMenu{
 	border-right-width: 1px;
 	border-right-style: double;
 }
 
-#btnSairInstrucoes{
-	width: 100%;
-}
+
 
 #btnVoltarAudio{
 	width: 100vw;

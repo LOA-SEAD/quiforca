@@ -203,7 +203,6 @@ function destruirCamadaJogo()
 
 function criarCamadaCreditos()
 {
-
 	paraFala();
 	
 	estado = "creditos";
@@ -212,28 +211,19 @@ function criarCamadaCreditos()
 	el.setAttribute("id", "camadaCreditos");
 	$("#palco").append(el);
 
-	//div contendo conteúdo do topo da página
-	var topo = document.createElement("div");
-	topo.setAttribute("id", "topoPag");
-
-
-	//grupo de botões superiores tela créditos
-	var btnGrupo = document.createElement("div");
-	btnGrupo.setAttribute("id", "btnGrupo");
 
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnVoltar2");
 	botaoMenu.innerText = "Voltar ao Menu";
-	btnGrupo.appendChild(botaoMenu);
+	
 
 	var botaoOuvir = document.createElement("button");
 	botaoOuvir.setAttribute("id", "btnOuvir");
 	botaoOuvir.innerHTML = "Ouvir Créditos";
-	btnGrupo.appendChild(botaoOuvir);
-
-	el.appendChild(topo);
-	topo.appendChild(btnGrupo);
-
+	
+	el.appendChild(botaoOuvir);
+	el.appendChild(botaoMenu);
+	
 	botaoMenu.onmousedown = function()
 	{
 		audio3.pause();
@@ -457,7 +447,7 @@ function criarCamadaFimdeJogo()
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
-	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2><h3>Pontuação final: " + jogo.pontos + "</h3>";''
+	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2><p>Pontuação final: " + jogo.pontos + " pontos.</p>";
 
 	jogo.imgBonecoVitoria = document.createElement("img");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
@@ -722,23 +712,18 @@ function criarCamadaInstrucoes()
 	el.setAttribute("id", "camadaInstrucoes");
 	$("#palco").append(el);
 
-	var header = document.createElement("div");
-	header.setAttribute("id", "topInstrucoes");
-	el.appendChild(header);
-
-	var btnGrupo = document.createElement("div");
-	btnGrupo.setAttribute("id", "btnGrupo");
-	header.appendChild(btnGrupo);
-
 	var botaoMenu = document.createElement("button");
 	botaoMenu.setAttribute("id" , "btnSairInstrucoes");
+	
 	if(origemInstrucoes == "menu"){
 		botaoMenu.innerHTML = "Voltar ao Menu";
 	}
 	else if(origemInstrucoes == "opcoes"){
 		botaoMenu.innerHTML = "Voltar ao jogo";
 	}
-	btnGrupo.appendChild(botaoMenu);
+
+	el.appendChild(botaoMenu);
+
 	botaoMenu.onclick = function()
 	{
 		if(origemInstrucoes == "menu")
