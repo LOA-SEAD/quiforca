@@ -170,6 +170,9 @@ function fimDeJogo()
 	}
 	if(!continua)
 	{
+		clearTimeout(atalho2);
+		stopTudo();
+		
 		if(jogo.bdTamanho != 0)
 		{
 			//ainda tem palavras
@@ -283,7 +286,7 @@ function verificarErro(_letra)
 			audio2.setAttribute("src", "audio/acerta_letra1.mp3");
 			atalho2 = setTimeout(function(){
 				ouvirAtalho2();
-			}, 600);
+			}, 500);
 		}
 		setTimeout(function(){
 			audio2.currentTime = 0

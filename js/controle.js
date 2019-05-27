@@ -393,6 +393,7 @@ vitoria3 = false;
 function criarCamadaVitoria()
 {
 	paraFala();
+
 	estado = "vitoria";
 	opcao = 0;
 	pulouVitoria = false;
