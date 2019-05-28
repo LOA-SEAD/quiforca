@@ -454,11 +454,8 @@ function criarCamadaFimdeJogo()
 	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem_parabens.png");
 
 	
-
-	
 	$("#camadaFimdeJogo").append(jogo.imgBonecoVitoria);
 	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
-	$("#camadaFimdeJogo").append(jogo.botoesVitoria);
 
 	$("<button>").attr("id", "btnMenu3").click(
 		function(){
