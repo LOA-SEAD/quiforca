@@ -344,6 +344,10 @@ function criarCamadaCreditos()
 	para.innerHTML = "Rogério Augusto Bordini";
 	colRight.appendChild(para);
 
+	var sairCreditos = document.createElement("h2");
+	sairCreditos.innerHTML = "Pressione Enter para voltar ao menu";
+	el.appendChild(sairCreditos);
+
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoes");
 	el.appendChild(caixaBotoes);
@@ -365,13 +369,18 @@ function criarCamadaCreditos()
 		realizarLeitura("Menu");
 		//AudioBotoes("audio/menu.mp3");
 	}*/
+	var espera = 1;
 	document.onkeydown = function(e)
 	{
 		e = window.event||e;
-		if((e.which == 27 || e.keyCode == 27 || e.charCode == 24) && estado == "creditos")
+		var tecla = e.which || e.keyCode || e.charCode;
+		if((tecla == 27 || tecla == 13) && estado == "creditos" && !espera)
 		{
 			destruirCamadaCreditos();
 			criarCamadaMenu();
+		}
+		if(tecla == 13 && estado == "creditos"){
+			espera = !espera;
 		}
 	}
 }
@@ -975,10 +984,10 @@ function destruirCamadaRanking()
 function criarCamadaInstrucoes()
 {
 	paraFala();
-
+	var espera = 1;
 	if(origemInstrucoes == "menu")
 	{
-		realizarFala(baseURL + "lerinstrucoes.mp3");
+		realizarFala(baseURL + "lerinstrucoesCompletas.mp3");
 	}
 	else if(origemInstrucoes == "opcoes")
 	{
@@ -1009,7 +1018,15 @@ function criarCamadaInstrucoes()
 	 "Cada letra que você acerta é colocada na palavra. <br>"+
 	 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
 	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
-	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>";
+	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>" +
+	 "<h3>Atalhos sonoros durante o jogo:</h3><br>"+
+	 	"Para usá-los, pressione os números no seu teclado alfanumérico.<br>1 - Ouça a dica<br>"+
+		"2 - Ouça o que você descobriu da palavra até agora<br>"+
+		"3 - Saiba quantas vidas você ainda tem<br>"+
+		"4 - Relembre as letras que você já escolheu<br>"+
+		"5 - Saiba sua pontuação atual<br>" + 
+		"Esc - Pausar o jogo e acessar as configurações<br>" + 
+		"Pressione Enter para voltar ao menu";
 	}
 	else
 	{
@@ -1029,7 +1046,7 @@ function criarCamadaInstrucoes()
 	}
 	else if(origemInstrucoes == "opcoes")
 	{
-		jogo.instrucoes.innerHTML += "Esc - Voltar para o jogo<br>";
+		jogo.instrucoes.innerHTML += "Pressione Enter para voltar ao jogo<br>";
 	}
 	 
 
@@ -1072,7 +1089,8 @@ function criarCamadaInstrucoes()
 	document.onkeydown = function(e)
 	{
 		e = window.event||e;
-		if((e.which == 27 || e.keyCode == 27 || e.charCode == 24) && estado == "instrucoes")
+		var tecla = e.which || e.keyCode || e.charCode;
+		if((tecla == 27 || tecla == 13) && estado == "instrucoes" && !espera)
 		{
 			destruirCamadaInstrucoes();
 			if(origemInstrucoes == "menu")
@@ -1087,6 +1105,9 @@ function criarCamadaInstrucoes()
 				$("#camadaJogo").toggle();
 			
 			}
+		}
+		if(tecla == 13 && estado == "instrucoes"){
+			espera = !espera;
 		}
 	}
 }
@@ -1367,21 +1388,21 @@ function setaFoco(){
 		case "audio":
 			if(opcao == 0){
 				document.getElementById("MusicaFundo").focus();
-				realizarFala(baseURL + "musicaFundo.mp3");
+				realizarFala(baseURL + "musicaFundoEnter.mp3");
 				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/musicaFundo.mp3");
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();*/
 			}
 			else if(opcao == 1){
 				document.getElementById("Efeitos").focus();
-				realizarFala(baseURL + "Efeitos.mp3");
+				realizarFala(baseURL + "EfeitosEnter.mp3");
 				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/Efeitos.mp3");
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();*/
 			}
 			else if(opcao == 2){
 				document.getElementById("LeituraTela").focus();
-				realizarFala(baseURL + "leituraTela.mp3");
+				realizarFala(baseURL + "leituraTelaEnter.mp3");
 				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/leituraTela.mp3");
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();*/
