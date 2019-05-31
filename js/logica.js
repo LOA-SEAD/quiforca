@@ -132,10 +132,6 @@ function iniciar()
 		jogo.aux += jogo.palavraSorteada[i] + " ";
 	}
 
-	/*jogo.palavraNaTelaDiv = document.createElement("div");
-	jogo.palavraNaTelaDiv.setAttribute("id", "palavraNaTelaDiv");
-	jogo.palavraNaTelaDiv.setAttribute*/
-
 	//Essa é a variavel que deve ser exibida na tela -- NA TELA
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
@@ -163,6 +159,9 @@ function iniciar()
 
 function update()
 {
+	//sendData(jogo.dicaPalavra, jogo.palavraSorteada, jogo.faseId, jogo.palavraNaTela.innerHTML, _letra,)
+	//acertou,tamanho,nroFase,nomeNivel
+
 	if(estado == "jogando"){
 		atualizarPalavra();
 		switch(fimDeJogo())
@@ -466,8 +465,6 @@ function colocarLetraEmLetrasTentadas(_letra)
 		jogo.letrasTentadas[i] = _letra;
 		mudarCor(_letra);
 	}
-
-
 }
 
 function mudarCor(_letra)

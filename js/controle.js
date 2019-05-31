@@ -514,43 +514,19 @@ function destruirCamadaVitoria()
 vitoria4 = false;
 function criarCamadaFimdeJogo()
 {
-	
+	sendRankingData(jogo.pontos)
+
 	estado = "fimdeJogo";
 
-	//var audio = document.createElement("AUDIO");
 	audio3.setAttribute("src", "audio/vitoria2.ogg");
-	//var audio = document.getElementById("vitoria"); 
 	audio3.currentTime = 0
 	vitoria1 = setTimeout(function(){
 		audio3.play();
 	}, 500);
 
-	/*vitoria2 = setTimeout(function(){
-		//var txt = "audio/" + numeroSorteado() + ".mp3"
-		//audioVitP.setAttribute("src", txt);
-		//audioVitP.currentTime = 0
-		//audioVitP.volume = 1
-		//audioVitP.play();
-		leituraInicial(baseURL + "vitoriaFrase.mp3");
-	}, 3800);*/
-
-	/*vitoria3 = setTimeout(function(){
-		realizarLeitura(jogo.palavraSorteada);
-	}, 6100);*/
-
-	/*vitoria4 = setTimeout(function(){
-		audio3.setAttribute("src", "audio/audioGravado/pontuacaoFinal.mp3");
-		audio3.currentTime = 0;
-		audio3.play();
-	}, 8000)*/
-
-
 	var fase;
 	var faseId;
 	var el = $('<div>').attr("id", "camadaFimdeJogo").appendTo($("#palco"));
-	/*$('<p>').attr('id', 'pontosNaTela')
-		.html('Pontos: ' + parseInt(jogo.pontos))
-		.appendTo($('#camadaFimdeJogo'));*/
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
@@ -568,42 +544,16 @@ function criarCamadaFimdeJogo()
 	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
 	$("#camadaFimdeJogo").append(jogo.botoesVitoria);
 
-	/*jogo.fimdeJogo = document.createElement("p");
-	jogo.fimdeJogo.setAttribute("id", "fimdeJogo");
-	jogo.fimdeJogo.setAttribute("tabIndex", "3");
-	jogo.fimdeJogo.setAttribute("role", "textbox");
-	jogo.fimdeJogo.innerHTML = "Tela de Fim de Jogo"
-	$("#camadaFimdeJogo").append(jogo.fimdeJogo);*/
-
 	$("<button>").attr("id", "btnMenu3").click(
 		function(){
-			sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
+			//sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 			destruirCamadaFimdeJogo();
-			//salvaPontuacao(jogo.nome, pontos);
 			criarCamadaMenu();
 			iniciarNovoJogo();	
 		}
 	).appendTo($("#botoesTelaVitoria"));
-	/*document.getElementById("btnMenu").onmouseenter = function()
-	{
-		realizarLeitura("Menu");
-		//AudioBotoes("audio/menu.mp3");
-	}*/
 
 	inicializaFocus();
-	/*$('<div>').css({
-		'position': 'absolute',
-		'width': '800px',
-		'height': '600px',
-		'background-image': 'url("imgs/vitoria.png")'})
-	.click(function(){
-			sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
-			destruirCamadaFimdeJogo();
-			criarCamadaMenu();
-			iniciarNovoJogo();
-	})
-	.appendTo(el);*/
-
 	document.onkeydown = function(e)
 	{
 		clearInterval(vitoria1);
