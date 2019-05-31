@@ -12,7 +12,7 @@ function sendData(pergunta,correta,nroPalavra,alternativas,escolhida,acertou,tam
         info.correctAnswer = correta;		// palavra correta a ser descoberta
         info.challengeId = nroPalavra;		// número da palavra sorteada no momento (conta a partir de 1)
         info.choices = alternativas;		// no caso do Forca, não tem alternativas, melhor mandar algo como "_ _ _ _ _" com a quantidade de caracteres da palavra certa
-        info.answer = escolhida;			// palavra final encontrada pelo jogador (pode ser a palavra correta, neste caso ele ganhou, ou a palavra incompleta encontrada até o momento que ele perdeu as vidas, nesse caso, foi game over)
+        info.answer = escolhida;			// letra escolhida
         info.win = acertou;					// boolean que vai receber "true" ou "false" para o caso do jogador ter acertado a palavra correta ou ter recebido um game over.
         info.levelSize = tamanho;			// quantidade de palavras (ou fases) que o jogo no total (vai sempre mandar o mesmo valor, toda vez que a função for chamada)
         info.levelId = nroFase;				// sempre vai receber o valor 1
@@ -74,7 +74,10 @@ function sendPlaytimeData(tempo,tipo,idJogo,idNivel,nomeNivel,nroPalavra){
     $.getJSON("remar.json", function(json) {
         info.exportedResourceId = json.exportedResourceId;
         info.time = tempo;					// recebe o valor de tempo em segundos (0.0 sempre que estiver iniciando uma contagem de tempo)
-        info.timeType = tipo;				// tipo do tempo enviado (0 para a contagem de tempo total de jogo, 1 para a contagem de tempo do nível, que nesse caso serão os mesmos valores do jogo inteiro pois só tem um nível, e 2 para a contagem do desafio, que nesse jogo é o tempo total gasto para descobrir uma única palavra)
+        info.timeType = tipo;				// tipo do tempo enviado (0 para a contagem de tempo total de jogo, 
+                                            //1 para a contagem de tempo do nível, que nesse caso serão os mesmos valores do jogo inteiro pois só tem um nível, e 
+                                            //2 para a contagem do desafio, que nesse jogo é o tempo total gasto para descobrir uma única palavra)
+                                            
         info.gameId = idJogo;				// recebe sempre o mesmo valor que nesse caso é 'Forca' com aspas simples mesmo.
         if (idNivel != null){
             info.levelId = idNivel;			// será mandado sempre o valor 1 nesta variável, mas somente quando o tipo for 1 ou 2. Quando a variável tipo = 0, nada é enviado e esta variável tem que ser nula.
