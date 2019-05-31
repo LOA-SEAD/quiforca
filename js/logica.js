@@ -159,8 +159,7 @@ function iniciar()
 
 function update()
 {
-	//sendData(jogo.dicaPalavra, jogo.palavraSorteada, jogo.faseId, jogo.palavraNaTela.innerHTML, _letra,)
-	//acertou,tamanho,nroFase,nomeNivel
+	//sendData(jogo.dicaPalavra, jogo.palavraSorteada, jogo.faseId, jogo.tamanhoPalavra, _letra, acertou, tamanhoPalavraSemEspaco(), 1, 'Forca')
 
 	if(estado == "jogando"){
 		atualizarPalavra();
