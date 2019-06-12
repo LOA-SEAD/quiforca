@@ -432,25 +432,28 @@ function leituraDica()
 		}, espera);
 }
 
+var synth = window.speechSynthesis;
+var voices = synth.getVoices();
+
 function realizarLeitura(texto)
 {
-	var voices = window.speechSynthesis.getVoices();
+	//var voices = window.speechSynthesis.getVoices();
 	msg = new SpeechSynthesisUtterance(texto);
 	msg.volume = volumeSinth;
 	msg.rate = 1.3; // 0.1 to 10
 	msg.lang = "pt-BR";
-	msg.voice = voices[0];
+	msg.voice = voices[3];
 	window.speechSynthesis.speak(msg);
 }
 
 function realizarLeituraInicial(texto)
 {
-	var voices = window.speechSynthesis.getVoices();
+	//var voices = window.speechSynthesis.getVoices();
 	msg = new SpeechSynthesisUtterance(texto);
 	msg.volume = volumeSinth; // 0 to 1
 	msg.rate = 1.3; // 0.1 to 10
 	msg.lang = "pt-BR";
-	msg.voice = voices[0];
+	msg.voice = voices[3];
 	window.speechSynthesis.speak(msg);
 
 	msg.addEventListener("end", function(){
