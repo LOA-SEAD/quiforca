@@ -1,4 +1,5 @@
-﻿var letraRepetida;
+﻿var palavraNoFim
+var letraRepetida;
 var audio;
 var audio2 = document.createElement("AUDIO");
 audio2.volume = 1;
@@ -428,8 +429,6 @@ function colocarLetraEmLetrasTentadas(_letra)
 		jogo.letrasTentadas[i] = _letra;
 		mudarCor(_letra);
 	}
-
-
 }
 
 function mudarCor(_letra)
@@ -466,8 +465,8 @@ function atualizarPalavra()
 			jogo.palavraNaTela.innerHTML += "_";
 		}
 		jogo.palavraNaTela.innerHTML += " ";
-
 	}
+	palavraNoFim = jogo.palavraNaTela.innerHTML
 }
 
 function atualizaNumChances(){
