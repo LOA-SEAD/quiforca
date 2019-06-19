@@ -27,14 +27,14 @@ function sendData(pergunta,correta,nroPalavra,alternativas,escolhida,acertou,tam
         })
 });
 
-	/*console.log("sendData");
+	console.log("sendData");
 	console.log("Dica da palavra " + nroPalavra + ": " + pergunta);
 	console.log("Palavra certa: " + correta);
 	console.log("Alternativas: " + alternativas);
 	console.log("Resposta submetida: " + escolhida);
     console.log("Acertou? " + acertou);
     console.log("Tamanho: " + tamanho);
-    console.log("Fase " + nroFase + ": " + nomeNivel);*/
+    console.log("Fase " + nroFase + ": " + nomeNivel);
 
 }
 
@@ -58,8 +58,8 @@ function sendRankingData(pontos){
         })
     });
 
-    /*console.log("sendRankingData");
-    console.log("Pontuação: " + pontos);*/
+    console.log("sendRankingData");
+    console.log("Pontuação: " + pontos);
 
 }
 

@@ -7,12 +7,8 @@
  O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
  */
 var tempo_inicial
-var hora_inicial 
-var minuto_inicial 
-var segundo_inicial 
-var msegundo_inicial
 var tempo_intermediario
-
+var tempo_intermediario2
 var baseURL = "audio/audioGravado/";
 var background = document.createElement("AUDIO");
 background.setAttribute("src", "audio/background.mp3");
@@ -241,11 +237,21 @@ function criarCamadaJogo()
 	if((jogo.bd.length-jogo.bdTamanho) == 1)
 	{
 		tempo_inicial = new Date()
+		tempo_intermediario = tempo_inicial
+	}
+	else{
+		tempo_intermediario = new Date()
 	}
 }
 
 function destruirCamadaJogo()
 {
+	if(jogo.bdTamanho > 0){
+		tempo_intermediario2 = new Date()
+		sendPlaytimeData((tempo_intermediario2 - tempo_intermediario)/1000,2,'Forca',1,'Forca',jogo.bd.length-jogo.bdTamanho)
+		tempo_intermediario = tempo_intermediario2
+	}
+
 	$("#camadaJogo").remove();
 	background.pause()
 }
@@ -539,8 +545,10 @@ function criarCamadaFimdeJogo()
 	//senddatacerto
 	sendRankingData(jogo.pontos)
 
-	var tempo_final = new Date()
+	tempo_intermediario2 = new Date()
+	sendPlaytimeData((tempo_intermediario2 - tempo_intermediario)/1000,2,'Forca',1,'Forca',jogo.bd.length-jogo.bdTamanho)
 
+	var tempo_final = new Date()
 	sendPlaytimeData((tempo_final-tempo_inicial)/1000,0,'Forca',null,null,null)
 	sendPlaytimeData((tempo_final-tempo_inicial)/1000,1,'Forca',1,'Forca',null)
 
