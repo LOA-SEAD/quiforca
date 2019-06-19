@@ -27,14 +27,14 @@ function sendData(pergunta,correta,nroPalavra,alternativas,escolhida,acertou,tam
         })
 });
 
-	console.log("sendData");
+	/*console.log("sendData");
 	console.log("Dica da palavra " + nroPalavra + ": " + pergunta);
 	console.log("Palavra certa: " + correta);
 	console.log("Alternativas: " + alternativas);
 	console.log("Resposta submetida: " + escolhida);
     console.log("Acertou? " + acertou);
     console.log("Tamanho: " + tamanho);
-    console.log("Fase " + nroFase + ": " + nomeNivel);
+    console.log("Fase " + nroFase + ": " + nomeNivel);*/
 
 }
 
@@ -58,8 +58,8 @@ function sendRankingData(pontos){
         })
     });
 
-    console.log("sendRankingData");
-    console.log("Pontuação: " + pontos);
+    /*console.log("sendRankingData");
+    console.log("Pontuação: " + pontos);*/
 
 }
 
@@ -75,6 +75,9 @@ function sendPlaytimeData(tempo,tipo,idJogo,idNivel,nomeNivel,nroPalavra){
         info.exportedResourceId = json.exportedResourceId;
         info.time = tempo;					// recebe o valor de tempo em segundos (0.0 sempre que estiver iniciando uma contagem de tempo)
         info.timeType = tipo;				// tipo do tempo enviado (0 para a contagem de tempo total de jogo, 1 para a contagem de tempo do nível, que nesse caso serão os mesmos valores do jogo inteiro pois só tem um nível, e 2 para a contagem do desafio, que nesse jogo é o tempo total gasto para descobrir uma única palavra)
+        //no 0 começa quando cria a camada jogo, e termina quando cria a camada fim de jogo
+        //1 mesma coisa
+        //2 começa quando atualiza a palavra, termina quando vai pra próxima
         info.gameId = idJogo;				// recebe sempre o mesmo valor que nesse caso é 'Forca' com aspas simples mesmo.
         if (idNivel != null){
             info.levelId = idNivel;			// será mandado sempre o valor 1 nesta variável, mas somente quando o tipo for 1 ou 2. Quando a variável tipo = 0, nada é enviado e esta variável tem que ser nula.

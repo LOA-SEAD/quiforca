@@ -6,6 +6,12 @@
 
  O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
  */
+var tempo_inicial
+var hora_inicial 
+var minuto_inicial 
+var segundo_inicial 
+var msegundo_inicial
+var tempo_intermediario
 
 var baseURL = "audio/audioGravado/";
 var background = document.createElement("AUDIO");
@@ -212,6 +218,7 @@ function destruirCamadaMenu()
 
 function criarCamadaJogo()
 {
+
 	paraFala();
 	origemAudio = "jogo";
 	frase = 1;
@@ -230,6 +237,11 @@ function criarCamadaJogo()
 	//leituraDica();
 	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
 	realizarLeitura(texto);
+
+	if((jogo.bd.length-jogo.bdTamanho) == 1)
+	{
+		tempo_inicial = new Date()
+	}
 }
 
 function destruirCamadaJogo()
@@ -495,7 +507,7 @@ function criarCamadaVitoria()
 	})
 
 	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')
-	//sendDatacerto
+	//senddatacerto
 }
 
 function proximaFase(e)
@@ -523,7 +535,15 @@ function destruirCamadaVitoria()
 vitoria4 = false;
 function criarCamadaFimdeJogo()
 {
-	
+	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')
+	//senddatacerto
+	sendRankingData(jogo.pontos)
+
+	var tempo_final = new Date()
+
+	sendPlaytimeData((tempo_final-tempo_inicial)/1000,0,'Forca',null,null,null)
+	sendPlaytimeData((tempo_final-tempo_inicial)/1000,1,'Forca',1,'Forca',null)
+
 	estado = "fimdeJogo";
 
 	//var audio = document.createElement("AUDIO");
@@ -628,9 +648,6 @@ function criarCamadaFimdeJogo()
 	}
 
 	document.addEventListener("keyup", fimdeJogoMenu);
-
-	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')
-	//senddatacerto
 }
 
 function fimdeJogoMenu(e){
