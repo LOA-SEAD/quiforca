@@ -6,7 +6,9 @@
 
  O css está sendo usado de maneira mista tanto inline (dentro do html) como por arquivos externos (css)
  */
-
+var tempo_inicial
+var tempo_intermediario
+var tempo_intermediario2
 var baseURL = "audio/audioGravado/";
 var background = document.createElement("AUDIO");
 background.setAttribute("src", "audio/background.mp3");
@@ -140,7 +142,6 @@ function ativarBotaoReiniciar()
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaDerrota();
 	destruirCamadaJogo();
-	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	//salvaPontuacao(jogo.nome, pontos);
 	iniciarNovoJogo();
 	criarCamadaJogo();
@@ -157,7 +158,6 @@ function ativarBotaoSair()
 	destruirCamadaDerrota();
 	destruirCamadaFimdeJogo();
 	destruirCamadaJogo();
-	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	//salvaPontuacao(jogo.nome, pontos);
 	iniciarNovoJogo();
 	criarCamadaMenu();
@@ -170,7 +170,6 @@ function ativarProxPalavra()
 	audio3.pause();
 	clearTimeout(delayInicializaFocus);
 	clearTimeout(vitoria6);
-	sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	destruirCamadaVitoria();
 	criarCamadaJogo();
 	//salvaPontuacao(jogo.nome, pontos);	
@@ -193,10 +192,24 @@ function criarCamadaJogo()
 	iniciar();
 	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
 	realizarLeitura(texto);
+
+	if((jogo.bd.length-jogo.bdTamanho) == 1)
+	{
+		tempo_inicial = new Date()
+		tempo_intermediario = tempo_inicial
+	}
+	else{
+		tempo_intermediario = new Date()
+	}
 }
 
 function destruirCamadaJogo()
 {
+	if(jogo.bdTamanho > 0){
+		tempo_intermediario2 = new Date()
+		sendPlaytimeData((tempo_intermediario2 - tempo_intermediario)/1000,2,'Forca',1,'Forca',jogo.bd.length-jogo.bdTamanho)
+		tempo_intermediario = tempo_intermediario2
+	}
 	$("#camadaJogo").remove();
 	background.pause()
 }
@@ -398,6 +411,8 @@ function criarCamadaVitoria()
 			ativarBotaoSair();
 		}
 	).appendTo($("#botoesTelaVitoria"));
+
+	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')
 }
 
 function proximaFase(e)
@@ -406,7 +421,6 @@ function proximaFase(e)
 
 	if(e.keycode == 32 || e.which == 32 || e.charcode == 32)
 	{
-		sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 		destruirCamadaVitoria();
 		criarCamadaJogo();
 	}
@@ -425,6 +439,16 @@ function destruirCamadaVitoria()
 vitoria4 = false;
 function criarCamadaFimdeJogo()
 {
+	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')
+	sendRankingData(jogo.pontos)
+
+	tempo_intermediario2 = new Date()
+	sendPlaytimeData((tempo_intermediario2 - tempo_intermediario)/1000,2,'Forca',1,'Forca',jogo.bd.length-jogo.bdTamanho)
+
+	var tempo_final = new Date()
+	sendPlaytimeData((tempo_final-tempo_inicial)/1000,0,'Forca',null,null,null)
+	sendPlaytimeData((tempo_final-tempo_inicial)/1000,1,'Forca',1,'Forca',null)
+
 	estado = "fimdeJogo";
 
 	//var audio = document.createElement("AUDIO");
@@ -485,7 +509,6 @@ function fimdeJogoMenu(e){
 
 	if(e.keyCode == 32)
 	{
-		sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
 		destruirCamadaFimdeJogo();
 		criarCamadaMenu();
 		iniciarNovoJogo();
@@ -580,6 +603,7 @@ function criarCamadaDerrota()
 		}
 	).appendTo($("#botoesFimDeJogo"));
 
+	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',palavraNoFim,false,jogo.bd.length,1,'Forca')
 }
 
 function derrotaMenu(e){
@@ -587,10 +611,9 @@ function derrotaMenu(e){
 
 	if(e.keycode == 32 || e.charcode == 32 || e.which == 32)
 	{
-		sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 		destruirCamadaDerrota();
 		destruirCamadaJogo();
-		criarCamadaMenu();	
+		criarCamadaMenu();
 	}
 }
 
