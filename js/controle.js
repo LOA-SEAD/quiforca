@@ -180,7 +180,6 @@ function ativarBotaoReiniciar()
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaDerrota();
 	destruirCamadaJogo();
-	//sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	//salvaPontuacao(jogo.nome, pontos);
 	iniciarNovoJogo();
 	criarCamadaJogo();
@@ -192,7 +191,6 @@ function ativarBotaoSair()
 	destruirCamadaVitoria();
 	destruirCamadaDerrota();
 	destruirCamadaJogo();
-	//sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	//salvaPontuacao(jogo.nome, pontos);
 	iniciarNovoJogo();
 	criarCamadaMenu();
@@ -201,7 +199,6 @@ function ativarBotaoSair()
 function ativarProxPalavra()
 {
 	clearTimeout(delayInicializaFocus);
-	//sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 	destruirCamadaVitoria();
 	criarCamadaJogo();
 	//salvaPontuacao(jogo.nome, pontos);	
@@ -513,7 +510,6 @@ function criarCamadaVitoria()
 	})
 
 	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')
-	//senddatacerto
 }
 
 function proximaFase(e)
@@ -522,7 +518,6 @@ function proximaFase(e)
 
 	if(e.keycode == 32 || e.which == 32 || e.charcode == 32)
 	{
-		//sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 		destruirCamadaVitoria();
 		criarCamadaJogo();
 	}
@@ -542,7 +537,6 @@ vitoria4 = false;
 function criarCamadaFimdeJogo()
 {
 	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')
-	//senddatacerto
 	sendRankingData(jogo.pontos)
 
 	tempo_intermediario2 = new Date()
@@ -614,7 +608,6 @@ function criarCamadaFimdeJogo()
 
 	$("<button>").attr("id", "btnProxPalavra").click(
 		function(){
-			//sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 			destruirCamadaFimdeJogo();
 			//salvaPontuacao(jogo.nome, pontos);
 			criarCamadaMenu();
@@ -634,7 +627,6 @@ function criarCamadaFimdeJogo()
 		'height': '600px',
 		'background-image': 'url("imgs/vitoria.png")'})
 	.click(function(){
-			sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
 			destruirCamadaFimdeJogo();
 			criarCamadaMenu();
 			iniciarNovoJogo();
@@ -663,7 +655,6 @@ function fimdeJogoMenu(e){
 
 	if(e.keyCode == 32)
 	{
-		//sendData(jogo.pontos, jogo.pontosParciais , true, jogo.erros, jogo.fase, jogo.faseId, jogo.bd.length, false);
 		destruirCamadaFimdeJogo();
 		criarCamadaMenu();
 		iniciarNovoJogo();
@@ -893,7 +884,6 @@ function criarCamadaDerrota()
 	})
 
 	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',palavraNoFim,false,jogo.bd.length,1,'Forca')
-	//senddatacerto
 }
 
 function derrotaMenu(e){
@@ -901,7 +891,6 @@ function derrotaMenu(e){
 
 	if(e.keycode == 32 || e.charcode == 32 || e.which == 32)
 	{
-		//sendData(jogo.pontos, jogo.pontosParciais , false, jogo.erros, jogo.fase, jogo.faseId,jogo.bd.length, false);
 		destruirCamadaDerrota();
 		destruirCamadaJogo();
 		criarCamadaMenu();	
