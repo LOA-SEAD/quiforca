@@ -70,6 +70,7 @@ document.body.onkeyup = function(e)
 	{
 		return false;
 	}
+
 	var counter = 0
 
 	//Pega as teclas
@@ -91,7 +92,6 @@ document.body.onkeyup = function(e)
 	{		
 		//para a leitura de qualquer atalho
 		stopTudo();
-		paraFala();
 		//Verifica se deu erro
 		verificarErro(String.fromCharCode(keyunicode-32));
 		//Coloca nas letras tentadas
@@ -144,6 +144,7 @@ document.body.onkeyup = function(e)
 	//Lê o status da palavra
 	if(keyunicode == 50) //2
 	{
+		stopTudo();
 		ouvirAtalho2();	
 	}
 
@@ -151,11 +152,7 @@ document.body.onkeyup = function(e)
 	if(keyunicode == 51) //3
 	{
 		stopTudo();
-		paraFala();
-		/*nomeAtalho3 = "audio/vidas" + numeroDeChances() + ".mp3";
-		audioAtalho3.setAttribute("src", nomeAtalho3);
-		audioAtalho3.currentTime = 0;
-		audioAtalho3.play();*/
+	
 		switch(numeroDeChances())
 		{
 			case 1:
@@ -179,9 +176,7 @@ document.body.onkeyup = function(e)
 	//Letras já escolhidas
 	if(keyunicode == 52) //4
 	{
-		stopTudo()
-		clearTimeout(delayAtalho4);
-		clearInterval(delayLetraAtalho4);
+		stopTudo();
 
 		counter = 0;
 		realizarFala(baseURL + "letrasEscolhidas.mp3");
@@ -218,7 +213,7 @@ document.body.onkeyup = function(e)
 	if(keyunicode == 53) //5
 	{
 		stopTudo();
-		paraFala();
+
 		if(pontuacao() == 1)
 		{
 			realizarLeitura("Um ponto");
@@ -228,115 +223,8 @@ document.body.onkeyup = function(e)
 			realizarLeitura(pontuacao() + " pontos.");
 			//window.speechSynthesis.
 		}
-
-		/*var aux
-		var centena
-		stopTudo()
-		audioAtalho5.currentTime = 0
-		audioAtalho5.play()
-
-		delayAtalho4 = setTimeout(function(){
-			if(pontuacao() <= 20 || (pontuacao() % 10 == 0 && pontuacao() < 100) || (pontuacao() % 100 == 0 && pontuacao() > 100) || pontuacao() == 1000){
-				unidade = "audio/p" + pontuacao() + ".mp3"
-				unidadeLer.setAttribute("src", unidade)
-				unidadeLer.currentTime = 0
-				unidadeLer.play()
-			}
-			else if(pontuacao() <= 99)
-			{
-				unidade = pontuacao()%10
-				dezena = pontuacao() - unidade
-
-				aux = "audio/p" + dezena + ".mp3"
-				dezenaLer.setAttribute("src", aux)
-				dezenaLer.currentTime = 0
-				dezenaLer.play()
-
-				delayAtalho4 = setTimeout(function(){
-					letraE.setAttribute("src", "audio/letraE.mp3")
-					letraE.currentTime = 0;
-					letraE.play();
-				}, 600)
-
-				delayAtalho4 = setTimeout(function(){
-					aux = "audio/p" + unidade + ".mp3"
-					unidadeLer.setAttribute("src", aux)
-					unidadeLer.currentTime = 0;
-					unidadeLer.play();
-				}, 800)
-			}
-			else if(pontuacao() == 100){
-				unidadeLer.setAttribute("src", "audio/pcem.mp3")
-				unidadeLer.currentTime = 0
-				unidadeLer.play()
-			}
-			else
-			{
-				unidade = pontuacao()%10
-				dezena = pontuacao()%100 - unidade
-				centena = pontuacao() - unidade - dezena
-
-				aux = "audio/p" + centena + ".mp3"
-				centenaLer.setAttribute("src", aux)
-				centenaLer.currentTime = 0
-				centenaLer.play()
-
-				var aux2 = pontuacao() - centena
-				if(aux2 >= 20)
-				{
-					if(dezena != 0){
-						delayAtalho4 = setTimeout(function(){
-							letraE.setAttribute("src", "audio/letraE.mp3")
-							letraE.currentTime = 0;
-							letraE.play();
-						}, 600)
-					}
-
-					delayAtalho4 = setTimeout(function(){
-						aux = "audio/p" + dezena + ".mp3"
-						dezenaLer.setAttribute("src", aux)
-						dezenaLer.currentTime = 0
-						dezenaLer.play()
-					}, 800)
-
-					if(unidade != 0){
-						delayAtalho4 = setTimeout(function(){
-							letraE.setAttribute("src", "audio/letraE.mp3")
-							letraE.currentTime = 0;
-							letraE.play();
-						}, 1200)
-
-						delayAtalho4 = setTimeout(function(){
-							aux = "audio/p" + unidade + ".mp3"
-							unidadeLer.setAttribute("src", aux)
-							unidadeLer.currentTime = 0;
-							unidadeLer.play();
-						}, 1500)
-					}
-				}
-				else
-				{
-					delayAtalho4 = setTimeout(function(){
-						letraE.setAttribute("src", "audio/letraE.mp3")
-						letraE.currentTime = 0;
-						letraE.play();
-					}, 600)
-					delayAtalho4 = setTimeout(function(){
-						aux = "audio/p" + aux2 + ".mp3"
-						unidadeLer.setAttribute("src", aux)
-						unidadeLer.currentTime = 0;
-						unidadeLer.play();
-					}, 800)
-				}
-			}
-		}, 500)*/
 	}
 
-	//Para todos os atalhos
-	if(keyunicode == 54) //6
-	{
-		stopTudo()
-	}
 }
 
 function stopAtalho1()
@@ -369,6 +257,7 @@ function stopTudo()
 	stopAtalho2();
 	stopAtalho3();
 	stopAtalho4();
+	paraFala();
 }
 
 function track(source)
@@ -444,7 +333,7 @@ function realizarLeitura(texto)
 	msg.volume = volumeSinth;
 	msg.rate = 1.3; // 0.1 to 10
 	msg.lang = "pt-BR";
-	msg.voice = voices[15];
+	//msg.voice = voices[15];
 	window.speechSynthesis.speak(msg);
 }
 
@@ -455,7 +344,7 @@ function realizarLeituraInicial(texto)
 	msg.volume = volumeSinth; // 0 to 1
 	msg.rate = 1.3; // 0.1 to 10
 	msg.lang = "pt-BR";
-	msg.voice = voices[3];
+	//msg.voice = voices[3];
 	window.speechSynthesis.speak(msg);
 
 	msg.addEventListener("end", function(){

@@ -65,6 +65,7 @@ function iniciar()
 	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
 	jogo.dicaNaTela.setAttribute("role" , "button");
 	jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
+
 	//Exibe dica da palavra + número de letras que ela contém -- NA TELA
 	var p = document.createElement("p");
 	p.setAttribute("class", "customfont");
@@ -72,7 +73,6 @@ function iniciar()
 	jogo.faseId = jogo.bdAux[jogo.sorteio];
 	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
 	jogo.dicaNaTela.appendChild(p);
-	//$("#camadaJogo").append(jogo.dicaNaTela);
 	colright.append(jogo.dicaNaTela);
 
 	//Exibe a palavra na tela
@@ -81,12 +81,12 @@ function iniciar()
 	{
 		jogo.aux += jogo.palavraSorteada[i] + " ";
 	}
+
 	//Essa é a variavel que deve ser exibida na tela -- NA TELA
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "0");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	//$("#camadaJogo").append(jogo.palavraNaTela);
 	colright.append(jogo.palavraNaTela);
 
 	jogo.erros = 0;
@@ -99,8 +99,7 @@ function iniciar()
 	jogo.bdAux[jogo.sorteio] = ajuda;
 
 
-	//$("#camadaJogo").append(jogo.linha); -- NA TELA
-	colright.append(jogo.linha);
+	colright.append(jogo.linha); // -- NA TELA
 	colocarPersonagem(); // -- NA TELA
 	colocarTecladoNaTela(); // -- NA TELA
 
@@ -108,17 +107,21 @@ function iniciar()
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoes");
 	caixaBotoes.setAttribute("class", "clearfix");
+
 	$("#camadaJogo").append(caixaBotoes);
+
 	jogo.botaoOpcoes = document.createElement("div");
 	jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
 	jogo.botaoOpcoes.setAttribute("role" , "button");
 	jogo.botaoOpcoes.setAttribute("class", "botao");
+
 	jogo.botaoOpcoes.onclick = function() {
 		stopTudo();
 		criarCamadaOpcoes();
 	}
+
 	caixaBotoes.append(jogo.botaoOpcoes);
-	//$("#camadaJogo").append(jogo.botaoVoltar);
+	
 	inicializaFocus();
 	update();
 }
