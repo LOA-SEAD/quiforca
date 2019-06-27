@@ -40,12 +40,13 @@ function criarCamadaMenu()
 	pulouMenu = false;
 	estado = "menu";
 	opcao = 0;
+	origemMenu = 1;
 
 
 	if(origemDerrota){
 		background.currentTime = 0
 	}
-	origemDerrota = 0
+	origemDerrota = false
 	background.play()
 
 	var el = document.createElement("div");
@@ -75,6 +76,7 @@ function criarCamadaMenu()
 	{
 		ativarBotaoInstrucoes();
 	}
+
 	botaoInstrucoes.onmouseenter = function()
 	{
 		botaoInstrucoes.focus();
@@ -93,6 +95,7 @@ function criarCamadaMenu()
 	{
 		ativarBotaoJogar();
 	}
+
 	botaoJogar.onmouseenter = function()
 	{
 		botaoJogar.focus();
@@ -112,6 +115,7 @@ function criarCamadaMenu()
 	{
 		ativarBotaoCreditos();
 	}
+
 	botaoCreditos.onmouseenter = function()
 	{
 		botaoCreditos.focus();
@@ -131,6 +135,7 @@ function criarCamadaMenu()
 	{
 		ativarBotaoAudio();
 	}
+
 	botaoAudio.onmouseenter = function()
 	{
 		botaoAudio.focus();
@@ -143,11 +148,11 @@ function criarCamadaMenu()
 
 	$("#camadaMenu").keydown(function (e){
 		selecionaOpcao(e);	
-	})
-
-	origemMenu = 1
+	});
 }
 
+
+//Funções de ativação dos botões
 function ativarBotaoJogar()
 {
 	clearTimeout(delayInicializaFocus);
@@ -180,7 +185,6 @@ function ativarBotaoReiniciar()
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaDerrota();
 	destruirCamadaJogo();
-	//salvaPontuacao(jogo.nome, pontos);
 	iniciarNovoJogo();
 	criarCamadaJogo();
 }
@@ -191,7 +195,6 @@ function ativarBotaoSair()
 	destruirCamadaVitoria();
 	destruirCamadaDerrota();
 	destruirCamadaJogo();
-	//salvaPontuacao(jogo.nome, pontos);
 	iniciarNovoJogo();
 	criarCamadaMenu();
 }
@@ -200,8 +203,7 @@ function ativarProxPalavra()
 {
 	clearTimeout(delayInicializaFocus);
 	destruirCamadaVitoria();
-	criarCamadaJogo();
-	//salvaPontuacao(jogo.nome, pontos);	
+	criarCamadaJogo();	
 }
 
 function destruirCamadaMenu()
@@ -219,15 +221,16 @@ function criarCamadaJogo()
 	if(!origemMenu){
 		background.currentTime = 0
 	}
-	origemMenu = 0
-	background.play()
+	
+	origemMenu = false;
+	background.play();
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaJogo");
 	$("#palco").append(el);
-
+	
 	iniciar();
-	//leituraDica();
+	
 	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
 	realizarLeitura(texto);
 
@@ -814,7 +817,7 @@ function criarCamadaDerrota()
 	setTimeout(function(){
 		audio3.play();
 	}, 500);
-	origemDerrota = 1
+	origemDerrota = true;
 
 	var fase;
 	var faseId;
@@ -856,6 +859,7 @@ function criarCamadaDerrota()
 			ativarBotaoReiniciar();	
 		}
 	).appendTo($("#botoesFimDeJogo"));
+
 	document.getElementById("btnReiniciar").onmouseenter = function()
 	{
 		document.getElementById("btnReiniciar").focus();
