@@ -507,9 +507,6 @@ function criarCamadaVitoria()
 
 	$("#camadaVitoria").keydown(function (e){
 		selecionaOpcao(e);
-		clearTimeout(vitoria1);
-		clearTimeout(vitoria2);	
-		clearTimeout(vitoria3);
 	})
 
 	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')

@@ -174,7 +174,7 @@ function fimDeJogo()
 	}
 	if(!continua)
 	{
-		clearTimeout(atalho2);
+		
 		stopTudo();
 		
 		if(jogo.bdTamanho != 0)
@@ -288,11 +288,9 @@ function verificarErro(_letra)
 		{
 			//audio2 = document.createElement("AUDIO");
 			audio2.setAttribute("src", "audio/acerta_letra1.mp3");
-			atalho2 = setTimeout(function(){
-				ouvirAtalho2();
-			}, 500);
 		}
-		setTimeout(function(){
+		efeito = setTimeout(function(){
+			console.log("tocou")
 			audio2.currentTime = 0
 			audio2.play()
 		}, 300);
@@ -326,10 +324,15 @@ function verificarErro(_letra)
 			audio2.play();
 		}, 300)
 	}
+
 	audio2.onended = function(){
+		console.log("ola");
 		if(deuErro && jogo.erros < 5){
 			audioErro.currentTime = 0;
 			audioErro.play();
+		}
+		else if(!deuErro && estado=="jogando"){
+			ouvirAtalho2();
 		}
 	}
 
