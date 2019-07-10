@@ -2,6 +2,7 @@
 var letraRepetida;
 var audio;
 var audio2 = document.createElement("AUDIO");
+var audio2Espera;
 audio2.volume = 1;
 audio2.setAttribute("id", "audioEfeitos");
 
@@ -176,6 +177,7 @@ function fimDeJogo()
 	{
 		
 		stopTudo();
+		clearTimeout(audio2Espera);
 		
 		if(jogo.bdTamanho != 0)
 		{
@@ -194,6 +196,8 @@ function fimDeJogo()
 		if(jogo.erros >= 5)
 		{
 			//se morreu
+			stopTudo();
+			clearTimeout(audio2Espera);
 			return 0;
 		}
 		else
@@ -289,11 +293,6 @@ function verificarErro(_letra)
 			//audio2 = document.createElement("AUDIO");
 			audio2.setAttribute("src", "audio/acerta_letra1.mp3");
 		}
-		efeito = setTimeout(function(){
-			console.log("tocou")
-			audio2.currentTime = 0
-			audio2.play()
-		}, 300);
 	}
 	if(deuErro)
 	{
@@ -319,14 +318,17 @@ function verificarErro(_letra)
 				audio2.setAttribute("src", "audio/enforcamento8.ogg");
 				audioErro.setAttribute("src", "audio/audioGravado/1vida.mp3");
 		}
-		setTimeout(function(){
+	}
+	realizarLeituraLetra(_letra);
+			
+	audio2Espera = setTimeout(function(){
+		if(fimDeJogo()==-1){
 			audio2.currentTime = 0
 			audio2.play();
-		}, 300)
-	}
-
+		}
+	}, 300)
+	
 	audio2.onended = function(){
-		console.log("ola");
 		if(deuErro && jogo.erros < 5){
 			audioErro.currentTime = 0;
 			audioErro.play();
@@ -335,8 +337,6 @@ function verificarErro(_letra)
 			ouvirAtalho2();
 		}
 	}
-
-	realizarLeituraLetra(_letra);
 }
 
 //Coloca os botoes do teclado na tela
