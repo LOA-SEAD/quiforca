@@ -253,13 +253,6 @@ body
 	text-align: center;
 }
 
-#instrucoesText
-{
-	margin-top: 10rem;
-	margin-left: 5rem;
-	margin-right: 5rem;
-}
-
 #camadaJogo
 {
 	padding: 0px 2rem 0 2rem;
@@ -279,6 +272,10 @@ body
 	flex-direction: column;
 	/*align-items: center;*/
 	width: 100%;
+}
+
+#camadaInstrucoes{
+	padding: 2rem 4rem;
 }
 
 /*Parte das coisas escritas na tela*/
@@ -390,7 +387,7 @@ h2
 }
 
 
-h3
+h3, h4
 {
 	font-family:"Fonte","Tahoma";
 	text-align: center

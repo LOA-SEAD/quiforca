@@ -1021,17 +1021,12 @@ function criarCamadaInstrucoes()
 
 	estado = "instrucoes"
 
+
+	//criação camada de instruções
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaInstrucoes");
 	el.setAttribute("tabIndex", "0");
 	$("#palco").append(el);
-
-	var imgLogo = document.createElement("div");
-	imgLogo.setAttribute("id", "imgLogoInstrucoes");
-	el.appendChild(imgLogo);
-
-	//criação camada de instruções
-	//$('<div>').attr('id', 'camadaInstrucoes').appendTo($('#palco'));
 
 	//conteúdo instruções
 	jogo.instrucoes = document.createElement("p")
@@ -1051,7 +1046,7 @@ function criarCamadaInstrucoes()
 		"4 - Relembre as letras que você já escolheu<br>"+
 		"5 - Saiba sua pontuação atual<br>" + 
 		"Esc - Pausar o jogo e acessar as configurações<br>" + 
-		"Pressione Enter para voltar ao menu";
+		"<h4>Pressione Enter para voltar ao menu</h4>";
 	}
 	else
 	{
@@ -1062,17 +1057,7 @@ function criarCamadaInstrucoes()
 		"3 - Saiba quantas vidas você ainda tem<br>"+
 		"4 - Relembre as letras que você já escolheu<br>"+
 		"5 - Saiba sua pontuação atual<br>";
-	}
-	
-	if(origemInstrucoes == "menu")
-	{
-		//jogo.instrucoes.innerHTML += 
-		//"Esc - Pausar o jogo e acessar as configurações<br><br>";
-	}
-	else if(origemInstrucoes == "opcoes")
-	{
-		jogo.instrucoes.innerHTML += "Pressione Enter para voltar ao jogo<br>";
-	}
+	}	
 	 
 
 	//inserindo instrucoes a camada de instruções
@@ -1115,7 +1100,7 @@ function criarCamadaInstrucoes()
 	{
 		e = window.event||e;
 		var tecla = e.which || e.keyCode || e.charCode;
-		if((tecla == 27 || tecla == 13) && estado == "instrucoes" && !espera)
+		if((tecla == 13) && estado == "instrucoes" && !espera)
 		{
 			destruirCamadaInstrucoes();
 			if(origemInstrucoes == "menu")
@@ -1688,6 +1673,7 @@ function enterLeituraTela(){
 }
 
 function criarCamadaOpcoes(){
+	
 	estado = "opcoes";
 	opcao = 0;
 	origemInstrucoes = "opcoes";
