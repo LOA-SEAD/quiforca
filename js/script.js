@@ -3,17 +3,19 @@ var pai = document.getElementById("ancora").parentNode;
 var jogo = {};
 
 $.ajax({
-    url: "json/palavras.json",
+    url: "https://api.myjson.com/bins/yv5tt",
     dataType: "text",
-    mimeType: "application/json",
+    mimeType: "textPlain",
     async: false,
     success: function (data) {
-        jogo.bd = $.parseJSON(data).palavras;
-        jogo.nome = $.parseJSON(data).nome;
+        jogo.bd = JSON.parse(data).palavras;
+        jogo.nome = JSON.parse(data).nome;
+        console.log(jogo.nome + "/" + jogo.bd.length)
+    },
+    error: function(er){
+        console.log(er);
     }
 });
-
-console.log(jogo.nome);
 
 /*jogo.playAudio = function (id) {
     var audio = $('#' + id);
