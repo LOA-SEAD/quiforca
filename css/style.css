@@ -206,7 +206,10 @@ body
 #camadaMenu
 {
 	width: 100%;	
-	text-align: center;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2rem;
 }
 
 #camadaMenu:focus{
@@ -217,6 +220,7 @@ body
 {
 	height: auto;
 	width: 55%;
+	margin-right: 10%;
 }
 
 #imgLogo
@@ -402,8 +406,7 @@ p
 /*Parte dos botoes fora do jogo*/
 .botao
 {
-	display: inline-block;
-	margin: 1rem;
+
 }
 
 #caixaBotoes
@@ -417,10 +420,11 @@ p
 
 #btnJogar
 {
-	width: 137px;
-	height: 65px;
-	background-image: url("../imgs/btnJogar.png");
+	width: 245px;
+	height: 95px;
 	margin: 1.5rem;
+	background-size: cover;
+	background-image: url("../novasImgs/botaoJogo.png");
 }
 
 #btnJogar:hover, #btnJogar:focus
@@ -432,10 +436,11 @@ p
 
 #btnInstrucoes
 {
-	width: 137px;
-	height: 65px;
-	background-image: url("../imgs/btnInstrucoes.png");
+	width: 245px;
+	height: 95px;
 	margin: 1.5rem;
+	background-size: cover;
+	background-image: url("../novasImgs/btnInstrucoes.png");
 }
 
 #btnInstrucoes:hover, #btnInstrucoes:focus
@@ -448,10 +453,11 @@ p
 
 #btnCreditos
 {
-	width: 137px;
-	height: 65px;
-	background-image: url("../imgs/btnCreditos.png");
+	width: 245px;
+	height: 95px;
 	margin: 1.5rem;
+	background-size: cover;
+	background-image: url("../novasImgs/btnCreditos.png");
 }
 
 #btnCreditos:hover, #btnCreditos:focus
@@ -478,10 +484,11 @@ p
 
 #btnAudio
 {
-	width: 137px;
-	height: 65px;
-	background-image: url("../imgs/menu3.png");
+	width: 245px;
+	height: 95px;
 	margin: 1.5rem;
+	background-size: cover;
+	background-image: url("../novasImgs/btnAudio.png");
 }
 
 #btnAudio:hover, #btnAudio:focus
