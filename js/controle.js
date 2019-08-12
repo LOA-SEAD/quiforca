@@ -1370,7 +1370,7 @@ function setaFoco(){
 		case "derrota":
 			if(opcao == 0){
 				document.getElementById("btnReiniciar").focus();
-				realizarFala(baseURL + "reiniciar.mp3");
+				realizarFala(baseURL + "recomeçar.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("btnMenu3").focus();
@@ -1405,14 +1405,14 @@ function setaFoco(){
 			}
 			else if(opcao == 1){
 				document.getElementById("Efeitos").focus();
-				realizarFala(baseURL + "EfeitosEnter.mp3");
+				realizarFala(baseURL + "efeitos sonoros.mp3");
 				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/Efeitos.mp3");
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();*/
 			}
 			else if(opcao == 2){
 				document.getElementById("LeituraTela").focus();
-				realizarFala(baseURL + "leituraTelaEnter.mp3");
+				realizarFala(baseURL + "leitura de tela e acessibilidade.mp3");
 				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/leituraTela.mp3");
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();*/
