@@ -840,7 +840,7 @@ function criarCamadaDerrota()
 
 	jogo.jogadorPontos = document.createElement("p");
 	jogo.jogadorPontos.setAttribute("id", "jogadorPontos");
-	jogo.jogadorPontos.innerHTML = "Pontuação final: " + parseInt(jogo.pontos);
+	jogo.jogadorPontos.innerHTML = "Pontuação final: " + parseInt(jogo.pontos) + " pontos.";
 
 
 	$("#camadaDerrota").append(jogo.imgBoneco);
@@ -1699,7 +1699,7 @@ function criarCamadaOpcoes(){
 
 	var opcoesTxt = document.createElement("p");
 	opcoesTxt.setAttribute("id", "opcoesTxt");
-	opcoesTxt.innerHTML = "Opções";
+	opcoesTxt.innerHTML = "Configurações";
 	divOpcoes.appendChild(opcoesTxt);
 
 	//Cria div caixa de botoes

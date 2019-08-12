@@ -354,7 +354,7 @@ function realizarLeituraInicial(texto)
 				frase = 2;
 			}
 			else if(frase == 2){
-				realizarFala(baseURL + "reiniciar.mp3");
+				realizarFala(baseURL + "recomeçar.mp3");
 				frase = 1;
 			}
 		}
