@@ -1418,7 +1418,7 @@ function setaFoco(){
 				audioConfiguracoes.play();*/
 			}
 			else if(opcao == 3){
-				document.getElementById("audioVoltar").focus();
+				document.getElementById("btnMenu2").focus();
 				audioConfiguracoes.setAttribute("src", "audio/audioGravado/voltar.mp3");
 				audioConfiguracoes.currentTime = 0;
 				audioConfiguracoes.play();
@@ -1565,7 +1565,7 @@ function criarCamadaAudio()
 
 	//btnVoltar
 	var audioVoltar = document.createElement("div");
-	audioVoltar.setAttribute("id", "audioVoltar");
+	audioVoltar.setAttribute("id", "btnMenu2");
 	audioVoltar.setAttribute("tabIndex", -1);
 	caixaBotoes.appendChild(audioVoltar);
 

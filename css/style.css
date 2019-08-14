@@ -96,7 +96,7 @@ body
 
 #divAudio{
 	width: 430px;
-	height: 530px;
+	height: 545px;
 	background: #c2ecfc;
 	background: -moz-linear-gradient(top, #c2ecfc 0%, #92dcf9 100%);
 	background: -webkit-linear-gradient(top, #c2ecfc 0%,#92dcf9 100%);
@@ -264,17 +264,11 @@ body
 
 #camadaCreditos
 {
-	position: relative;
+	padding: 2rem 4rem;
 	max-width: 600px;
-	/*height: 500px;
-	left: 10%;
-	top: 50%;
-	margin-left: -250px;	
-	margin-top: -250px;*/
 	text-align: center;
 	display: flex;
 	flex-direction: column;
-	/*align-items: center;*/
 	width: 100%;
 }
 
@@ -312,6 +306,11 @@ body
 	text-align: right;
 }
 
+#opcoesTxt{
+	font-size: 40px;
+	margin: 2.5rem 0;
+}
+
 /*Parte dos botoes no jogo*/
 #botoes
 {
@@ -322,23 +321,25 @@ body
 .botaoJogo
 {
 	display: inline;
-	width: 50px;
-	height: 50px;
+	width: 55px;
+	height: 58px;
 	margin: 1.5px;
 	float: left;
-	background-image: url(../imgs/botaoTeclado.png);
-	cursor: pointer;	
+	background-image: url(../novasImgs/btnJogo.png);
+	cursor: pointer;
+	background-size: cover;	
 }
 
 .botaoJogoPressionado
 {
 	display: inline;
-	width: 50px;
-	height: 50px;
+	width: 55px;
+	height: 58px;
 	margin: 1.5px;
 	float: left;
-	background-image: url(../imgs/botaoTecladoPressionado.png);
-	cursor: pointer;	
+	background-image: url(../novasImgs/btnJogoPressionado.png);
+	cursor: pointer;
+	background-size: cover;	
 }
 
 .botaoJogo:hover
@@ -364,7 +365,8 @@ body
 
 .letraTeclado
 {
-	margin-top: 10px;
+	margin-top: 13px;
+	margin-right: 3px;
 }
 
 
@@ -414,15 +416,11 @@ p
 	text-align: center;
 }
 
-#caixaBotoesOpcao{
-	margin-top: 4rem;
-}
-
 #btnJogar
 {
 	width: 245px;
 	height: 95px;
-	margin: 1.5rem;
+	margin: 2rem;
 	background-size: cover;
 	background-image: url("../novasImgs/botaoJogo.png");
 }
@@ -438,7 +436,7 @@ p
 {
 	width: 245px;
 	height: 95px;
-	margin: 1.5rem;
+	margin: 2rem;
 	background-size: cover;
 	background-image: url("../novasImgs/btnInstrucoes.png");
 }
@@ -455,7 +453,7 @@ p
 {
 	width: 245px;
 	height: 95px;
-	margin: 1.5rem;
+	margin: 2rem;
 	background-size: cover;
 	background-image: url("../novasImgs/btnCreditos.png");
 }
@@ -486,7 +484,7 @@ p
 {
 	width: 245px;
 	height: 95px;
-	margin: 1.5rem;
+	margin: 2rem;
 	background-size: cover;
 	background-image: url("../novasImgs/btnAudio.png");
 }
@@ -530,11 +528,12 @@ p
 
 #btnMenu
 {
-	margin: 1rem;
-	width: 116px;
-	height: 65px;
+	margin: 2rem auto;
+	width: 145px;
+	height: 80px;
 	border: none;
-	background-image: url("../imgs/btnVoltar.png");
+	background-image: url("../novasImgs/btnOpcoes.png");
+	background-size: cover;
 }
 
 #btnMenu:hover, #btnMenu:focus
@@ -546,11 +545,11 @@ p
 
 #btnMenu2
 {
-	margin: 1rem;
-	width: 116px;
-	height: 65px;
+	margin: 0 auto;
+	width: 175px;
+	height: 70px;
 	border: none;
-	background-image: url("../imgs/btnVoltar2.png");
+	background-image: url("../novasImgs/btnVoltar.png");
 }
 
 #btnMenu2:hover, #btnMenu2:focus
@@ -687,10 +686,7 @@ p
 }
 
 .botaoOpcoes{
-	height: 65px;
-	margin: 0 auto;
-	margin-top: 0px;
-	margin-top: 1rem;
+	margin: 0 auto;	
 }
 
 .botaoOpcoes:focus{
@@ -713,23 +709,31 @@ p
 }*/
 
 #opcaoContinuar{
-	width: 137px;
-	background-image: url("../imgs/menu2.png");
+	width: 175px;
+	height: 90px;
+	background-image: url("../novasImgs/btnContinuarOpcoes.png");
+	background-size: cover;
 }
 
 #opcaoAudio{
-	width: 137px;
-	background-image: url("../imgs/menu3.png");
+	width: 175px;
+	height: 90px;
+	background-image: url("../novasImgs/btnAudioOpcoes.png");
+	background-size: cover;
 }
 
 #opcaoInstrucoes{
-	width: 137px;
-	background-image: url("../imgs/menu1.png");
+	width: 175px;
+	height: 90px;
+	background-image: url("../novasImgs/btnInstrucoesOpcoes.png");
+	background-size: cover;
 }	
 
 #opcaoMenu{
-	width: 137px;
-	background-image: url("../imgs/menu4.png");
+	width: 175px;
+	height: 90px;
+	background-image: url("../novasImgs/btnDesistirOpcoes.png");
+	background-size: cover;
 }
 
 #audioVoltar{
