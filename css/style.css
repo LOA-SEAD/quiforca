@@ -406,10 +406,6 @@ p
 }
 
 /*Parte dos botoes fora do jogo*/
-.botao
-{
-
-}
 
 #caixaBotoes
 {
@@ -514,16 +510,17 @@ p
 
 #botoesFimDeJogo
 {
-	display: inline-block;
+	display: grid;
 }
 
 #btnReiniciar
 {
-	margin: 1rem;
-	width: 116px;
-	height: 65px;
-	border: none;
-	background-image: url("../imgs/btnRecomecar.png");
+	margin: .5rem auto 0 auto;
+    width: 225px;
+    height: 80px;
+    border: none;
+    background-image: url(../novasImgs/btnRecomeçarDerrota.png);
+    background-size: cover;
 }
 
 #btnMenu
@@ -624,7 +621,7 @@ p
 
 #imgBonecoDerrota
 {
-	width: 25%;
+	width: 20%;
 	height: auto;
 }
 

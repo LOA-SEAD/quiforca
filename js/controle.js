@@ -859,13 +859,22 @@ function criarCamadaDerrota()
 	$("#camadaDerrota").append(jogo.botoes);
 
 
-	//criando botoes clicáveis
+	//criando botao Reiniciar
+	jogo.btnRecomecar = document.createElement("div");
+	jogo.btnRecomecar.setAttribute("id", "btnReiniciar");
+	jogo.btnRecomecar.setAttribute("tabIndex", "-1");
+
+	//criando botao Desistir
+	jogo.btnDesistir = document.createElement("div");
+	jogo.btnDesistir.setAttribute("id", "btnMenu3");
+	jogo.btnDesistir.setAttribute("tabIndex", "-1");
+
+	$("#botoesFimDeJogo").append(jogo.btnRecomecar);
+	$("#botoesFimDeJogo").append(jogo.btnDesistir);
 	
-	$("<button>").attr("id", "btnReiniciar").click(
-		function(){
-			ativarBotaoReiniciar();	
-		}
-	).appendTo($("#botoesFimDeJogo"));
+	document.getElementById("btnReiniciar").onClick = function(){
+		ativarBotaoReiniciar();
+	}
 
 	document.getElementById("btnReiniciar").onmouseenter = function()
 	{
@@ -874,11 +883,10 @@ function criarCamadaDerrota()
 		clearTimeout(delayInicializaFocus);
 	}
 
-	$("<button>").attr("id", "btnMenu3").click(
-		function(){
-			ativarBotaoSair();	
-		}
-	).appendTo($("#botoesFimDeJogo"));
+	document.getElementById("btnMenu3").onClick = function(){
+		ativarBotaoSair();
+	}
+
 	document.getElementById("btnMenu3").onmouseenter = function()
 	{
 		document.getElementById("btnMenu3").focus();
