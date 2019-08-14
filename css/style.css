@@ -561,11 +561,12 @@ p
 
 #btnMenu3
 {
-	margin: 1rem;
-	width: 137px;
-	height: 65px;
-	border: none;
-	background-image: url("../imgs/menu4.png");
+	margin: .5rem auto 0 auto;
+    width: 225px;
+    height: 80px;
+    border: none;
+    background-image: url(../novasImgs/btnDesistirVitoria.png);
+    background-size: cover;
 }
 
 #btnMenu3:hover, #btnMenu3:focus
@@ -578,11 +579,12 @@ p
 
 #btnProxPalavra
 {
-	margin: 1rem;
-	width: 137px;
-	height: 65px;
-	border: none;
-	background-image: url("../imgs/menu2.png");
+	margin: 0 auto;
+    width: 225px;
+    height: 80px;
+    border: none;
+    background-image: url(../novasImgs/btnContinuarVitoria.png);
+    background-size: cover;
 }
 
 #btnReiniciar:hover, #btnReiniciar:focus
@@ -630,7 +632,7 @@ p
 {
 	width: 40%;
 	height: auto;
-	margin: 2rem;
+	margin: 1rem;
 }
 
 #palavraCerta

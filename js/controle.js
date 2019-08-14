@@ -473,15 +473,25 @@ function criarCamadaVitoria()
 	$("#camadaVitoria").append(jogo.palavraNaTela);
 	$("#camadaVitoria").append(jogo.botoesVitoria);
 
-	$("<button>").attr("id", "btnProxPalavra").click(
-		function(){
-			ativarProxPalavra();	
-		}
-	).appendTo($("#botoesTelaVitoria"));
-	/*document.getElementById("btnProxPalavra").onfocus = function()
-	{
-		AudioBotoes("audio/proxima.mp3");
-	}*/
+
+	//criando botao continuar
+	jogo.btnContinuar = document.createElement("div");
+	jogo.btnContinuar.setAttribute("id", "btnProxPalavra");
+	jogo.btnContinuar.setAttribute("tabIndex", "-1");
+	
+	//criando botao desistir
+	jogo.btnDesistir = document.createElement("div");
+	jogo.btnDesistir.setAttribute("id", "btnMenu3");
+	jogo.btnDesistir.setAttribute("tabIndex", "-1");
+
+	$("#botoesTelaVitoria").append(jogo.btnContinuar);
+	$("#botoesTelaVitoria").append(jogo.btnDesistir);
+	
+
+	document.getElementById("btnProxPalavra").onclick = function(){
+		ativarProxPalavra();
+	}
+
 	document.getElementById("btnProxPalavra").onmouseenter = function()
 	{
 		document.getElementById("btnProxPalavra").focus();
@@ -489,11 +499,11 @@ function criarCamadaVitoria()
 		clearTimeout(delayInicializaFocus);
 	}
 
-	$("<button>").attr("id", "btnMenu3").click(
-		function(){
-			ativarBotaoSair();
-		}
-	).appendTo($("#botoesTelaVitoria"));
+
+	document.getElementById("btnMenu3").onclick = function(){
+		ativarBotaoSair();
+	}
+
 	document.getElementById("btnMenu3").onmouseenter = function()
 	{
 		document.getElementById("btnMenu3").focus();
