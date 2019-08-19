@@ -263,8 +263,6 @@ function criarCamadaCreditos()
 
 	paraFala();
 	realizarFala(baseURL + "creditosCompleto.mp3");
-	/*audioCreditos.currentTime = 0
-	audioCreditos.play();*/
 	estado = "creditos";
 
 	var el = document.createElement("div");
@@ -380,11 +378,7 @@ function criarCamadaCreditos()
 		destruirCamadaCreditos();
 		criarCamadaMenu();
 	}
-	/*botaoMenu.onmouseenter = function()
-	{
-		realizarLeitura("Menu");
-		//AudioBotoes("audio/menu.mp3");
-	}*/
+	
 	var espera = 1;
 	document.onkeydown = function(e)
 	{
@@ -979,6 +973,8 @@ function criarCamadaInstrucoes()
 {
 	paraFala();
 	var espera = 1;
+	estado = "instrucoes";
+
 	if(origemInstrucoes == "menu")
 	{
 		realizarFala(baseURL + "lerinstrucoesCompletas.mp3");
@@ -987,8 +983,6 @@ function criarCamadaInstrucoes()
 	{
 		realizarFala(baseURL + "lerinstrucoesacessibilidade.mp3");
 	}
-
-	estado = "instrucoes"
 
 
 	//criação camada de instruções
@@ -1060,11 +1054,7 @@ function criarCamadaInstrucoes()
 		}
 	}
 
-	/*botaoMenu.onmouseenter = function()
-	{
-		realizarLeitura("Menu");
-		//AudioBotoes("audio/menu.mp3");
-	}*/
+
 	document.onkeydown = function(e)
 	{
 		e = window.event||e;
