@@ -26,7 +26,7 @@ body
 #palco
 {
 	min-height: 100%;
-	min-width: 600px;
+	min-width: 790px;
 	background-image: url("../imgs/novafolha.png");
 	background-size: cover;
 	margin: 10px 70px 0px 70px;
@@ -206,7 +206,7 @@ body
 #camadaMenu
 {
 	width: 100%;	
-	display: inline-flex;
+	display: flex;
 	align-items: center;
 	justify-content: center;
 	padding: 2rem;
@@ -221,6 +221,7 @@ body
 	height: auto;
 	width: 55%;
 	margin-right: 10%;
+	float: left;
 }
 
 #imgLogo
@@ -784,10 +785,6 @@ p
 		float: none;
 		margin: 0 auto;
 		display: block;
-	}
-
-	#imgMenu{
-		width: 100%;
 	}
 
 	#dicaNaTela{

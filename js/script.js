@@ -3,7 +3,7 @@ var pai = document.getElementById("ancora").parentNode;
 var jogo = {};
 
 $.ajax({
-    url: "https://api.myjson.com/bins/rdg6v",
+    url: "https://api.myjson.com/bins/90w6b",
     dataType: "text",
     mimeType: "textPlain",
     async: false,

@@ -22,7 +22,6 @@ var origemDerrota;
 var opcao;
 var estado;
 var realizaLeitura = false;
-var pulouMenu;
 var pulouDerrota;
 var pulouVitoria;
 var audio3 = document.createElement("AUDIO");
@@ -34,20 +33,19 @@ var frase;
 
 function criarCamadaMenu()
 {	
-	paraFala()
-	origemAudio = "menu"
+	paraFala();
+	origemAudio = "menu";
 	origemInstrucoes = "menu";
-	pulouMenu = false;
 	estado = "menu";
 	opcao = 0;
-	origemMenu = 1;
+	origemMenu = true;
 
 
 	if(origemDerrota){
 		background.currentTime = 0
 	}
-	origemDerrota = false
-	background.play()
+	origemDerrota = false;
+	background.play();
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaMenu");
@@ -1413,7 +1411,6 @@ function inicializaFalaInicial(){
 
 function paraDeFalar(){
 	window.speechSynthesis.cancel();
-	pulouMenu = true;
 	pulouDerrota = true;
 	pulouVitoria = true;
 }
