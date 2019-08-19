@@ -450,12 +450,6 @@ function criarCamadaVitoria()
 	$("#palco").append(el);
 
 
-	/*if((jogo.bdTamanho) == 0) {
-		$('<p>').attr('id', 'pontosNaTela')
-			.html('Pontos: ' + parseInt(jogo.pontos))
-			.appendTo($('#camadaVitoria'));
-	}*/
-
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraCertaNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
@@ -566,47 +560,30 @@ function criarCamadaFimdeJogo()
 		audio3.play();
 	}, 500);
 
-	vitoria2 = setTimeout(function(){
-		/*var txt = "audio/" + numeroSorteado() + ".mp3"
-		audioVitP.setAttribute("src", txt);
-		audioVitP.currentTime = 0
-		audioVitP.volume = 1
-		audioVitP.play();*/
-		leituraInicial(baseURL + "vitoriaFrase.mp3");
-	}, 3800);
-
-	vitoria3 = setTimeout(function(){
-		realizarLeitura(jogo.palavraSorteada);
-	}, 6100);
-
-	vitoria4 = setTimeout(function(){
-		audio3.setAttribute("src", "audio/audioGravado/pontuacaoFinal.mp3");
-		audio3.currentTime = 0;
-		audio3.play();
-	}, 8000)
-
+	audio3.onended = function(){
+		leituraInicial(baseURL + "parabens voce escapou da forca.mp3");
+	}
 
 	var fase;
 	var faseId;
 	var el = $('<div>').attr("id", "camadaFimdeJogo").appendTo($("#palco"));
-	/*$('<p>').attr('id', 'pontosNaTela')
-		.html('Pontos: ' + parseInt(jogo.pontos))
-		.appendTo($('#camadaFimdeJogo'));*/
+
 
 	jogo.palavraNaTela = document.createElement("p");
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "2");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2><h3>Pontuação final: "+jogo.pontos + "</h3> A palavra é " + jogo.palavraSorteada;
+	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2> <h4>Pontuação final: "+ jogo.pontos + " pontos. </h4> <p> Aperte ENTER para recomeçar o jogo ! </p>";
 
-	jogo.imgBonecoVitoria = document.createElement("div");
+	jogo.imgBonecoVitoria = document.createElement("img");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
+	jogo.imgBonecoVitoria.setAttribute("src", "imgs/imagem parabens.png");
 
 	jogo.botoesVitoria = document.createElement("div");
 	jogo.botoesVitoria.setAttribute("id", "botoesTelaVitoria");
 
-	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
 	$("#camadaFimdeJogo").append(jogo.imgBonecoVitoria);
+	$("#camadaFimdeJogo").append(jogo.palavraNaTela);
 	$("#camadaFimdeJogo").append(jogo.botoesVitoria);
 
 	/*jogo.fimdeJogo = document.createElement("p");
@@ -1349,6 +1326,16 @@ function inicializaFocusFala(){
 	}
 	else if(estado == "audio"){
 		realizarFala(baseURL + "musicaFundo.mp3");
+	}
+	else if(estado == "fimdeJogo"){
+		if(frase == 1){
+			leituraInicial(baseURL + "pontuacaoFinal.mp3");
+			frase = 2;
+		}
+		else if(frase == 2){
+			var txt = jogo.pontos + "pontos";
+			realizarLeituraInicial(txt);
+		}
 	}
 }
 

@@ -361,6 +361,10 @@ function realizarLeituraInicial(texto)
 		else if(estado == "vitoria"){
 			realizarFala(baseURL + "continuar.mp3");
 		}
+		else if(estado == "fimdeJogo"){
+			realizarFala(baseURL + "recomeçar.mp3");
+			frase = 1;
+		}
 	})
 }
 
