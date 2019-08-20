@@ -50,9 +50,9 @@ body
 	width: 430px;
 	height: 530px;
 	background: #c2ecfc;
-	background: -moz-linear-gradient(to bottom, #c2ecfc 0%,#79adc1 100%);
-	background: -webkit-linear-gradient(to bottom, #c2ecfc 0%,#79adc1 100%);
-	background: linear-gradient(to bottom, #c2ecfc 0%,#79adc1 100%);
+	background: -moz-linear-gradient(to bottom, #c2ecfc 0%,#5eaac8 100%);
+	background: -webkit-linear-gradient(to bottom, #c2ecfc 0%,#5eaac8 100%);
+	background: linear-gradient(to bottom, #c2ecfc 0%,#5eaac8 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c2ecfc', endColorstr='#6fc3ed',GradientType=0 );
 	position: relative;
 	-webkit-border-bottom-left-radius: 3rem 15rem;
@@ -321,8 +321,8 @@ body
 .botaoJogo
 {
 	display: inline;
-	width: 55px;
-	height: 58px;
+	width: 52px;
+	height: 56px;
 	margin: 1.5px;
 	float: left;
 	background-image: url(../novasImgs/btnJogo.png);
@@ -333,8 +333,8 @@ body
 .botaoJogoPressionado
 {
 	display: inline;
-	width: 55px;
-	height: 58px;
+	width: 52px;
+	height: 56px;
 	margin: 1.5px;
 	float: left;
 	background-image: url(../novasImgs/btnJogoPressionado.png);

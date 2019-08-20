@@ -1019,7 +1019,8 @@ function criarCamadaInstrucoes()
 		"2 - Ouça o que você descobriu da palavra até agora<br>"+
 		"3 - Saiba quantas vidas você ainda tem<br>"+
 		"4 - Relembre as letras que você já escolheu<br>"+
-		"5 - Saiba sua pontuação atual<br>";
+		"5 - Saiba sua pontuação atual<br>" +
+		"<h4>Pressione Enter para voltar para as configurações</h4>";
 	}	
 	 
 
