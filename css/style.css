@@ -130,7 +130,9 @@ body
 	left: auto;
 }
 
-.slider {
+
+/* ------------------------------------------DESIGN DO SLIDER-----------------------------------------*/
+input[type=range] {
 	-webkit-appearance: none;
 	width: 80%;
 	height: 25px;
@@ -143,43 +145,41 @@ body
 	margin: 0 auto;
 	border: solid;
 	border-width: 2px;
-}
+} 
 
-.slider::-webkit-slider-thumb {
-	border-width: 5px;
-	border-color: #101010;
-	width: 10px;
-	height: 25px;
-	background: #fff;
+
+input[type=range]::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: 40px;
+	width: 15px;
+	border-radius: 3px;
+	background: #ffffff;
 	cursor: pointer;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
 }
   
-.slider::-moz-range-thumb {
-	border-width: 5px;
-	border-color: #101010;
-	width: 10px;
+input[type=range]::-moz-range-thumb {
 	height: 40px;
+	width: 15px;
+	border-radius: 3px;
 	background: #fff;
 	cursor: pointer;
+	box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+	border: 1px solid #000000;
 }
 
-.slider:focus::-webkit-slider-thumb{
-	background: #101010;
-}
-
-.slider:focus::-moz-range-thumb{
-	background: #101010;
-}
-
-.slider::-moz-range-progress{
+input[type=range]::-moz-range-progress{
 	background-color: #000;
 	height: 25px;
 }
 
-.slider::-webkit-progress-bar{
+input[type=range]::-ms-fill-lower{ 
 	background-color: #101010;
-	height: 15px;
+	height: 25px;
 }
+
+/* ------------------------------------------------------------------------------------------------------------*/
 
 #camadaVitoria
 {
