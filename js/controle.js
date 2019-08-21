@@ -817,7 +817,7 @@ function criarCamadaDerrota()
 	$("#botoesFimDeJogo").append(jogo.btnRecomecar);
 	$("#botoesFimDeJogo").append(jogo.btnDesistir);
 	
-	document.getElementById("btnReiniciar").onClick = function(){
+	document.getElementById("btnReiniciar").onclick = function(){
 		ativarBotaoReiniciar();
 	}
 
@@ -828,7 +828,7 @@ function criarCamadaDerrota()
 		clearTimeout(delayInicializaFocus);
 	}
 
-	document.getElementById("btnMenu3").onClick = function(){
+	document.getElementById("btnMenu3").onclick = function(){
 		ativarBotaoSair();
 	}
 
