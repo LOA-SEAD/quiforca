@@ -36,8 +36,8 @@ body
 }
 
 #camadaOpcoes{
+	outline: none;
 	width: 100%;
-	height: 100%;
 	text-align: center;
 	position: absolute;
 	display: flex;
@@ -47,6 +47,7 @@ body
 }
 
 #divOpcoes{
+	outline: none;
 	width: 430px;
 	height: 530px;
 	background: #c2ecfc;
@@ -84,6 +85,7 @@ body
 }
 
 #camadaAudio{
+	outline: none;
 	width: 100%;
 	text-align: center;
 	position: absolute;
@@ -94,6 +96,7 @@ body
 }
 
 #divAudio{
+	outline: none;
 	width: 430px;
 	height: 565px;
 	background: #c2ecfc;
@@ -183,6 +186,7 @@ input[type=range]::-ms-fill-lower{
 
 #camadaVitoria
 {
+	outline: none;
 	text-align: center;
 	width: 100%;
 }
@@ -196,6 +200,7 @@ input[type=range]::-ms-fill-lower{
 }
 
 #camadaDerrota{
+	outline: none;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -254,6 +259,7 @@ input[type=range]::-ms-fill-lower{
 
 #palavraCertaNaTela
 {
+	outline: none;
 	text-align: center;
 }
 
@@ -273,12 +279,14 @@ input[type=range]::-ms-fill-lower{
 }
 
 #camadaInstrucoes{
+	outline: none;
 	padding: 2rem 5rem;
 }
 
 /*Parte das coisas escritas na tela*/
 #palavraNaTela
 {
+	outline: none;
 	width: 100%;
 	text-align: center;
 	margin: 0;
@@ -695,6 +703,7 @@ p
 }
 
 .textoAudio:focus{
+	outline: none;
 	text-decoration: underline;
 }
 
