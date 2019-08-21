@@ -46,14 +46,7 @@ function iniciar()
 	var imgLogo = document.createElement("div");
 	imgLogo.setAttribute("id", "imgLogo");
 	colleft.append(imgLogo);
-	
-	jogo.falador = document.createElement("div");
-	jogo.falador.setAttribute("id", "falador");
-	jogo.falador.setAttribute("aria-live", "polite");
-	jogo.falador.setAttribute("role", "log");
-	jogo.falador.setAttribute("style", "display: none;");
-	//$("#camadaJogo").append(jogo.falador);
-	colright.append(jogo.falador)
+
 
 	//Pontos -- NA TELA
 	$('<p>').attr('id', 'pontosNaTela')

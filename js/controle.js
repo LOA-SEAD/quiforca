@@ -426,11 +426,6 @@ function criarCamadaVitoria()
 	}, 500);
 
 	vitoria2 = setTimeout(function(){
-		/*var txt = "audio/" + numeroSorteado() + ".mp3"
-		audioVitP.setAttribute("src", txt);
-		audioVitP.currentTime = 0
-		audioVitP.volume = 1
-		audioVitP.play();*/
 		leituraInicial(baseURL + "vitoriaFrase.mp3");
 	}, 3800);
 
@@ -496,8 +491,6 @@ function criarCamadaVitoria()
 		opcao = 1;
 		clearTimeout(delayInicializaFocus);
 	}
-
-	document.addEventListener("keyup", proximaFase);
 
 	inicializaFocus();
 
@@ -628,15 +621,6 @@ var pontfinal = document.createElement("AUDIO");
 pontfinal.setAttribute("src", "audio/pontuacaofinal.mp3");
 
 var derrota1 = false
-var derrota2 = false
-var derrota3 = false
-var derrota4 = false
-var derrota5 = false
-var derrota6 = false
-var derrota7 = false
-var derrota8 = false
-var derrota9 = false
-var derrota10 = false
 
 function criarCamadaDerrota()
 {
@@ -645,135 +629,17 @@ function criarCamadaDerrota()
 	estado = "derrota";
 	opcao = 0;
 	pulouDerrota = false;
-	/*derrota1 = setTimeout(function(){
-		audioDer.currentTime = 0
-		audioDer.play()
-	}, 3000);
-	derrota2 = setTimeout(function(){
-		var txt = "audio/" + numeroSorteado() + ".mp3"
-		audioVitP.setAttribute("src", txt);
-		audioVitP.currentTime = 0
-		audioVitP.play();
-	}, 5300);
-	derrota3 = setTimeout(function(){
-		pontfinal.currentTime = 0
-		pontfinal.play()
-	}, 7300);*/
+	origemDerrota = true;
 
 	derrota1 = setTimeout(function(){
 		leituraInicial(baseURL + "derrotaFrase.mp3");
 	}, 3000);
 
-	/*var aux
-	var centena
-	
-	derrota4 = setTimeout(function(){
-		if(pontuacao() <= 20 || (pontuacao() % 10 == 0 && pontuacao() < 100) || (pontuacao() % 100 == 0 && pontuacao() > 100) || pontuacao() == 1000){
-			unidade = "audio/p" + pontuacao() + ".mp3"
-			unidadeLer.setAttribute("src", unidade)
-			unidadeLer.currentTime = 0
-			unidadeLer.play()
-		}
-		else if(pontuacao() <= 99)
-		{
-			unidade = pontuacao()%10
-			dezena = pontuacao() - unidade
-
-			aux = "audio/p" + dezena + ".mp3"
-			dezenaLer.setAttribute("src", aux)
-			dezenaLer.currentTime = 0
-			dezenaLer.play()
-
-			derrota5 = setTimeout(function(){
-				letraE.setAttribute("src", "audio/letraE.mp3")
-				letraE.currentTime = 0;
-				letraE.play();
-			}, 600)
-
-			derrota6 = setTimeout(function(){
-				aux = "audio/p" + unidade + ".mp3"
-				unidadeLer.setAttribute("src", aux)
-				unidadeLer.currentTime = 0;
-				unidadeLer.play();
-			}, 800)
-		}
-		else if(pontuacao() == 100){
-			unidadeLer.setAttribute("src", "audio/pcem.mp3")
-			unidadeLer.currentTime = 0
-			unidadeLer.play()
-		}
-		else
-		{
-			unidade = pontuacao()%10
-			dezena = pontuacao()%100 - unidade
-			centena = pontuacao() - unidade - dezena
-
-			aux = "audio/p" + centena + ".mp3"
-			centenaLer.setAttribute("src", aux)
-			centenaLer.currentTime = 0
-			centenaLer.play()
-
-			var aux2 = pontuacao() - centena
-			if(aux2 >= 20)
-			{
-				if(dezena != 0){
-					derrota7 = setTimeout(function(){
-						letraE.setAttribute("src", "audio/letraE.mp3")
-						letraE.currentTime = 0;
-						letraE.play();
-					}, 600)
-				}
-
-				derrota8 = setTimeout(function(){
-					aux = "audio/p" + dezena + ".mp3"
-					dezenaLer.setAttribute("src", aux)
-					dezenaLer.currentTime = 0
-					dezenaLer.play()
-				}, 800)
-
-				if(unidade != 0){
-					derrota9 = setTimeout(function(){
-						letraE.setAttribute("src", "audio/letraE.mp3")
-						letraE.currentTime = 0;
-						letraE.play();
-					}, 1200)
-
-					derrota10 = setTimeout(function(){
-						aux = "audio/p" + unidade + ".mp3"
-						unidadeLer.setAttribute("src", aux)
-						unidadeLer.currentTime = 0;
-						unidadeLer.play();
-					}, 1500)
-				}
-			}
-			else
-			{
-				derrota7 = setTimeout(function(){
-					letraE.setAttribute("src", "audio/letraE.mp3")
-					letraE.currentTime = 0;
-					letraE.play();
-				}, 600)
-				derrota8 = setTimeout(function(){
-					aux = "audio/p" + aux2 + ".mp3"
-					unidadeLer.setAttribute("src", aux)
-					unidadeLer.currentTime = 0;
-					unidadeLer.play();
-				}, 800)
-			}
-		}
-	}, 8300)*/
-
-	//var audio = document.createElement("AUDIO");
 	audio3.setAttribute("src", "audio/derrota1.ogg");
-	//var audio = document.getElementById("derrota"); 
+
 	setTimeout(function(){
 		audio3.play();
 	}, 500);
-	origemDerrota = true;
-
-	var fase;
-	var faseId;
-	//var pontos = jogo.pontos;
 
 	var el = document.createElement("div");
 	el.setAttribute("id", "camadaDerrota");
@@ -1476,6 +1342,7 @@ function criarCamadaAudio()
 	sliderEfeitos.setAttribute("tabIndex", -1);
 	sliderEfeitos.setAttribute("class", "slider");
 	caixaBarras.appendChild(sliderEfeitos);
+
 	//Atualiza volume dos efeitos
 	sliderEfeitos.oninput = function(){
 		//document.getElementById("teclaIndisponivel").volume = this.value/10;
@@ -1647,6 +1514,7 @@ function criarCamadaOpcoes(){
 	el.setAttribute("tabIndex", 0);
 	$("#palco").append(el);
 	el.focus();
+
 	/*Opcoes : ->Continuar
 			   ->Áudio
 			   ->Instruções
