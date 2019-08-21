@@ -190,12 +190,11 @@ document.body.onkeyup = function(e)
 				somLetra4.push(track(nomeAtalho4));
 			}
 		}
-		counter = 0;
 		delayAtalho4 = setTimeout(function(){
 			delayLetraAtalho4 = setInterval(letras, 600);
 			function letras()
 			{
-				if(counter > tamanhoLetrasTentadas())
+				if(counter >= tamanhoLetrasTentadas() - 1)
 				{
 					clearInterval(delayAtalho4);
 				}
