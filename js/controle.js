@@ -1040,18 +1040,15 @@ function criarCamadaInstrucoes()
 
 	botaoMenu.onclick = function()
 	{
+		destruirCamadaInstrucoes();
 		if(origemInstrucoes == "menu")
 		{
-			destruirCamadaInstrucoes();
 			criarCamadaMenu();
 		}
 		else if(origemInstrucoes == "opcoes")
 		{
-			destruirCamadaInstrucoes();
-			estado = "jogando";
-			paraFala();
 			$("#camadaJogo").toggle();
-			setTimeout(update, 50);
+			criarCamadaOpcoes();
 		}
 	}
 
@@ -1069,11 +1066,8 @@ function criarCamadaInstrucoes()
 			}
 			else if(origemInstrucoes == "opcoes")
 			{
-				sairInstrucoes = true;
-				estado = "jogando";
-				paraFala();
 				$("#camadaJogo").toggle();
-			
+				criarCamadaOpcoes();
 			}
 		}
 		if(tecla == 13 && estado == "instrucoes"){
@@ -1642,6 +1636,7 @@ function enterLeituraTela(){
 
 function criarCamadaOpcoes(){
 	
+	paraFala();
 	estado = "opcoes";
 	opcao = 0;
 	origemInstrucoes = "opcoes";
@@ -1780,7 +1775,6 @@ function ativarOpcaoInstrucoes(){
 	destruirCamadaOpcoes();
 	$("#camadaJogo").toggle();
 	criarCamadaInstrucoes();
-	estado = "instrucoes";
 }
 
 function ativarOpcaoMenu(){
