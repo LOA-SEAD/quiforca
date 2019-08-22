@@ -31,6 +31,45 @@ var origemAudio
 var sairInstrucoes = false;
 var frase;
 
+
+
+function criarCamadaInicial(){
+
+	//Criação da div da camada
+	var element = document.createElement("div");
+	element.setAttribute("id", "camadaInicial");
+
+
+
+	var instrucoesIniciais = document.createElement("p");
+	instrucoesIniciais.setAttribute("id", "txtInicio");
+	instrucoesIniciais.innerHTML = 
+	"<h1> Instruções iniciais </h1>" +
+	"<h2> Versão Desktop </h2>" +
+	"Se possível mutar seu leitor de tela. </br>" + 
+	"Jogo já possui áudios pré-gravados para acessibilidade." +
+	"<h2> Versão Mobile </h2>" + 
+	" Manter ativado a acessibilidade do celular." +
+	"<h2> Escolha a versão do jogo. </h2>";
+
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoesInicio");
+
+	var btnDesktop = document.createElement("button");
+	btnDesktop.setAttribute("id", "btnInicio");
+
+	var btnMobile = document.createElement("button");
+	btnMobile.setAttribute("id", "btnInicio");
+
+	caixaBotoes.appendChild(btnDesktop);
+	caixaBotoes.appendChild(btnMobile);
+
+
+	$("#palco").append(element);
+	$("#camadaInicial").append(instrucoesIniciais);
+	$("#camadaInicial").append(caixaBotoes);
+}
+
 function criarCamadaMenu()
 {	
 	paraFala();
@@ -1656,4 +1695,4 @@ function ativarOpcaoMenu(){
 jogo.palco = new Palco();
 jogo.palco.criar();
 iniciarNovoJogo();
-criarCamadaMenu();
+criarCamadaInicial();

@@ -319,6 +319,10 @@ input[type=range]::-ms-fill-lower{
 	margin: 2.5rem 0;
 }
 
+#txtInicio{
+	font-size: 26px;
+}
+
 /*Parte dos botoes no jogo*/
 #botoes
 {
@@ -604,6 +608,20 @@ p
 	transform: scale(1.1);
 	cursor: pointer;
 	outline: none;
+}
+
+#caixaBotoesInicio{
+	display: inline-grid;
+	width: 100%;
+}
+
+#btnInicio{
+	height: 75px;
+	width: 225px;
+	background-image: url("../novasImgs/btnDesktop.png");
+	background-size: cover;
+	border: none;
+	margin: .3rem auto;
 }
 
 /*Parte do personagem do jogo*/
