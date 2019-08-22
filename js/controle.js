@@ -46,10 +46,10 @@ function criarCamadaInicial(){
 	instrucoesIniciais.innerHTML = 
 	"<h1> Instruções iniciais </h1>" +
 	"<h2> Versão Desktop </h2>" +
-	"Se possível mutar seu leitor de tela. </br>" + 
-	"Jogo já possui áudios pré-gravados para acessibilidade." +
+	"Jogo já possui áudios pré-gravados para acessibilidade. </br>" + 
+	"Se possível, mutar seu leitor de tela." +
 	"<h2> Versão Mobile </h2>" + 
-	" Manter ativado a acessibilidade do celular." +
+	"Manter ativado a acessibilidade do celular." +
 	"<h2> Escolha a versão do jogo. </h2>";
 
 	var caixaBotoes = document.createElement("div");
@@ -68,6 +68,11 @@ function criarCamadaInicial(){
 	$("#palco").append(element);
 	$("#camadaInicial").append(instrucoesIniciais);
 	$("#camadaInicial").append(caixaBotoes);
+
+	btnDesktop.onclick = function(){
+		$("#camadaInicial").remove();
+		criarCamadaMenu();
+	}
 }
 
 function criarCamadaMenu()

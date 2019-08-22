@@ -624,6 +624,12 @@ p
 	margin: .3rem auto;
 }
 
+#btnInicio:hover{
+	transform: scale(1.1);
+	cursor: pointer;
+	outline: none;
+}
+
 /*Parte do personagem do jogo*/
 .personagem
 {
@@ -784,6 +790,10 @@ p
 }*/
 
 
+
+/*-----------Espaço das Media Queries para responsividade-------------------*/
+
+
 @media screen and (max-width: 1100px) {
 	#row{
 		flex-direction: column;
@@ -817,12 +827,5 @@ p
 		width: 100%;
 		text-align: center;
 	}
-
-	#imgBonecoDerrota{
-		width: 55%;
-	}
-
-	#imgBonecoVitoria{
-		width: 80%;
-	}
 }
+
