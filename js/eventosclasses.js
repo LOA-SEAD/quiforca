@@ -136,9 +136,7 @@ document.body.onkeyup = function(e)
 	//Ouve a dica
 	if(keyunicode == 49) //1
 	{
-		stopTudo();
-		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
-		realizarLeitura(texto);
+		ouvirAtalho1();
 	}
 
 	//Lê o status da palavra
@@ -151,77 +149,19 @@ document.body.onkeyup = function(e)
 	//Quantas vidas ainda tem
 	if(keyunicode == 51) //3
 	{
-		stopTudo();
-	
-		switch(numeroDeChances())
-		{
-			case 1:
-				realizarFala(baseURL + "1vida.mp3");
-				break;
-			case 2:
-				realizarFala(baseURL + "2vidas.mp3");
-				break;
-			case 3:
-				realizarFala(baseURL + "3vidas.mp3");
-				break;
-			case 4:
-				realizarFala(baseURL + "4vidas.mp3");
-				break;
-			case 5:
-				realizarFala(baseURL + "5vidas.mp3");
-				break;
-		}
+		ouvirAtalho3();
 	}
 
 	//Letras já escolhidas
 	if(keyunicode == 52) //4
 	{
-		stopTudo();
-
-		counter = 0;
-		realizarFala(baseURL + "letrasEscolhidas.mp3");
-		//audioAtalho4.currentTime = 0;
-		//audioAtalho4.play();
-		for(var i = 1; i < tamanhoLetrasTentadas(); i++)
-		{
-			if(retornaLetrasTentadas(i))
-			{
-				nomeAtalho4 = baseURL + retornaLetrasTentadas(i) + ".mp3";
-				somLetra4.push(track(nomeAtalho4));
-			}
-		}
-		delayAtalho4 = setTimeout(function(){
-			delayLetraAtalho4 = setInterval(letras, 600);
-			function letras()
-			{
-				if(counter >= tamanhoLetrasTentadas() - 1)
-				{
-					clearInterval(delayAtalho4);
-				}
-				else
-				{
-					somLetra4[counter].currentTime = 0;
-					somLetra4[counter].play();
-					counter++;
-				}
-			}
-		}, 2000);
-}
+		ouvirAtalho4();	
+	}
 
 	//Pontuação atual
 	if(keyunicode == 53) //5
 	{
-		stopTudo();
-
-		if(pontuacao() == 1)
-		{
-			realizarLeitura("Um ponto");
-		}
-		else
-		{
-			realizarLeitura(pontuacao() + " pontos.");
-			//window.speechSynthesis.
-		}
+		ouvirAtalho5();
 	}
 
 }
@@ -264,60 +204,6 @@ function track(source)
 	var audio0 = document.createElement("AUDIO");
 	audio0.setAttribute("src", source);
 	return audio0;
-}
-
-function leituraDica()
-{
-	var espera
-		if(tamanhoPalavraSemEspaco() > 20 && dezena%10!=0){
-			var dezena = tamanhoPalavraSemEspaco()%100
-			var unidade = dezena%10
-			dezena = dezena - unidade
-			
-			dezena = "audio/p" + dezena  + ".mp3";
-			dezenaLer.setAttribute("src", dezena)
-			dezenaLer.currentTime = 0;
-			dezenaLer.play();
-			
-			delayAtalho1 = setTimeout(function(){
-				letraE.setAttribute("src", "audio/letraE.mp3")
-				letraE.currentTime = 0;
-				letraE.play();
-			}, 500);
-
-			delayAtalho1 = setTimeout(function(){
-				unidade = "audio/p" + unidade + ".mp3";
-				unidadeLer.setAttribute("src", unidade)
-				unidadeLer.currentTime = 0;
-				unidadeLer.play();
-			}, 700);
-
-			delayAtalho1 = setTimeout(function(){
-				qLetras.setAttribute("src", "audio/pletras.mp3")
-				qLetras.currentTime = 0;
-				qLetras.play();
-			}, 1000);
-			espera = 1500
-		}
-		else
-		{
-			var ler = "audio/p"+tamanhoPalavraSemEspaco() + ".mp3";
-			unidadeLer.setAttribute("src", ler);
-			unidadeLer.currentTime = 0;
-			unidadeLer.play();
-			delayAtalho1 = setTimeout(function(){
-				qLetras.setAttribute("src", "audio/pletras.mp3")
-				qLetras.currentTime = 0;
-				qLetras.play();
-			}, 600);
-			espera = 1500
-		}
-		delayAtalho1 = setTimeout(function(){
-			nomeAtalho1 = "audio/r" + numeroSorteado() + ".mp3"
-			audioAtalho1.setAttribute("src", nomeAtalho1)
-			audioAtalho1.currentTime = 0
-			audioAtalho1.play()
-		}, espera);
 }
 
 var synth = window.speechSynthesis;
@@ -372,6 +258,12 @@ function pararLeitura()
 	window.speechSynthesis.cancel()
 }
 
+function ouvirAtalho1(){
+	stopTudo();
+	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
+	realizarLeitura(texto);
+}
+
 function ouvirAtalho2(){
 
 	stopTudo();
@@ -405,4 +297,163 @@ function ouvirAtalho2(){
 			counter++;
 		}
 	}
+}
+
+function ouvirAtalho3(){
+	stopTudo();
+	
+		switch(numeroDeChances())
+		{
+			case 1:
+				realizarFala(baseURL + "1vida.mp3");
+				break;
+			case 2:
+				realizarFala(baseURL + "2vidas.mp3");
+				break;
+			case 3:
+				realizarFala(baseURL + "3vidas.mp3");
+				break;
+			case 4:
+				realizarFala(baseURL + "4vidas.mp3");
+				break;
+			case 5:
+				realizarFala(baseURL + "5vidas.mp3");
+				break;
+		}
+}
+
+function ouvirAtalho4(){
+		stopTudo();
+
+		counter = 0;
+		realizarFala(baseURL + "letrasEscolhidas.mp3");
+		//audioAtalho4.currentTime = 0;
+		//audioAtalho4.play();
+		for(var i = 1; i < tamanhoLetrasTentadas(); i++)
+		{
+			if(retornaLetrasTentadas(i))
+			{
+				nomeAtalho4 = baseURL + retornaLetrasTentadas(i) + ".mp3";
+				somLetra4.push(track(nomeAtalho4));
+			}
+		}
+		delayAtalho4 = setTimeout(function(){
+			delayLetraAtalho4 = setInterval(letras, 600);
+			function letras()
+			{
+				if(counter >= tamanhoLetrasTentadas() - 1)
+				{
+					clearInterval(delayAtalho4);
+				}
+				else
+				{
+					somLetra4[counter].currentTime = 0;
+					somLetra4[counter].play();
+					counter++;
+				}
+			}
+		}, 2000);
+}
+
+function ouvirAtalho5(){
+	stopTudo();
+
+	if(pontuacao() == 1)
+	{
+		realizarLeitura("Um ponto");
+	}
+	else
+	{
+		realizarLeitura(pontuacao() + " pontos.");
+		//window.speechSynthesis.
+	}
+}
+
+function criarCamadaAtalhos()
+{	
+	estado = "atalho";
+	$("#camadaJogo").toggle();
+	setTimeout(update, 50);
+
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaAtalhos");
+	$("#palco").append(el);
+	el.focus();
+
+	var topo = document.createElement("div");
+	topo.setAttribute("id", "topoAtalhos");
+	el.appendChild(topo);
+
+	var para = document.createElement("h1");
+	para.innerHTML = "Atalhos";
+	topo.appendChild(para);
+
+	var caixaBotoes = document.createElement("div");
+	caixaBotoes.setAttribute("id", "caixaBotoesAtalhos")
+	el.appendChild(caixaBotoes);
+
+	atalho1 = document.createElement("button");
+	atalho1.setAttribute("id", "btnAtalho1");
+	atalho1.innerText = "Dica";
+	caixaBotoes.appendChild(atalho1);
+	atalho1.onclick = function(){
+		ouvirAtalho1();
+		/*estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);*/
+	}
+
+	atalho2 = document.createElement("button");
+	atalho2.setAttribute("id", "btnAtalho2");
+	atalho2.innerText = "Como está a palavra";
+	caixaBotoes.appendChild(atalho2);
+	atalho2.onclick = function(){
+		ouvirAtalho2();
+		/*estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);*/
+	}
+
+	atalho3 = document.createElement("button");
+	atalho3.setAttribute("id", "btnAtalho3");
+	atalho3.innerText = "Número de vidas";
+	caixaBotoes.appendChild(atalho3);
+	atalho3.onclick = function(){
+		ouvirAtalho3();
+		/*estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);*/
+	}
+
+	atalho4 = document.createElement("button");
+	atalho4.setAttribute("id", "btnAtalho4");
+	atalho4.innerText = "Letras que você já escolheu";
+	caixaBotoes.appendChild(atalho4);
+	atalho4.onclick = function(){
+		ouvirAtalho4();
+		/*estado = "jogando";
+		destruirCamadaAtalhos();
+		$("#camadaJogo").toggle();
+		setTimeout(update, 50);*/
+	}
+
+	voltar = document.createElement("button");
+	voltar.setAttribute("id", "btnVoltar3");
+	voltar.innerText = "Voltar ao Jogo";
+	caixaBotoes.appendChild(voltar);
+	voltar.onclick = function(){
+		destruirCamadaAtalhos();
+	}
+}
+
+function destruirCamadaAtalhos()
+{
+	stopTudo();
+	estado = "jogando";
+	$("#camadaJogo").toggle();
+	$("#camadaAtalhos").remove();
+	setTimeout(update, 50);
 }
