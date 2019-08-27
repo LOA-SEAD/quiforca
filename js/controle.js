@@ -40,7 +40,7 @@ function criarCamadaInicial(){
 	element.setAttribute("id", "camadaInicial");
 
 
-
+	//textos
 	var instrucoesIniciais = document.createElement("p");
 	instrucoesIniciais.setAttribute("id", "txtInicio");
 	instrucoesIniciais.innerHTML = 
@@ -55,10 +55,10 @@ function criarCamadaInicial(){
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoesInicio");
 
-	var btnDesktop = document.createElement("button");
+	var btnDesktop = document.createElement("div");
 	btnDesktop.setAttribute("id", "btnInicio");
 
-	var btnMobile = document.createElement("button");
+	var btnMobile = document.createElement("div");
 	btnMobile.setAttribute("id", "btnInicio");
 
 	caixaBotoes.appendChild(btnDesktop);
