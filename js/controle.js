@@ -30,6 +30,7 @@ var origemInstrucoes;
 var origemAudio
 var sairInstrucoes = false;
 var frase;
+var mobile = false;
 
 
 
@@ -73,124 +74,212 @@ function criarCamadaInicial(){
 		$("#camadaInicial").remove();
 		criarCamadaMenu();
 	}
+
+	btnMobile.onclick = function(){
+		$("#camadaInicial").remove();
+		var style = document.getElementById("estilo");
+		style.setAttribute("href", "./css/mobileStyle.css");
+		mobile = true;
+		criarCamadaMenu();
+	}
 }
 
 function criarCamadaMenu()
 {	
-	paraFala();
-	origemAudio = "menu";
-	origemInstrucoes = "menu";
-	estado = "menu";
-	opcao = 0;
-	origemMenu = true;
 
-
-	if(origemDerrota){
-		background.currentTime = 0
-	}
-	origemDerrota = false;
-	background.play();
-
-	var el = document.createElement("div");
-	el.setAttribute("id", "camadaMenu");
-	el.setAttribute("tabIndex", "0");
-	$("#palco").append(el);
-
-
-	var imgMenu = document.createElement("img");
-	imgMenu.setAttribute("id", "imgMenu");
-	imgMenu.setAttribute("src", "imgs/desenhotelainicial.png")
-	el.appendChild(imgMenu);
-
-
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	el.appendChild(caixaBotoes);
-
-	//Cria botao de instruções e adiciona a caixa de botões
-	var botaoInstrucoes = document.createElement("div");
-	botaoInstrucoes.setAttribute("id", "btnInstrucoes");
-	botaoInstrucoes.setAttribute("tabIndex" , "-1");
-	botaoInstrucoes.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoInstrucoes);
-	
-	botaoInstrucoes.onclick = function()
-	{
-		ativarBotaoInstrucoes();
-	}
-
-	botaoInstrucoes.onmouseenter = function()
-	{
-		botaoInstrucoes.focus();
+	if(!mobile){
+		paraFala();
+		origemAudio = "menu";
+		origemInstrucoes = "menu";
+		estado = "menu";
 		opcao = 0;
-		clearTimeout(delayInicializaFocus);
+		origemMenu = true;
+
+
+		if(origemDerrota){
+			background.currentTime = 0
+		}
+		origemDerrota = false;
+		background.play();
+
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaMenu");
+		el.setAttribute("tabIndex", "0");
+		$("#palco").append(el);
+
+
+		var imgMenu = document.createElement("img");
+		imgMenu.setAttribute("id", "imgMenu");
+		imgMenu.setAttribute("src", "imgs/desenhotelainicial.png")
+		el.appendChild(imgMenu);
+
+
+		var caixaBotoes = document.createElement("div");
+		caixaBotoes.setAttribute("id", "caixaBotoes");
+		el.appendChild(caixaBotoes);
+
+		//Cria botao de instruções e adiciona a caixa de botões
+		var botaoInstrucoes = document.createElement("div");
+		botaoInstrucoes.setAttribute("id", "btnInstrucoes");
+		botaoInstrucoes.setAttribute("tabIndex" , "-1");
+		botaoInstrucoes.setAttribute("class" , "botao");
+		caixaBotoes.appendChild(botaoInstrucoes);
+		
+		botaoInstrucoes.onclick = function()
+		{
+			ativarBotaoInstrucoes();
+		}
+
+		botaoInstrucoes.onmouseenter = function()
+		{
+			botaoInstrucoes.focus();
+			opcao = 0;
+			clearTimeout(delayInicializaFocus);
+		}
+
+		var botaoJogar = document.createElement("div");
+		botaoJogar.setAttribute("id" , "btnJogar");
+		botaoJogar.setAttribute("tabIndex" , "-1");
+		botaoJogar.setAttribute("class" , "botao");
+		caixaBotoes.appendChild(botaoJogar);
+
+
+		botaoJogar.onclick = function()
+		{
+			ativarBotaoJogar();
+		}
+
+		botaoJogar.onmouseenter = function()
+		{
+			botaoJogar.focus();
+			opcao = 1;
+			clearTimeout(delayInicializaFocus);
+		}
+
+		//Cria botao de créditos na caixa de botoes
+		var botaoCreditos = document.createElement("div");
+		botaoCreditos.setAttribute("id" , "btnCreditos");
+		botaoCreditos.setAttribute("tabIndex" , "-1");
+		botaoCreditos.setAttribute("class" , "botao");
+		caixaBotoes.appendChild(botaoCreditos);
+
+
+		botaoCreditos.onclick = function()
+		{
+			ativarBotaoCreditos();
+		}
+
+		botaoCreditos.onmouseenter = function()
+		{
+			botaoCreditos.focus();
+			opcao = 2;
+			clearTimeout(delayInicializaFocus);
+		}
+
+		//Cria botao de opções na caixa de botoes
+		var botaoAudio = document.createElement("div");
+		botaoAudio.setAttribute("id" , "btnAudio");
+		botaoAudio.setAttribute("tabIndex" , "-1");
+		botaoAudio.setAttribute("class" , "botao");
+		caixaBotoes.appendChild(botaoAudio);
+
+
+		botaoAudio.onclick = function()
+		{
+			ativarBotaoAudio();
+		}
+
+		botaoAudio.onmouseenter = function()
+		{
+			botaoAudio.focus();
+			opcao = 3;
+			clearTimeout(delayInicializaFocus);
+		}
+		
+		inicializaFalaInicial();
+		inicializaFocus();
+
+		$("#camadaMenu").keydown(function (e){
+			selecionaOpcao(e);	
+		});
+
 	}
+	else{
+		paraFala()
+		origemAudio = "menu"
+		origemInstrucoes = "menu";
+		pulouMenu = false;
+		estado = "menu";
+		opcao = 0;
+		origemDerrota = 0
+		background.currentTime = 0;
+		background.play();
 
-	var botaoJogar = document.createElement("div");
-	botaoJogar.setAttribute("id" , "btnJogar");
-	botaoJogar.setAttribute("tabIndex" , "-1");
-	botaoJogar.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoJogar);
-
-
-	botaoJogar.onclick = function()
-	{
-		ativarBotaoJogar();
-	}
-
-	botaoJogar.onmouseenter = function()
-	{
-		botaoJogar.focus();
-		opcao = 1;
-		clearTimeout(delayInicializaFocus);
-	}
-
-	//Cria botao de créditos na caixa de botoes
-	var botaoCreditos = document.createElement("div");
-	botaoCreditos.setAttribute("id" , "btnCreditos");
-	botaoCreditos.setAttribute("tabIndex" , "-1");
-	botaoCreditos.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoCreditos);
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaMenu");
+		$("#palco").append(el);
 
 
-	botaoCreditos.onclick = function()
-	{
-		ativarBotaoCreditos();
-	}
-
-	botaoCreditos.onmouseenter = function()
-	{
-		botaoCreditos.focus();
-		opcao = 2;
-		clearTimeout(delayInicializaFocus);
-	}
-
-	//Cria botao de opções na caixa de botoes
-	var botaoAudio = document.createElement("div");
-	botaoAudio.setAttribute("id" , "btnAudio");
-	botaoAudio.setAttribute("tabIndex" , "-1");
-	botaoAudio.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoAudio);
+		var imgMenu = document.createElement("img");
+		imgMenu.setAttribute("id", "imgMenu");
+		imgMenu.setAttribute("src", "imgs/desenhotelainicial.png")
+		imgMenu.setAttribute("alt", "Imagem forca");
+		el.appendChild(imgMenu);
 
 
-	botaoAudio.onclick = function()
-	{
-		ativarBotaoAudio();
-	}
+		var caixaBotoes = document.createElement("div");
+		caixaBotoes.setAttribute("id", "caixaBotoes");
+		el.appendChild(caixaBotoes);
 
-	botaoAudio.onmouseenter = function()
-	{
-		botaoAudio.focus();
-		opcao = 3;
-		clearTimeout(delayInicializaFocus);
+		//Cria botao de instruções e adiciona a caixa de botões
+		var botaoInstrucoes = document.createElement("button");
+		botaoInstrucoes.setAttribute("id", "btnInstrucoes");
+		botaoInstrucoes.innerText = "Instruções";
+		caixaBotoes.appendChild(botaoInstrucoes);
+		
+		botaoInstrucoes.onclick = function()
+		{
+			ativarBotaoInstrucoes();
+		}
+
+		var botaoJogar = document.createElement("button");
+		botaoJogar.setAttribute("id" , "btnJogar");
+		botaoJogar.innerText = "Jogar";
+		caixaBotoes.appendChild(botaoJogar);
+
+
+		botaoJogar.onclick = function()
+		{
+			ativarBotaoJogar();
+		}
+
+		//Cria botao de créditos na caixa de botoes
+		var botaoCreditos = document.createElement("button");
+		botaoCreditos.setAttribute("id" , "btnCreditos");
+		botaoCreditos.innerText = "Créditos";
+		caixaBotoes.appendChild(botaoCreditos);
+
+
+		botaoCreditos.onclick = function()
+		{
+			ativarBotaoCreditos();
+		}
+
+		//Cria botao de opções na caixa de botoes
+		var botaoAudio = document.createElement("button");
+		botaoAudio.setAttribute("id" , "btnAudio");
+		botaoAudio.innerText = "Áudio";
+		caixaBotoes.appendChild(botaoAudio);
+
+
+		botaoAudio.onclick = function()
+		{
+			ativarBotaoAudio();
+		}
+		
+		origemMenu = 1
 	}
 	
-	inicializaFalaInicial();
-	inicializaFocus();
-
-	$("#camadaMenu").keydown(function (e){
-		selecionaOpcao(e);	
-	});
 }
 
 
@@ -256,33 +345,56 @@ function destruirCamadaMenu()
 function criarCamadaJogo()
 {
 
-	paraFala();
-	origemAudio = "jogo";
-	frase = 1;
-
-	if(!origemMenu){
-		background.currentTime = 0
-	}
+	if(!mobile){
+		paraFala();
+		origemAudio = "jogo";
+		frase = 1;
 	
-	origemMenu = false;
-	background.play();
-
-	var el = document.createElement("div");
-	el.setAttribute("id", "camadaJogo");
-	$("#palco").append(el);
+		if(!origemMenu){
+			background.currentTime = 0
+		}
+		
+		origemMenu = false;
+		background.play();
 	
-	iniciar();
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaJogo");
+		$("#palco").append(el);
+		
+		iniciar();
+		
+		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
+		realizarLeitura(texto);
 	
-	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
-	realizarLeitura(texto);
-
-	if((jogo.bd.length-jogo.bdTamanho) == 1)
-	{
-		tempo_inicial = new Date()
-		tempo_intermediario = tempo_inicial
+		if((jogo.bd.length-jogo.bdTamanho) == 1)
+		{
+			tempo_inicial = new Date()
+			tempo_intermediario = tempo_inicial
+		}
+		else{
+			tempo_intermediario = new Date()
+		}
 	}
 	else{
-		tempo_intermediario = new Date()
+		paraFala();
+		origemAudio = "jogo";
+
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaJogo");
+		$("#palco").append(el);
+
+		iniciar();
+		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
+		realizarLeitura(texto);
+
+		if((jogo.bd.length-jogo.bdTamanho) == 1)
+		{
+			tempo_inicial = new Date()
+			tempo_intermediario = tempo_inicial
+		}
+		else{
+			tempo_intermediario = new Date()
+		}
 	}
 }
 
@@ -305,138 +417,267 @@ audioCreditos.currentTime = 0
 function criarCamadaCreditos()
 {
 
-	paraFala();
-	realizarFala(baseURL + "creditosCompleto.mp3");
-	estado = "creditos";
-
-	var el = document.createElement("div");
-	el.setAttribute("id", "camadaCreditos");
-	$("#palco").append(el);
-
-	var para = $('<br>').appendTo(el);
-	var para = $('<br>').appendTo(el);
-	var para = $('<br>').appendTo(el);
-
-	var para = document.createElement("h1");
-	para.innerHTML = "Créditos";
-	el.appendChild(para);
-
-	var para = document.createElement("h1");
-	para.innerHTML = "Coordenação";
-	el.appendChild(para);
-
-	var coord = document.createElement("div");
-	el.appendChild(coord);
-
-	var colLeft = document.createElement("div");
-	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
-	coord.appendChild(colLeft);
-
-	var para = document.createElement("p");
-	para.innerHTML = "Delano Medeiros Beder";
-	colLeft.appendChild(para);
-
-	var colRight = document.createElement("div");
-	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
-	coord.appendChild(colRight);
-
-	var para = document.createElement("p");
-	para.innerHTML = "Joice Lee Otsuka";
-	colRight.appendChild(para);
-
-	var para = document.createElement("h1");
-	para.innerHTML = "Equipe";
-	el.appendChild(para);
-
-	var equipe = document.createElement("div");
-	el.appendChild(equipe);
-
-	var colLeft = document.createElement("div");
-	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
-	equipe.appendChild(colLeft);
-
-	var para = document.createElement("p");
-	para.innerHTML = "Marcelo Lopes Lotufo";
-	colLeft.appendChild(para);
-	var para = document.createElement("p");
-	para.innerHTML = "Murilo Dell Agnolo Garcia";
-	colLeft.appendChild(para);
-
-	var colRight = document.createElement("div");
-	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
-	equipe.appendChild(colRight);
-
-	var para = document.createElement("p");
-	para.innerHTML = "Luiz Valério Neto";
-	colRight.appendChild(para);
-	var para = document.createElement("p");
-	para.innerHTML = "Catarine Santana Ohnuma";
-	colRight.appendChild(para);
-
-	var para = document.createElement("h1");
-	para.innerHTML = "Acessibilidade";
-	el.appendChild(para);
-
-	var acessibilidade = document.createElement("div");
-	el.appendChild(acessibilidade);
-
-	var colLeft = document.createElement("div");
-	colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
-	acessibilidade.appendChild(colLeft);
-
-	var para = document.createElement("p");
-	para.innerHTML = "Caio Vinícius Barbosa Santos";
-	colLeft.appendChild(para);
-	var para = document.createElement("p");
-	para.innerHTML = "Jhonata Nícollas Carvalho Querobim";
-	colLeft.appendChild(para);
-
-	var colRight = document.createElement("div");
-	colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
-	acessibilidade.appendChild(colRight);
-
-	var para = document.createElement("p");
-	para.innerHTML = "Mariana Zagatti Sabino";
-	colRight.appendChild(para);
-	var para = document.createElement("p");
-	para.innerHTML = "Rogério Augusto Bordini";
-	colRight.appendChild(para);
-
-	var sairCreditos = document.createElement("h2");
-	sairCreditos.innerHTML = "Pressione Enter para voltar ao menu";
-	el.appendChild(sairCreditos);
-
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	el.appendChild(caixaBotoes);
-
-
-	var botaoMenu = document.createElement("div");
-	botaoMenu.setAttribute("id" , "btnMenu2");
-	botaoMenu.setAttribute("tabIndex" , "-1");
-	botaoMenu.setAttribute("class" , "botao");
-	caixaBotoes.appendChild(botaoMenu);
-
-	botaoMenu.onmousedown = function()
-	{
-		destruirCamadaCreditos();
-		criarCamadaMenu();
-	}
+	if(!mobile){
+		paraFala();
+		realizarFala(baseURL + "creditosCompleto.mp3");
+		estado = "creditos";
 	
-	var espera = 1;
-	document.onkeydown = function(e)
-	{
-		e = window.event||e;
-		var tecla = e.which || e.keyCode || e.charCode;
-		if((tecla == 27 || tecla == 13) && estado == "creditos" && !espera)
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaCreditos");
+		$("#palco").append(el);
+	
+		var para = $('<br>').appendTo(el);
+		var para = $('<br>').appendTo(el);
+		var para = $('<br>').appendTo(el);
+	
+		var para = document.createElement("h1");
+		para.innerHTML = "Créditos";
+		el.appendChild(para);
+	
+		var para = document.createElement("h1");
+		para.innerHTML = "Coordenação";
+		el.appendChild(para);
+	
+		var coord = document.createElement("div");
+		el.appendChild(coord);
+	
+		var colLeft = document.createElement("div");
+		colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
+		coord.appendChild(colLeft);
+	
+		var para = document.createElement("p");
+		para.innerHTML = "Delano Medeiros Beder";
+		colLeft.appendChild(para);
+	
+		var colRight = document.createElement("div");
+		colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
+		coord.appendChild(colRight);
+	
+		var para = document.createElement("p");
+		para.innerHTML = "Joice Lee Otsuka";
+		colRight.appendChild(para);
+	
+		var para = document.createElement("h1");
+		para.innerHTML = "Equipe";
+		el.appendChild(para);
+	
+		var equipe = document.createElement("div");
+		el.appendChild(equipe);
+	
+		var colLeft = document.createElement("div");
+		colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
+		equipe.appendChild(colLeft);
+	
+		var para = document.createElement("p");
+		para.innerHTML = "Marcelo Lopes Lotufo";
+		colLeft.appendChild(para);
+		var para = document.createElement("p");
+		para.innerHTML = "Murilo Dell Agnolo Garcia";
+		colLeft.appendChild(para);
+	
+		var colRight = document.createElement("div");
+		colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
+		equipe.appendChild(colRight);
+	
+		var para = document.createElement("p");
+		para.innerHTML = "Luiz Valério Neto";
+		colRight.appendChild(para);
+		var para = document.createElement("p");
+		para.innerHTML = "Catarine Santana Ohnuma";
+		colRight.appendChild(para);
+	
+		var para = document.createElement("h1");
+		para.innerHTML = "Acessibilidade";
+		el.appendChild(para);
+	
+		var acessibilidade = document.createElement("div");
+		el.appendChild(acessibilidade);
+	
+		var colLeft = document.createElement("div");
+		colLeft.setAttribute("style", "width: 250px; float: left;  text-align: right;");
+		acessibilidade.appendChild(colLeft);
+	
+		var para = document.createElement("p");
+		para.innerHTML = "Caio Vinícius Barbosa Santos";
+		colLeft.appendChild(para);
+		var para = document.createElement("p");
+		para.innerHTML = "Jhonata Nícollas Carvalho Querobim";
+		colLeft.appendChild(para);
+	
+		var colRight = document.createElement("div");
+		colRight.setAttribute("style", "width: 250px; float: right; text-align: left;");
+		acessibilidade.appendChild(colRight);
+	
+		var para = document.createElement("p");
+		para.innerHTML = "Mariana Zagatti Sabino";
+		colRight.appendChild(para);
+		var para = document.createElement("p");
+		para.innerHTML = "Rogério Augusto Bordini";
+		colRight.appendChild(para);
+	
+		var sairCreditos = document.createElement("h2");
+		sairCreditos.innerHTML = "Pressione Enter para voltar ao menu";
+		el.appendChild(sairCreditos);
+	
+		var caixaBotoes = document.createElement("div");
+		caixaBotoes.setAttribute("id", "caixaBotoes");
+		el.appendChild(caixaBotoes);
+	
+	
+		var botaoMenu = document.createElement("div");
+		botaoMenu.setAttribute("id" , "btnMenu2");
+		botaoMenu.setAttribute("tabIndex" , "-1");
+		botaoMenu.setAttribute("class" , "botao");
+		caixaBotoes.appendChild(botaoMenu);
+	
+		botaoMenu.onmousedown = function()
 		{
 			destruirCamadaCreditos();
 			criarCamadaMenu();
 		}
-		if(tecla == 13 && estado == "creditos"){
-			espera = !espera;
+		
+		var espera = 1;
+		document.onkeydown = function(e)
+		{
+			e = window.event||e;
+			var tecla = e.which || e.keyCode || e.charCode;
+			if((tecla == 27 || tecla == 13) && estado == "creditos" && !espera)
+			{
+				destruirCamadaCreditos();
+				criarCamadaMenu();
+			}
+			if(tecla == 13 && estado == "creditos"){
+				espera = !espera;
+			}
 		}
 	}
+	else{
+		paraFala();
+	
+		estado = "creditos";
+
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaCreditos");
+		$("#palco").append(el);
+
+
+		var botaoMenu = document.createElement("button");
+		botaoMenu.setAttribute("id" , "btnVoltar2");
+		botaoMenu.innerText = "Voltar ao Menu";
+		
+
+		var botaoOuvir = document.createElement("button");
+		botaoOuvir.setAttribute("id", "btnOuvir");
+		botaoOuvir.innerHTML = "Ouvir Créditos";
+		
+		el.appendChild(botaoOuvir);
+		el.appendChild(botaoMenu);
+		
+		botaoMenu.onmousedown = function()
+		{
+			audio3.pause();
+			destruirCamadaCreditos();
+			criarCamadaMenu();
+		}
+
+		botaoOuvir.onmousedown = function(){
+			audio3.setAttribute("src", baseURL + "creditosCompleto.mp3");
+			audio3.currentTime = 0;
+			audio3.play();
+		}
+
+		//div contendo conteudo da página
+		var conteudo = document.createElement("div");
+		conteudo.setAttribute("id", "conteudo")
+
+		var para = document.createElement("h1");
+		para.innerHTML = "Créditos";
+		conteudo.appendChild(para);
+
+		var para = document.createElement("h1");
+		para.innerHTML = "Coordenação";
+		conteudo.appendChild(para);
+
+		var coord = document.createElement("div");
+		conteudo.appendChild(coord);
+
+		var colLeft = document.createElement("div");
+		colLeft.setAttribute("id", "linhaNomesLeft");
+		coord.appendChild(colLeft);
+
+		var para = document.createElement("p");
+		para.innerHTML = "Delano Medeiros Beder";
+		colLeft.appendChild(para);
+
+		var colRight = document.createElement("div");
+		colRight.setAttribute("id", "linhaNomesRight");
+		coord.appendChild(colRight);
+
+		var para = document.createElement("p");
+		para.innerHTML = "Joice Lee Otsuka";
+		colRight.appendChild(para);
+
+		var para = document.createElement("h1");
+		para.innerHTML = "Equipe";
+		conteudo.appendChild(para);
+
+		var equipe = document.createElement("div");
+		conteudo.appendChild(equipe);
+
+		var colLeft = document.createElement("div");
+		colLeft.setAttribute("id", "linhaNomesLeft");
+		equipe.appendChild(colLeft);
+
+		var para = document.createElement("p");
+		para.innerHTML = "Marcelo Lopes Lotufo";
+		colLeft.appendChild(para);
+		var para = document.createElement("p");
+		para.innerHTML = "Murilo Dell Agnolo Garcia";
+		colLeft.appendChild(para);
+
+		var colRight = document.createElement("div");
+		colRight.setAttribute("id", "linhaNomesRight");
+		equipe.appendChild(colRight);
+
+		var para = document.createElement("p");
+		para.innerHTML = "Luiz Valério Neto";
+		colRight.appendChild(para);
+		var para = document.createElement("p");
+		para.innerHTML = "Catarine Santana Ohnuma";
+		colRight.appendChild(para);
+
+		var para = document.createElement("h1");
+		para.innerHTML = "Acessibilidade";
+		conteudo.appendChild(para);
+
+		var acessibilidade = document.createElement("div");
+		conteudo.appendChild(acessibilidade);
+
+		var colLeft = document.createElement("div");
+		colLeft.setAttribute("id", "linhaNomesLeft");
+		acessibilidade.appendChild(colLeft);
+
+		var para = document.createElement("p");
+		para.innerHTML = "Caio Vinícius Barbosa Santos";
+		colLeft.appendChild(para);
+		var para = document.createElement("p");
+		para.innerHTML = "Jhonata Nícollas Carvalho Querobim";
+		colLeft.appendChild(para);
+
+		var colRight = document.createElement("div");
+		colRight.setAttribute("id", "linhaNomesRight");
+		acessibilidade.appendChild(colRight);
+
+		var para = document.createElement("p");
+		para.innerHTML = "Mariana Zagatti Sabino";
+		colRight.appendChild(para);
+		var para = document.createElement("p");
+		para.innerHTML = "Rogério Augusto Bordini";
+		colRight.appendChild(para);
+
+		el.appendChild(conteudo);
+	}
+	
 }
 
 function destruirCamadaCreditos()
@@ -881,93 +1122,76 @@ function destruirCamadaRanking()
 
 function criarCamadaInstrucoes()
 {
-	paraFala();
-	var espera = 1;
-	estado = "instrucoes";
 
-	if(origemInstrucoes == "menu")
-	{
-		realizarFala(baseURL + "lerinstrucoesCompletas.mp3");
-	}
-	else if(origemInstrucoes == "opcoes")
-	{
-		realizarFala(baseURL + "lerinstrucoesacessibilidade.mp3");
-	}
-
-
-	//criação camada de instruções
-	var el = document.createElement("div");
-	el.setAttribute("id", "camadaInstrucoes");
-	el.setAttribute("tabIndex", "0");
-	$("#palco").append(el);
-
-	//conteúdo instruções
-	jogo.instrucoes = document.createElement("p")
-	jogo.instrucoes.setAttribute("id", "instrucoesText")
-	jogo.instrucoes.innerHTML = "<h1>Instruções</h1>";
-	if(origemInstrucoes == "menu")
-	{
-	jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
-	 "Cada letra que você acerta é colocada na palavra. <br>"+
-	 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
-	 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
-	 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>" +
-	 "<h3>Atalhos sonoros durante o jogo:</h3><br>"+
-	 	"Para usá-los, pressione os números no seu teclado alfanumérico.<br>1 - Ouça a dica<br>"+
-		"2 - Ouça o que você descobriu da palavra até agora<br>"+
-		"3 - Saiba quantas vidas você ainda tem<br>"+
-		"4 - Relembre as letras que você já escolheu<br>"+
-		"5 - Saiba sua pontuação atual<br>" + 
-		"Esc - Pausar o jogo e acessar as configurações<br>" + 
-		"<h4>Pressione Enter para voltar ao menu</h4>";
-	}
-	else
-	{
-		jogo.instrucoes.innerHTML += 
-		"<h3>Atalhos sonoros durante o jogo:</h3><br>"+
-	 	"Para usá-los, pressione os números no seu teclado alfanumérico.<br>1 - Ouça a dica<br>"+
-		"2 - Ouça o que você descobriu da palavra até agora<br>"+
-		"3 - Saiba quantas vidas você ainda tem<br>"+
-		"4 - Relembre as letras que você já escolheu<br>"+
-		"5 - Saiba sua pontuação atual<br>" +
-		"<h4>Pressione Enter para voltar para as configurações</h4>";
-	}	
-	 
-
-	//inserindo instrucoes a camada de instruções
-	$('#camadaInstrucoes').append(jogo.instrucoes);	
-
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	el.appendChild(caixaBotoes);
-
-	var botaoMenu = document.createElement("div");
-	botaoMenu.setAttribute("id" , "btnMenu2");
-	botaoMenu.setAttribute("tabIndex" , "-1");
-	botaoMenu.setAttribute("class" , "botao");
-	caixaBotoes.append(botaoMenu);
-
-
-	botaoMenu.onclick = function()
-	{
-		destruirCamadaInstrucoes();
+	if(!mobile){
+		paraFala();
+		var espera = 1;
+		estado = "instrucoes";
+	
 		if(origemInstrucoes == "menu")
 		{
-			criarCamadaMenu();
+			realizarFala(baseURL + "lerinstrucoesCompletas.mp3");
 		}
 		else if(origemInstrucoes == "opcoes")
 		{
-			$("#camadaJogo").toggle();
-			criarCamadaOpcoes();
+			realizarFala(baseURL + "lerinstrucoesacessibilidade.mp3");
 		}
-	}
-
-
-	document.onkeydown = function(e)
-	{
-		e = window.event||e;
-		var tecla = e.which || e.keyCode || e.charCode;
-		if((tecla == 13) && estado == "instrucoes" && !espera)
+	
+	
+		//criação camada de instruções
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaInstrucoes");
+		el.setAttribute("tabIndex", "0");
+		$("#palco").append(el);
+	
+		//conteúdo instruções
+		jogo.instrucoes = document.createElement("p")
+		jogo.instrucoes.setAttribute("id", "instrucoesText")
+		jogo.instrucoes.innerHTML = "<h1>Instruções</h1>";
+		if(origemInstrucoes == "menu")
+		{
+		jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. <br>"+
+		 "Cada letra que você acerta é colocada na palavra. <br>"+
+		 "A cada vez que você erra, uma parte do corpo é colocada na forca. <br>Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. <br>"+
+		 "A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto."+
+		 "<br>Você pode jogar usando o teclado do jogo ou o seu próprio teclado.<br><br>" +
+		 "<h3>Atalhos sonoros durante o jogo:</h3><br>"+
+			 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>1 - Ouça a dica<br>"+
+			"2 - Ouça o que você descobriu da palavra até agora<br>"+
+			"3 - Saiba quantas vidas você ainda tem<br>"+
+			"4 - Relembre as letras que você já escolheu<br>"+
+			"5 - Saiba sua pontuação atual<br>" + 
+			"Esc - Pausar o jogo e acessar as configurações<br>" + 
+			"<h4>Pressione Enter para voltar ao menu</h4>";
+		}
+		else
+		{
+			jogo.instrucoes.innerHTML += 
+			"<h3>Atalhos sonoros durante o jogo:</h3><br>"+
+			 "Para usá-los, pressione os números no seu teclado alfanumérico.<br>1 - Ouça a dica<br>"+
+			"2 - Ouça o que você descobriu da palavra até agora<br>"+
+			"3 - Saiba quantas vidas você ainda tem<br>"+
+			"4 - Relembre as letras que você já escolheu<br>"+
+			"5 - Saiba sua pontuação atual<br>" +
+			"<h4>Pressione Enter para voltar para as configurações</h4>";
+		}	
+		 
+	
+		//inserindo instrucoes a camada de instruções
+		$('#camadaInstrucoes').append(jogo.instrucoes);	
+	
+		var caixaBotoes = document.createElement("div");
+		caixaBotoes.setAttribute("id", "caixaBotoes");
+		el.appendChild(caixaBotoes);
+	
+		var botaoMenu = document.createElement("div");
+		botaoMenu.setAttribute("id" , "btnMenu2");
+		botaoMenu.setAttribute("tabIndex" , "-1");
+		botaoMenu.setAttribute("class" , "botao");
+		caixaBotoes.append(botaoMenu);
+	
+	
+		botaoMenu.onclick = function()
 		{
 			destruirCamadaInstrucoes();
 			if(origemInstrucoes == "menu")
@@ -980,9 +1204,92 @@ function criarCamadaInstrucoes()
 				criarCamadaOpcoes();
 			}
 		}
-		if(tecla == 13 && estado == "instrucoes"){
-			espera = !espera;
+	
+	
+		document.onkeydown = function(e)
+		{
+			e = window.event||e;
+			var tecla = e.which || e.keyCode || e.charCode;
+			if((tecla == 13) && estado == "instrucoes" && !espera)
+			{
+				destruirCamadaInstrucoes();
+				if(origemInstrucoes == "menu")
+				{
+					criarCamadaMenu();
+				}
+				else if(origemInstrucoes == "opcoes")
+				{
+					$("#camadaJogo").toggle();
+					criarCamadaOpcoes();
+				}
+			}
+			if(tecla == 13 && estado == "instrucoes"){
+				espera = !espera;
+			}
+		}	
+	}
+	else{
+		paraFala();
+
+		estado = "instrucoes"
+
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaInstrucoes");
+		$("#palco").append(el);
+
+		var botaoMenu = document.createElement("button");
+		botaoMenu.setAttribute("id" , "btnSairInstrucoes");
+		
+		if(origemInstrucoes == "menu"){
+			botaoMenu.innerHTML = "Voltar ao Menu";
 		}
+		else if(origemInstrucoes == "opcoes"){
+			botaoMenu.innerHTML = "Voltar ao jogo";
+		}
+
+		el.appendChild(botaoMenu);
+
+		botaoMenu.onclick = function()
+		{
+			if(origemInstrucoes == "menu")
+			{
+				destruirCamadaInstrucoes();
+				criarCamadaMenu();
+			}
+			else if(origemInstrucoes == "opcoes")
+			{
+				destruirCamadaInstrucoes();
+				estado = "jogando";
+				paraFala();
+				$("#camadaJogo").toggle();
+				setTimeout(update, 50);
+			}
+		}
+
+		/*var botaoOuvir = document.createElement("button");
+		botaoOuvir.setAttribute("id", "btnOuvir");
+		botaoOuvir.innerHTML = "Ouvir";
+		btnGrupo.append(botaoOuvir);
+		botaoOuvir.onclick = function()
+		{
+			
+		}*/
+		
+
+		//conteúdo instruções
+		jogo.instrucoes = document.createElement("p");
+		jogo.instrucoes.setAttribute("id", "instrucoesText")
+		jogo.instrucoes.innerHTML = "<h1>Instruções</h1>";
+		jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. "+
+		"Cada letra que você acerta é colocada na palavra. "+
+		"A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. "+
+		"A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. "+
+		"Durante o jogo, você poderá acessar o menu de opções para ler as instruções e configurar o áudio através do botão Opções no canto superior esquerdo da tela " +
+		"e também poderá acessar informações sobre o status do jogo por meio do botão Status no canto superior direito da tela.";
+
+
+		//inserindo instrucoes a camada de instruções
+		$('#camadaInstrucoes').append(jogo.instrucoes);	
 	}
 }
 
@@ -1317,167 +1624,337 @@ var volumeSinth = 1;
 
 function criarCamadaAudio()
 {
-	opcao = 0;
-	transicaoBarra = false;
-	estado = "audio";
 
-	var el = document.createElement("div");
-	el.setAttribute("id", "camadaAudio");
-	el.setAttribute("tabIndex", 0);
-	$("#palco").append(el);
-	el.focus();
-
-	var divAudio = document.createElement("div");
-	divAudio.setAttribute("id", "divAudio");
-	divAudio.setAttribute("tabIndex", 0);
-	el.appendChild(divAudio);
-
-	var audioTxt = document.createElement("p");
-	audioTxt.setAttribute("id", "audioTxt");
-	audioTxt.innerHTML = "Configurações de áudio";
-	divAudio.appendChild(audioTxt);
-
-	//Div com as barras de audio
-	var caixaBarras = document.createElement("div");
-	caixaBarras.setAttribute("id", "caixaBarrasAudio");
-	divAudio.appendChild(caixaBarras);
-
-	var MusicaFundo = document.createElement("p");
-	MusicaFundo.setAttribute("id", "MusicaFundo");
-	MusicaFundo.setAttribute("class", "textoAudio");
-	MusicaFundo.setAttribute("tabIndex", -1);
-	MusicaFundo.innerHTML = "Música de fundo";
-	caixaBarras.appendChild(MusicaFundo);
-	MusicaFundo.onclick = function(){
+	if(!mobile){
 		opcao = 0;
-	}
-
-	var sliderMusicaFundo = document.createElement("input");
-	sliderMusicaFundo.setAttribute("type", "range");
-	sliderMusicaFundo.setAttribute("min", "0");
-	sliderMusicaFundo.setAttribute("max", "10");
-	sliderMusicaFundo.setAttribute("value", background.volume*10);
-	sliderMusicaFundo.setAttribute("id", "sliderMusicaFundo");
-	sliderMusicaFundo.setAttribute("tabIndex", -1);
-	sliderMusicaFundo.setAttribute("class", "slider");
-	caixaBarras.appendChild(sliderMusicaFundo);
-	//Atualiza volume da musica de fundo
-	sliderMusicaFundo.oninput = function(){
-		tocaAudio();
-		background.volume = this.value/10;
-	}
-
-	var Efeitos = document.createElement("p");
-	Efeitos.setAttribute("id", "Efeitos");
-	Efeitos.setAttribute("class", "textoAudio");
-	Efeitos.setAttribute("tabIndex", -1);
-	Efeitos.innerHTML = "Efeitos sonoros";
-	caixaBarras.appendChild(Efeitos);
-	Efeitos.onclick = function(){
-		opcao = 1;
-	}
-
-	var sliderEfeitos = document.createElement("input");
-	sliderEfeitos.setAttribute("type", "range");
-	sliderEfeitos.setAttribute("min", "0");
-	sliderEfeitos.setAttribute("max", "10");
-	sliderEfeitos.setAttribute("value", audioTeclas.volume*10);
-	sliderEfeitos.setAttribute("id", "sliderEfeitos");
-	sliderEfeitos.setAttribute("tabIndex", -1);
-	sliderEfeitos.setAttribute("class", "slider");
-	caixaBarras.appendChild(sliderEfeitos);
-
-	//Atualiza volume dos efeitos
-	sliderEfeitos.oninput = function(){
-		//document.getElementById("teclaIndisponivel").volume = this.value/10;
-		audio2.volume = this.value/10;
-		audio3.volume = this.value/10;
-		audioTeclas.volume = this.value/10;
-		tocaAudio();
-	}
-
-
-	var LeituraTela = document.createElement("p");
-	LeituraTela.setAttribute("id", "LeituraTela");
-	LeituraTela.setAttribute("class", "textoAudio");
-	LeituraTela.setAttribute("tabIndex", -1);
-	LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
-	caixaBarras.appendChild(LeituraTela);
-	LeituraTela.onclick = function(){
-		opcao = 2;
-	}
-
-	var sliderLeituraTela = document.createElement("input");
-	sliderLeituraTela.setAttribute("type", "range");
-	sliderLeituraTela.setAttribute("min", "0");
-	sliderLeituraTela.setAttribute("max", "10");
-	sliderLeituraTela.setAttribute("value", audio.volume*10);
-	sliderLeituraTela.setAttribute("id", "sliderLeituraTela");
-	sliderLeituraTela.setAttribute("tabIndex", -1);
-	sliderLeituraTela.setAttribute("class", "slider");
-	caixaBarras.appendChild(sliderLeituraTela);
-	sliderLeituraTela.oninput = function(){
-		//----------------------------------------- FALAR NIVEL DO VOLUME --------------------------------------
-		tocaAudio();
-		audioinicial.volume = this.value/10;
-		audio.volume = this.value/10;
-		audioConfiguracoes.volume = this.value/10;
-		msg.volume = this.value/10;
-		volumeSinth = this.value/10;
-		audioEnter.volume = this.value/10;
-		audioErro.volume = this.value/10;
-	}
-
-	var quebraLinha = document.createElement("br");
-	divAudio.appendChild(quebraLinha);
-
-	//Cria div caixa de botoes
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoesAudio");
-	divAudio.appendChild(caixaBotoes);
-
-	//btnVoltar
-	var audioVoltar = document.createElement("div");
-	audioVoltar.setAttribute("id", "btnMenu2");
-	audioVoltar.setAttribute("tabIndex", -1);
-	caixaBotoes.appendChild(audioVoltar);
-
-	//btnContinuar
-	audioVoltar.onclick = function(){
-		ativarAudioVoltar();
-	}
-	audioVoltar.onmouseenter = function(){
-		opcao = 3;
-		audioVoltar.focus();
-	}
-
-	inicializaFocus();
-
-	$("#camadaAudio").keydown(function (e){
-		selecionaOpcao(e);	
-	})
-
-	$("#camadaAudio").keyup(function(e){
-		if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
-		{
-			destruirCamadaAudio();
-			if (origemAudio == "jogo")
-			{
-				criarCamadaOpcoes();
-			}
-			else if (origemAudio == "menu")
-			{
-				document.getElementById("camadaMenu").focus();
-				document.getElementById("btnAudio").focus();
-				estado = "menu";
-				opcao = 3;
-			}
+		transicaoBarra = false;
+		estado = "audio";
+	
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaAudio");
+		el.setAttribute("tabIndex", 0);
+		$("#palco").append(el);
+		el.focus();
+	
+		var divAudio = document.createElement("div");
+		divAudio.setAttribute("id", "divAudio");
+		divAudio.setAttribute("tabIndex", 0);
+		el.appendChild(divAudio);
+	
+		var audioTxt = document.createElement("p");
+		audioTxt.setAttribute("id", "audioTxt");
+		audioTxt.innerHTML = "Configurações de áudio";
+		divAudio.appendChild(audioTxt);
+	
+		//Div com as barras de audio
+		var caixaBarras = document.createElement("div");
+		caixaBarras.setAttribute("id", "caixaBarrasAudio");
+		divAudio.appendChild(caixaBarras);
+	
+		var MusicaFundo = document.createElement("p");
+		MusicaFundo.setAttribute("id", "MusicaFundo");
+		MusicaFundo.setAttribute("class", "textoAudio");
+		MusicaFundo.setAttribute("tabIndex", -1);
+		MusicaFundo.innerHTML = "Música de fundo";
+		caixaBarras.appendChild(MusicaFundo);
+		MusicaFundo.onclick = function(){
+			opcao = 0;
 		}
-	})
+	
+		var sliderMusicaFundo = document.createElement("input");
+		sliderMusicaFundo.setAttribute("type", "range");
+		sliderMusicaFundo.setAttribute("min", "0");
+		sliderMusicaFundo.setAttribute("max", "10");
+		sliderMusicaFundo.setAttribute("value", background.volume*10);
+		sliderMusicaFundo.setAttribute("id", "sliderMusicaFundo");
+		sliderMusicaFundo.setAttribute("tabIndex", -1);
+		sliderMusicaFundo.setAttribute("class", "slider");
+		caixaBarras.appendChild(sliderMusicaFundo);
+		//Atualiza volume da musica de fundo
+		sliderMusicaFundo.oninput = function(){
+			tocaAudio();
+			background.volume = this.value/10;
+		}
+	
+		var Efeitos = document.createElement("p");
+		Efeitos.setAttribute("id", "Efeitos");
+		Efeitos.setAttribute("class", "textoAudio");
+		Efeitos.setAttribute("tabIndex", -1);
+		Efeitos.innerHTML = "Efeitos sonoros";
+		caixaBarras.appendChild(Efeitos);
+		Efeitos.onclick = function(){
+			opcao = 1;
+		}
+	
+		var sliderEfeitos = document.createElement("input");
+		sliderEfeitos.setAttribute("type", "range");
+		sliderEfeitos.setAttribute("min", "0");
+		sliderEfeitos.setAttribute("max", "10");
+		sliderEfeitos.setAttribute("value", audioTeclas.volume*10);
+		sliderEfeitos.setAttribute("id", "sliderEfeitos");
+		sliderEfeitos.setAttribute("tabIndex", -1);
+		sliderEfeitos.setAttribute("class", "slider");
+		caixaBarras.appendChild(sliderEfeitos);
+	
+		//Atualiza volume dos efeitos
+		sliderEfeitos.oninput = function(){
+			//document.getElementById("teclaIndisponivel").volume = this.value/10;
+			audio2.volume = this.value/10;
+			audio3.volume = this.value/10;
+			audioTeclas.volume = this.value/10;
+			tocaAudio();
+		}
+	
+	
+		var LeituraTela = document.createElement("p");
+		LeituraTela.setAttribute("id", "LeituraTela");
+		LeituraTela.setAttribute("class", "textoAudio");
+		LeituraTela.setAttribute("tabIndex", -1);
+		LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
+		caixaBarras.appendChild(LeituraTela);
+		LeituraTela.onclick = function(){
+			opcao = 2;
+		}
+	
+		var sliderLeituraTela = document.createElement("input");
+		sliderLeituraTela.setAttribute("type", "range");
+		sliderLeituraTela.setAttribute("min", "0");
+		sliderLeituraTela.setAttribute("max", "10");
+		sliderLeituraTela.setAttribute("value", audio.volume*10);
+		sliderLeituraTela.setAttribute("id", "sliderLeituraTela");
+		sliderLeituraTela.setAttribute("tabIndex", -1);
+		sliderLeituraTela.setAttribute("class", "slider");
+		caixaBarras.appendChild(sliderLeituraTela);
+		sliderLeituraTela.oninput = function(){
+			//----------------------------------------- FALAR NIVEL DO VOLUME --------------------------------------
+			tocaAudio();
+			audioinicial.volume = this.value/10;
+			audio.volume = this.value/10;
+			audioConfiguracoes.volume = this.value/10;
+			msg.volume = this.value/10;
+			volumeSinth = this.value/10;
+			audioEnter.volume = this.value/10;
+			audioErro.volume = this.value/10;
+		}
+	
+		var quebraLinha = document.createElement("br");
+		divAudio.appendChild(quebraLinha);
+	
+		//Cria div caixa de botoes
+		var caixaBotoes = document.createElement("div");
+		caixaBotoes.setAttribute("id", "caixaBotoesAudio");
+		divAudio.appendChild(caixaBotoes);
+	
+		//btnVoltar
+		var audioVoltar = document.createElement("div");
+		audioVoltar.setAttribute("id", "btnMenu2");
+		audioVoltar.setAttribute("tabIndex", -1);
+		caixaBotoes.appendChild(audioVoltar);
+	
+		//btnContinuar
+		audioVoltar.onclick = function(){
+			ativarAudioVoltar();
+		}
+		audioVoltar.onmouseenter = function(){
+			opcao = 3;
+			audioVoltar.focus();
+		}
+	
+		inicializaFocus();
+	
+		$("#camadaAudio").keydown(function (e){
+			selecionaOpcao(e);	
+		})
+	
+		$("#camadaAudio").keyup(function(e){
+			if((e.charCode == 27 || e.which == 27 || e.keyCode == 27) && !transicaoBarra)
+			{
+				destruirCamadaAudio();
+				if (origemAudio == "jogo")
+				{
+					criarCamadaOpcoes();
+				}
+				else if (origemAudio == "menu")
+				{
+					document.getElementById("camadaMenu").focus();
+					document.getElementById("btnAudio").focus();
+					estado = "menu";
+					opcao = 3;
+				}
+			}
+		})
+	}
+	else{
+		$("#camadaMenu").toggle();
+		opcao = 0;
+		transicaoBarra = false;
+		estado = "audio";
+
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaAudio");
+		el.setAttribute("tabIndex", 0);
+		$("#palco").append(el);
+		el.focus();
+
+		var divAudio = document.createElement("div");
+		divAudio.setAttribute("id", "divAudio");
+		divAudio.setAttribute("tabIndex", 0);
+		el.appendChild(divAudio);
+
+		var audioTxt = document.createElement("h1");
+		audioTxt.setAttribute("id", "audioTxt");
+		audioTxt.innerHTML = "Configurações de áudio";
+		divAudio.appendChild(audioTxt);
+
+		//Div com as barras de audio
+		var caixaBarras = document.createElement("div");
+		caixaBarras.setAttribute("id", "caixaBarrasAudio");
+		divAudio.appendChild(caixaBarras);
+
+
+		var MusicaFundo = document.createElement("button");
+		MusicaFundo.setAttribute("id", "MusicaFundo");
+		MusicaFundo.innerHTML = "Música de fundo";
+		caixaBarras.appendChild(MusicaFundo);
+		MusicaFundo.onclick = function(){
+			controle = 1;
+			criarCamadaControleAudio();
+			opcao = 0;
+		}
+
+		var Efeitos = document.createElement("button");
+		Efeitos.setAttribute("id", "Efeitos");
+		Efeitos.innerHTML = "Efeitos";
+		caixaBarras.appendChild(Efeitos);
+		Efeitos.onclick = function(){
+			controle = 2;
+			criarCamadaControleAudio();
+			opcao = 1;
+		}
+
+		var LeituraTela = document.createElement("button");
+		LeituraTela.setAttribute("id", "LeituraTela");
+		LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
+		caixaBarras.appendChild(LeituraTela);
+		LeituraTela.onclick = function(){
+			controle = 3;
+			criarCamadaControleAudio();
+			opcao = 2;
+		}
+			//----------------------------------------- FALAR NIVEL DO VOLUME --------------------------------------
+
+		//btnVoltar
+		var audioVoltar = document.createElement("button");
+		audioVoltar.setAttribute("id", "audioVoltar");
+		if(origemAudio == "jogo"){
+			audioVoltar.innerHTML = "Voltar às Opções";
+		}
+		if(origemAudio == "menu"){
+			audioVoltar.innerHTML = "Voltar ao Menu";
+		}
+		caixaBarras.appendChild(audioVoltar);
+
+		//btnContinuar
+		audioVoltar.onclick = function(){
+			ativarAudioVoltar();
+		}
+		
+	}
+	
 }
 
 function destruirCamadaAudio(){
 	$("#camadaAudio").remove();
+	if(mobile)
+		$("#camadaMenu").toggle();
+}
+
+function criarCamadaControleAudio(){
+	$("#camadaAudio").toggle();
+	estado = "controle";
+	
+	var volumeInicial = 10;
+
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaControleAudio");
+	el.setAttribute("tabIndex", 0);
+	$("#palco").append(el);
+	el.focus();
+
+	var divControle = document.createElement("div");
+	divControle.setAttribute("id", "divControle");
+	divControle.setAttribute("tabIndex", 0);
+	el.appendChild(divControle);
+
+	var controleTxt = document.createElement("h2");
+	controleTxt.setAttribute("id", "controleTxt");
+	switch(controle){
+		case 1:
+			volumeInicial = background.volume*10;
+			controleTxt.innerHTML = "Música de fundo";
+			break;
+		case 2:
+			volumeInicial = audio2.volume*10;
+			controleTxt.innerHTML = "Efeitos";
+			break;
+		case 3:
+			volumeInicial = audio.volume*10;
+			controleTxt.innerHTML = "Acessibilidade";
+			break;
+	}
+	divControle.appendChild(controleTxt);
+
+	//Div com as barras de audio
+	var caixaBarras = document.createElement("div");
+	caixaBarras.setAttribute("id", "caixaBarrasSlider");
+	divControle.appendChild(caixaBarras);
+
+	var slider = document.createElement("input");
+	slider.setAttribute("type", "range");
+	slider.setAttribute("min", "0");
+	slider.setAttribute("max", "10");
+	slider.setAttribute("value", volumeInicial);
+	slider.setAttribute("id", "slider");
+	slider.setAttribute("class", "slider");
+	caixaBarras.appendChild(slider);
+	//Atualiza volume da musica de fundo
+	slider.oninput = function(){
+		tocaAudio();
+		audioTeclas.volume = this.value/10;
+		switch(controle){
+			case 1:
+				background.volume = this.value/10;
+				break;
+			case 2:
+				audio2.volume = this.value/10;
+				audio3.volume = this.value/10;
+				break;
+			case 3:
+				audioinicial.volume = this.value/10;
+				audio.volume = this.value/10;
+				audioConfiguracoes.volume = this.value/10;
+				msg.volume = this.value/10;
+				volumeSinth = this.value/10;
+				audioEnter.volume = this.value/10;
+				audioErro.volume = this.value/10;
+				break;
+		}
+	}
+	
+	//btnVoltar
+	var audioVoltar = document.createElement("button");
+	audioVoltar.setAttribute("id", "btnVoltarAudio");
+	audioVoltar.innerHTML = "Voltar aos Áudios";
+	audioVoltar.onclick = function(){
+		destruirCamadaControleAudio();
+	}
+	divControle.appendChild(audioVoltar);
+
+}
+
+function destruirCamadaControleAudio(){
+	$("#camadaAudio").toggle();
+	$("#camadaControleAudio").remove();
 }
 
 function ativarAudioVoltar(){
@@ -1694,8 +2171,6 @@ function ativarOpcaoMenu(){
 	destruirCamadaJogo();
 	criarCamadaMenu();
 }
-
-
 
 jogo.palco = new Palco();
 jogo.palco.criar();

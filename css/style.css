@@ -838,7 +838,7 @@ p
 		min-width: 0;
 		margin: 0;
 		font-size: 16px;
-		padding: 0 1rem;
+		padding: 0 2rem;
 	}
 	#txtInicio{
 		font-size: 16px;
@@ -854,10 +854,20 @@ p
  }
 
 /* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {  }
+@media (min-width: 576px) { 
+
+ }
 
 /* Medium devices (tablets, 768px and up)*/
-@media (min-width: 768px) { }
+@media (max-width: 868px) {
+	#palco{
+		min-height: 100vh;
+		min-width: 0;
+		margin: 0;
+		font-size: 16px;
+		padding: 0 2rem;
+	}
+ }
 
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {  }

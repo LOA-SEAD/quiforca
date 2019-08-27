@@ -12,112 +12,249 @@ audioErro.setAttribute("id", "audioVidas");
 //Preenche a camada de jogo
 function iniciar()
 {
-	//Seta opcao para -1
-	opcao = -1;
-	//Seta estado do jogo
-	estado = "jogando";
-	//Seta número de chances do jogador
-	jogo.numChances = 5;
+	if(!mobile){
+		//Seta opcao para -1
+		opcao = -1;
+		//Seta estado do jogo
+		estado = "jogando";
+		//Seta número de chances do jogador
+		jogo.numChances = 5;
 
-	//Essa variavel vai conter todas as letras que o jogador ja tentou
-	jogo.letrasTentadas = new Array();
-	jogo.letrasTentadas = [" "];
+		//Essa variavel vai conter todas as letras que o jogador ja tentou
+		jogo.letrasTentadas = new Array();
+		jogo.letrasTentadas = [" "];
 
-	//Sorteio de uma nova palavra
-	jogo.sorteio = parseInt((Math.random()*10000)%jogo.bdTamanho);
-	jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
-	jogo.dicaPalavra = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;	
+		//Sorteio de uma nova palavra
+		jogo.sorteio = parseInt((Math.random()*10000)%jogo.bdTamanho);
+		jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
+		jogo.dicaPalavra = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;	
 
-	jogo.linha = document.createElement("div");
-	jogo.linha.setAttribute("id", "row");
-	jogo.linha.setAttribute("style", "margin-top: 4rem")
-	
-	var colleft = document.createElement("div");
-	colleft.setAttribute("id", "ColLeftJogo");
-	colleft.setAttribute("class", "clearfix");
-	$("#camadaJogo").append(colleft);
+		jogo.linha = document.createElement("div");
+		jogo.linha.setAttribute("id", "row");
+		jogo.linha.setAttribute("style", "margin-top: 4rem")
 
-	var colright = document.createElement("div");
-	colright.setAttribute("id", "ColRightJogo");
-	colright.setAttribute("class", "clearfix");
-	$("#camadaJogo").append(colright);
+		var colleft = document.createElement("div");
+		colleft.setAttribute("id", "ColLeftJogo");
+		colleft.setAttribute("class", "clearfix");
+		$("#camadaJogo").append(colleft);
 
-	//Logo FORCA -- NA TELA
-	var imgLogo = document.createElement("div");
-	imgLogo.setAttribute("id", "imgLogo");
-	colleft.append(imgLogo);
+		var colright = document.createElement("div");
+		colright.setAttribute("id", "ColRightJogo");
+		colright.setAttribute("class", "clearfix");
+		$("#camadaJogo").append(colright);
+
+		//Logo FORCA -- NA TELA
+		var imgLogo = document.createElement("div");
+		imgLogo.setAttribute("id", "imgLogo");
+		colleft.append(imgLogo);
 
 
-	//Pontos -- NA TELA
-	$('<p>').attr('id', 'pontosNaTela')
-		.html('Pontos: ' + Math.round(jogo.pontos))
-		//.appendTo($('#camadaJogo'));
-		.appendTo($('#ColRightJogo'));
+		//Pontos -- NA TELA
+		$('<p>').attr('id', 'pontosNaTela')
+			.html('Pontos: ' + Math.round(jogo.pontos))
+			//.appendTo($('#camadaJogo'));
+			.appendTo($('#ColRightJogo'));
 
-	//Dica
-	jogo.dicaNaTela = document.createElement("div");
-	jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
-	jogo.dicaNaTela.setAttribute("role" , "button");
-	jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
+		//Dica
+		jogo.dicaNaTela = document.createElement("div");
+		jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
+		jogo.dicaNaTela.setAttribute("role" , "button");
+		jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
 
-	//Exibe dica da palavra + número de letras que ela contém -- NA TELA
-	var p = document.createElement("p");
-	p.setAttribute("class", "customfont");
-	jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
-	jogo.faseId = jogo.bdAux[jogo.sorteio];
-	p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
-	jogo.dicaNaTela.appendChild(p);
-	colright.append(jogo.dicaNaTela);
+		//Exibe dica da palavra + número de letras que ela contém -- NA TELA
+		var p = document.createElement("p");
+		p.setAttribute("class", "customfont");
+		jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
+		jogo.faseId = jogo.bdAux[jogo.sorteio];
+		p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
+		jogo.dicaNaTela.appendChild(p);
+		colright.append(jogo.dicaNaTela);
 
-	//Exibe a palavra na tela
-	jogo.aux = "";
-	for(var i = 0; i < jogo.palavraSorteada.length; i++)
-	{
-		jogo.aux += jogo.palavraSorteada[i] + " ";
+		//Exibe a palavra na tela
+		jogo.aux = "";
+		for(var i = 0; i < jogo.palavraSorteada.length; i++)
+		{
+			jogo.aux += jogo.palavraSorteada[i] + " ";
+		}
+
+		//Essa é a variavel que deve ser exibida na tela -- NA TELA
+		jogo.palavraNaTela = document.createElement("p");
+		jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
+		jogo.palavraNaTela.setAttribute("tabIndex", "0");
+		jogo.palavraNaTela.setAttribute("role", "textbox");
+		colright.append(jogo.palavraNaTela);
+
+		jogo.erros = 0;
+		jogo.emTransicao = false;
+
+		//Aqui nós tiramos a palavra que ja foi sorteada, para ela nao ser sorteada novamente
+		jogo.bdTamanho--;
+		var ajuda = jogo.bdAux[jogo.bdTamanho];
+		jogo.bdAux[jogo.bdTamanho] = jogo.bdAux[jogo.sorteio];
+		jogo.bdAux[jogo.sorteio] = ajuda;
+
+
+		colright.append(jogo.linha); // -- NA TELA
+		colocarPersonagem(); // -- NA TELA
+		colocarTecladoNaTela(); // -- NA TELA
+
+
+		var caixaBotoes = document.createElement("div");
+		caixaBotoes.setAttribute("id", "caixaBotoes");
+		caixaBotoes.setAttribute("class", "clearfix");
+
+		$("#camadaJogo").append(caixaBotoes);
+
+		jogo.botaoOpcoes = document.createElement("div");
+		jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
+		jogo.botaoOpcoes.setAttribute("role" , "button");
+		jogo.botaoOpcoes.setAttribute("class", "botao");
+
+		jogo.botaoOpcoes.onclick = function() {
+			stopTudo();
+			criarCamadaOpcoes();
+		}
+
+		caixaBotoes.append(jogo.botaoOpcoes);
+
+		inicializaFocus();
+		update();
 	}
+	else{
+		//Seta estado do jogo
+		estado = "jogando";
+		//Seta número de chances do jogador
+		jogo.numChances = 5;
 
-	//Essa é a variavel que deve ser exibida na tela -- NA TELA
-	jogo.palavraNaTela = document.createElement("p");
-	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
-	jogo.palavraNaTela.setAttribute("tabIndex", "0");
-	jogo.palavraNaTela.setAttribute("role", "textbox");
-	colright.append(jogo.palavraNaTela);
+		//Essa variavel vai conter todas as letras que o jogador ja tentou
+		jogo.letrasTentadas = new Array();
+		jogo.letrasTentadas = [" "];
 
-	jogo.erros = 0;
-	jogo.emTransicao = false;
+		//Sorteio de uma nova palavra
+		jogo.sorteio = parseInt((Math.random()*10000)%jogo.bdTamanho);
+		jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
+		jogo.dicaPalavra = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;	
 
-	//Aqui nós tiramos a palavra que ja foi sorteada, para ela nao ser sorteada novamente
-	jogo.bdTamanho--;
-	var ajuda = jogo.bdAux[jogo.bdTamanho];
-	jogo.bdAux[jogo.bdTamanho] = jogo.bdAux[jogo.sorteio];
-	jogo.bdAux[jogo.sorteio] = ajuda;
+		jogo.linha = document.createElement("div");
+		jogo.linha.setAttribute("id", "row");
+
+		var header = document.createElement("div");
+		header.setAttribute("id", "topJogo");
+
+		//Pontos -- NA TELA
+		jogo.pontosTela = document.createElement("p");
+		jogo.pontosTela.setAttribute("id", "pontosTela");
+		jogo.pontosTela.innerHTML = "Pontos: " + Math.round(jogo.pontos);
+		
+		//Cria grupo de botões
+		jogo.btnGrupo = document.createElement("div");
+		jogo.btnGrupo.setAttribute("id", "btnGrupo");
+		
+		jogo.botaoOpcoes = document.createElement("button");
+		jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
+		jogo.botaoOpcoes.innerText = "Opções";
+		jogo.botaoOpcoes.setAttribute("class", "botao");
+		jogo.botaoOpcoes.onclick = function() {
+			stopTudo();
+			$("#camadaJogo").toggle();
+			criarCamadaOpcoes();
+		}
+		//Insere grupo de botões no header, e o header na camada Jogo
+		$("#camadaJogo").append(header);
+		header.appendChild(jogo.btnGrupo);
+		
+
+		jogo.botaoAtalhos = document.createElement("button");
+		jogo.botaoAtalhos.setAttribute("id", "btnAtalhos");
+		jogo.botaoAtalhos.innerText = "Status";
+		jogo.botaoAtalhos.setAttribute("class", "botao");
+		jogo.botaoAtalhos.onclick = function(){
+			stopTudo();
+			criarCamadaAtalhos();
+		}
+
+		//Adiciona ao grupo de botões os botões de opções e atalhos
+		jogo.btnGrupo.appendChild(jogo.botaoOpcoes);
+		jogo.btnGrupo.appendChild(jogo.botaoAtalhos);
+
+		jogo.boxVidas = document.createElement("div");
+		jogo.boxVidas.setAttribute("id", "boxVidas");
+		header.appendChild(jogo.boxVidas);
+
+		jogo.vidas1 = document.createElement("div");
+		jogo.vidas1.setAttribute("id", "vidas");
+		boxVidas.appendChild(jogo.vidas1);
+		jogo.vidas2 = document.createElement("div");
+		jogo.vidas2.setAttribute("id", "vidas");
+		boxVidas.appendChild(jogo.vidas2);
+		jogo.vidas3 = document.createElement("div");
+		jogo.vidas3.setAttribute("id", "vidas");
+		boxVidas.appendChild(jogo.vidas3);
+		jogo.vidas4 = document.createElement("div");
+		jogo.vidas4.setAttribute("id", "vidas");
+		boxVidas.appendChild(jogo.vidas4);
+		jogo.vidas5 = document.createElement("div");
+		jogo.vidas5.setAttribute("id", "vidas");
+		boxVidas.appendChild(jogo.vidas5);
+
+		var bonecoForca = document.createElement("div");
+		bonecoForca.setAttribute("id", "bonecoForca");
+		$("#camadaJogo").append(bonecoForca);
+
+		var colright = document.createElement("div");
+		colright.setAttribute("id", "ColRightJogo");
+		colright.setAttribute("class", "clearfix");
+		$("#camadaJogo").append(colright);
+
+		//Logo FORCA -- NA TELA
+		var imgLogo = document.createElement("div");
+		imgLogo.setAttribute("id", "imgLogo");
+		bonecoForca.appendChild(imgLogo);
+
+		//Dica
+		jogo.dicaNaTela = document.createElement("div");
+		jogo.dicaNaTela.setAttribute("id", "dicaNaTela");
+		jogo.tamanhoPalavra = jogo.palavraSorteada.replace(/ /g, "");
+
+		//Exibe dica da palavra + número de letras que ela contém -- NA TELA
+		var p = document.createElement("p");
+		p.setAttribute("class", "customfont");
+		jogo.fase = jogo.bd[jogo.bdAux[jogo.sorteio]];
+		jogo.faseId = jogo.bdAux[jogo.sorteio];
+		p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
+		jogo.dicaNaTela.appendChild(p);
+		colright.appendChild(jogo.dicaNaTela);
+
+		//Exibe a palavra na tela
+		jogo.aux = "";
+		for(var i = 0; i < jogo.palavraSorteada.length; i++)
+		{
+			jogo.aux += jogo.palavraSorteada[i] + " ";
+		}
+
+		//Essa é a variavel que deve ser exibida na tela -- NA TELA
+		jogo.palavraNaTela = document.createElement("p");
+		jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
+		jogo.palavraNaTela.setAttribute("role", "textbox");
+		colright.appendChild(jogo.palavraNaTela);
+
+		jogo.erros = 0;
+		jogo.emTransicao = false;
+
+		//Aqui nós tiramos a palavra que ja foi sorteada, para ela nao ser sorteada novamente
+		jogo.bdTamanho--;
+		var ajuda = jogo.bdAux[jogo.bdTamanho];
+		jogo.bdAux[jogo.bdTamanho] = jogo.bdAux[jogo.sorteio];
+		jogo.bdAux[jogo.sorteio] = ajuda;
 
 
-	colright.append(jogo.linha); // -- NA TELA
-	colocarPersonagem(); // -- NA TELA
-	colocarTecladoNaTela(); // -- NA TELA
+		//$("#camadaJogo").append(jogo.linha); -- NA TELA
+		colright.appendChild(jogo.linha);
+		colocarPersonagem(); // -- NA TELA
+		colocarTecladoNaTela(); // -- NA TELA
 
-
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoes");
-	caixaBotoes.setAttribute("class", "clearfix");
-
-	$("#camadaJogo").append(caixaBotoes);
-
-	jogo.botaoOpcoes = document.createElement("div");
-	jogo.botaoOpcoes.setAttribute("id" , "btnMenu");
-	jogo.botaoOpcoes.setAttribute("role" , "button");
-	jogo.botaoOpcoes.setAttribute("class", "botao");
-
-	jogo.botaoOpcoes.onclick = function() {
-		stopTudo();
-		criarCamadaOpcoes();
+		update();
 	}
-
-	caixaBotoes.append(jogo.botaoOpcoes);
-	
-	inicializaFocus();
-	update();
 }
 
 function update()
