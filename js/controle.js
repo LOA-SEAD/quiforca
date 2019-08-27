@@ -2024,125 +2024,213 @@ function enterLeituraTela(){
 
 function criarCamadaOpcoes(){
 	
-	paraFala();
-	estado = "opcoes";
-	opcao = 0;
-	origemInstrucoes = "opcoes";
-
-	//Cria div camada opcoes
-	var el = document.createElement("div");
-	el.setAttribute("id", "camadaOpcoes");
-	el.setAttribute("tabIndex", 0);
-	$("#palco").append(el);
-	el.focus();
-
-	/*Opcoes : ->Continuar
-			   ->Áudio
-			   ->Instruções
-			   ->Menu*/
-
-
-	//titulo
-
-	var divOpcoes = document.createElement("div");
-	divOpcoes.setAttribute("id", "divOpcoes");
-	divOpcoes.setAttribute("tabIndex", 0)
-	el.appendChild(divOpcoes);
-
-	var opcoesTxt = document.createElement("p");
-	opcoesTxt.setAttribute("id", "opcoesTxt");
-	opcoesTxt.innerHTML = "Configurações";
-	divOpcoes.appendChild(opcoesTxt);
-
-	//Cria div caixa de botoes
-	var caixaBotoes = document.createElement("div");
-	caixaBotoes.setAttribute("id", "caixaBotoesOpcao");
-	divOpcoes.appendChild(caixaBotoes);
-
-	//btnContinuar
-	var opcoesContinuar = document.createElement("div");
-	opcoesContinuar.setAttribute("id", "opcaoContinuar");
-	opcoesContinuar.setAttribute("class", "botaoOpcoes");
-	opcoesContinuar.setAttribute("tabIndex", -1);
-
-	//btnAudio
-	var opcoesAudio = document.createElement("div");
-	opcoesAudio.setAttribute("id", "opcaoAudio");
-	opcoesAudio.setAttribute("class", "botaoOpcoes");
-	opcoesAudio.setAttribute("tabIndex", -1);
-
-	//btnIntrucoes
-	var opcoesInstrucoes = document.createElement("div");
-	opcoesInstrucoes.setAttribute("id", "opcaoInstrucoes");
-	opcoesInstrucoes.setAttribute("class", "botaoOpcoes");
-	opcoesInstrucoes.setAttribute("tabIndex", -1);
-
-	//btnMenu
-	var opcoesMenu = document.createElement("div");
-	opcoesMenu.setAttribute("id", "opcaoMenu");
-	opcoesMenu.setAttribute("class", "botaoOpcoes");
-	opcoesMenu.setAttribute("tabIndex", -1);
-
-	//adicionando botões a caixa de botoes
-	caixaBotoes.appendChild(opcoesContinuar);
-	caixaBotoes.appendChild(opcoesAudio);
-	caixaBotoes.appendChild(opcoesInstrucoes);
-	caixaBotoes.appendChild(opcoesMenu);
-
-	//Implementação tela de opções navegação pelo mouse
-
-	//btnContinuar
-	opcoesContinuar.onclick = function(){
-		ativarOpcaoContinuar();
-	}
-	opcoesContinuar.onmouseenter = function(){
-		opcoesContinuar.focus();
+	if(!mobile){
+		paraFala();
+		estado = "opcoes";
 		opcao = 0;
-	}
-
-	//btnAudio
-	opcoesAudio.onclick = function(){
-		ativarOpcaoAudio();
-	}
-	opcoesAudio.onmouseenter = function(){
-		opcoesAudio.focus();
-		opcao = 1;
-	}
-
-	//btnInstrucoes
-	opcoesInstrucoes.onclick = function(){
-		ativarOpcaoInstrucoes();
-	}
-	opcoesInstrucoes.onmouseenter = function(){
-		opcoesInstrucoes.focus();
-		opcao = 2;
-	}
-
-	//btnMenu
-	opcoesMenu.onclick = function(){
-		ativarOpcaoMenu();
-	}
-	opcoesMenu.onmouseenter = function(){
-		opcoesMenu.focus();
-		opcao = 3;
-	}
-
-
-	//Inicializa o foco da camada
-	inicializaFocus();
-
-	$("#camadaOpcoes").keydown(function (e){
-		selecionaOpcao(e);	
-	})
-
-	$("#camadaOpcoes").keyup(function(e){
-		if(e.charCode == 27 || e.which == 27 || e.keyCode == 27)
-		{
-			destruirCamadaOpcoes();
-			sairInstrucoes = true;
-			estado = "jogando";
+		origemInstrucoes = "opcoes";
+	
+		//Cria div camada opcoes
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaOpcoes");
+		el.setAttribute("tabIndex", 0);
+		$("#palco").append(el);
+		el.focus();
+	
+		/*Opcoes : ->Continuar
+				   ->Áudio
+				   ->Instruções
+				   ->Menu*/
+	
+	
+		//titulo
+	
+		var divOpcoes = document.createElement("div");
+		divOpcoes.setAttribute("id", "divOpcoes");
+		divOpcoes.setAttribute("tabIndex", 0)
+		el.appendChild(divOpcoes);
+	
+		var opcoesTxt = document.createElement("p");
+		opcoesTxt.setAttribute("id", "opcoesTxt");
+		opcoesTxt.innerHTML = "Configurações";
+		divOpcoes.appendChild(opcoesTxt);
+	
+		//Cria div caixa de botoes
+		var caixaBotoes = document.createElement("div");
+		caixaBotoes.setAttribute("id", "caixaBotoesOpcao");
+		divOpcoes.appendChild(caixaBotoes);
+	
+		//btnContinuar
+		var opcoesContinuar = document.createElement("div");
+		opcoesContinuar.setAttribute("id", "opcaoContinuar");
+		opcoesContinuar.setAttribute("class", "botaoOpcoes");
+		opcoesContinuar.setAttribute("tabIndex", -1);
+	
+		//btnAudio
+		var opcoesAudio = document.createElement("div");
+		opcoesAudio.setAttribute("id", "opcaoAudio");
+		opcoesAudio.setAttribute("class", "botaoOpcoes");
+		opcoesAudio.setAttribute("tabIndex", -1);
+	
+		//btnIntrucoes
+		var opcoesInstrucoes = document.createElement("div");
+		opcoesInstrucoes.setAttribute("id", "opcaoInstrucoes");
+		opcoesInstrucoes.setAttribute("class", "botaoOpcoes");
+		opcoesInstrucoes.setAttribute("tabIndex", -1);
+	
+		//btnMenu
+		var opcoesMenu = document.createElement("div");
+		opcoesMenu.setAttribute("id", "opcaoMenu");
+		opcoesMenu.setAttribute("class", "botaoOpcoes");
+		opcoesMenu.setAttribute("tabIndex", -1);
+	
+		//adicionando botões a caixa de botoes
+		caixaBotoes.appendChild(opcoesContinuar);
+		caixaBotoes.appendChild(opcoesAudio);
+		caixaBotoes.appendChild(opcoesInstrucoes);
+		caixaBotoes.appendChild(opcoesMenu);
+	
+		//Implementação tela de opções navegação pelo mouse
+	
+		//btnContinuar
+		opcoesContinuar.onclick = function(){
+			ativarOpcaoContinuar();
 		}
-	})
+		opcoesContinuar.onmouseenter = function(){
+			opcoesContinuar.focus();
+			opcao = 0;
+		}
+	
+		//btnAudio
+		opcoesAudio.onclick = function(){
+			ativarOpcaoAudio();
+		}
+		opcoesAudio.onmouseenter = function(){
+			opcoesAudio.focus();
+			opcao = 1;
+		}
+	
+		//btnInstrucoes
+		opcoesInstrucoes.onclick = function(){
+			ativarOpcaoInstrucoes();
+		}
+		opcoesInstrucoes.onmouseenter = function(){
+			opcoesInstrucoes.focus();
+			opcao = 2;
+		}
+	
+		//btnMenu
+		opcoesMenu.onclick = function(){
+			ativarOpcaoMenu();
+		}
+		opcoesMenu.onmouseenter = function(){
+			opcoesMenu.focus();
+			opcao = 3;
+		}
+	
+	
+		//Inicializa o foco da camada
+		inicializaFocus();
+	
+		$("#camadaOpcoes").keydown(function (e){
+			selecionaOpcao(e);	
+		})
+	
+		$("#camadaOpcoes").keyup(function(e){
+			if(e.charCode == 27 || e.which == 27 || e.keyCode == 27)
+			{
+				destruirCamadaOpcoes();
+				sairInstrucoes = true;
+				estado = "jogando";
+			}
+		})
+	}
+	else{
+		estado = "opcoes";
+		opcao = 0;
+		origemInstrucoes = "opcoes";
+
+		//Cria div camada opcoes
+		var el = document.createElement("div");
+		el.setAttribute("id", "camadaOpcoes");
+		$("#palco").append(el);
+		el.focus();
+		/*Opcoes : ->Continuar
+				->Áudio
+				->Instruções
+				->Menu*/
+
+
+		//titulo
+
+		var divOpcoes = document.createElement("div");
+		divOpcoes.setAttribute("id", "divOpcoes");
+		el.appendChild(divOpcoes);
+
+		var opcoesTxt = document.createElement("h1");
+		opcoesTxt.setAttribute("id", "opcoesTxt");
+		opcoesTxt.innerHTML = "Opções";
+		divOpcoes.appendChild(opcoesTxt);
+
+		//Cria div caixa de botoes
+		var caixaBotoes = document.createElement("div");
+		caixaBotoes.setAttribute("id", "caixaBotoesOpcao");
+		divOpcoes.appendChild(caixaBotoes);
+
+		//btnContinuar
+		var opcoesContinuar = document.createElement("button");
+		opcoesContinuar.innerText = "Continuar";
+		opcoesContinuar.setAttribute("id", "opcaoContinuar");
+		opcoesContinuar.setAttribute("class", "botaoOpcoes");
+
+		//btnAudio
+		var opcoesAudio = document.createElement("button");
+		opcoesAudio.innerText = "Áudio";
+		opcoesAudio.setAttribute("id", "opcaoAudio");
+		opcoesAudio.setAttribute("class", "botaoOpcoes");
+
+		//btnIntrucoes
+		var opcoesInstrucoes = document.createElement("button");
+		opcoesInstrucoes.innerText = "Instruções";
+		opcoesInstrucoes.setAttribute("id", "opcaoInstrucoes");
+		opcoesInstrucoes.setAttribute("class", "botaoOpcoes");
+
+		//btnMenu
+		var opcoesMenu = document.createElement("button");
+		opcoesMenu.innerText = "Desistir";
+		opcoesMenu.setAttribute("id", "opcaoMenu");
+		opcoesMenu.setAttribute("class", "botaoOpcoes");
+
+		//adicionando botões a caixa de botoes
+		caixaBotoes.appendChild(opcoesContinuar);
+		caixaBotoes.appendChild(opcoesAudio);
+		caixaBotoes.appendChild(opcoesInstrucoes);
+		caixaBotoes.appendChild(opcoesMenu);
+
+		//Implementação tela de opções navegação pelo mouse
+
+		//btnContinuar
+		opcoesContinuar.onclick = function(){
+			$("#camadaJogo").toggle();
+			ativarOpcaoContinuar();
+			
+		}
+
+		//btnAudio
+		opcoesAudio.onclick = function(){
+			ativarOpcaoAudio();
+		}
+
+		//btnInstrucoes
+		opcoesInstrucoes.onclick = function(){
+			ativarOpcaoInstrucoes();
+		}
+
+		//btnMenu
+		opcoesMenu.onclick = function(){
+			ativarOpcaoMenu();
+		}
+	}
 }
 
 function destruirCamadaOpcoes(){
