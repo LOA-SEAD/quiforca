@@ -535,6 +535,46 @@ function colocarLetraEmLetrasTentadas(_letra)
 
 	if(naoEstavaAinda)
 	{
+		//I acentuado
+		if(_letra == "I")
+		{
+			jogo.letrasTentadas[i+1] = "Í";
+		}
+
+		//E acentuado
+		if(_letra == "E")
+		{
+			jogo.letrasTentadas[i+1] = "É";
+			jogo.letrasTentadas[i+2] = "Ê";
+		}
+
+		//A acentuado
+		if(_letra == "A")
+		{
+			jogo.letrasTentadas[i+1] = "Ã";
+			jogo.letrasTentadas[i+2] = "Â";
+			jogo.letrasTentadas[i+3] = "Á";
+		}
+
+		//Ç
+		if(_letra == "C")
+		{
+			jogo.letrasTentadas[i+1] = "Ç";
+		}
+
+		//O acentuado
+		if(_letra == "O")
+		{
+			jogo.letrasTentadas[i+1] = "Ó";
+			jogo.letrasTentadas[i+2] = "Õ";
+			jogo.letrasTentadas[i+3] = "Ô";
+		}
+
+		if(_letra == "U")
+		{
+			jogo.letrasTentadas[i+1] = "Ú";
+		}
+		
 		jogo.letrasTentadas[i] = _letra;
 		mudarCor(_letra);
 	}

@@ -196,7 +196,7 @@ document.body.onkeyup = function(e)
 				delayLetraAtalho4 = setInterval(letras, 600);
 				function letras()
 				{
-					if(counter >= tamanhoLetrasTentadas() - 1)
+					if(!somLetra4[counter])
 					{
 						clearInterval(delayAtalho4);
 					}
