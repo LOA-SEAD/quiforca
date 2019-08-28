@@ -615,7 +615,7 @@ p
 	width: 100%;
 }
 
-#btnInicio{
+#btnDesktop{
 	height: 75px;
 	width: 225px;
 	background-image: url("../novasImgs/btnDesktop.png");
@@ -624,11 +624,22 @@ p
 	margin: .3rem auto;
 }
 
-#btnInicio:hover{
+#btnMobile{
+	height: 75px;
+	width: 225px;
+	background-image: url("../novasImgs/btnMobile.png");
+	background-size: cover;
+	border: none;
+	margin: .3rem auto;
+}
+
+#btnDesktop:hover, #btnMobile:hover{
 	transform: scale(1.1);
 	cursor: pointer;
 	outline: none;
 }
+
+
 
 /*Parte do personagem do jogo*/
 .personagem

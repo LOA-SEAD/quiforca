@@ -57,10 +57,10 @@ function criarCamadaInicial(){
 	caixaBotoes.setAttribute("id", "caixaBotoesInicio");
 
 	var btnDesktop = document.createElement("div");
-	btnDesktop.setAttribute("id", "btnInicio");
+	btnDesktop.setAttribute("id", "btnDesktop");
 
 	var btnMobile = document.createElement("div");
-	btnMobile.setAttribute("id", "btnInicio");
+	btnMobile.setAttribute("id", "btnMobile");
 
 	caixaBotoes.appendChild(btnDesktop);
 	caixaBotoes.appendChild(btnMobile);
