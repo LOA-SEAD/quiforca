@@ -47,10 +47,10 @@ function criarCamadaInicial(){
 	instrucoesIniciais.innerHTML = 
 	"<h1> Instruções iniciais </h1>" +
 	"<h2> Versão Desktop </h2>" +
-	"Jogo já possui áudios pré-gravados para acessibilidade. </br>" + 
-	"Se possível, mutar seu leitor de tela." +
+	"O Jogo já possui áudios pré-gravados para acessibilidade. </br></br>" + 
+	"Recomendável desabilitar o áudio de seu leitor de tela para melhor experiência." +
 	"<h2> Versão Mobile </h2>" + 
-	"Manter ativado a acessibilidade do celular." +
+	"Habilitar acessibilidade do celular." +
 	"<h2> Escolha a versão do jogo. </h2>";
 
 	var caixaBotoes = document.createElement("div");
@@ -66,17 +66,21 @@ function criarCamadaInicial(){
 	caixaBotoes.appendChild(btnMobile);
 
 
-	$("#palco").append(element);
+	pai.appendChild(element);
 	$("#camadaInicial").append(instrucoesIniciais);
 	$("#camadaInicial").append(caixaBotoes);
 
 	btnDesktop.onclick = function(){
 		$("#camadaInicial").remove();
+		jogo.palco = new Palco();
+		jogo.palco.criar();
 		criarCamadaMenu();
 	}
 
 	btnMobile.onclick = function(){
 		$("#camadaInicial").remove();
+		jogo.palco = new Palco();
+		jogo.palco.criar();
 		var style = document.getElementById("estilo");
 		style.setAttribute("href", "./css/mobileStyle.css");
 		mobile = true;
@@ -2254,7 +2258,5 @@ function ativarOpcaoMenu(){
 	criarCamadaMenu();
 }
 
-jogo.palco = new Palco();
-jogo.palco.criar();
 iniciarNovoJogo();
 criarCamadaInicial();
