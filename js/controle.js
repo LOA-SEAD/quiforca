@@ -780,7 +780,8 @@ function criarCamadaVitoria()
 	inicializaFocus();
 
 	$("#camadaVitoria").keydown(function (e){
-		selecionaOpcao(e);
+		if(!mobile)
+			selecionaOpcao(e);
 	})
 
 	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')
@@ -995,7 +996,8 @@ function criarCamadaDerrota()
 	inicializaFocus();
 
 	$("#camadaDerrota").keydown(function (e){
-		selecionaOpcao(e);	
+		if(!mobile)
+			selecionaOpcao(e);	
 	})
 
 	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',palavraNoFim,false,jogo.bd.length,1,'Forca')

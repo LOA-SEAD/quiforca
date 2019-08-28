@@ -66,164 +66,167 @@ var stopAtalhos;
 
 document.body.onkeyup = function(e)
 {
-	if(estado != "jogando")
-	{
-		return false;
-	}
-
-	var counter = 0
-
-	//Pega as teclas
-	var e = window.event||e;
-	var keyunicode = e.charcode || e.keyCode || e.which;
-
-	if(keyunicode >= 112 && keyunicode <= 123)
-	{
-		return false;
-	}
-	
-	if(keyunicode >= 65 && keyunicode <= 90)
-	{
-    	keyunicode +=32;
-	}
-
-	//Se o codigo estiver dentro do alfabeto
-	if((keyunicode >= 97 && keyunicode <= 122) && (jogo.emTransicao == false) && (fimDeJogo() == -1))
-	{		
-		//para a leitura de qualquer atalho
-		stopTudo();
-		//Verifica se deu erro
-		verificarErro(String.fromCharCode(keyunicode-32));
-		//Coloca nas letras tentadas
-		colocarLetraEmLetrasTentadas(String.fromCharCode(keyunicode-32));
-	}
-
-	//Tecla para voltar
-	if(keyunicode == 27) //Esc
-	{
-		stopTudo();
-		if(!sairInstrucoes)
+	if(!mobile){
+		
+		if(estado != "jogando")
 		{
-			criarCamadaOpcoes();
+			return false;
 		}
-		sairInstrucoes = false;
-		setTimeout(update, 50);
-	}
-
-
-	//Variaveis para atalhos
-	var counter = 0;
-
-	//1 - Ouvir dica
-	var nomeAtalho1;
-
-	//2 - Status da palavra
-	audioAtalho2.setAttribute("src", "audio/letra1.mp3");
-	var nomeAtalho2;
-	var somLetra2 = [];
-
-	//3 - Vidas restantes
-	var nomeAtalho3 = "audio/vidas" + numeroDeChances();
-
-	//4 - Letras já lidas
-	audioAtalho4.setAttribute("src", "audio/atalho4.mp3");
-	var nomeAtalho4;
-	var somLetra4 = [];
-
-	//5 - Pontuação
-	audioAtalho5.setAttribute("src", "audio/pontos.mp3");
-
-	//Ouve a dica
-	if(keyunicode == 49) //1
-	{
-		stopTudo();
-		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
-		realizarLeitura(texto);
-	}
-
-	//Lê o status da palavra
-	if(keyunicode == 50) //2
-	{
-		stopTudo();
-		ouvirAtalho2();	
-	}
-
-	//Quantas vidas ainda tem
-	if(keyunicode == 51) //3
-	{
-		stopTudo();
 	
-		switch(numeroDeChances())
+		var counter = 0
+	
+		//Pega as teclas
+		var e = window.event||e;
+		var keyunicode = e.charcode || e.keyCode || e.which;
+	
+		if(keyunicode >= 112 && keyunicode <= 123)
 		{
-			case 1:
-				realizarFala(baseURL + "1vida.mp3");
-				break;
-			case 2:
-				realizarFala(baseURL + "2vidas.mp3");
-				break;
-			case 3:
-				realizarFala(baseURL + "3vidas.mp3");
-				break;
-			case 4:
-				realizarFala(baseURL + "4vidas.mp3");
-				break;
-			case 5:
-				realizarFala(baseURL + "5vidas.mp3");
-				break;
+			return false;
 		}
-	}
-
-	//Letras já escolhidas
-	if(keyunicode == 52) //4
-	{
-		stopTudo();
-
-		counter = 0;
-		realizarFala(baseURL + "letrasEscolhidas.mp3");
-		//audioAtalho4.currentTime = 0;
-		//audioAtalho4.play();
-		for(var i = 1; i < tamanhoLetrasTentadas(); i++)
+		
+		if(keyunicode >= 65 && keyunicode <= 90)
 		{
-			if(retornaLetrasTentadas(i))
+			keyunicode +=32;
+		}
+	
+		//Se o codigo estiver dentro do alfabeto
+		if((keyunicode >= 97 && keyunicode <= 122) && (jogo.emTransicao == false) && (fimDeJogo() == -1))
+		{		
+			//para a leitura de qualquer atalho
+			stopTudo();
+			//Verifica se deu erro
+			verificarErro(String.fromCharCode(keyunicode-32));
+			//Coloca nas letras tentadas
+			colocarLetraEmLetrasTentadas(String.fromCharCode(keyunicode-32));
+		}
+	
+		//Tecla para voltar
+		if(keyunicode == 27) //Esc
+		{
+			stopTudo();
+			if(!sairInstrucoes)
 			{
-				nomeAtalho4 = baseURL + retornaLetrasTentadas(i) + ".mp3";
-				somLetra4.push(track(nomeAtalho4));
+				criarCamadaOpcoes();
+			}
+			sairInstrucoes = false;
+			setTimeout(update, 50);
+		}
+	
+	
+		//Variaveis para atalhos
+		var counter = 0;
+	
+		//1 - Ouvir dica
+		var nomeAtalho1;
+	
+		//2 - Status da palavra
+		audioAtalho2.setAttribute("src", "audio/letra1.mp3");
+		var nomeAtalho2;
+		var somLetra2 = [];
+	
+		//3 - Vidas restantes
+		var nomeAtalho3 = "audio/vidas" + numeroDeChances();
+	
+		//4 - Letras já lidas
+		audioAtalho4.setAttribute("src", "audio/atalho4.mp3");
+		var nomeAtalho4;
+		var somLetra4 = [];
+	
+		//5 - Pontuação
+		audioAtalho5.setAttribute("src", "audio/pontos.mp3");
+	
+		//Ouve a dica
+		if(keyunicode == 49) //1
+		{
+			stopTudo();
+			var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
+			realizarLeitura(texto);
+		}
+	
+		//Lê o status da palavra
+		if(keyunicode == 50) //2
+		{
+			stopTudo();
+			ouvirAtalho2();	
+		}
+	
+		//Quantas vidas ainda tem
+		if(keyunicode == 51) //3
+		{
+			stopTudo();
+		
+			switch(numeroDeChances())
+			{
+				case 1:
+					realizarFala(baseURL + "1vida.mp3");
+					break;
+				case 2:
+					realizarFala(baseURL + "2vidas.mp3");
+					break;
+				case 3:
+					realizarFala(baseURL + "3vidas.mp3");
+					break;
+				case 4:
+					realizarFala(baseURL + "4vidas.mp3");
+					break;
+				case 5:
+					realizarFala(baseURL + "5vidas.mp3");
+					break;
 			}
 		}
-		delayAtalho4 = setTimeout(function(){
-			delayLetraAtalho4 = setInterval(letras, 600);
-			function letras()
+	
+		//Letras já escolhidas
+		if(keyunicode == 52) //4
+		{
+			stopTudo();
+	
+			counter = 0;
+			realizarFala(baseURL + "letrasEscolhidas.mp3");
+			//audioAtalho4.currentTime = 0;
+			//audioAtalho4.play();
+			for(var i = 1; i < tamanhoLetrasTentadas(); i++)
 			{
-				if(counter >= tamanhoLetrasTentadas() - 1)
+				if(retornaLetrasTentadas(i))
 				{
-					clearInterval(delayAtalho4);
-				}
-				else
-				{
-					somLetra4[counter].currentTime = 0;
-					somLetra4[counter].play();
-					counter++;
+					nomeAtalho4 = baseURL + retornaLetrasTentadas(i) + ".mp3";
+					somLetra4.push(track(nomeAtalho4));
 				}
 			}
-		}, 2000);
-}
-
-	//Pontuação atual
-	if(keyunicode == 53) //5
-	{
-		stopTudo();
-
-		if(pontuacao() == 1)
-		{
-			realizarLeitura("Um ponto");
-		}
-		else
-		{
-			realizarLeitura(pontuacao() + " pontos.");
-			//window.speechSynthesis.
-		}
+			delayAtalho4 = setTimeout(function(){
+				delayLetraAtalho4 = setInterval(letras, 600);
+				function letras()
+				{
+					if(counter >= tamanhoLetrasTentadas() - 1)
+					{
+						clearInterval(delayAtalho4);
+					}
+					else
+					{
+						somLetra4[counter].currentTime = 0;
+						somLetra4[counter].play();
+						counter++;
+					}
+				}
+			}, 2000);
 	}
-
+	
+		//Pontuação atual
+		if(keyunicode == 53) //5
+		{
+			stopTudo();
+	
+			if(pontuacao() == 1)
+			{
+				realizarLeitura("Um ponto");
+			}
+			else
+			{
+				realizarLeitura(pontuacao() + " pontos.");
+				//window.speechSynthesis.
+			}
+		}	
+	}
+	
 }
 
 function stopAtalho1()
