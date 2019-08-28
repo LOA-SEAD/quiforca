@@ -1268,16 +1268,7 @@ function criarCamadaInstrucoes()
 			}
 		}
 
-		/*var botaoOuvir = document.createElement("button");
-		botaoOuvir.setAttribute("id", "btnOuvir");
-		botaoOuvir.innerHTML = "Ouvir";
-		btnGrupo.append(botaoOuvir);
-		botaoOuvir.onclick = function()
-		{
-			
-		}*/
 		
-
 		//conteúdo instruções
 		jogo.instrucoes = document.createElement("p");
 		jogo.instrucoes.setAttribute("id", "instrucoesText")
@@ -2252,7 +2243,8 @@ function ativarOpcaoAudio(){
 
 function ativarOpcaoInstrucoes(){
 	destruirCamadaOpcoes();
-	$("#camadaJogo").toggle();
+	if(!mobile)
+		$("#camadaJogo").toggle();
 	criarCamadaInstrucoes();
 }
 
