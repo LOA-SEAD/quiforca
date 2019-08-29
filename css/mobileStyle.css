@@ -649,14 +649,6 @@ p
 	font-family: "Fonte","Tahoma";
 }
 
-
-#botoesTelaVitoria{
-	display: grid;
-	width: 100vw;
-	grid-template-columns: repeat(1,1fr);
-	grid-template-rows: repeat(2,1fr);
-}
-
 #botoesTelaVitoria > *{
 	display: flex;
 	justify-content: center;

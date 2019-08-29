@@ -850,7 +850,10 @@ function criarCamadaFimdeJogo()
 	jogo.palavraNaTela.setAttribute("id", "palavraNaTela");
 	jogo.palavraNaTela.setAttribute("tabIndex", "-1");
 	jogo.palavraNaTela.setAttribute("role", "textbox");
-	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2> <h4>Pontuação final: " + jogo.pontos + " pontos. </h4> <p> Aperte ENTER para recomeçar o jogo ! </p>";
+	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2> <h4>Pontuação final: " + jogo.pontos + " pontos. </h4>";
+
+	if(!mobile)
+		jogo.palavraNaTela.innerHTML += "<p> Aperte ENTER para recomeçar o jogo ! </p>";
 
 	jogo.imgBonecoVitoria = document.createElement("img");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
@@ -876,15 +879,17 @@ function criarCamadaFimdeJogo()
 
 	document.onkeydown = function(e)
 	{
-		clearInterval(vitoria1);
+		if(!mobile){
+			clearInterval(vitoria1);
 
-		e = window.event||e;
-		var tecla = e.which || e.keyCode || e.charCode;
-		if(tecla == 13 && estado == "fimdeJogo")
-		{
-			destruirCamadaFimdeJogo();
-			criarCamadaMenu();
-			iniciarNovoJogo();
+			e = window.event||e;
+			var tecla = e.which || e.keyCode || e.charCode;
+			if(tecla == 13 && estado == "fimdeJogo")
+			{
+				destruirCamadaFimdeJogo();
+				criarCamadaMenu();
+				iniciarNovoJogo();
+			}
 		}
 	}
 }
@@ -1448,31 +1453,33 @@ opcoes = 0 - instruções
 var delayInicializaFocus
 
 function inicializaFocus(){
-	if(estado == "menu"){
-		document.getElementById("camadaMenu").focus();
-		document.getElementById("btnInstrucoes").focus();
-	}
-	else if(estado == "derrota"){
-		document.getElementById("camadaDerrota").focus();
-		document.getElementById("btnReiniciar").focus();
-	}
-	else if(estado == "vitoria"){
-		document.getElementById("camadaVitoria").focus();
-		document.getElementById("btnProxPalavra").focus();
-	}
-	else if(estado == "jogando"){
-		document.getElementById("palavraNaTela").focus();
-	}
-	else if(estado == "fimdeJogo"){
-		document.getElementById("camadaFimdeJogo").focus();
-	}
-	else if(estado == "opcoes"){
-		document.getElementById("opcaoContinuar").focus();
-		leituraInicial(baseURL + "configuracoes.mp3");
-	}
-	else if(estado == "audio"){
-		document.getElementById("MusicaFundo").focus();
-		leituraInicial(baseURL + "entrarEnter.mp3")
+	if(!mobile){
+		if(estado == "menu"){
+			document.getElementById("camadaMenu").focus();
+			document.getElementById("btnInstrucoes").focus();
+		}
+		else if(estado == "derrota"){
+			document.getElementById("camadaDerrota").focus();
+			document.getElementById("btnReiniciar").focus();
+		}
+		else if(estado == "vitoria"){
+			document.getElementById("camadaVitoria").focus();
+			document.getElementById("btnProxPalavra").focus();
+		}
+		else if(estado == "jogando"){
+			document.getElementById("palavraNaTela").focus();
+		}
+		else if(estado == "fimdeJogo"){
+			document.getElementById("camadaFimdeJogo").focus();
+		}
+		else if(estado == "opcoes"){
+			document.getElementById("opcaoContinuar").focus();
+			leituraInicial(baseURL + "configuracoes.mp3");
+		}
+		else if(estado == "audio"){
+			document.getElementById("MusicaFundo").focus();
+			leituraInicial(baseURL + "entrarEnter.mp3")
+		}
 	}
 }
 
@@ -1513,7 +1520,10 @@ function inicializaFocusFala(){
 		}
 		else if(frase == 2){
 			var txt = jogo.pontos + "pontos";
-			realizarLeituraInicial(txt);
+			if(!mobile)
+				realizarLeituraInicial(txt);
+			else
+				realizarLeitura(txt);
 		}
 	}
 }
