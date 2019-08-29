@@ -64,6 +64,28 @@ var centenaLer = document.createElement("AUDIO");
 
 var stopAtalhos;
 
+//Variaveis para atalhos
+var counter = 0;
+
+//1 - Ouvir dica
+var nomeAtalho1;
+
+//2 - Status da palavra
+audioAtalho2.setAttribute("src", "audio/letra1.mp3");
+var nomeAtalho2;
+var somLetra2 = [];
+
+//3 - Vidas restantes
+var nomeAtalho3 = "audio/vidas";
+
+//4 - Letras já lidas
+audioAtalho4.setAttribute("src", "audio/atalho4.mp3");
+var nomeAtalho4;
+var somLetra4 = [];
+
+//5 - Pontuação
+audioAtalho5.setAttribute("src", "audio/pontos.mp3");
+
 document.body.onkeyup = function(e)
 {
 	if(!mobile){
@@ -99,32 +121,20 @@ document.body.onkeyup = function(e)
 			//Coloca nas letras tentadas
 			colocarLetraEmLetrasTentadas(String.fromCharCode(keyunicode-32));
 		}
+		//Tecla para voltar
+		if(keyunicode == 27) //Esc
+		{
+			stopTudo();
+			if(!sairInstrucoes)
+			{
+				criarCamadaOpcoes();
+			}
+			sairInstrucoes = false;
+			setTimeout(update, 50);
+		}
 		sairInstrucoes = false;
 		setTimeout(update, 50);
 	}
-
-
-	//Variaveis para atalhos
-	var counter = 0;
-
-	//1 - Ouvir dica
-	var nomeAtalho1;
-
-	//2 - Status da palavra
-	audioAtalho2.setAttribute("src", "audio/letra1.mp3");
-	var nomeAtalho2;
-	var somLetra2 = [];
-
-	//3 - Vidas restantes
-	var nomeAtalho3 = "audio/vidas" + numeroDeChances();
-
-	//4 - Letras já lidas
-	audioAtalho4.setAttribute("src", "audio/atalho4.mp3");
-	var nomeAtalho4;
-	var somLetra4 = [];
-
-	//5 - Pontuação
-	audioAtalho5.setAttribute("src", "audio/pontos.mp3");
 
 	//Ouve a dica
 	if(keyunicode == 49) //1
@@ -293,6 +303,7 @@ function ouvirAtalho2(){
 
 function ouvirAtalho3(){
 	stopTudo();
+	nomeAtalho3 += numeroDeChances();
 	
 		switch(numeroDeChances())
 		{
@@ -316,7 +327,8 @@ function ouvirAtalho3(){
 
 function ouvirAtalho4(){
 		stopTudo();
-
+		//esvaziando o array
+		somLetra4 = [];
 		counter = 0;
 		realizarFala(baseURL + "letrasEscolhidas.mp3");
 		//audioAtalho4.currentTime = 0;
@@ -333,7 +345,7 @@ function ouvirAtalho4(){
 			delayLetraAtalho4 = setInterval(letras, 600);
 			function letras()
 			{
-				if(counter >= tamanhoLetrasTentadas() - 1)
+				if(!somLetra4[counter])
 				{
 					clearInterval(delayAtalho4);
 				}
