@@ -188,7 +188,6 @@ input[type=range] {
 
 #camadaVitoria
 {
-	text-align: center;
 	width: 100vw;
 	height: calc(var(--vh, 1vh) * 100);
 	display: flex;
@@ -638,6 +637,9 @@ p
 }
 
 #botoesFimDeJogo > *{
+	display: flex;
+	justify-content: center;
+   	align-items: center;
 	width: 100vw;
 	height: 18vw;
     background: #e7e7e7;
@@ -656,6 +658,9 @@ p
 }
 
 #botoesTelaVitoria > *{
+	display: flex;
+	justify-content: center;
+    align-items: center;
 	width: 100vw;
 	height: 18vw;
 	background: #e7e7e7;

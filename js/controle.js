@@ -378,6 +378,7 @@ function criarCamadaJogo()
 	else{
 		paraFala();
 		origemAudio = "jogo";
+		frase = 1;
 
 		var el = document.createElement("div");
 		el.setAttribute("id", "camadaJogo");
@@ -1492,12 +1493,18 @@ function inicializaFocusFala(){
 		}
 		else if(frase == 2){
 			var txt = jogo.pontos + "pontos";
-			realizarLeituraInicial(txt);
+			if(!mobile)
+				realizarLeituraInicial(txt);
+			else
+				realizarLeitura(txt);
 		}
 	}
 	else if(estado == "vitoria"){
 		var txt = jogo.palavraSorteada;
-		realizarLeituraInicial(txt);
+		if(!mobile)
+			realizarLeituraInicial(txt);
+		else	
+			realizarLeitura(txt);
 	}
 	else if(estado == "audio"){
 		realizarFala(baseURL + "musicaFundo.mp3");
