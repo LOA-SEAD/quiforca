@@ -283,6 +283,17 @@ input[type=range]::-ms-fill-lower{
 	padding: 2rem 5rem;
 }
 
+#camadaInicial{
+	display: grid;
+	min-height: 100%;
+	background-image: url("../imgs/novafolha.png");
+	background-size: cover;
+	margin: 10px 70px 0px 70px;
+	justify-content: center;
+	align-content: center;
+	padding: 0 2rem;
+}
+
 /*Parte das coisas escritas na tela*/
 #palavraNaTela
 {
@@ -611,11 +622,10 @@ p
 }
 
 #caixaBotoesInicio{
-	display: inline-grid;
 	width: 100%;
 }
 
-#btnInicio{
+#btnDesktop{
 	height: 75px;
 	width: 225px;
 	background-image: url("../novasImgs/btnDesktop.png");
@@ -624,11 +634,22 @@ p
 	margin: .3rem auto;
 }
 
-#btnInicio:hover{
+#btnMobile{
+	height: 75px;
+	width: 225px;
+	background-image: url("../novasImgs/btnMobile.png");
+	background-size: cover;
+	border: none;
+	margin: .3rem auto;
+}
+
+#btnDesktop:hover, #btnMobile:hover{
 	transform: scale(1.1);
 	cursor: pointer;
 	outline: none;
 }
+
+
 
 /*Parte do personagem do jogo*/
 .personagem
@@ -833,41 +854,29 @@ p
 /*----------------------MEDIA QUERY BASEADA NAS QUEBRAS DO BOOTSTRAP--------------*/
 /* Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) { 
-	#palco{
+	#camadaInicial{
 		min-height: 100vh;
-		min-width: 0;
 		margin: 0;
-		font-size: 16px;
 		padding: 0 2rem;
 	}
 	#txtInicio{
-		font-size: 16px;
+		font-size: 20px;
 	}
 
 	#txtInicio > h1{
-		font-size: 24px;
+		font-size: 26px;
 	}
 
 	#txtInicio > h2{
-		font-size: 20px;
+		font-size: 24px;
 	}
  }
 
 /* Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) { 
-
- }
+@media (min-width: 576px) { }
 
 /* Medium devices (tablets, 768px and up)*/
-@media (max-width: 868px) {
-	#palco{
-		min-height: 100vh;
-		min-width: 0;
-		margin: 0;
-		font-size: 16px;
-		padding: 0 2rem;
-	}
- }
+@media (max-width: 868px) { }
 
 /* Large devices (desktops, 992px and up)*/
 @media (min-width: 992px) {  }

@@ -66,45 +66,38 @@ var stopAtalhos;
 
 document.body.onkeyup = function(e)
 {
-	if(estado != "jogando")
-	{
-		return false;
-	}
-
-	var counter = 0
-
-	//Pega as teclas
-	var e = window.event||e;
-	var keyunicode = e.charcode || e.keyCode || e.which;
-
-	if(keyunicode >= 112 && keyunicode <= 123)
-	{
-		return false;
-	}
-	
-	if(keyunicode >= 65 && keyunicode <= 90)
-	{
-    	keyunicode +=32;
-	}
-
-	//Se o codigo estiver dentro do alfabeto
-	if((keyunicode >= 97 && keyunicode <= 122) && (jogo.emTransicao == false) && (fimDeJogo() == -1))
-	{		
-		//para a leitura de qualquer atalho
-		stopTudo();
-		//Verifica se deu erro
-		verificarErro(String.fromCharCode(keyunicode-32));
-		//Coloca nas letras tentadas
-		colocarLetraEmLetrasTentadas(String.fromCharCode(keyunicode-32));
-	}
-
-	//Tecla para voltar
-	if(keyunicode == 27) //Esc
-	{
-		stopTudo();
-		if(!sairInstrucoes)
+	if(!mobile){
+		
+		if(estado != "jogando")
 		{
-			criarCamadaOpcoes();
+			return false;
+		}
+	
+		var counter = 0
+	
+		//Pega as teclas
+		var e = window.event||e;
+		var keyunicode = e.charcode || e.keyCode || e.which;
+	
+		if(keyunicode >= 112 && keyunicode <= 123)
+		{
+			return false;
+		}
+		
+		if(keyunicode >= 65 && keyunicode <= 90)
+		{
+			keyunicode +=32;
+		}
+	
+		//Se o codigo estiver dentro do alfabeto
+		if((keyunicode >= 97 && keyunicode <= 122) && (jogo.emTransicao == false) && (fimDeJogo() == -1))
+		{		
+			//para a leitura de qualquer atalho
+			stopTudo();
+			//Verifica se deu erro
+			verificarErro(String.fromCharCode(keyunicode-32));
+			//Coloca nas letras tentadas
+			colocarLetraEmLetrasTentadas(String.fromCharCode(keyunicode-32));
 		}
 		sairInstrucoes = false;
 		setTimeout(update, 50);
@@ -142,7 +135,6 @@ document.body.onkeyup = function(e)
 	//Lê o status da palavra
 	if(keyunicode == 50) //2
 	{
-		stopTudo();
 		ouvirAtalho2();	
 	}
 
@@ -163,7 +155,7 @@ document.body.onkeyup = function(e)
 	{
 		ouvirAtalho5();
 	}
-
+	
 }
 
 function stopAtalho1()

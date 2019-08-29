@@ -47,36 +47,40 @@ function criarCamadaInicial(){
 	instrucoesIniciais.innerHTML = 
 	"<h1> Instruções iniciais </h1>" +
 	"<h2> Versão Desktop </h2>" +
-	"Jogo já possui áudios pré-gravados para acessibilidade. </br>" + 
-	"Se possível, mutar seu leitor de tela." +
+	"O Jogo já possui áudios pré-gravados para acessibilidade. </br></br>" + 
+	"Recomendável desabilitar o áudio de seu leitor de tela para melhor experiência." +
 	"<h2> Versão Mobile </h2>" + 
-	"Manter ativado a acessibilidade do celular." +
+	"Habilitar acessibilidade do celular." +
 	"<h2> Escolha a versão do jogo. </h2>";
 
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoesInicio");
 
 	var btnDesktop = document.createElement("div");
-	btnDesktop.setAttribute("id", "btnInicio");
+	btnDesktop.setAttribute("id", "btnDesktop");
 
 	var btnMobile = document.createElement("div");
-	btnMobile.setAttribute("id", "btnInicio");
+	btnMobile.setAttribute("id", "btnMobile");
 
 	caixaBotoes.appendChild(btnDesktop);
 	caixaBotoes.appendChild(btnMobile);
 
 
-	$("#palco").append(element);
+	pai.appendChild(element);
 	$("#camadaInicial").append(instrucoesIniciais);
 	$("#camadaInicial").append(caixaBotoes);
 
 	btnDesktop.onclick = function(){
 		$("#camadaInicial").remove();
+		jogo.palco = new Palco();
+		jogo.palco.criar();
 		criarCamadaMenu();
 	}
 
 	btnMobile.onclick = function(){
 		$("#camadaInicial").remove();
+		jogo.palco = new Palco();
+		jogo.palco.criar();
 		var style = document.getElementById("estilo");
 		style.setAttribute("href", "./css/mobileStyle.css");
 		mobile = true;
@@ -781,7 +785,8 @@ function criarCamadaVitoria()
 	inicializaFocus();
 
 	$("#camadaVitoria").keydown(function (e){
-		selecionaOpcao(e);
+		if(!mobile)
+			selecionaOpcao(e);
 	})
 
 	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',jogo.palavraSorteada,true,jogo.bd.length,1,'Forca')
@@ -996,7 +1001,8 @@ function criarCamadaDerrota()
 	inicializaFocus();
 
 	$("#camadaDerrota").keydown(function (e){
-		selecionaOpcao(e);	
+		if(!mobile)
+			selecionaOpcao(e);	
 	})
 
 	sendData(jogo.dicaPalavra,jogo.palavraSorteada,jogo.bd.length-jogo.bdTamanho,'_',palavraNoFim,false,jogo.bd.length,1,'Forca')
@@ -1267,16 +1273,7 @@ function criarCamadaInstrucoes()
 			}
 		}
 
-		/*var botaoOuvir = document.createElement("button");
-		botaoOuvir.setAttribute("id", "btnOuvir");
-		botaoOuvir.innerHTML = "Ouvir";
-		btnGrupo.append(botaoOuvir);
-		botaoOuvir.onclick = function()
-		{
-			
-		}*/
 		
-
 		//conteúdo instruções
 		jogo.instrucoes = document.createElement("p");
 		jogo.instrucoes.setAttribute("id", "instrucoesText")
@@ -2257,7 +2254,8 @@ function ativarOpcaoAudio(){
 
 function ativarOpcaoInstrucoes(){
 	destruirCamadaOpcoes();
-	$("#camadaJogo").toggle();
+	if(!mobile)
+		$("#camadaJogo").toggle();
 	criarCamadaInstrucoes();
 }
 
@@ -2267,7 +2265,5 @@ function ativarOpcaoMenu(){
 	criarCamadaMenu();
 }
 
-jogo.palco = new Palco();
-jogo.palco.criar();
 iniciarNovoJogo();
 criarCamadaInicial();

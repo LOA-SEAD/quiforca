@@ -428,11 +428,11 @@ input[type=range] {
 .botaoJogo
 {
 	display: inline;
-	width: 9.3vw;
-	height: 9.3vw;
+	width: 9vw;
+	height: 14vw;
 	margin: 1px;
 	float: left;
-	background-image: url(../imgs/botaoTeclado.png);
+	background-image: url(../imgsMobile/botaoTeclado.png);
 	background-size: cover;
 	cursor: pointer;	
 }
@@ -440,13 +440,13 @@ input[type=range] {
 .botaoJogoPressionado
 {
 	display: inline;
-	width: 9.3vw;
-	height: 9.3vw;
+	width: 9vw;
+	height: 14vw;
 	margin: 1px;
 	float: left;
-	background-image: url(../imgs/botaoTecladoPressionado.png);
+	background-image: url(../imgsMobile/botaoTecladoPressionado.png);
 	background-size: cover;
-	cursor: pointer;	
+	cursor: pointer;		
 }
 
 .linha
@@ -469,7 +469,7 @@ input[type=range] {
 .letraTeclado
 {
 	margin: 0;
-	line-height: 9vw;
+	line-height: 15vw;
 }
 
 /*Parte das fontes*/
@@ -805,8 +805,8 @@ p
 #vidas
 {
 	background-image: url("../imgsMobile/vida.png");
-	width: 11.6vw;
-	height: 10.64vw;
+	width: 13vw;
+	height: 11.6vw;
 	float: left;
 	background-size: cover;
 	margin: 0.1rem;
