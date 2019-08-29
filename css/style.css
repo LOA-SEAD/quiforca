@@ -1,5 +1,6 @@
 /*Parte das camadas*/
 
+
 html, body
 {
 	height: 99%;
@@ -323,6 +324,7 @@ input[type=range]::-ms-fill-lower{
 #pontosNaTela
 {
 	text-align: right;
+
 }
 
 #opcoesTxt{
@@ -670,6 +672,7 @@ p
 {
 	z-index: 10;
 	display: none;
+
 }
 
 #imgBonecoDerrota
@@ -722,6 +725,7 @@ p
 	float: left;
 	display: block;
 }
+
 
 #ColRightJogo
 {

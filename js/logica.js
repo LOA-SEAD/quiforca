@@ -101,7 +101,6 @@ function iniciar()
 		colocarPersonagem(); // -- NA TELA
 		colocarTecladoNaTela(); // -- NA TELA
 
-
 		var caixaBotoes = document.createElement("div");
 		caixaBotoes.setAttribute("id", "caixaBotoes");
 		caixaBotoes.setAttribute("class", "clearfix");
@@ -234,6 +233,7 @@ function iniciar()
 		{
 			jogo.aux += jogo.palavraSorteada[i] + " ";
 		}
+
 
 		//Essa é a variavel que deve ser exibida na tela -- NA TELA
 		jogo.palavraNaTela = document.createElement("p");
@@ -426,12 +426,14 @@ function verificarErro(_letra)
 			//audio2 = document.createElement("AUDIO");
 			audio2.setAttribute("src", "audio/acerta_letra1.mp3");
 		}
+
 	}
 	if(deuErro)
 	{
 		jogo.erros++;
 		atualizaNumChances();
 		mudarPersonagem();
+
 		if(mobile)
 			mostrarPersonagem();
 		//audio2 = document.createElement("AUDIO");
@@ -483,6 +485,8 @@ function verificarErro(_letra)
 }
 
 //Coloca os botoes do teclado na tela
+
+
 function colocarTecladoNaTela()
 {
 	var botoes = document.createElement("div");
