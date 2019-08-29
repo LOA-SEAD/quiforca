@@ -91,20 +91,16 @@ function criarCamadaInicial(){
 function criarCamadaMenu()
 {	
 
+	paraFala()
+	origemAudio = "menu"
+	origemInstrucoes = "menu";
+	estado = "menu";
+	opcao = 0;
+	origemDerrota = 0
+	background.currentTime = 0;
+	background.play();
+
 	if(!mobile){
-		paraFala();
-		origemAudio = "menu";
-		origemInstrucoes = "menu";
-		estado = "menu";
-		opcao = 0;
-		origemMenu = true;
-
-
-		if(origemDerrota){
-			background.currentTime = 0
-		}
-		origemDerrota = false;
-		background.play();
 
 		var el = document.createElement("div");
 		el.setAttribute("id", "camadaMenu");
@@ -209,15 +205,6 @@ function criarCamadaMenu()
 
 	}
 	else{
-		paraFala()
-		origemAudio = "menu"
-		origemInstrucoes = "menu";
-		pulouMenu = false;
-		estado = "menu";
-		opcao = 0;
-		origemDerrota = 0
-		background.currentTime = 0;
-		background.play();
 
 		var el = document.createElement("div");
 		el.setAttribute("id", "camadaMenu");
@@ -349,11 +336,11 @@ function destruirCamadaMenu()
 function criarCamadaJogo()
 {
 
+	paraFala();
+	origemAudio = "jogo";
+	frase = 1;
+
 	if(!mobile){
-		paraFala();
-		origemAudio = "jogo";
-		frase = 1;
-	
 		if(!origemMenu){
 			background.currentTime = 0
 		}
@@ -380,9 +367,6 @@ function criarCamadaJogo()
 		}
 	}
 	else{
-		paraFala();
-		origemAudio = "jogo";
-		frase = 1;
 
 		var el = document.createElement("div");
 		el.setAttribute("id", "camadaJogo");
@@ -422,10 +406,12 @@ audioCreditos.currentTime = 0
 function criarCamadaCreditos()
 {
 
+	paraFala();	
+	estado = "creditos";
+
 	if(!mobile){
-		paraFala();
+
 		realizarFala(baseURL + "creditosCompleto.mp3");
-		estado = "creditos";
 	
 		var el = document.createElement("div");
 		el.setAttribute("id", "camadaCreditos");
@@ -503,7 +489,7 @@ function criarCamadaCreditos()
 		acessibilidade.appendChild(colLeft);
 	
 		var para = document.createElement("p");
-		para.innerHTML = "Caio Vinícius Barbosa Santos";
+		para.innerHTML = "Caio Vinicius Barbosa Santos";
 		colLeft.appendChild(para);
 		var para = document.createElement("p");
 		para.innerHTML = "Jhonata Nícollas Carvalho Querobim";
@@ -557,9 +543,6 @@ function criarCamadaCreditos()
 		}
 	}
 	else{
-		paraFala();
-	
-		estado = "creditos";
 
 		var el = document.createElement("div");
 		el.setAttribute("id", "camadaCreditos");
@@ -687,7 +670,6 @@ function criarCamadaCreditos()
 
 function destruirCamadaCreditos()
 {
-	//audioCreditos.pause()
 	pararLeitura()
 	$("#camadaCreditos").remove();
 }
@@ -830,9 +812,8 @@ function criarCamadaFimdeJogo()
 	sendPlaytimeData((tempo_final-tempo_inicial)/1000,0,'Forca',null,null,null)
 	sendPlaytimeData((tempo_final-tempo_inicial)/1000,1,'Forca',1,'Forca',null)
 
-	//var audio = document.createElement("AUDIO");
+
 	audio3.setAttribute("src", "audio/vitoria2.ogg");
-	//var audio = document.getElementById("vitoria"); 
 	audio3.currentTime = 0
 	vitoria1 = setTimeout(function(){
 		audio3.play();
@@ -920,7 +901,6 @@ var derrota1 = false
 
 function criarCamadaDerrota()
 {
-	console.log(jogo.palavraNaTela.innerText)
 	paraFala();
 	estado = "derrota";
 	opcao = 0;
@@ -1134,11 +1114,11 @@ function destruirCamadaRanking()
 
 function criarCamadaInstrucoes()
 {
+	paraFala();
+	estado = "instrucoes"
 
 	if(!mobile){
-		paraFala();
 		var espera = 1;
-		estado = "instrucoes";
 	
 		if(origemInstrucoes == "menu")
 		{
@@ -1241,9 +1221,6 @@ function criarCamadaInstrucoes()
 		}	
 	}
 	else{
-		paraFala();
-
-		estado = "instrucoes"
 
 		var el = document.createElement("div");
 		el.setAttribute("id", "camadaInstrucoes");
@@ -1593,23 +1570,15 @@ function setaFoco(){
 			if(opcao == 0){
 				document.getElementById("MusicaFundo").focus();
 				realizarFala(baseURL + "musicaFundoEnter.mp3");
-				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/musicaFundo.mp3");
-				audioConfiguracoes.currentTime = 0;
-				audioConfiguracoes.play();*/
 			}
 			else if(opcao == 1){
 				document.getElementById("Efeitos").focus();
 				realizarFala(baseURL + "efeitos sonoros.mp3");
-				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/Efeitos.mp3");
-				audioConfiguracoes.currentTime = 0;
-				audioConfiguracoes.play();*/
 			}
 			else if(opcao == 2){
 				document.getElementById("LeituraTela").focus();
 				realizarFala(baseURL + "leitura de tela e acessibilidade.mp3");
-				/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/leituraTela.mp3");
-				audioConfiguracoes.currentTime = 0;
-				audioConfiguracoes.play();*/
+				
 			}
 			else if(opcao == 3){
 				document.getElementById("btnMenu2").focus();
@@ -1987,10 +1956,6 @@ function ativarAudioVoltar(){
 
 function enterMusicaFundo(){
 	if(transicaoBarra){
-		/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/musicaFundo.mp3");
-		audioConfiguracoes.currentTime = 0;
-		audioConfiguracoes.play();
-		document.getElementById("MusicaFundo").focus();*/
 		setaFoco();
 		transicaoBarra = false;
 	}
@@ -2004,10 +1969,6 @@ function enterMusicaFundo(){
 
 function enterEfeitos(){
 	if(transicaoBarra){
-		/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/Efeitos.mp3");
-		audioConfiguracoes.currentTime = 0;
-		audioConfiguracoes.play();
-		document.getElementById("Efeitos").focus();*/
 		setaFoco();
 		transicaoBarra = false;
 	}
@@ -2021,10 +1982,6 @@ function enterEfeitos(){
 
 function enterLeituraTela(){
 	if(transicaoBarra){
-		/*audioConfiguracoes.setAttribute("src", "audio/audioGravado/leituraTela.mp3");
-		audioConfiguracoes.currentTime = 0;
-		audioConfiguracoes.play();
-		document.getElementById("LeituraTela").focus();*/
 		setaFoco();
 		transicaoBarra = false;
 	}
