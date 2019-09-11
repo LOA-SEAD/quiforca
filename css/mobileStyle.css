@@ -246,7 +246,8 @@ input[type=range] {
 #imgMenu
 {
 	height: auto;
-	width: 100%;
+	width: 70vw;
+	margin: 1rem auto;
 }
 
 #imgLogo
@@ -511,12 +512,15 @@ p
 }
 
 #caixaBotoes > * {
-    width: 100vw;
-    background: #e7e7e7;
-    margin: 0 auto;
-    box-shadow: inset 0px -1px #504e4a;
+    width: 80vw;
+	margin: 0 auto;
 	font-size: calc(1.5em + 1vw);
 	font-family: "Fonte","Tahoma";
+	background: url('../novasImgs/Mobile/btnMobile.png');
+	background-size: cover;
+	height: 20vw;
+	border: none;
+	line-height: 22vw;
 }
 
 #caixaBarrasAudio{
