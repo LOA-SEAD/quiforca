@@ -1693,7 +1693,7 @@ function criarCamadaAudio()
 		LeituraTela.setAttribute("id", "LeituraTela");
 		LeituraTela.setAttribute("class", "textoAudio");
 		LeituraTela.setAttribute("tabIndex", -1);
-		LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
+		LeituraTela.innerHTML = "Leitura de tela";
 		caixaBarras.appendChild(LeituraTela);
 		LeituraTela.onclick = function(){
 			opcao = 2;
@@ -1817,7 +1817,7 @@ function criarCamadaAudio()
 
 		var LeituraTela = document.createElement("button");
 		LeituraTela.setAttribute("id", "LeituraTela");
-		LeituraTela.innerHTML = "Leitura de tela e acessibilidade";
+		LeituraTela.innerHTML = "Leitura de tela";
 		caixaBarras.appendChild(LeituraTela);
 		LeituraTela.onclick = function(){
 			controle = 3;

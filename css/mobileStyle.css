@@ -417,13 +417,15 @@ input[type=range] {
 
 
 #btnVoltarAudio{
-	width: 100vw;
-	background: #e7e7e7;
-	margin: 0 auto;
-	box-shadow: inset 0px -1px #504e4a;
-	font-size: 6.5vw;
+	width: 80vw;
+	margin: 1rem auto;
+	font-size: calc(1em + 1vw);
 	font-family: "Fonte","Tahoma";
-	line-height: 18vw
+	background: url('../novasImgs/Mobile/btnMobile.png');
+	background-size: cover;
+	height: 20vw;
+	border: none;
+	line-height: 22vw;
 }
 
 .botaoJogo
@@ -497,6 +499,12 @@ p
     font-family:"Fonte","Tahoma";
 }
 
+#audioTxt, #controleTxt{
+	text-align: center;
+	align-self: center;
+	font-size: calc(1.5em + 1vw);
+}
+
 /*Parte dos botoes fora do jogo*/
 .botao
 {
@@ -531,14 +539,16 @@ p
 }
 
 #caixaBarrasAudio > *{
-	width: 100vw;
-	/*height: 18vw;*/
-    background: #e7e7e7;
-    margin: 0 auto;
-    box-shadow: inset 0px -1px #504e4a;
-	font-size: 6.5vw;
+	width: 80vw;
+	margin: 0 auto;
+	font-size: calc(1em + 1vw);
 	font-family: "Fonte","Tahoma";
-	line-height: 18vw;
+	background: url('../novasImgs/Mobile/btnMobile.png');
+	background-size: cover;
+	height: 20vw;
+	border: none;
+	line-height: 22vw;
+	font-family: "Fonte","Tahoma";
 }
 
 #caixaBotoesOpcao{
