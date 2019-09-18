@@ -206,7 +206,7 @@ function iniciar()
 		var colright = document.createElement("div");
 		colright.setAttribute("id", "ColRightJogo");
 		colright.setAttribute("class", "clearfix");
-		$("#camadaJogo").append(colright);
+		
 
 		//Logo FORCA -- NA TELA
 		var imgLogo = document.createElement("div");
@@ -225,7 +225,9 @@ function iniciar()
 		jogo.faseId = jogo.bdAux[jogo.sorteio];
 		p.innerHTML = jogo.bd[jogo.bdAux[jogo.sorteio]].dica + "<br>(" + jogo.tamanhoPalavra.length + " letras)";
 		jogo.dicaNaTela.appendChild(p);
-		colright.appendChild(jogo.dicaNaTela);
+		
+		$("#camadaJogo").append(jogo.dicaNaTela);
+		$("#camadaJogo").append(colright);
 
 		//Exibe a palavra na tela
 		jogo.aux = "";
