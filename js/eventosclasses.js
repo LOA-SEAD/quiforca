@@ -398,13 +398,10 @@ function criarCamadaAtalhos()
 	$("#palco").append(el);
 	el.focus();
 
-	var topo = document.createElement("div");
-	topo.setAttribute("id", "topoAtalhos");
-	el.appendChild(topo);
-
 	var para = document.createElement("h1");
+	para.setAttribute("id", "topoAtalhos");
 	para.innerHTML = "Atalhos";
-	topo.appendChild(para);
+	el.appendChild(para);
 
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoesAtalhos")
@@ -448,7 +445,7 @@ function criarCamadaAtalhos()
 
 	atalho4 = document.createElement("button");
 	atalho4.setAttribute("id", "btnAtalho4");
-	atalho4.innerText = "Letras que você já escolheu";
+	atalho4.innerText = "Letras escolhidas";
 	caixaBotoes.appendChild(atalho4);
 	atalho4.onclick = function(){
 		ouvirAtalho4();
