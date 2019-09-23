@@ -625,6 +625,8 @@ p
 
 #caixaBotoesInicio{
 	width: 100%;
+	text-align: center;
+	display: grid;
 }
 
 #btnDesktop{

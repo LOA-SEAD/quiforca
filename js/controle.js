@@ -44,23 +44,27 @@ function criarCamadaInicial(){
 	//textos
 	var instrucoesIniciais = document.createElement("p");
 	instrucoesIniciais.setAttribute("id", "txtInicio");
+	instrucoesIniciais.setAttribute("tabindex", "1");
 	instrucoesIniciais.innerHTML = 
 	"<h1> Instruções iniciais </h1>" +
 	"<h2> Versão Desktop </h2>" +
-	"O Jogo já possui áudios pré-gravados para acessibilidade. </br></br>" + 
-	"Recomendável desabilitar o áudio de seu leitor de tela para melhor experiência." +
+	"Recomendável desabilitar o seu leitor de tela para melhor experiência." +
 	"<h2> Versão Mobile </h2>" + 
-	"Habilitar acessibilidade do celular." +
+	"Habilitar opção de 'talk back' do celular." +
 	"<h2> Escolha a versão do jogo. </h2>";
 
 	var caixaBotoes = document.createElement("div");
 	caixaBotoes.setAttribute("id", "caixaBotoesInicio");
 
-	var btnDesktop = document.createElement("div");
+	var btnDesktop = document.createElement("button");
 	btnDesktop.setAttribute("id", "btnDesktop");
+	btnDesktop.setAttribute("aria-label", "Desktop");
+	instrucoesIniciais.setAttribute("tabindex", "2");
 
-	var btnMobile = document.createElement("div");
+	var btnMobile = document.createElement("button");
 	btnMobile.setAttribute("id", "btnMobile");
+	btnMobile.setAttribute("aria-label", "Mobile");
+	instrucoesIniciais.setAttribute("tabindex", "3");
 
 	caixaBotoes.appendChild(btnDesktop);
 	caixaBotoes.appendChild(btnMobile);
@@ -86,6 +90,7 @@ function criarCamadaInicial(){
 		mobile = true;
 		criarCamadaMenu();
 	}
+
 }
 
 function criarCamadaMenu()
@@ -669,6 +674,7 @@ function criarCamadaCreditos()
 		colRight.appendChild(para);
 
 		el.appendChild(conteudo);
+		document.getElementById("btnOuvir").focus();
 	}
 	
 }
@@ -1241,7 +1247,8 @@ function criarCamadaInstrucoes()
 		var botaoOuvir = document.createElement("button");
 		botaoOuvir.setAttribute("id" , "btnOuvir");
 		botaoOuvir.innerHTML = "Ouvir Instruções";
-		
+
+
 		if(origemInstrucoes == "menu"){
 			botaoMenu.innerHTML = "Voltar ao Menu";
 		}
@@ -1285,6 +1292,9 @@ function criarCamadaInstrucoes()
 
 		//inserindo instrucoes a camada de instruções
 		$('#camadaInstrucoes').append(jogo.instrucoes);	
+
+		//setando foco no botão
+		document.getElementById("btnOuvir").focus();
 	}
 }
 
