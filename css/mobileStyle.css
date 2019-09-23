@@ -287,23 +287,6 @@ input[type=range] {
 	width: 100vw;
 }
 
-#btnVoltar2{
-	position: fixed;
-	bottom: 0;
-	width: 100vw;
-	height: 15vw;
-	background: #e7e7e7;
-	margin: 0 auto;
-	box-shadow: inset 0px -1px #504e4a;
-	font-size: calc(1em + 1vw);	
-	font-family: "Fonte","Tahoma";
-}
-
-#conteudoInst, #conteudo{
-	padding-top: 15vw;
-	padding-bottom: 15vw;
-}
-
 #pontosTela{
 	float: right;
 	margin: .5em;
@@ -362,33 +345,9 @@ input[type=range] {
 #instrucoesText{
 	/*padding: 15vw 1em;*/
 	padding: 0 1em;
-	padding-bottom: 15vw;
 }
 
 /*Parte dos botoes no jogo*/
-
-#btnOuvir, #btnVoltar2, #btnSairInstrucoes{
-	position: fixed;
-	left: 0;
-	width: 100vw;
-	height: 15vw;
-	background: #e7e7e7;
-	margin: 0 auto;
-	border-right-width: 0;
-	font-size: calc(1em + 1vw);	
-	font-family: "Fonte","Tahoma";
-}
-
-#btnOuvir{
-	top: 0;
-	box-shadow: 0px 2px 5px 0px #504e4a;
-}
-
-#btnVoltar2, #btnSairInstrucoes{
-	bottom: 0;
-	box-shadow: 0px -2px 5px 0px #504e4a;
-	border-bottom-width: 0;
-}
 
 #botoes
 {
@@ -606,6 +565,10 @@ p
 	line-height: 22vw;
 }
 
+#btnOuvir, #btnVoltar2, #btnSairInstrucoes{
+	font-size: calc(.5em + 1vw);
+}
+
 #MusicaFundo{
 	grid-row: 1;
 }
@@ -631,6 +594,7 @@ p
 	cursor: pointer;
 	outline: none;
 }
+
 
 #btnRanking
 {

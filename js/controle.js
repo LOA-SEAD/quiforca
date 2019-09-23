@@ -549,6 +549,10 @@ function criarCamadaCreditos()
 		$("#palco").append(el);
 
 
+		//Cria grupo de botões
+		btnGrupo = document.createElement("div");
+		btnGrupo.setAttribute("id", "btnGrupo");
+
 		var botaoMenu = document.createElement("button");
 		botaoMenu.setAttribute("id" , "btnVoltar2");
 		botaoMenu.innerText = "Voltar ao Menu";
@@ -557,9 +561,10 @@ function criarCamadaCreditos()
 		var botaoOuvir = document.createElement("button");
 		botaoOuvir.setAttribute("id", "btnOuvir");
 		botaoOuvir.innerHTML = "Ouvir Créditos";
-		
-		el.appendChild(botaoOuvir);
-		el.appendChild(botaoMenu);
+
+		btnGrupo.appendChild(botaoMenu);
+		btnGrupo.appendChild(botaoOuvir);
+		el.appendChild(btnGrupo);
 		
 		botaoMenu.onmousedown = function()
 		{
@@ -1226,8 +1231,16 @@ function criarCamadaInstrucoes()
 		el.setAttribute("id", "camadaInstrucoes");
 		$("#palco").append(el);
 
+		//Cria grupo de botões
+		btnGrupo = document.createElement("div");
+		btnGrupo.setAttribute("id", "btnGrupo");
+
 		var botaoMenu = document.createElement("button");
 		botaoMenu.setAttribute("id" , "btnSairInstrucoes");
+
+		var botaoOuvir = document.createElement("button");
+		botaoOuvir.setAttribute("id" , "btnOuvir");
+		botaoOuvir.innerHTML = "Ouvir Instruções";
 		
 		if(origemInstrucoes == "menu"){
 			botaoMenu.innerHTML = "Voltar ao Menu";
@@ -1236,7 +1249,9 @@ function criarCamadaInstrucoes()
 			botaoMenu.innerHTML = "Voltar ao jogo";
 		}
 
-		el.appendChild(botaoMenu);
+		btnGrupo.appendChild(botaoMenu);
+		btnGrupo.appendChild(botaoOuvir);
+		el.appendChild(btnGrupo);
 
 		botaoMenu.onclick = function()
 		{
@@ -1260,12 +1275,12 @@ function criarCamadaInstrucoes()
 		jogo.instrucoes = document.createElement("p");
 		jogo.instrucoes.setAttribute("id", "instrucoesText")
 		jogo.instrucoes.innerHTML = "<h1>Instruções</h1>";
-		jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <br>Para isso, você deve decifrar qual palavra corresponde à dica. "+
-		"Cada letra que você acerta é colocada na palavra. "+
-		"A cada vez que você erra, uma parte do corpo é colocada na forca. Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. "+
-		"A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. "+
-		"Durante o jogo, você poderá acessar o menu de opções para ler as instruções e configurar o áudio através do botão Opções no canto superior esquerdo da tela " +
-		"e também poderá acessar informações sobre o status do jogo por meio do botão Status no canto superior direito da tela.";
+		jogo.instrucoes.innerHTML+= " <h3>Escape da forca acertando todos os desafios!</h3> <p>Para isso, você deve decifrar qual palavra corresponde à dica. </p> "+
+		" <p> Cada letra que você acerta é colocada na palavra. </p> "+
+		" <p> A cada vez que você erra, uma parte do corpo é colocada na forca. </p><p> Se errar cinco letras da mesma palavra, você perde e tem que recomeçar. </p>"+
+		" <p> A cada palavra que você acerta, você ganha dez pontos; porém, para cada letra que erra, perde um ponto. </p>"+
+		" <p> Durante o jogo, você poderá acessar o menu de opções para ler as instruções e configurar o áudio através do botão 'Opções' no canto superior esquerdo da tela </p>" +
+		" <p> e também poderá acessar informações sobre o status do jogo por meio do botão Status no canto superior direito da tela. </p>";
 
 
 		//inserindo instrucoes a camada de instruções
