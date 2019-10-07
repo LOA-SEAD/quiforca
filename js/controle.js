@@ -1262,7 +1262,7 @@ function criarCamadaInstrucoes()
 		el.appendChild(btnGrupo);
 
 		botaoOuvir.onclick = function(){
-			leituraInicial(baseURL + "lerinstrucoesCompletas.mp3");
+			leituraInicial(baseURL + "lerinstrucoesMob.mp3");
 		}
 
 		botaoMenu.onclick = function()
