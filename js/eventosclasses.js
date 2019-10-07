@@ -263,7 +263,7 @@ function realizarLeituraInicial(texto)
 			realizarFala(baseURL + "continuar.mp3");
 		}
 		else if(estado == "fimdeJogo"){
-			realizarFala(baseURL + "recomeçar.mp3");
+			realizarFala(baseURL + "aperte a tecla enter para recomecar o jogo.mp3");
 			frase = 1;
 		}
 	})

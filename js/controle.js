@@ -845,7 +845,7 @@ function criarCamadaFimdeJogo()
 	jogo.palavraNaTela.innerHTML = "<h2> Parabéns! Você escapou da forca! </h2> <h4>Pontuação final: " + jogo.pontos + " pontos. </h4>";
 
 	if(!mobile)
-		jogo.palavraNaTela.innerHTML += "<p> Aperte ENTER para recomeçar o jogo ! </p>";
+		jogo.palavraNaTela.innerHTML += "<p> Aperte a tecla \"ENTER\" para recomeçar o jogo ! </p>";
 
 	jogo.imgBonecoVitoria = document.createElement("img");
 	jogo.imgBonecoVitoria.setAttribute("id", "imgBonecoVitoria");
@@ -1133,11 +1133,11 @@ function criarCamadaInstrucoes()
 	
 		if(origemInstrucoes == "menu")
 		{
-			realizarFala(baseURL + "lerinstrucoesCompletas.mp3");
+			leituraInicial(baseURL + "lerinstrucoesCompletas.mp3");
 		}
 		else if(origemInstrucoes == "opcoes")
 		{
-			realizarFala(baseURL + "lerinstrucoesacessibilidade.mp3");
+			leituraInicial(baseURL + "lerinstrucoesacessibilidade.mp3");
 		}
 	
 	
@@ -1165,7 +1165,7 @@ function criarCamadaInstrucoes()
 			"4 - Relembre as letras que você já escolheu<br>"+
 			"5 - Saiba sua pontuação atual<br>" + 
 			"Esc - Pausar o jogo e acessar as configurações<br>" + 
-			"<h4>Pressione Enter para voltar ao menu</h4>";
+			"<h4>Pressione a tecla \"ENTER\" para voltar ao menu </h4>";
 		}
 		else
 		{
@@ -1176,7 +1176,7 @@ function criarCamadaInstrucoes()
 			"3 - Saiba quantas vidas você ainda tem<br>"+
 			"4 - Relembre as letras que você já escolheu<br>"+
 			"5 - Saiba sua pontuação atual<br>" +
-			"<h4>Pressione Enter para voltar para as configurações</h4>";
+			"<h4>Pressione a tecla \"ENTER\" para voltar para as configurações</h4>";
 		}	
 		 
 	
@@ -1352,17 +1352,9 @@ function selecionaOpcao(e)
 						ativarBotaoAudio();
 			}	
 		break;
-		case 37: //ArrowLeft
-			paraFala();
-			if(opcao > 0 && !transicaoBarra){
-				tocaAudio();
-				opcao--;
-				setaFoco();
-			}
-		break;
-
-		case 39: //ArrowRight
-			paraFala();
+		
+		case 40: //ArrowDown
+		paraFala();
 			if(estado == "menu"){
 				if(opcao < 3){
 					tocaAudio();
@@ -1393,39 +1385,12 @@ function selecionaOpcao(e)
 			}
 		break;
 
-		case 40: //ArrowDown
-			if(estado == "opcoes")
-			{
-				if(opcao < 3){
-					tocaAudio();
-					opcao++;
-					setaFoco();
-				}
-			}
-			else if(estado == "audio"){
-				if(opcao < 3 && !transicaoBarra){
-					tocaAudio();
-					opcao++;
-					setaFoco();
-				}
-			}
-		break;
-
 		case 38: //ArrowUp
-			if(estado == "opcoes")
-			{
-				if(opcao > 0){
-					tocaAudio();
-					opcao--;
-					setaFoco();
-				}
-			}
-			else if(estado == "audio"){
-				if(opcao > 0 && !transicaoBarra){
-					tocaAudio();
-					opcao--;
-					setaFoco();
-				}
+			paraFala();
+			if(opcao > 0 && !transicaoBarra){
+				tocaAudio();
+				opcao--;
+				setaFoco();
 			}
 		break;
 	}
@@ -1528,6 +1493,12 @@ function inicializaFocusFala(){
 				realizarLeitura(txt);
 		}
 	}
+	else if(estado == "instrucoes"){
+		if(origemInstrucoes == "opcoes")
+			realizarFala(baseURL + "pressione a tecla enter para voltar a configuracoes.mp3");
+		//else if(origemInstrucoes == "menu")
+			//realizarFala(baseURL + "pressione a tecla enter para voltar ao menu.mp3");
+	}
 }
 
 function setaFoco(){
@@ -1616,7 +1587,7 @@ function setaFoco(){
 }
 
 function inicializaFalaInicial(){
-	leituraInicial(baseURL + "audioInicial.mp3");
+	leituraInicial(baseURL + "bem vindo ao jogo da forca.mp3");
 }
 
 function paraDeFalar(){
