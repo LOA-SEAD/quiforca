@@ -70,7 +70,9 @@ var dezenaLer = document.createElement("AUDIO")
 var unidadeLer = document.createElement("AUDIO");
 var letraE = document.createElement("AUDIO");
 var qLetras = document.createElement("AUDIO");
+var audioAtalho1 = document.createElement("AUDIO");
 var audioAtalho2 = document.createElement("AUDIO");
+var audioAtalho2anterior = document.createElement("AUDIO");
 var audioAtalho3 = document.createElement("AUDIO");
 var audioAtalho4 = document.createElement("AUDIO");
 var audioAtalho5 = document.createElement("AUDIO");
@@ -83,8 +85,10 @@ var counter = 0;
 
 //1 - Ouvir dica
 var nomeAtalho1;
+audioAtalho1.setAttribute("src", "audio/audioGravado/dica.mp3");
 
 //2 - Status da palavra
+audioAtalho2anterior.setAttribute("src", "audio/audioGravado/statusDaPalavra.mp3");
 audioAtalho2.setAttribute("src", "audio/letra1.mp3");
 var nomeAtalho2;
 var somLetra2 = [];
@@ -184,11 +188,15 @@ document.body.onkeyup = function(e)
 
 function stopAtalho1()
 {
+	audioAtalho1.pause();
+	audioAtalho1.currentTime = 0;
 	window.speechSynthesis.cancel();
 }
 
 function stopAtalho2()
 {
+	audioAtalho2anterior.pause();
+	audioAtalho2anterior.currentTime = 0;
 	clearInterval(delayAtalho2);
 }
 
@@ -276,19 +284,28 @@ function pararLeitura()
 
 function ouvirAtalho1(){
 	stopTudo();
-	var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras."
-	realizarLeitura(texto);
+	
+	audioAtalho1.play();
+	audioAtalho1.onended = function(){
+		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
+		realizarLeitura(texto);
+	}
 }
 
 function ouvirAtalho2(){
 
 	stopTudo();
-	paraFala();
+
+	audioAtalho2anterior.play();
 
 	var counter;
 	audioAtalho2.setAttribute("src", "audio/letra1.mp3");
 	counter = 0;
-	delayAtalho2 = setInterval(palavra, 700);
+
+	audioAtalho2anterior.onended = function(){
+		delayAtalho2 = setInterval(palavra, 700);
+	}
+
 	function palavra()
 	{
 		if(counter >= tamanhoPalavraAtual())
@@ -310,7 +327,7 @@ function ouvirAtalho2(){
 		else
 		{
 			realizarLeituraLetra(palavraAtual(counter));
-			counter++;
+			counter++;2
 		}
 	}
 }

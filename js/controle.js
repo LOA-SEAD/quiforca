@@ -416,7 +416,7 @@ function criarCamadaCreditos()
 
 	if(!mobile){
 
-		realizarFala(baseURL + "creditosCompleto.mp3");
+		leituraInicial(baseURL + "creditosCompleto.mp3");
 	
 		var el = document.createElement("div");
 		el.setAttribute("id", "camadaCreditos");
@@ -1165,7 +1165,7 @@ function criarCamadaInstrucoes()
 			"4 - Relembre as letras que você já escolheu<br>"+
 			"5 - Saiba sua pontuação atual<br>" + 
 			"Esc - Pausar o jogo e acessar as configurações<br>" + 
-			"<h4>Pressione a tecla \"ENTER\" para voltar ao menu </h4>";
+			"<h4>Pressione \"ENTER\" para voltar ao menu </h4>";
 		}
 		else
 		{
@@ -1176,6 +1176,7 @@ function criarCamadaInstrucoes()
 			"3 - Saiba quantas vidas você ainda tem<br>"+
 			"4 - Relembre as letras que você já escolheu<br>"+
 			"5 - Saiba sua pontuação atual<br>" +
+			"Esc - Pausar o jogo e acessar as configurações<br>" + 
 			"<h4>Pressione a tecla \"ENTER\" para voltar para as configurações</h4>";
 		}	
 		 
@@ -1502,8 +1503,11 @@ function inicializaFocusFala(){
 	else if(estado == "instrucoes"){
 		if(origemInstrucoes == "opcoes")
 			realizarFala(baseURL + "pressione a tecla enter para voltar a configuracoes.mp3");
-		//else if(origemInstrucoes == "menu")
-			//realizarFala(baseURL + "pressione a tecla enter para voltar ao menu.mp3");
+		else if(origemInstrucoes == "menu")
+			realizarFala(baseURL + "PressioneEnterParaVoltarAoMenu.mp3");
+	}
+	else if(estado == "creditos"){
+		realizarFala(baseURL + "PressioneEnterParaVoltarAoMenu.mp3");
 	}
 }
 
