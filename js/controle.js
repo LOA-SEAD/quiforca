@@ -1352,7 +1352,7 @@ function selecionaOpcao(e)
 						ativarBotaoAudio();
 			}	
 		break;
-		
+
 		case 40: //ArrowDown
 		paraFala();
 			if(estado == "menu"){
@@ -1445,7 +1445,7 @@ function inicializaFocus(){
 		}
 		else if(estado == "audio"){
 			document.getElementById("MusicaFundo").focus();
-			leituraInicial(baseURL + "entrarEnter.mp3")
+			leituraInicial(baseURL + "configuracoes de audio.mp3")
 		}
 	}
 }
@@ -1478,7 +1478,13 @@ function inicializaFocusFala(){
 			realizarLeitura(txt);
 	}
 	else if(estado == "audio"){
-		realizarFala(baseURL + "musicaFundo.mp3");
+		if(frase == 1){
+			leituraInicial(baseURL + "entrarEnter.mp3");
+			frase = 2;
+		}
+		else if(frase == 2){
+			realizarFala(baseURL + "musicaFundo.mp3");
+		}
 	}
 	else if(estado == "fimdeJogo"){
 		if(frase == 1){
@@ -1565,7 +1571,7 @@ function setaFoco(){
 		case "audio":
 			if(opcao == 0){
 				document.getElementById("MusicaFundo").focus();
-				realizarFala(baseURL + "musicaFundoEnter.mp3");
+				realizarFala(baseURL + "musicaFundo.mp3");
 			}
 			else if(opcao == 1){
 				document.getElementById("Efeitos").focus();
@@ -1605,6 +1611,7 @@ function criarCamadaAudio()
 {
 
 	if(!mobile){
+		frase = 1;
 		opcao = 0;
 		transicaoBarra = false;
 		estado = "audio";
@@ -1755,10 +1762,11 @@ function criarCamadaAudio()
 				}
 				else if (origemAudio == "menu")
 				{
-					document.getElementById("camadaMenu").focus();
-					document.getElementById("btnAudio").focus();
+					paraFala();
 					estado = "menu";
 					opcao = 3;
+					document.getElementById("camadaMenu").focus();
+					document.getElementById("btnAudio").focus();
 				}
 			}
 		})
