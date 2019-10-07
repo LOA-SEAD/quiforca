@@ -1261,6 +1261,10 @@ function criarCamadaInstrucoes()
 		btnGrupo.appendChild(botaoOuvir);
 		el.appendChild(btnGrupo);
 
+		botaoOuvir.onclick = function(){
+			leituraInicial(baseURL + "lerinstrucoesCompletas.mp3");
+		}
+
 		botaoMenu.onclick = function()
 		{
 			if(origemInstrucoes == "menu")
@@ -1501,10 +1505,15 @@ function inicializaFocusFala(){
 		}
 	}
 	else if(estado == "instrucoes"){
-		if(origemInstrucoes == "opcoes")
-			realizarFala(baseURL + "pressione a tecla enter para voltar a configuracoes.mp3");
-		else if(origemInstrucoes == "menu")
-			realizarFala(baseURL + "PressioneEnterParaVoltarAoMenu.mp3");
+		if(!mobile){
+			if(origemInstrucoes == "opcoes")
+				realizarFala(baseURL + "pressione a tecla enter para voltar a configuracoes.mp3");
+			else if(origemInstrucoes == "menu")
+				realizarFala(baseURL + "PressioneEnterParaVoltarAoMenu.mp3");
+		}
+		else{
+			realizarFala(baseURL + "instMobile.mp3");
+		}
 	}
 	else if(estado == "creditos"){
 		realizarFala(baseURL + "PressioneEnterParaVoltarAoMenu.mp3");

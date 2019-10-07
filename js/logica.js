@@ -692,11 +692,13 @@ function mudarPersonagem()
 function mostrarPersonagem(){
 	$("#topJogo").toggle();
 	$("#ColRightJogo").toggle();
+	$("#dicaNaTela").toggle();
 	$("#bonecoForca").attr("style", "display: flex;");
 
 	setTimeout(function(){
 		$("#topJogo").toggle();
 		$("#ColRightJogo").toggle();
+		$("#dicaNaTela").toggle();
 		$("#bonecoForca").attr("style", "display: none;");
 	}, 1000);
 }
