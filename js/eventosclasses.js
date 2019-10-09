@@ -62,6 +62,7 @@ function Linha(_linha)
 //Variáveis de delays
 var delayAtalho1;
 var delayAtalho2;
+var delayAtalho2Aux;
 var delayAtalho4;
 var delayLetraAtalho4;
 
@@ -69,9 +70,7 @@ var dezenaLer = document.createElement("AUDIO")
 var unidadeLer = document.createElement("AUDIO");
 var letraE = document.createElement("AUDIO");
 var qLetras = document.createElement("AUDIO");
-var audioAtalho1 = document.createElement("AUDIO");
 var audioAtalho2 = document.createElement("AUDIO");
-var audioAtalho2anterior = document.createElement("AUDIO");
 var audioAtalho3 = document.createElement("AUDIO");
 var audioAtalho4 = document.createElement("AUDIO");
 var audioAtalho5 = document.createElement("AUDIO");
@@ -84,10 +83,8 @@ var counter = 0;
 
 //1 - Ouvir dica
 var nomeAtalho1;
-audioAtalho1.setAttribute("src", "audio/audioGravado/dica.mp3");
 
 //2 - Status da palavra
-audioAtalho2anterior.setAttribute("src", "audio/audioGravado/statusDaPalavra.mp3");
 audioAtalho2.setAttribute("src", "audio/letra1.mp3");
 var nomeAtalho2;
 var somLetra2 = [];
@@ -187,15 +184,13 @@ document.body.onkeyup = function(e)
 
 function stopAtalho1()
 {
-	audioAtalho1.pause();
-	audioAtalho1.currentTime = 0;
+	clearInterval(delayAtalho1);
 	window.speechSynthesis.cancel();
 }
 
 function stopAtalho2()
 {
-	audioAtalho2anterior.pause();
-	audioAtalho2anterior.currentTime = 0;
+	clearInterval(delayAtalho2Aux);
 	clearInterval(delayAtalho2);
 }
 
@@ -234,14 +229,12 @@ var voices = synth.getVoices();
 
 function realizarLeitura(texto)
 {
-	//var voices = window.speechSynthesis.getVoices();
 	msg = new SpeechSynthesisUtterance(texto);
 	msg.voiceURI = 'Google português do Brasil';
 	msg.localService = true;
 	msg.volume = volumeSinth;
 	msg.rate = 1.3; // 0.1 to 10
 	msg.lang = "pt-BR";
-	//msg.voice = voices[15];
 	window.speechSynthesis.speak(msg);
 }
 
@@ -252,7 +245,6 @@ function realizarLeituraInicial(texto)
 	msg.volume = volumeSinth; // 0 to 1
 	msg.rate = 1.3; // 0.1 to 10
 	msg.lang = "pt-BR";
-	//msg.voice = voices[3];
 	window.speechSynthesis.speak(msg);
 
 	msg.addEventListener("end", function(){
@@ -283,27 +275,28 @@ function pararLeitura()
 
 function ouvirAtalho1(){
 	stopTudo();
+	realizarFala(baseURL + "dica.mp3");
+
 	
-	audioAtalho1.play();
-	audioAtalho1.onended = function(){
+	delayAtalho1 = setTimeout(function(){
 		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
 		realizarLeitura(texto);
-	}
+	}, 500); 
 }
 
 function ouvirAtalho2(){
 
 	stopTudo();
-
-	audioAtalho2anterior.play();
+	realizarFala(baseURL + "statusDaPalavra.mp3");
 
 	var counter;
 	audioAtalho2.setAttribute("src", "audio/letra1.mp3");
 	counter = 0;
 
-	audioAtalho2anterior.onended = function(){
+	delayAtalho2Aux = setTimeout(function(){
 		delayAtalho2 = setInterval(palavra, 700);
-	}
+	}, 1000);
+
 
 	function palavra()
 	{
