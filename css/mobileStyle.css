@@ -11,7 +11,7 @@ html, body
 
 body
 {
-	background-image: url("../imgs/novafolha.png");
+	background: url("../imgs/novafolha.png");
     background-size: cover;
 }
 
@@ -50,13 +50,6 @@ h2{
 	grid-template-rows: repeat(2, 1fr);
 }
 
-#camadaAudio{
-	
-}
-
-#camadaControleAudio{
-	
-}
 
 #divAudio{
 	height: calc(var(--vh, 1vh) * 100);
@@ -263,7 +256,7 @@ input[type=range] {
 
 #imgLogoVit
 {
-	background-image: url("../imgs/logovitoria.png");
+	background: url("../imgs/logovitoria.png");
 	height: 139px;
 	width: 180px;
 	float: left;
@@ -394,7 +387,7 @@ input[type=range] {
 	height: 14vw;
 	margin: 1px;
 	float: left;
-	background-image: url(../imgsMobile/botaoTeclado.png);
+	background: url(../imgsMobile/botaoTeclado.png);
 	background-size: cover;
 	cursor: pointer;	
 }
@@ -406,7 +399,7 @@ input[type=range] {
 	height: 14vw;
 	margin: 1px;
 	float: left;
-	background-image: url(../imgsMobile/botaoTecladoPressionado.png);
+	background: url(../imgsMobile/botaoTecladoPressionado.png);
 	background-size: cover;
 	cursor: pointer;		
 }
@@ -600,7 +593,7 @@ p
 {
 	width: 117px;
 	height: 65px;
-	background-image: url("../imgs/btnRanking.png")
+	background: url("../imgs/btnRanking.png")
 }
 
 #btnVoltar
@@ -609,7 +602,7 @@ p
 	height: 65px;
 	margin-top: 1rem;
 	margin-left: 1rem;
-	background-image:url("../imgs/btnVoltar.png");
+	background:url("../imgs/btnVoltar.png");
 }
 
 #botoesFimDeJogo
@@ -661,7 +654,7 @@ p
 	width: 116px;
 	height: 65px;
 	border: none;
-	background-image: url("../imgs/btnVoltar2.png");
+	background: url("../imgs/btnVoltar2.png");
 }
 
 #btnMenu2:hover, #btnMenu2:focus
@@ -785,7 +778,7 @@ p
 
 #vidas
 {
-	background-image: url("../imgsMobile/vida.png");
+	background: url("../imgsMobile/vida.png");
 	width: 12.3vw;
 	height: 11vw;
 	float: left;

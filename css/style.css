@@ -10,7 +10,7 @@ html, body
 
 body
 {
-	background-image: url("../imgs/madeira.png");
+	background: url("../imgs/madeira.png");
 	background-repeat:repeat;
 }
 
@@ -28,7 +28,7 @@ body
 {
 	min-height: 100%;
 	min-width: 790px;
-	background-image: url("../imgs/novafolha.png");
+	background: url("../imgs/novafolha.png");
 	background-size: cover;
 	margin: 10px 70px 0px 70px;
 	display: flex;
@@ -231,7 +231,7 @@ input[type=range]::-ms-fill-lower{
 
 #imgLogo
 {
-	background-image: url("../imgs/logoforca.png");
+	background: url("../imgs/logoforca.png");
 	height: 139px;
 	width: 180px;
 	float: left;
@@ -241,7 +241,7 @@ input[type=range]::-ms-fill-lower{
 
 #imgLogoInstrucoes
 {
-	background-image: url("../imgs/logoforca.png");
+	background: url("../imgs/logoforca.png");
 	height: 139px;
 	width: 180px;
 	float: left;
@@ -251,7 +251,7 @@ input[type=range]::-ms-fill-lower{
 
 #imgLogoVit
 {
-	background-image: url("../imgs/logovitoria.png");
+	background: url("../imgs/logovitoria.png");
 	height: 139px;
 	width: 180px;
 	float: left;
@@ -287,7 +287,7 @@ input[type=range]::-ms-fill-lower{
 #camadaInicial{
 	display: grid;
 	min-height: 100%;
-	background-image: url("../imgs/novafolha.png");
+	background: url("../imgs/novafolha.png");
 	background-size: cover;
 	margin: 10px 70px 0px 70px;
 	justify-content: center;
@@ -350,7 +350,7 @@ input[type=range]::-ms-fill-lower{
 	height: 56px;
 	margin: 1.5px;
 	float: left;
-	background-image: url(../novasImgs/btnJogo.png);
+	background: url(../novasImgs/btnJogo.png);
 	cursor: pointer;
 	background-size: cover;	
 }
@@ -362,7 +362,7 @@ input[type=range]::-ms-fill-lower{
 	height: 56px;
 	margin: 1.5px;
 	float: left;
-	background-image: url(../novasImgs/btnJogoPressionado.png);
+	background: url(../novasImgs/btnJogoPressionado.png);
 	cursor: pointer;
 	background-size: cover;	
 }
@@ -443,7 +443,7 @@ p
 	height: 95px;
 	margin: 2rem;
 	background-size: cover;
-	background-image: url("../novasImgs/botaoJogo.png");
+	background: url("../novasImgs/botaoJogo.png");
 }
 
 #btnJogar:hover, #btnJogar:focus
@@ -459,7 +459,7 @@ p
 	height: 95px;
 	margin: 2rem;
 	background-size: cover;
-	background-image: url("../novasImgs/btnInstrucoes.png");
+	background: url("../novasImgs/btnInstrucoes.png");
 }
 
 #btnInstrucoes:hover, #btnInstrucoes:focus
@@ -476,7 +476,7 @@ p
 	height: 95px;
 	margin: 2rem;
 	background-size: cover;
-	background-image: url("../novasImgs/btnCreditos.png");
+	background: url("../novasImgs/btnCreditos.png");
 }
 
 #btnCreditos:hover, #btnCreditos:focus
@@ -490,7 +490,7 @@ p
 {
 	width: 137px;
 	height: 65px;
-	background-image: url("../imgs/opmenuinicial.png");
+	background: url("../imgs/opmenuinicial.png");
 	margin: 1.5rem;
 }
 
@@ -507,7 +507,7 @@ p
 	height: 95px;
 	margin: 2rem;
 	background-size: cover;
-	background-image: url("../novasImgs/btnAudio.png");
+	background: url("../novasImgs/btnAudio.png");
 }
 
 #btnAudio:hover, #btnAudio:focus
@@ -521,7 +521,7 @@ p
 {
 	width: 117px;
 	height: 65px;
-	background-image: url("../imgs/btnRanking.png")
+	background: url("../imgs/btnRanking.png")
 }
 
 #btnVoltar
@@ -530,7 +530,7 @@ p
 	height: 65px;
 	margin-top: 1rem;
 	margin-left: 1rem;
-	background-image:url("../imgs/btnVoltar.png");
+	background:url("../imgs/btnVoltar.png");
 }
 
 #botoesFimDeJogo
@@ -544,7 +544,7 @@ p
     width: 225px;
     height: 80px;
     border: none;
-    background-image: url(../novasImgs/btnRecomeçarDerrota.png);
+    background: url(../novasImgs/btnRecomeçarDerrota.png);
     background-size: cover;
 }
 
@@ -554,7 +554,7 @@ p
 	width: 145px;
 	height: 80px;
 	border: none;
-	background-image: url("../novasImgs/btnOpcoes.png");
+	background: url("../novasImgs/btnOpcoes.png");
 	background-size: cover;
 }
 
@@ -571,7 +571,7 @@ p
 	width: 175px;
 	height: 70px;
 	border: none;
-	background-image: url("../novasImgs/btnVoltar.png");
+	background: url("../novasImgs/btnVoltar.png");
 }
 
 #btnMenu2:hover, #btnMenu2:focus
@@ -587,7 +587,7 @@ p
     width: 225px;
     height: 80px;
     border: none;
-    background-image: url(../novasImgs/btnDesistirVitoria.png);
+    background: url(../novasImgs/btnDesistirVitoria.png);
     background-size: cover;
 }
 
@@ -605,7 +605,7 @@ p
     width: 225px;
     height: 80px;
     border: none;
-    background-image: url(../novasImgs/btnContinuarVitoria.png);
+    background: url(../novasImgs/btnContinuarVitoria.png);
     background-size: cover;
 }
 
@@ -632,7 +632,7 @@ p
 #btnDesktop{
 	height: 75px;
 	width: 225px;
-	background-image: url("../novasImgs/btnDesktop.png");
+	background: url("../novasImgs/btnDesktop.png");
 	background-size: cover;
 	border: none;
 	margin: .3rem auto;
@@ -641,7 +641,7 @@ p
 #btnMobile{
 	height: 75px;
 	width: 225px;
-	background-image: url("../novasImgs/btnMobile.png");
+	background: url("../novasImgs/btnMobile.png");
 	background-size: cover;
 	border: none;
 	margin: .3rem auto;
@@ -759,39 +759,39 @@ p
 }
 
 /*#opcaoContinuar, #opcaoAudio, #opcaoInstrucoes, #opcaoMenu{
-    background-image: none;
+    background: none;
 	width: 117px;
 	height: 65px;
 	margin: 0 auto;
 	margin-top: 1rem;
-	background-image: url("../imgs/btnContinuar.png");
+	background: url("../imgs/btnContinuar.png");
 }*/
 
 #opcaoContinuar{
 	width: 175px;
 	height: 90px;
-	background-image: url("../novasImgs/btnContinuarOpcoes.png");
+	background: url("../novasImgs/btnContinuarOpcoes.png");
 	background-size: cover;
 }
 
 #opcaoAudio{
 	width: 175px;
 	height: 90px;
-	background-image: url("../novasImgs/btnAudioOpcoes.png");
+	background: url("../novasImgs/btnAudioOpcoes.png");
 	background-size: cover;
 }
 
 #opcaoInstrucoes{
 	width: 175px;
 	height: 90px;
-	background-image: url("../novasImgs/btnInstrucoesOpcoes.png");
+	background: url("../novasImgs/btnInstrucoesOpcoes.png");
 	background-size: cover;
 }	
 
 #opcaoMenu{
 	width: 175px;
 	height: 90px;
-	background-image: url("../novasImgs/btnDesistirOpcoes.png");
+	background: url("../novasImgs/btnDesistirOpcoes.png");
 	background-size: cover;
 }
 
@@ -801,7 +801,7 @@ p
 	margin-top: 0px;
 	margin-top: 1rem;
 	width: 117px;
-	background-image: url("../imgs/btnVoltar2.png");
+	background: url("../imgs/btnVoltar2.png");
 }
 
 #audioVoltar:focus{

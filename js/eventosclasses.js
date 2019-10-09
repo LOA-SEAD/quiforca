@@ -65,7 +65,6 @@ var delayAtalho2;
 var delayAtalho4;
 var delayLetraAtalho4;
 
-var audioAtalho1 = document.createElement("AUDIO");
 var dezenaLer = document.createElement("AUDIO")
 var unidadeLer = document.createElement("AUDIO");
 var letraE = document.createElement("AUDIO");
