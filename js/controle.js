@@ -345,50 +345,21 @@ function criarCamadaJogo()
 	origemAudio = "jogo";
 	frase = 1;
 
-	if(!mobile){
-		if(!origemMenu){
-			background.currentTime = 0
-		}
-		
-		origemMenu = false;
-		background.play();
-	
-		var el = document.createElement("div");
-		el.setAttribute("id", "camadaJogo");
-		$("#palco").append(el);
-		
-		iniciar();
-		
-		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
-		realizarLeitura(texto);
-	
-		if((jogo.bd.length-jogo.bdTamanho) == 1)
-		{
-			tempo_inicial = new Date()
-			tempo_intermediario = tempo_inicial
-		}
-		else{
-			tempo_intermediario = new Date()
-		}
+	var el = document.createElement("div");
+	el.setAttribute("id", "camadaJogo");
+	$("#palco").append(el);
+
+	iniciar();
+	//Toca áudio gravado
+	audioQuestao.play();
+
+	if((jogo.bd.length-jogo.bdTamanho) == 1)
+	{
+		tempo_inicial = new Date()
+		tempo_intermediario = tempo_inicial
 	}
 	else{
-
-		var el = document.createElement("div");
-		el.setAttribute("id", "camadaJogo");
-		$("#palco").append(el);
-
-		iniciar();
-		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
-		realizarLeitura(texto);
-
-		if((jogo.bd.length-jogo.bdTamanho) == 1)
-		{
-			tempo_inicial = new Date()
-			tempo_intermediario = tempo_inicial
-		}
-		else{
-			tempo_intermediario = new Date()
-		}
+		tempo_intermediario = new Date()
 	}
 }
 
@@ -1464,8 +1435,7 @@ function inicializaFocusFala(){
 	}
 	else if(estado == "derrota"){
 		if(frase == 1){
-			var txt = jogo.palavraSorteada;
-			realizarLeituraInicial(txt);
+			tocarAudioResposta();
 		}
 		else if(frase == 2){
 			var txt = jogo.pontos + "pontos";
@@ -1476,11 +1446,10 @@ function inicializaFocusFala(){
 		}
 	}
 	else if(estado == "vitoria"){
-		var txt = jogo.palavraSorteada;
 		if(!mobile)
-			realizarLeituraInicial(txt);
+			tocarAudioResposta();
 		else	
-			realizarLeitura(txt);
+			audioResposta.play();
 	}
 	else if(estado == "audio"){
 		if(frase == 1){
@@ -2247,6 +2216,25 @@ function ativarOpcaoMenu(){
 	destruirCamadaOpcoes();
 	destruirCamadaJogo();
 	criarCamadaMenu();
+}
+
+function tocarAudioResposta(){
+	audioResposta.play();
+	audioResposta.onended = function(){
+		if(estado == "derrota"){
+			if(frase == 1){
+				leituraInicial(baseURL + "pontuacaoFinal.mp3");
+				frase = 2;
+			}
+			else if(frase == 2){
+				realizarFala(baseURL + "recomeçar.mp3");
+				frase = 1;
+			}
+		}
+		else if(estado == "vitoria"){
+			realizarFala(baseURL + "continuar.mp3");
+		}
+	}
 }
 
 iniciarNovoJogo();

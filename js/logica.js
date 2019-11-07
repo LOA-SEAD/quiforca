@@ -9,6 +9,9 @@ audio2.setAttribute("id", "audioEfeitos");
 var audioErro = document.createElement("AUDIO");
 audioErro.setAttribute("id", "audioVidas");
 
+var audioQuestao = document.createElement("AUDIO");
+var audioResposta = document.createElement("AUDIO");
+
 //img inicial do boneco
 var urlImgBoneco = "imgs/personagem0.png";
 
@@ -120,7 +123,6 @@ function iniciar()
 		caixaBotoes.append(jogo.botaoOpcoes);
 
 		inicializaFocus();
-		update();
 	}
 	else{
 		//Seta estado do jogo
@@ -257,9 +259,10 @@ function iniciar()
 		colright.appendChild(jogo.linha);
 		colocarPersonagem(); // -- NA TELA
 		colocarTecladoNaTela(); // -- NA TELA
-
-		update();
 	}
+
+	audioIdxSet();
+	update();
 }
 
 function update()
@@ -835,3 +838,7 @@ function pontuacao()
 	return jogo.pontos;
 }
 
+function audioIdxSet(){
+	audioQuestao.setAttribute("src", "audio/audioQuestoes/q" + jogo.sorteio + ".mp3");
+	audioResposta.setAttribute("src", "audio/audioQuestoes/a" + jogo.sorteio + ".mp3");
+}

@@ -279,8 +279,7 @@ function ouvirAtalho1(){
 
 	
 	delayAtalho1 = setTimeout(function(){
-		var texto = jogo.dicaPalavra + ". " + tamanhoPalavraSemEspaco() + " letras.";
-		realizarLeitura(texto);
+		audioQuestao.play();
 	}, 500); 
 }
 
