@@ -109,6 +109,7 @@ function criarCamadaMenu()
 	//realiza o a randomização do array de questões
 	questaoIdx = 0;
 	sortearQuestoes();
+	console.log(mobile);
 
 	if(!mobile){
 
@@ -2253,4 +2254,18 @@ function sortearQuestoes(){
 }
 
 iniciarNovoJogo();
-criarCamadaInicial();
+if(platform == platforms.DESKTOP){
+	criarCamadaInicial();
+}
+else{
+	jogo.palco = new Palco();
+	jogo.palco.criar();
+	if(platform == platforms.WEB)
+		mobile = false;
+	else{
+		mobile = true;
+		var style = document.getElementById("estilo");
+		style.setAttribute("href", "./css/mobileStyle.css");
+	}
+	criarCamadaMenu();
+}
