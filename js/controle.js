@@ -2250,4 +2250,18 @@ function ativarOpcaoMenu(){
 }
 
 iniciarNovoJogo();
-criarCamadaInicial();
+if(platform == platforms.WEB){
+	criarCamadaInicial();
+}
+else{
+	jogo.palco = new Palco();
+	jogo.palco.criar();
+	if(platform == platforms.DESKTOP)
+		mobile = false;
+	else{
+		mobile = true;
+		var style = document.getElementById("estilo");
+		style.setAttribute("href", "./css/mobileStyle.css");
+	}
+	criarCamadaMenu();
+}
