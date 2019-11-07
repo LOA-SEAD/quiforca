@@ -409,7 +409,7 @@ function criarCamadaAtalhos()
 
 	var para = document.createElement("h1");
 	para.setAttribute("id", "topoAtalhos");
-	para.innerHTML = "Atalhos";
+	para.innerHTML = "Status";
 	el.appendChild(para);
 
 	var caixaBotoes = document.createElement("div");
