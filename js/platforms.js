@@ -4,4 +4,4 @@ const platforms = {
     MOBILE: 2
 }
 
-let platform = platforms.MOBILE;
+let platform = platforms.WEB;

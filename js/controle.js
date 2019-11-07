@@ -104,6 +104,7 @@ function criarCamadaMenu()
 	origemDerrota = 0
 	background.currentTime = 0;
 	background.play();
+	jogo.bdTamanho = jogo.bd.length;
 
 	if(!mobile){
 
