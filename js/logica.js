@@ -15,9 +15,19 @@ var audioResposta = document.createElement("AUDIO");
 //img inicial do boneco
 var urlImgBoneco = "imgs/personagem0.png";
 
+//variável que controla index das questões sorteadas
+var questaoIdx = 0;
+
+
+//Array de questões e Array de questões aleatórias
+jogo.questoesIdx = [];
+jogo.questoesIdxAleatorio = [];
+
+
 //Preenche a camada de jogo
 function iniciar()
 {
+	console.log(jogo.questoesIdxAleatorio);
 	if(!mobile){
 		//Seta opcao para -1
 		opcao = -1;
@@ -31,7 +41,7 @@ function iniciar()
 		jogo.letrasTentadas = [" "];
 
 		//Sorteio de uma nova palavra
-		jogo.sorteio = parseInt((Math.random()*10000)%jogo.bdTamanho);
+		jogo.sorteio = jogo.questoesIdxAleatorio[questaoIdx];
 		jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
 		jogo.dicaPalavra = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;	
 
@@ -93,12 +103,6 @@ function iniciar()
 		jogo.erros = 0;
 		jogo.emTransicao = false;
 
-		//Aqui nós tiramos a palavra que ja foi sorteada, para ela nao ser sorteada novamente
-		jogo.bdTamanho--;
-		var ajuda = jogo.bdAux[jogo.bdTamanho];
-		jogo.bdAux[jogo.bdTamanho] = jogo.bdAux[jogo.sorteio];
-		jogo.bdAux[jogo.sorteio] = ajuda;
-
 
 		colright.append(jogo.linha); // -- NA TELA
 		colocarPersonagem(); // -- NA TELA
@@ -121,7 +125,6 @@ function iniciar()
 		}
 
 		caixaBotoes.append(jogo.botaoOpcoes);
-
 		inicializaFocus();
 	}
 	else{
@@ -135,7 +138,7 @@ function iniciar()
 		jogo.letrasTentadas = [" "];
 
 		//Sorteio de uma nova palavra
-		jogo.sorteio = parseInt((Math.random()*10000)%jogo.bdTamanho);
+		jogo.sorteio = jogo.questoesIdxAleatorio[questaoIdx];
 		jogo.palavraSorteada = jogo.bd[jogo.bdAux[jogo.sorteio]].palavra;
 		jogo.dicaPalavra = jogo.bd[jogo.bdAux[jogo.sorteio]].dica;	
 
@@ -248,19 +251,13 @@ function iniciar()
 		jogo.erros = 0;
 		jogo.emTransicao = false;
 
-		//Aqui nós tiramos a palavra que ja foi sorteada, para ela nao ser sorteada novamente
-		jogo.bdTamanho--;
-		var ajuda = jogo.bdAux[jogo.bdTamanho];
-		jogo.bdAux[jogo.bdTamanho] = jogo.bdAux[jogo.sorteio];
-		jogo.bdAux[jogo.sorteio] = ajuda;
-
-
 		//$("#camadaJogo").append(jogo.linha); -- NA TELA
 		colright.appendChild(jogo.linha);
 		colocarPersonagem(); // -- NA TELA
 		colocarTecladoNaTela(); // -- NA TELA
 	}
 
+	questaoIdx++;
 	audioIdxSet();
 	update();
 }
@@ -317,7 +314,7 @@ function fimDeJogo()
 		stopTudo();
 		clearTimeout(audio2Espera);
 		
-		if(jogo.bdTamanho != 0)
+		if(jogo.questoesIdx.length > questaoIdx)
 		{
 			//ainda tem palavras
 			return 1;
@@ -839,6 +836,11 @@ function pontuacao()
 }
 
 function audioIdxSet(){
+	console.log(jogo.sorteio);
 	audioQuestao.setAttribute("src", "audio/audioQuestoes/q" + jogo.sorteio + ".mp3");
 	audioResposta.setAttribute("src", "audio/audioQuestoes/a" + jogo.sorteio + ".mp3");
+}
+
+function randOrd(){
+	return (Math.round(Math.random())-0.5);
 }

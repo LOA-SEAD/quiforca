@@ -105,6 +105,11 @@ function criarCamadaMenu()
 	background.currentTime = 0;
 	background.play();
 
+
+	//realiza o a randomização do array de questões
+	questaoIdx = 0;
+	sortearQuestoes();
+
 	if(!mobile){
 
 		var el = document.createElement("div");
@@ -310,6 +315,8 @@ function ativarBotaoAudio()
 function ativarBotaoReiniciar()
 {
 	clearTimeout(delayInicializaFocus);
+	questaoIdx = 0;
+	sortearQuestoes();
 	destruirCamadaDerrota();
 	destruirCamadaJogo();
 	iniciarNovoJogo();
@@ -2235,6 +2242,14 @@ function tocarAudioResposta(){
 			realizarFala(baseURL + "continuar.mp3");
 		}
 	}
+}
+
+function sortearQuestoes(){
+	for(i = 0; i < jogo.bdTamanho; i++){
+		jogo.questoesIdx[i] = i;
+	}
+	
+	jogo.questoesIdxAleatorio = jogo.questoesIdx.sort(randOrd);
 }
 
 iniciarNovoJogo();
