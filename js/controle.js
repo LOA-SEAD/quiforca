@@ -2254,13 +2254,13 @@ function sortearQuestoes(){
 }
 
 iniciarNovoJogo();
-if(platform == platforms.DESKTOP){
+if(platform == platforms.WEB){
 	criarCamadaInicial();
 }
 else{
 	jogo.palco = new Palco();
 	jogo.palco.criar();
-	if(platform == platforms.WEB)
+	if(platform == platforms.DESKTOP)
 		mobile = false;
 	else{
 		mobile = true;

@@ -837,8 +837,8 @@ function pontuacao()
 
 function audioIdxSet(){
 	console.log(jogo.sorteio);
-	audioQuestao.setAttribute("src", "audio/audioQuestoes/q" + jogo.sorteio + ".mp3");
-	audioResposta.setAttribute("src", "audio/audioQuestoes/a" + jogo.sorteio + ".mp3");
+	audioQuestao.setAttribute("src", "audio/audioQuestoes/S" + jogo.sorteio + ".mp3");
+	audioResposta.setAttribute("src", "audio/audioQuestoes/A" + jogo.sorteio + ".mp3");
 }
 
 function randOrd(){
